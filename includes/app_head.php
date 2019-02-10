@@ -88,7 +88,6 @@ if(!isset($page_title)){
       }
       
 #head{
-  width: 100%;
     background-color: white;
 }
 #offbutton{

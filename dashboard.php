@@ -1,192 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>dashboard</title>
-    <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
-    <script src="dist/jquery-3.3.1.min.js"></script> 
-    <script src="dist/semantic.min.js"></script>
-    
-    <style>
-      
-     
-      /* menu */
-
-      .leftbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 50px; /*default width*/
-        background-color: #EB2939;
-        transition: width 0.4s;
-        z-index: 1000;
-        overflow: hidden;
-      }
-
-      .leftbar .ui.link.list .item {
-        padding: 15px 0 15px;
-      }
-
-      .leftbar .ui.link.list .item .icon, .leftbar .ui.link.list .item .content {
-        color: white;
-      }
-
-      .leftbar .ui.link.list .item:hover {
-        background-color: white;
-      }
-
-      .leftbar .ui.link.list .item:hover .icon, .leftbar .ui.link.list .item:hover .content {
-        color: black;
-      }
-
-      .leftbar .ui.link.list .item.active {
-        background-color: black;
-      }
-
-      .leftbar .ui.link.list .item.active .icon, .leftbar .ui.link.list .item.active .content {
-        color: white;
-      }
-      
-      .leftbar .ui.link.list .item .icon {
-        padding-right: 0;
-      }
-
-      .leftbar .ui.link.list .item .icon::before {
-        display: inline-block;
-        width: 50px;
-      }
-      .ui .middle.aligned.link .list .content{
-        
-      }
-      
-      /* content */
-
-      .page {
-        transform: translateX(0);
-        transition: margin-left 0.4s, transform 0.4s;
-        padding-left: 50px;
-        background-color:gainsboro;
-
-      }
-
-     #left, #middle, #right {
-        overflow: scroll;
-        height: 300px !important;
-      }
-      
-      
-
-      /* css toggle example "1" 
-
-      body.opened .leftbar {
-        width: 200px;
-      }
-      body.opened .page {
-        margin-left: 200px;
-      }
-      */
-      /* css toggle example "2" */
-      
-      body.opened .leftbar {
-        width: 200px;
-      }
-      
-
-      /* css toggle example "3" */
-      /*
-      body.opened .leftbar {
-        width: 200px;
-      }
-      body.opened .page {
-        transform: translateX(150px);
-      }
-      body.opened::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 900;
-        background-color: black;
-        opacity: .5;
-      }
-      */
-
-
-.power.off {
-    border-left: 1px solid;
-    padding-left: 10px;
-    margin-left: 10px;
-}
-
-#head{
-    width: 100%;
-    background-color: white;
-    border-bottom: 1px solid gray;
-    height: 52px;
-}
-
-
-.canvas span{
-    margin-left: 3px;
-}
-.ui.card{
-  width: 100%;
-}
-.user_session {
-    display: inline-block;
-    float: right;
-    margin-right: 15px;
-    margin-top: 0px;
-}
-    
-    </style>
-  </head>
-
-  <body>
-    
-    <div class="leftbar">
-      <div class="ui middle aligned link list">
-        
-        <a class="item" id="leftbar-toggle" href="#">
-          <i class="sidebar large icon"></i>
-        </a>
-        
-        <a class="item" href="#">
-          <i class="home large icon"></i>
-          <div class="content">Accueil</div>
-        </a>
-        <a class="item" href="#">
-          <i class="users large icon"></i>
-          <div class="content">Client</div>
-        </a>
-        <a class="item" href="#">
-            <i class="file code large icon"></i>
-            <div class="content">Conception</div>
-          </a>
-          <a class="item" href="#">
-              <i class="database large icon"></i>
-              <div class="content">Hébergement</div>
-            </a>
-            <a class="item" href="#">
-                <i class="globe large icon"></i>
-                <div class="content">DNS</div>
-              </a>
-              <a class="item" href="#">
-                  <i class="cloud upload large icon"></i>
-                  <div class="content">Payement</div>
-                </a>
-               
-       
-      </div>      
-    </div>
-    <!-- end leftbar -->    
-
+<?php require_once('includes/initialize.php') ;
+include('includes/app_head.php');
+?>
 
     <div class="page">
 
@@ -195,24 +9,18 @@
           <div class="ui padded grid">
             <!-- begin row head-->
                           <div class="streched row" id="head">
-                                  <div class="twelve wide column">
-                                          <img  src="images/logo.png" alt=""  class="ui tiny image" style="margin-left: 2%;">
-                                      </div>
-
-                                
-
-                                  
-                                            <div class="four wide column">
-                                                <div class="user_session">    
-                                                    <i class="big user circle icon"></i>
+                              
+                          <div class="thirteen wide column">
+                                                                  <img  src="<?php echo url_for('images/logo.png'); ?>" alt=""  class="ui tiny image" style="margin-left: 2%; margin-top: 1%">
+                                                              </div>
+                                                              <div class="three wide column" style="margin-top: 1%">
+                                                                <i class="big user circle icon"></i>
+                                                                <span>Mohamed Lamine</span>
+                                                                <i onclick="power_off()" class="large power off icon" id="offbutton"></i>
+                                                              </div> 
+                                                      
                                                                 
-                                                    <span>Mohamed</span>
-                                                    
-                                                    <a href="login/deconnecter.php"><i class="large power off icon" ></i></a>
-                                              </div>
-                                            </div> 
-                                    
-                                              
+                                                              
                                             
 
                                 
