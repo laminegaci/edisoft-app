@@ -21,10 +21,7 @@ margin-top: 1% !important;
   background-color: #FE1100 !important;
   color: white;
 }
-.err a{
-  text-decoration: none;
-  color: white;
-}
+
 .war{
   background-color: #E4FE19;
   color: black;
@@ -143,7 +140,7 @@ margin-top: 1% !important;
                               <tr>
                                 <td>1</td>
                                 <td>8/02/2019</td>
-                                <td class="war">8/02/2020</td>
+                                <td class="red">8/02/2020</td>
                                 <td>Sunshine</td>
                                 <td>benounnas.com</td>
                                 <td>20Go</td>
@@ -167,6 +164,7 @@ margin-top: 1% !important;
                                 <td>20Go</td>
                                 <td>15000 DA</td>
                                 <td>
+                                
                                                                      <a href=""><i class="folder open outline icon"></i>afficher</a>
                                                                      </td>
                                                                      <td>
@@ -177,7 +175,7 @@ margin-top: 1% !important;
                                                                      </td>
                               </tr>
 
-                              <tr class="err">
+                              <tr class="red">
                                 <td>1</td>
                                 <td>8/02/2019</td>
                                 <td class="">8/02/2020</td>

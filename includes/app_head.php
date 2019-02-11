@@ -15,12 +15,10 @@ if(!isset($page_title)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $page_title; ?></title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo url_for('dist/semantic.css') ;?>">
+    <script src="<?php echo url_for('dist/jquery-3.3.1.min.js');?>"></script>
+    
+    <script src="<?php echo url_for('dist/semantic.js') ?>"></script>
     
     <style>
       
@@ -96,7 +94,7 @@ if(!isset($page_title)){
     width: 100%;
     background-color: white;
     border-bottom: 1px solid gray;
-    height: 2%;
+    height: 66px;
 }
 .power.off {
     border-left: 1px solid;

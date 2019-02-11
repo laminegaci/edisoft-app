@@ -11,7 +11,7 @@ include('includes/app_head.php');
                           <div class="streched row" id="head">
                               
                           <div class="thirteen wide column">
-                                                                  <img  src="<?php echo url_for('images/logo.png'); ?>" alt=""  class="ui tiny image" style="margin-left: 2%; margin-top: 1%">
+                                                                  <img  src="<?php echo url_for('images/logo.png'); ?>" alt=""  class="ui tiny image" style="">
                                                               </div>
                                                               <div class="three wide column" style="margin-top: 1%">
                                                                 <i class="big user circle icon"></i>
