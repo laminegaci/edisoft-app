@@ -86,15 +86,30 @@ if(!isset($page_title)){
       body.opened .leftbar {
         width: 200px;
       }
+.ui.card {
+    
+    width: 100%;
+}
       
 #head{
+   
+    width: 100%;
     background-color: white;
+    border-bottom: 1px solid gray;
+    height: 2%;
 }
-#offbutton{
-   margin-left: 3% ;
-   border-left: 1px solid black;
-   padding-left: 6%;
+.power.off {
+    border-left: 1px solid;
+    padding-left: 10px;
+    margin-left: 10px;
 }
+.user_session {
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
+    margin-top: 0px;
+}
+
     
     </style>
   </head>
