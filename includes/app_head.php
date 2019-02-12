@@ -89,7 +89,7 @@ if(!isset($page_title)){
     width: 100%;
 }
       
-#head{
+/* #head{
    
     width: 100%;
     background-color: white;
@@ -106,7 +106,7 @@ if(!isset($page_title)){
     float: right;
     margin-right: 15px;
     margin-top: 0px;
-}
+} */
 
     
     </style>

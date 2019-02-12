@@ -9,31 +9,16 @@ include("../includes/app_head.php");
 
 <div class="ui fluid container">
 
-    <div class="ui padded grid">
-      <!-- begin row head-->
-                    <div class="streched row" id="head">
-                            <div class="thirteen wide column">
-                                    <img  src="<?php echo url_for('images/logo.png'); ?>" alt=""  class="ui tiny image" style="margin-left: 2%; margin-top: 1%">
-                                </div>
 
-                          
 
-                            
-                                      <div class="three wide column" style="margin-top: 1%">
-                                              
-                                        <i class="big user circle icon"></i>
-                                                    
-                                        <span>Mohamed Lamine</span>
-                                      
-                                        <i onclick="power_off()" class="large power off icon" id="offbutton"></i>
-                                      </div> 
-                              
-                                        
-                                      
+    <?php include('../includes/menu_head.php'); ?>
 
-                          
 
-                    </div> 
+
+
+
+
+             <div class="ui padded grid">
 
                     <div class="ui row centered grid">
                     <div class="row"></div>
