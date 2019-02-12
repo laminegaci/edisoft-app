@@ -1,33 +1,16 @@
 <?php require_once('includes/initialize.php') ;
 include('includes/app_head.php');
 ?>
+  <?php include('includes/menu_head.php'); ?>
 
     <div class="page">
 
       <div class="ui fluid container">
 
-            <div class="ui fluid big menu">
-                <div class="header item">
-                    <img src="images/logo.png" alt="" style="font-size:35px;">
-                </div>
-                
-                
-            
-            
-            
-                <div class="right menu">
-                    <div class="item">
-                    <i class="user icon"></i><span>Bou9anja</span>
-                    </div>
-                    <div class="item">
-                    <i class="power off icon"></i>
-                </div>
-              </div>
-          </div>
-
+        
 
             <!-- begin row stats-->
-              <div class="ui row equal width padded grid">
+              <div class="ui row equal width padded grid" id="example1">
                 <div class="column">
                   
                   

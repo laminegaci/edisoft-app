@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+
 <style>
 img{
     font-size:35px;
 }
+.ui.top.fixed{
+    margin-left: 50px;
+}
 
 </style>
-<body>
-    
-<div class="">
+
+
+  
             <!-- begin row head-->
-            <div class="" >
+    <div class="" >
                               
-              <div class="ui fluid big menu">
+              <div class="ui top fixed  fluid big menu">
                 <div class="header item">
-                    <img src="../images/logo.png" alt="">
+                    <img src="<?php echo url_for('images/logo.png');?>" alt="">
                 </div>
                 
                 
@@ -37,5 +33,5 @@ img{
               </div>
           </div>
 </div>
-</body>
-</html>
+
+

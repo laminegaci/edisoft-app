@@ -4,14 +4,14 @@ include("../includes/app_head.php");
 ?>
 
 
-
+<?php include('../includes/menu_head.php'); ?>
+ 
 <div class="page">
 
 <div class="ui fluid container">
 
 
 
-    <?php include('../includes/menu_head.php'); ?>
 
 
 
@@ -62,26 +62,26 @@ include("../includes/app_head.php");
                             </div>
 
 
-                            <div class="ui tab segment" data-tab="first">
+                            <div class="ui tab segment active" data-tab="first">
                               <div class="ui top attached tabular menu">
                              
                                 <a class="item active" data-tab="first/a"><i class="spinner yellow icon"></i>en cours</a>
                                 <a class="item " data-tab="first/b"><i class="check green circle icon"></i>terminées</a>
                               </div>
-                              <div class="ui bottom attached tab segment" data-tab="first/a">1A</div>
-                              <div class="ui bottom attached tab segment active" data-tab="first/b">1B</div>
+                              <div class="ui bottom attached tab segment active" data-tab="first/a">1A</div>
+                              <div class="ui bottom attached tab segment " data-tab="first/b">1B</div>
                               <div class="ui bottom attached tab segment" data-tab="first/c">1C</div>
                             </div>
 
 
 
-                            <div class="ui tab segment active" data-tab="second">
+                            <div class="ui tab segment " data-tab="second">
                               <div class="ui top attached tabular menu">
                                 <a class="item active" data-tab="second/a"><i class="spinner yellow icon"></i>en cours</a>
                                 <a class="item " data-tab="second/b"><i class="check green circle icon"></i>terminées</a>
                               </div>
-                              <div class="ui bottom attached tab segment" data-tab="second/a">2A</div>
-                              <div class="ui bottom attached tab segment active" data-tab="second/b">2B</div>
+                              <div class="ui bottom attached tab segment active" data-tab="second/a">2A</div>
+                              <div class="ui bottom attached tab segment " data-tab="second/b">2B</div>
                               <div class="ui bottom attached tab segment" data-tab="second/c">2C</div>
                             </div>
 
