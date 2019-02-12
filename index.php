@@ -11,8 +11,8 @@
   <!-- Site Properties -->
   <title>Login</title>
    
-  <link rel="stylesheet" type="text/css" href="<?php echo url_for('dist/semantic.min.css') ?>">
-    <script src="<?php echo url_for('dist/jquery-3.3.1.min.js') ?>"></script> 
+  <link rel="stylesheet" type="text/css" href='dist/semantic.css'>
+    <script src="dist/jquery-3.3.1.min.js"></script> 
 
 
   <style type="text/css">
@@ -100,7 +100,7 @@
   
 </div>
 
-<script src="<?php echo url_for('dist/semantic.min.js');?>"></script>
+<script src="dist/semantic.min.js"></script>
 
   <script>
 
