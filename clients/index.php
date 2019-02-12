@@ -22,11 +22,13 @@ border-radius: 5px !important;
 
                <div class="ui padded grid">
 
-                                <div class="ui container centered grid "> 
                                 <div class="row"></div>
-                                <h1 class="ui left aligned header">Clients</h1>
+                                <div class="one column centered row">
+                                <h1 class="">Clients</h1>
+                                </div>
 
-                                    <div class="ui row grid">
+
+                                    <div class="ui fifteen wide column row centered grid">
 
                                      <div class="ui top attached tabular menu">
                                           <a class="item active" data-tab="first">Tout (197)</a>
@@ -224,7 +226,7 @@ border-radius: 5px !important;
                                     </div>
 
                                     </div>
-                                </div>
+                               
                                
 
                 

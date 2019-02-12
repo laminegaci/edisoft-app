@@ -18,13 +18,12 @@ include("../includes/app_head.php");
 
 
 
-             <div class="ui padded grid">
+             <div class="ui padded  centered grid">
 
-                    <div class="ui row centered grid">
                     <div class="row"></div>
                                       <h1 class="ui center aligned header">Conceptions</h1>        
-                        <div class="ui centered grid row">
-                            <div class="ui fourteen wide column inverted segment">
+                        <div class="ui  grid row">
+                            <div class="ui fifteen wide column segment">
                    
 
                             <div class="ui  segment">
@@ -112,7 +111,6 @@ include("../includes/app_head.php");
 
 
 
-                            </div>
                         </div>
                         </div>
                     </div>
