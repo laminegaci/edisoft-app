@@ -31,7 +31,7 @@ padding-left: 50px;
                   
                     
                      
-                      <i class="power off red icon"></i>
+                    <a href="">  <i class="power off red link icon"></i></a>
                    
                        
                     </div>

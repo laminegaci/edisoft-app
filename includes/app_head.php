@@ -77,7 +77,7 @@ if(!isset($page_title)){
         transition: margin-left 0.4s, transform 0.4s;
         padding-left: 50px;
         background-color:gainsboro;
-        padding-top: 3%;
+        padding-top: 5%;
 
       }
       /* css toggle example "2" */
