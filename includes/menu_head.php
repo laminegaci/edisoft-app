@@ -3,7 +3,7 @@ img{
     font-size:35px;
 }
 .ui.top.fixed{
-    margin-left: 50px;
+padding-left: 50px;
 }
 
 </style>
@@ -23,12 +23,19 @@ img{
             
             
                 <div class="right menu">
-                    <div class="item">
-                    <i class="user icon"></i><span>Bou9anja</span>
+                <div class="item">
+                    <i class="user icon"></i>
+                    Bouberita
                     </div>
                     <div class="item">
-                    <i class="power off icon"></i>
-                </div>
+                  
+                    
+                     
+                      <i class="power off red icon"></i>
+                   
+                       
+                    </div>
+                   
               </div>
           </div>
 </div>

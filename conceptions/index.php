@@ -26,7 +26,7 @@ include("../includes/app_head.php");
                             <div class="ui fifteen wide column segment">
                    
 
-                            <div class="ui  segment">
+                         
 
                             <!--
 
@@ -98,7 +98,7 @@ include("../includes/app_head.php");
                             </div>
 
                             
-                                  </div>
+                                 
                           </div>
 
 

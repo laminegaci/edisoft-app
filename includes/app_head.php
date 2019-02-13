@@ -140,12 +140,9 @@ if(!isset($page_title)){
               <i class="database large icon"></i>
               <div class="content">Hébergement</div>
             </a>
-            <a class="item" href="<?php echo url_for('dns/index.php'); ?>">
-                <i class="globe large icon"></i>
-                <div class="content">DNS</div>
-              </a>
+           
               <a class="item" href="<?php echo url_for('factures/index.php'); ?>">
-                  <i class="cloud upload large icon"></i>
+              <i class="file alternate outline large icon"></i>
                   <div class="content">Factures</div>
                 </a>
                
