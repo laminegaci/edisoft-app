@@ -20,8 +20,6 @@ include("../includes/app_head.php");
 
              <div class="ui padded  centered grid">
 
-                    <div class="row"></div>
-                                      <h1 class="ui center aligned header">Conceptions</h1>        
                         <div class="ui  grid row">
                             <div class="ui fifteen wide column segment">
                    
@@ -38,9 +36,10 @@ include("../includes/app_head.php");
                                     </div>
 
                             -->
-                            <div class="ui pointing secondary menu">
+                            <div class="ui pointing secondary big menu">
   
 
+                            <h1 class="ui center aligned header item"><i class="code icon"></i>Conceptions</h1>        
 
 
                               <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(200)</a>

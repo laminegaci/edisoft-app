@@ -22,7 +22,10 @@ if(!isset($page_title)){
     
     <style>
       
-     
+     html, body{
+       height: 100%;
+       background-color:  #BCC1CF;
+     }
       /* menu */
 
       .leftbar {
@@ -31,7 +34,7 @@ if(!isset($page_title)){
         left: 0;
         height: 100%;
         width: 50px; /*default width*/
-        background-color: #EB2939;
+        background-color: #119EE7  ;
         transition: width 0.4s;
         z-index: 1000;
         overflow: hidden;
@@ -76,7 +79,6 @@ if(!isset($page_title)){
         transform: translateX(0);
         transition: margin-left 0.4s, transform 0.4s;
         padding-left: 50px;
-        background-color:gainsboro;
         padding-top: 5%;
 
       }
