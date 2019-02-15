@@ -39,7 +39,7 @@ include("../includes/app_head.php");
 
 
                     <div class="right item">
-                        <a href="" class="">
+                        <a href="ajouter_client.php" class="">
                             <i class="large plus circle icon"></i>
 
                         </a>
@@ -59,12 +59,8 @@ include("../includes/app_head.php");
                                 <th>nom de l'entreprise</th>
                                 <th>numéro de téléphone</th>
                                 <th>email</th>
-                                <th colspan="3">catégorie</th>
-                                <th>
-                                    <a href="ajouter_client.php">
-                                        <i class="plus circle blue big icon"></i>
-                                    </a>
-                                </th>
+                                <th colspan="4">catégorie</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
