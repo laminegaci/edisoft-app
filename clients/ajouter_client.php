@@ -71,7 +71,7 @@ include("../includes/app_head.php");
                                 <div class="one  fields">
                                   <div class="field">
                                     <div class="ui radio checkbox">
-                                      <input type="radio" name="fruit" tabindex="0" class="hidden" checked>
+                                      <input type="radio" id="particulier" onclick="disable()" name="fruit" tabindex="0" class="hidden" checked>
                                       <label>Particulier</label>
                                     </div>
                                   </div>
@@ -80,7 +80,7 @@ include("../includes/app_head.php");
                                 <div class="one  fields">
                                   <div class="field">
                                         <div class="ui radio checkbox">
-                                          <input type="radio" id="disable" name="fruit" tabindex="0" class="hidden">
+                                          <input type="radio" id="professionnel" onclick="undisable()" name="fruit" tabindex="0" class="hidden">
                                           <label>Professionnel</label>
                                         </div>
                                   </div>
@@ -88,7 +88,7 @@ include("../includes/app_head.php");
                                 <div class="one  fields">
                                   <div class="field">
                                     <label>Nom de l'entreprise</label>
-                                    <input type="text" placeholder="Entreprise" id="enable" disabled>
+                                    <input type="text" placeholder="Entreprise" id="myCheck"  disabled >
                                   </div>
                                 </div>
                                 <div class="one  fields">
@@ -130,10 +130,23 @@ $('.ui.checkbox')
   .checkbox()
 ;
 
-$('#disable').change(function(){
-  $('#enable').attr('disabled',!this.checked);
- 
+
+$('#particulier').change(function(){
+
+  document.getElementById("myCheck").disabled = true;
+  
 });
+$('#professionnel').change(function(){
+
+  document.getElementById("myCheck").disabled = false;
+
+});
+
+
+
+function undisable() {
+}
+
 </script>
 
 
