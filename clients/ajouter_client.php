@@ -43,35 +43,35 @@ include("../includes/app_head.php");
                   <form method="POST" class="ui form">
                                 <div class="two fields">
                                   <div class="field">
-                                    <label style="">Nom</label>
-                                    <input type="text" placeholder="Nom de client">
+                                    <label>Nom</label>
+                                    <input type="text" name="nom_cl" placeholder="Nom de client">
                                   </div>
                                   <div class="field">
                                     <label>Prenom</label>
-                                    <input type="text" placeholder="Prenom de client">
+                                    <input type="text" name="prenom_cl" placeholder="Prenom de client">
                                   </div>
                                   
                                 </div>  
                                 <div class="three fields">
                                   <div class="field">
                                     <label style="">Adress</label>
-                                    <input type="text" placeholder="Adresse">
+                                    <input type="text" name="adresse" placeholder="Adresse">
                                   </div>
                                   <div class="field">
                                     <label>E-mail</label>
-                                    <input type="Email" placeholder="exemple@gmail.com">
+                                    <input type="Email" name="email" placeholder="exemple@gmail.com">
                                   </div>
                                   <div class="field">
                                     <label>Telephon</label>
-                                    <input type="text" placeholder="">
+                                    <input type="text" name="telephon" placeholder="">
                                   </div>
                                   
                                 </div>
-                                <label for="">Vous ètes:</label><br><br>
+                                <label>Vous ètes:</label><br><br>
                                 <div class="one  fields">
                                   <div class="field">
                                     <div class="ui radio checkbox">
-                                      <input type="radio" id="particulier" onclick="disable()" name="fruit" tabindex="0" class="hidden" checked>
+                                      <input type="radio" id="particulier" name="check" value="particulier" class="hidden" checked>
                                       <label>Particulier</label>
                                     </div>
                                   </div>
@@ -80,15 +80,15 @@ include("../includes/app_head.php");
                                 <div class="one  fields">
                                   <div class="field">
                                         <div class="ui radio checkbox">
-                                          <input type="radio" id="professionnel" onclick="undisable()" name="fruit" tabindex="0" class="hidden">
+                                          <input type="radio" id="professionnel" name="check" value="professionnel" class="hidden">
                                           <label>Professionnel</label>
                                         </div>
                                   </div>
                                 </div>
                                 <div class="one  fields">
-                                  <div class="field">
+                                  <div class="field" id="myfield" hidden >
                                     <label>Nom de l'entreprise</label>
-                                    <input type="text" placeholder="Entreprise" id="myCheck"  disabled >
+                                    <input type="text" placeholder="Entreprise" id="myCheck" disabled >
                                   </div>
                                 </div>
                                 <div class="one  fields">
@@ -98,9 +98,9 @@ include("../includes/app_head.php");
                                   </div>
                                 </div>
                           
-                            
+                                <div class="ui error message"></div>      
                       </form><!-- end form -->    
-                  
+                      
                   </div><!-- end segment-->         
 
       
@@ -126,26 +126,83 @@ $('.ui.radio.checkbox')
   .checkbox()
 ;
 
-$('.ui.checkbox')
-  .checkbox()
-;
-
-
 $('#particulier').change(function(){
-
+  $("#myfield").hide(500, function() {
+         
+      });
   document.getElementById("myCheck").disabled = true;
   
 });
 $('#professionnel').change(function(){
-
+  $("#myfield").show(500, function() {
+                
+      });
   document.getElementById("myCheck").disabled = false;
 
 });
 
 
+$('.ui.form')
+  .form({
+    on: 'blur',
+    fields: {
+    
+      nom_cl: {
+        identifier: 'nom_cl',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'manque un nom'
+          },
+                   
+        ]
+      },
+      prenom_cl: {
+        identifier: 'prenom_cl',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'manque un prenom'
+          },
+         
+        ]
+      },
+      adresse_cl: {
+        identifier: 'adresse',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'manque une adresse'
+          },
+                   
+        ]
+      },
+      email_cl: {
+        identifier: 'email',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'manque un email'
+          },
+                   
+        ]
+      },
+      telephon_cl: {
+        identifier: 'telephon',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'manque un numero telephon'
+          },
+                   
+        ]
+      },
+            
+    }
+  })
+;
 
-function undisable() {
-}
+
 
 </script>
 
