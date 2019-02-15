@@ -4,12 +4,13 @@ include("../includes/app_head.php");
 ?>
 
 
-<?php include('../includes/menu_head.php'); ?>
+
  
 <div class="page">
 
 <div class="ui fluid container">
 
+<?php include('../includes/menu_head.php'); ?>
 
 
 
@@ -17,11 +18,9 @@ include("../includes/app_head.php");
 
 
 
+             <div class="ui padded grid">
 
-             <div class="ui padded  centered grid">
-
-                        <div class="ui  grid row">
-                            <div class="ui fifteen wide column segment">
+                            <div class="ui fifteen wide column row centered grid segment">
                    
 
                          
@@ -112,7 +111,7 @@ include("../includes/app_head.php");
 
                         </div>
                         </div>
-                    </div>
+                    
 </div>         
 
       <!-- end row head-->

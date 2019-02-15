@@ -61,7 +61,7 @@ include("../includes/app_head.php");
                                 <th>email</th>
                                 <th colspan="3">catégorie</th>
                                 <th>
-                                    <a href="">
+                                    <a href="ajouter_client.php">
                                         <i class="plus circle blue big icon"></i>
                                     </a>
                                 </th>

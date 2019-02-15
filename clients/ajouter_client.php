@@ -15,6 +15,9 @@
 .prompt{
 border-radius: 5px !important;
 }
+label{
+  float:left;
+}
 </style>
 
 
@@ -29,48 +32,85 @@ include("../includes/app_head.php");
 
 <div class="page">
 
-      <div class="ui container">
+      <div class="ui fluid container">
 
-      <?php include('../includes/menu_head.php'); ?>
+          <?php include('../includes/menu_head.php'); ?>
 
-               <div class="ui grid">
+          <div class="ui padded grid">
 
-                                <div class="row"></div>
-                                <div class="one column centered row">
-                                     <h1 class="">ajouter Clients</h1>
-                                </div>
-                                <div class="row">
-                                <div class="ui form">
-  <div class="inline fields">
-    <div class="eight wide field">
-      <label>Name</label>
-      <input type="text" placeholder="First Name">
-    </div>
-    <div class="three wide field">
-      <input type="text" placeholder="Middle Name">
-    </div>
-    <div class="five wide field">
-      <input type="text" placeholder="Last Name">
-    </div>
-  </div>
-</div>
-
+                  <div class="ui fifteen wide column row centered grid segment">
+                  <h2>ajouter client</h2>
+                  <form method="POST" class="ui form">
+                                <div class="two fields">
+                                  <div class="field">
+                                    <label style="">Nom</label>
+                                    <input type="text" placeholder="Nom de client">
                                   </div>
+                                  <div class="field">
+                                    <label>Prenom</label>
+                                    <input type="text" placeholder="Prenom de client">
+                                  </div>
+                                  
+                                </div>  
+                                <div class="three fields">
+                                  <div class="field">
+                                    <label style="">Adress</label>
+                                    <input type="text" placeholder="Adresse">
+                                  </div>
+                                  <div class="field">
+                                    <label>E-mail</label>
+                                    <input type="Email" placeholder="exemple@gmail.com">
+                                  </div>
+                                  <div class="field">
+                                    <label>Telephon</label>
+                                    <input type="text" placeholder="">
+                                  </div>
+                                  
+                                </div>
+                                <label for="">Vous ètes:</label><br><br>
+                                <div class="one  fields">
+                                  <div class="field">
+                                    <div class="ui radio checkbox">
+                                      <input type="radio" name="fruit" tabindex="0" class="hidden" checked>
+                                      <label>Particulier</label>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                                <div class="one  fields">
+                                  <div class="field">
+                                        <div class="ui radio checkbox">
+                                          <input type="radio" id="disable" name="fruit" tabindex="0" class="hidden">
+                                          <label>Professionnel</label>
+                                        </div>
+                                  </div>
+                                </div>
+                                <div class="one  fields">
+                                  <div class="field">
+                                    <label>Nom de l'entreprise</label>
+                                    <input type="text" placeholder="Entreprise" id="enable" disabled>
+                                  </div>
+                                </div>
+                                <div class="one  fields">
+                                  <div class="field">
+                                    
+                                    <input type="submit" class="ui button" value="Ajouter">
+                                  </div>
+                                </div>
+                          
+                            
+                      </form><!-- end form -->    
+                  
+                  </div><!-- end segment-->         
 
-                               
+      
 
-                
-                </div>         
+      
 
-
-      <!-- end row head-->
-
-
-
-      </div>
+          </div><!-- end grid-->
      
 
-
+      </div><!-- end container-->
 
 
 
@@ -81,12 +121,24 @@ include("../includes/app_head.php");
 $('.menu .item')
   .tab()
 ;
+
+$('.ui.radio.checkbox')
+  .checkbox()
+;
+
+$('.ui.checkbox')
+  .checkbox()
+;
+
+$('#disable').change(function(){
+  $('#enable').attr('disabled',!this.checked);
+ 
+});
 </script>
 
 
 <?php 
 require_once("../includes/app_foot.php");
-?>
 ?>
     
 </body>
