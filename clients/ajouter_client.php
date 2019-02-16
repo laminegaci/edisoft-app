@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+
+
+
+    <?php 
+require_once("../includes/initialize.php");
+include("../includes/app_head.php");
+?>
+
 <style>
 #search {
     background: inherit !important;
@@ -24,15 +24,6 @@ label {
 </style>
 
 
-<body>
-
-
-    <?php 
-require_once("../includes/initialize.php");
-include("../includes/app_head.php");
-?>
-
-
     <div class="page">
 
         <div class="ui fluid container">
@@ -46,38 +37,53 @@ include("../includes/app_head.php");
                             <i class="users icon"></i>
                             <i class="corner add icon"></i>
                         </i>&nbsp;Ajouter un client</h2>
+
+
                     <form method="POST" class="ui form">
                         <div class="two fields">
                             <div class="field">
                                 <label>Nom</label>
-                                <input type="text" name="nom_cl" placeholder="Nom de client">
+
+                                <input type="text" name="nom_client" placeholder="Nom de client">
                             </div>
                             <div class="field">
-                                <label>Prenom</label>
-                                <input type="text" name="prenom_cl" placeholder="Prenom de client">
+                                <label>Prénom</label>
+                                <input type="text" name="prenom_client" placeholder="Prénom de client">
                             </div>
 
                         </div>
                         <div class="three fields">
                             <div class="field">
-                                <label style="">Adress</label>
-                                <input type="text" name="adresse" placeholder="Adresse">
+                                <label style="">Adresse</label>
+                            <div class="ui left icon input">
+                            <input type="text" name="adresse" placeholder="Adresse">
+                            <i class="map marker alternate icon"></i>                            
                             </div>
+                                </div>
                             <div class="field">
                                 <label>E-mail</label>
+                            <div class="ui left icon input">
+
                                 <input type="Email" name="email" placeholder="exemple@gmail.com">
+                            <i class="at icon"></i>                            
+
+                                </div>
                             </div>
                             <div class="field">
-                                <label>Telephon</label>
-                                <input type="text" name="telephon" placeholder="">
+                                <label>Numéro de téléphone</label>
+                                <div class="ui left icon input">
+                                <i class="phone icon"></i>                            
+                                <input type="text" name="num_tel" placeholder="+213...">
+
+                                </div>
                             </div>
 
                         </div>
-                        <label>Vous ètes:</label><br><br>
+                       <br>
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="particulier" name="check" value="particulier" class="hidden"
+                                    <input type="radio" id="particulier" name="type_client" value="particulier" class="hidden"
                                         checked>
                                     <label>Particulier</label>
                                 </div>
@@ -87,7 +93,7 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="professionnel" name="check" value="professionnel"
+                                    <input type="radio" id="professionnel" name="type_client" value="professionnel"
                                         class="hidden">
                                     <label>Professionnel</label>
                                 </div>
@@ -96,7 +102,7 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field" id="myfield" hidden>
                                 <label>Nom de l'entreprise</label>
-                                <input type="text" placeholder="Entreprise" id="myCheck" disabled>
+                                <input type="text" placeholder="Entreprise" id="myCheck" name="entreprise" disabled>
                             </div>
                         </div>
                         <div class="one  fields">
@@ -154,20 +160,22 @@ include("../includes/app_head.php");
             on: 'blur',
             fields: {
 
-                nom_cl: {
-                    identifier: 'nom_cl',
+                nom_client: {
+                    identifier: 'nom_client',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un nom'
+                            prompt: '<b>le nom</b> ne doit pas être vide!'
                         },
+
+                        
 
                     ]
                 },
-                prenom_cl: {
-                    identifier: 'prenom_cl',
+                prenom_client: {
+                    identifier: 'prenom_client',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un prenom'
+                            prompt: '<b>le prénom</b>ne doit pas être vide!'
                         },
 
                     ]
@@ -176,29 +184,44 @@ include("../includes/app_head.php");
                     identifier: 'adresse',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque une adresse'
+                            prompt: "<b>l'adresse </b>ne doit pas être vide!"
                         },
 
                     ]
                 },
-                email_cl: {
+                email: {
                     identifier: 'email',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un email'
+                            prompt: "<b>l'email</b> ne doit pas être vide!"
                         },
+                        {
+                            type: 'email',
+                            prompt: "veuillez taper un email valide (email@email.com)"
+                        }
+
 
                     ]
                 },
-                telephon_cl: {
-                    identifier: 'telephon',
+                num_tel: {
+                    identifier: 'num_tel',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un numero telephon'
+                            prompt: '<b>le numéro</b> de téléphone ne doit pas être vide!'
                         },
 
                     ]
                 },
+                entreprise:{
+                    identifier: 'entreprise',
+                    rules: [{
+                            type: 'empty',
+                            prompt: "svp tapez l'entreprise, elle est <b>indispensable</b>",
+                        },
+
+                    ]
+
+                }
 
             }
         });
@@ -208,7 +231,3 @@ include("../includes/app_head.php");
     <?php 
 require_once("../includes/app_foot.php");
 ?>
-
-</body>
-
-</html>
