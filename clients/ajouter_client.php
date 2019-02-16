@@ -96,7 +96,7 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field" id="myfield" hidden>
                                 <label>Nom de l'entreprise</label>
-                                <input type="text" placeholder="Entreprise" id="myCheck" disabled>
+                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck" disabled>
                             </div>
                         </div>
                         <div class="one  fields">
@@ -195,6 +195,15 @@ include("../includes/app_head.php");
                     rules: [{
                             type: 'empty',
                             prompt: 'manque un numero telephon'
+                        },
+
+                    ]
+                },
+                entreprise: {
+                    identifier: 'entreprise',
+                    rules: [{
+                            type: 'empty',
+                            prompt: 'manque un nom d\'entreprise'
                         },
 
                     ]
