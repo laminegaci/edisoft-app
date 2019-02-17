@@ -100,7 +100,7 @@ label {
                             </div>
                         </div>
                         <div class="one  fields">
-                            <div class="field" id="myfield" >
+                            <div class="field" id="myfield" hidden>
                                 <label>Nom de l'entreprise</label>
 <<<<<<< HEAD
                                 <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck" disabled>

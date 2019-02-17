@@ -319,7 +319,7 @@ include('includes/app_head.php');
                         <div class="content">
                             <h2>Conception non terminée</h2>
                             <div id="middle">
-                                <table class="ui celled table">
+                                <table class="ui celled orange table">
                                     <thead>
                                         <tr>
                                             <th>Client</th>
@@ -469,8 +469,8 @@ var myPieChart = new Chart(ctx, {
         datasets: [{
             data: [50, 50],
             backgroundColor: [
-                '#521262',
-                '#3490de',
+                '#2b2e4a',
+                '#e84545',
 
             ]
 
@@ -491,9 +491,9 @@ var myPieChart = new Chart(ctx, {
         datasets: [{
             data: [10, 20, 70],
             backgroundColor: [
-                '#521262',
-                '#3490de',
-                'teal'
+                '#2b2e4a',
+                '#e84545',
+                '#903749'
 
             ]
 
@@ -513,8 +513,8 @@ var myPieChart = new Chart(ctx, {
         datasets: [{
             data: [40, 60],
             backgroundColor: [
-                '#521262',
-                '#3490de',
+                '#2b2e4a',
+                '#e84545',
 
 
             ]
@@ -535,8 +535,8 @@ var myPieChart = new Chart(ctx, {
         datasets: [{
             data: [50, 50],
             backgroundColor: [
-                '#521262',
-                '#3490de',
+                '#2b2e4a',
+                '#e84545',
 
             ]
 
