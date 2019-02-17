@@ -142,14 +142,6 @@ label {
 
             </form>
 
-<?php 
-        if(isset($_POST['valider'])){
-            echo $_POST['date_debut'];
-        }
-?>
-
-
-
 
         </div><!-- end segment-->
 
