@@ -100,7 +100,7 @@ label {
                             </div>
                         </div>
                         <div class="one  fields">
-                            <div class="field" id="myfield" hidden>
+                            <div class="field" id="myfield" >
                                 <label>Nom de l'entreprise</label>
                                 <input type="text" placeholder="Entreprise" id="myCheck" name="entreprise" disabled>
                             </div>
@@ -133,7 +133,9 @@ label {
 
 
     <script>
-    $('.menu .item')
+    $(document).ready(function(){
+
+        $('.menu .item')
         .tab();
 
     $('.ui.radio.checkbox')
@@ -225,6 +227,7 @@ label {
 
             }
         });
+    });
     </script>
 
 
