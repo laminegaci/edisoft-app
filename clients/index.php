@@ -23,7 +23,7 @@ include("../includes/app_head.php");
 
         <div class="ui padded grid">
 
-            
+
 
             <div class="ui fifteen wide column row centered grid segment">
 
@@ -60,7 +60,7 @@ include("../includes/app_head.php");
                                 <th>numéro de téléphone</th>
                                 <th>email</th>
                                 <th colspan="4">catégorie</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -73,13 +73,25 @@ include("../includes/app_head.php");
                                 <td>oussama@benounnas.com</td>
                                 <td>Particulier</td>
                                 <td>
-                                    <a href="afficher.php"><i class="folder open outline icon"></i>afficher</a>
+                                    <a href=""><i class="folder open outline icon"></i>afficher</a>
                                 </td>
                                 <td>
-                                    <a href=""><i class="edit outline icon"></i>modifier</a>
+                                    <a href="" id="n1"><i class="edit outline icon"></i>modifier</a>
+
+
+                                                        <div class="ui basic modal">
+                                                            <div class="ui icon header">
+                                                                <i class="archive icon"></i>
+                                                                Modal 1
+                                                            </div>
+                                                           
+                                                           
+                                                        </div>
                                 </td>
                                 <td>
-                                    <a href=""><i class="ban icon"></i>supprimer</a>
+                                    <a href="" id="n2"><i class="ban icon"></i>supprimer</a>
+
+
                                 </td>
                             </tr>
                             <tr>
@@ -100,41 +112,8 @@ include("../includes/app_head.php");
                                     <a href=""><i class="ban icon"></i>supprimer</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>BENOUNNAS Oussama</td>
-                                <td>Ouled Fayet</td>
-                                <td>/</td>
-                                <td>05 58 90 57 64</td>
-                                <td>oussama@benounnas.com</td>
-                                <td>Particulier</td>
-                                <td>
-                                    <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                </td>
-                                <td>
-                                    <a href=""><i class="edit outline icon"></i>modifier</a>
-                                </td>
-                                <td>
-                                    <a href=""><i class="ban icon"></i>supprimer</a>
-                                </td>
-                            <tr>
-                                <td>2</td>
-                                <td>Gaci Mohamed Lamine</td>
-                                <td>Souidania</td>
-                                <td>Gaci incorporation</td>
-                                <td>05 58 90 57 64</td>
-                                <td>lamine@gaci.com</td>
-                                <td>Pro</td>
-                                <td>
-                                    <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                </td>
-                                <td>
-                                    <a href=""><i class="edit outline icon"></i>modifier</a>
-                                </td>
-                                <td>
-                                    <a href=""><i class="ban icon"></i>supprimer</a>
-                                </td>
-                            </tr>
+
+
 
                         </tbody>
                     </table>
@@ -228,38 +207,43 @@ include("../includes/app_head.php");
 
                         </tbody>
                     </table>
+
                 </div>
+
+
+
 
             </div>
 
+
+            <!-- end row head-->
 
 
 
         </div>
 
 
-        <!-- end row head-->
+
 
 
 
     </div>
+    <!--fin page-->
+
+
+    <script>
+    $(document).ready(function() {
 
 
 
 
+        $('.menu .item')
+            .tab();
+    });
+    </script>
 
 
-</div>
-<!--fin page-->
-
-
-<script>
-$('.menu .item')
-    .tab();
-</script>
-
-
-<?php 
+    <?php 
 require_once("../includes/app_foot.php");
 ?>
-?>
+    ?>
