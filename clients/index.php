@@ -297,27 +297,25 @@ include("../includes/app_head.php");
 
 
 <script>
+$('.menu .item')
+    .tab();
  
 function modal_afficher()
 {
-    
-
 $('.ui.modal.afficher')
   .modal('show')
 ;
 }
+
 function modal_modifier()
 {
-    
-
 $('.ui.modal.modifier')
   .modal('show')
 ;
 }
+
 function modal_supprimer()
 {
-    
-
 $('.ui.modal.supprimer')
   .modal('show')
 ;
@@ -325,6 +323,6 @@ $('.ui.modal.supprimer')
 </script>
 
 
-    <?php 
+<?php 
 require_once("../includes/app_foot.php");
 ?>
