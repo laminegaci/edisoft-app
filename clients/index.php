@@ -73,24 +73,21 @@ include("../includes/app_head.php");
                                 <td>oussama@benounnas.com</td>
                                 <td>Particulier</td>
                                 <td>
-                                    <a href=""><i class="folder open outline icon"></i>afficher</a>
+                                <div >
+                                <a>
+                                <input type="button" class="ui grey basic button" value="afficher" onclick=modal_afficher()>
+                                    <!-- <a href="" ><i class="folder open outline icon"></i>afficher</a> -->
+                                </a>
+                                </div>
                                 </td>
                                 <td>
-                                    <a href="" id="n1"><i class="edit outline icon"></i>modifier</a>
+                                <input type="button" class="ui grey basic button" value="modifier" onclick=modal_modifier()>
 
-
-                                                        <div class="ui basic modal">
-                                                            <div class="ui icon header">
-                                                                <i class="archive icon"></i>
-                                                                Modal 1
-                                                            </div>
-                                                           
-                                                           
-                                                        </div>
+                                    <!-- <a href=""><i class="edit outline icon"></i>modifier</a> -->
                                 </td>
                                 <td>
-                                    <a href="" id="n2"><i class="ban icon"></i>supprimer</a>
-
+                                    <!-- <a href="" id="n2"><i class="ban icon"></i>supprimer</a> -->
+                                    <input type="button" class="ui grey basic button" value="supprimer" onclick=modal_supprimer()>
 
                                 </td>
                             </tr>
@@ -141,7 +138,7 @@ include("../includes/app_head.php");
                                 <td>oussama@benounnas.com</td>
                                 <td>Particulier</td>
                                 <td>
-                                    <a href=""><i class="folder open outline icon"></i>afficher</a>
+                                    <a href="" onclick=modal_afficher()><i class="folder open outline icon"></i>afficher</a>
                                 </td>
                                 <td>
                                     <a href=""><i class="edit outline icon"></i>modifier</a>
@@ -226,24 +223,108 @@ include("../includes/app_head.php");
 
 
 
-
+<div class="ui modal afficher">
+  <i class="close icon"></i>
+  <div class="header">
+    hi bourabo
+  </div>
+  <div class="image content">
+   
+    <div class="description">
+      <div class="ui header">hadi modal afficher</div>
+      
     </div>
-    <!--fin page-->
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<div class="ui modal modifier">
+  <i class="close icon"></i>
+  <div class="header">
+    hi bourabo
+  </div>
+  <div class="image content">
+   
+    <div class="description">
+      <div class="ui header">hadi modal modifier</div>
+      
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<div class="ui modal supprimer">
+  <i class="close icon"></i>
+  <div class="header">
+    hi bourabo
+  </div>
+  <div class="image content">
+   
+    <div class="description">
+      <div class="ui header">hadi modal supprimer</div>
+      
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+    
+    
+    </div><!--fin page-->
 
 
-    <script>
-    $(document).ready(function() {
+<script>
+ 
+function modal_afficher()
+{
+    
 
+$('.ui.modal.afficher')
+  .modal('show')
+;
+}
+function modal_modifier()
+{
+    
 
+$('.ui.modal.modifier')
+  .modal('show')
+;
+}
+function modal_supprimer()
+{
+    
 
-
-        $('.menu .item')
-            .tab();
-    });
-    </script>
+$('.ui.modal.supprimer')
+  .modal('show')
+;
+}
+</script>
 
 
     <?php 
 require_once("../includes/app_foot.php");
 ?>
-    ?>
