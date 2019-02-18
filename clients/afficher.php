@@ -1,7 +1,3 @@
-<?php
-require_once("../includes/initialize.php");
-include("../includes/app_head.php");
-?>
 
 
 <style>
@@ -32,7 +28,7 @@ margin-top: 1% !important;
 
 <div class="ui fluid container">
 
-<?php include('../includes/menu_head.php'); ?>
+
 
                     
                     
@@ -72,11 +68,11 @@ margin-top: 1% !important;
                                     <div class="ui centered grid row">
                                     
                                     <div class="five wide column">
-                                    <button class="ui green fluid basic big button"><i class="envelope outline icon"></i>Email</button>
+                                    <a class="ui green fluid basic big button" href="mailto:benounnas.oussama@gmail.com"><i class="envelope outline icon"></i>Email</a>
                                     </div>
 
                                     <div class="five wide column">
-                                    <button class="ui red fluid basic big button"><i class="bell outline icon"></i>Notifier</button>
+                                    <a class="ui red fluid basic big button"><i class="bell outline icon"></i>Notifier</a>
 
                                     </div>
 
@@ -251,8 +247,3 @@ $('.menu .item')
 </script>
 
 
-
-<?php
-require_once("../includes/app_foot.php");
-?>
-?>

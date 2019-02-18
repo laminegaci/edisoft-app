@@ -13,6 +13,9 @@ include("../includes/app_head.php");
 .prompt {
     border-radius: 5px !important;
 }
+.ui.button i{
+    display: inline;
+}
 </style>
 
 <div class="page">
@@ -50,7 +53,7 @@ include("../includes/app_head.php");
                     </div>
                 </div>
                 <div class="ui bottom attached tab  active" data-tab="first">
-                    <table class="ui striped large   table">
+                    <table class="ui striped    table">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -73,21 +76,22 @@ include("../includes/app_head.php");
                                 <td>oussama@benounnas.com</td>
                                 <td>Particulier</td>
                                 <td>
-                                <div >
-                                <a>
-                                <input type="button" class="ui grey basic button" value="afficher" onclick=modal_afficher()>
+                             
+                              
+                                <button class="ui tiny blue  button" onclick=modal_afficher()><i class="folder open outline icon"></i><span>Afficher</span></button>
                                     <!-- <a href="" ><i class="folder open outline icon"></i>afficher</a> -->
-                                </a>
-                                </div>
+                               
+                               
                                 </td>
                                 <td>
-                                <input type="button" class="ui grey basic button" value="modifier" onclick=modal_modifier()>
+                                <button class="ui tiny yellow  button" onclick=modal_modifier()><i class="edit outline icon"></i><span>Modifier</span></button>
+
 
                                     <!-- <a href=""><i class="edit outline icon"></i>modifier</a> -->
                                 </td>
                                 <td>
                                     <!-- <a href="" id="n2"><i class="ban icon"></i>supprimer</a> -->
-                                    <input type="button" class="ui grey basic button" value="supprimer" onclick=modal_supprimer()>
+                                    <button class="ui tiny red button" onclick=modal_supprimer()><i class="edit outline icon"></i><span>Supprimer</span></button>
 
                                 </td>
                             </tr>
@@ -223,73 +227,27 @@ include("../includes/app_head.php");
 
 
 
-<div class="ui modal afficher">
-  <i class="close icon"></i>
-  <div class="header">
-    hi bourabo
+<div class="ui fullscreen modal afficher">
+ 
+  <div class="content">
+  <?php include('afficher.php'); ?>
   </div>
-  <div class="image content">
-   
-    <div class="description">
-      <div class="ui header">hadi modal afficher</div>
-      
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
+
+
+  
 </div>
 
 <div class="ui modal modifier">
-  <i class="close icon"></i>
-  <div class="header">
-    hi bourabo
+  
+  <div class="content">
+  <?php include('modifier_modal.php'); ?>
+  
   </div>
-  <div class="image content">
-   
-    <div class="description">
-      <div class="ui header">hadi modal modifier</div>
-      
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
+  
 </div>
 
 <div class="ui modal supprimer">
-  <i class="close icon"></i>
-  <div class="header">
-    hi bourabo
-  </div>
-  <div class="image content">
-   
-    <div class="description">
-      <div class="ui header">hadi modal supprimer</div>
-      
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
+  <?php include('supprimer_modal.php'); ?>
 </div>
     
     
