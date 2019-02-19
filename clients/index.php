@@ -137,7 +137,7 @@ include('function_modal.php');
                                 <td>
 
 
-<button class="ui tiny blue  button" data-button_id="1" data-type="afficher"><i
+<button class="ui tiny blue  button" data-button_id="2" data-type="afficher"><i
         class="folder open outline icon"></i><span>Afficher</span></button>
 
 <div class="ui large modal afficher a2">
