@@ -19,10 +19,6 @@ label {
 
 
 
-    <?php 
-require_once("../includes/initialize.php");
-
-?>
 
 
     <div class="page">
@@ -31,6 +27,7 @@ require_once("../includes/initialize.php");
 
 
             <div class="ui padded grid">
+            <h1>Modifier client N° <?php echo $id; ?></h1>
 
                 <div class="ui fifteen wide column row centered grid" id="modifier_grid">
                     <h2 class="ui left aligned header"><i class=" icons">

@@ -53,7 +53,7 @@ margin-top: 1% !important;
 
                                           <div class="twelve wide column">
                                           
-                                          <h3>BENOUNNAS Oussama</h3>
+                                          <h3>client N° <?php echo $id; ?> &nbsp;BENOUNNAS Oussama</h3>
                                           <h4>0558 90 57 64</h4>
                                           <h4>oussama@benounnas.com</h4>
                                           <h4>Ouled Fayet - Alger</h4>
