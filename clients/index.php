@@ -77,10 +77,11 @@ include("../includes/app_head.php");
                                 <td>Particulier</td>
                                 <td>
                              
-                              
-                                <button class="ui tiny blue  button" onclick=modal_afficher()><i class="folder open outline icon"></i><span>Afficher</span></button>
-                                    <!-- <a href="" ><i class="folder open outline icon"></i>afficher</a> -->
                                
+                                <button class="ui tiny blue  button" onclick=modal_afficher()><i class="folder open outline icon"></i><span>Afficher</span></button>
+                                
+                                    <!-- <a href="" ><i class="folder open outline icon"></i>afficher</a> -->
+                                
                                
                                 </td>
                                 <td>
@@ -225,12 +226,12 @@ include("../includes/app_head.php");
 
 
 
-
-
-<div class="ui fullscreen modal afficher">
+<div class="ui large modal afficher">
  
   <div class="content">
-  <?php include('afficher.php'); ?>
+
+
+  <?php echo include('afficher.php'); ?>
   </div>
 
 

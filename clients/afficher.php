@@ -53,10 +53,10 @@ margin-top: 1% !important;
 
                                           <div class="twelve wide column">
                                           
-                                          <h1>BENOUNNAS Oussama</h1>
-                                          <h2>0558 90 57 64</h2>
-                                          <h2>oussama@benounnas.com</h2>
-                                          <h2>Ouled Fayet - Alger</h2>
+                                          <h3>BENOUNNAS Oussama</h3>
+                                          <h4>0558 90 57 64</h4>
+                                          <h4>oussama@benounnas.com</h4>
+                                          <h4>Ouled Fayet - Alger</h4>
                                           <div class="ui massive star rating" data-rating="3" id="rating"></div>
                                           
                                           </div>
@@ -68,19 +68,19 @@ margin-top: 1% !important;
                                     <div class="ui centered grid row">
                                     
                                     <div class="five wide column">
-                                    <a class="ui green fluid basic big button" href="mailto:benounnas.oussama@gmail.com"><i class="envelope outline icon"></i>Email</a>
+                                    <a class="ui green fluid basic  button" href="mailto:benounnas.oussama@gmail.com"><i class="envelope outline icon"></i>Email</a>
                                     </div>
 
                                     <div class="five wide column">
-                                    <a class="ui red fluid basic big button"><i class="bell outline icon"></i>Notifier</a>
+                                    <a class="ui red fluid basic button"><i class="bell outline icon"></i>Notifier</a>
 
                                     </div>
 
                                     <div class="five wide column">
-                                    <button class="ui blue fluid basic big button"><i class="info icon"></i>Informer</button>
+                                    <button class="ui blue fluid basic button"><i class="info icon"></i>Informer</button>
 
                                     </div>
-
+                                    
                                    
 
                                     </div>
@@ -93,9 +93,9 @@ margin-top: 1% !important;
                                         <div class="row">
                                         </div>
 
-                            <div class="centered row">
+                            <div class="row">
                             
-                            <div class="twelve wide column">
+                            <div class="sixteen wide column">
                             
                                     <div class="ui top attached tabular menu">
                                         <a class="active item" data-tab="first">Hébérgements(3)</a>

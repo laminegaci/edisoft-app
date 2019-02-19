@@ -39,7 +39,12 @@ if(!isset($page_title)){
         z-index: 1000;
         overflow: hidden;
       }
-
+#leftbar-toggle{
+  color:white;
+  padding: 15px 10px 20px;
+  display: inline-block;
+  width: 50px;
+}
       .leftbar .ui.link.list .item {
         padding: 15px 0 15px;
       }
@@ -122,11 +127,11 @@ if(!isset($page_title)){
   <div class="leftbar">
       <div class="ui middle aligned link list">
         
-        <a class="item" id="leftbar-toggle" href="#">
+        <a class="" id="leftbar-toggle" href="#">
           <i class="sidebar large icon"></i>
         </a>
         
-        <a class="item" href="<?php echo url_for('dashboard.php'); ?>">
+        <a class="item bar" href="<?php echo url_for('dashboard.php'); ?>">
           <i class="home large icon"></i>
           <div class="content">Accueil</div>
         </a>
