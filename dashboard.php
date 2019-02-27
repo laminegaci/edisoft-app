@@ -223,85 +223,111 @@ include('includes/app_head.php');
                     <!-- début des avertissements-->
 
                     <div class="ui fluid card">
-                        <div class="content">
-                            <h2>Client à notifier!</h2>
-                            <div id="left">
-                                <table class="ui striped large selectable  red table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nom et Prénom</th>
-                                            <th>Hébérgement</th>
-                                            <th>URL</th>
-                                            <th>date expiration</th>
-                                            <th colspan="2">jours restants</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>BENOUNNAS Oussama</td>
-                                            <td>Pack Sunshine</td>
-                                            <td>benounnas.com</td>
-                                            <td>10/2/2019</td>
-                                            <td>23 jours</td>
-                                            <td class="selectable ">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
+                        <div class="ui content grid">
+                           <div class="row">
+                           <h2 class="thirteen wide column">Client à notifier!</h2>
+                            <div class="two wide column">
+                            
+                            <div class="ui search  column">
+                                <div class="ui icon input">
+                                    <input class="prompt" type="text" placeholder="Common passwords..." id="search">
+                                    <i class="search icon"></i>
+                                </div>
+                                <div class="results"></div>
+                            </div>
+                            </div>
+                           </div>
 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gaci Mohammed lamine</td>
-                                            <td>Pack Thunder</td>
-                                            <td>mohammed.org</td>
-                                            <td>3/2/2019</td>
-                                            <td>2 jours</td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td> Hachemi said</td>
-                                            <td>DNS</td>
-                                            <td>gacilamie.com</td>
-                                            <td>1/3/2019</td>
-                                            <td>10 jours</td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>BENOUNNAS Oussama</td>
-                                            <td>Pack Sunshine</td>
-                                            <td>oussama.dz</td>
-                                            <td>10/2/2019</td>
-                                            <td>23 jours</td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gaci Mohammed lamine</td>
-                                            <td>Pack Thunder</td>
-                                            <td></td>
-                                            <td>3/2/2019</td>
-                                            <td>2 jours</td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td> Hachemi said</td>
-                                            <td>DNS</td>
-                                            <td>.com</td>
-                                            <td>1/3/2019</td>
-                                            <td>10 jours</td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
+                            <div class="row">
+                                <div id="left" class="column">
+                                    <table class="ui striped large selectable  red table" id="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom et Prénom</th>
+                                                <th>Hébérgement</th>
+                                                <th>URL</th>
+                                                <th>date expiration</th>
+                                                <th colspan="3">jours restants</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="red">
+                                                <td><i class="skull crossbones icon"></i>BENOUNNAS Oussama</td>
+                                                <td>Pack Sunshine</td>
+                                                <td>benounnas.com</td>
+                                                <td>10/2/2019</td>
+                                                <td><b>-3 jours</b></td>
 
+                                                <td class="selectable ">
+                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
 
-                                    </tbody>
-                                </table>
+                                                </td>
+
+                                                <td class="selectable ">
+
+                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
+
+                                                </td>
+                                            </tr>
+                                            <tr class="orange">
+                                                <td><i class="exclamation triangle icon"></i>Gaci Mohammed lamine</td>
+                                                <td>Pack Thunder</td>
+                                                <td>mohammed.org</td>
+                                                <td>3/2/2019</td>
+                                                <td><b>10 jours</b></td>
+
+                                                <td class="selectable ">
+                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
+
+                                                </td>
+
+                                                <td class="selectable ">
+
+                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr class="orange">
+                                                <td><i class="exclamation triangle icon"></i>Ryan Reynolds</td>
+                                                <td>Pack wind</td>
+                                                <td>mohammed.org</td>
+                                                <td>28/2/2019</td>
+                                                <td><b>7 jours</b></td>
+
+                                                <td class="selectable ">
+                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
+
+                                                </td>
+
+                                                <td class="selectable ">
+
+                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
+
+                                                </td>
+                                            </tr>
+                                            <tr class="orange">
+                                                <td><i class="exclamation triangle icon"></i>Brad pitt</td>
+                                                <td>Pack storm</td>
+                                                <td>mohammed.org</td>
+                                                <td>14/2/2019</td>
+                                                <td><b>29 jours</b></td>
+
+                                                <td class="selectable ">
+                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
+
+                                                </td>
+
+                                                <td class="selectable ">
+
+                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
+
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -335,7 +361,7 @@ include('includes/app_head.php');
                                             <td>Oooredoo.dz</td>
                                             <td>15 jours</td>
                                             <td>
-                                            <div class="ui red progress" data-percent="20">
+                                                <div class="ui red progress" data-percent="20">
                                                     <div class="bar"></div>
                                                     <div class="label">20%</div>
                                                 </div>
@@ -379,7 +405,7 @@ include('includes/app_head.php');
                                             <td>Oooredoo.dz</td>
                                             <td>15 jours</td>
                                             <td>
-                                            <div class="ui orange progress" data-percent="50">
+                                                <div class="ui orange progress" data-percent="50">
                                                     <div class="bar"></div>
                                                     <div class="label">50%</div>
                                                 </div>
@@ -437,6 +463,24 @@ include('includes/app_head.php');
 
 <script>
 $(function() {
+
+
+// Write on keyup event of keyword input element
+$("#search").keyup(function(){
+        var searchText = $(this).val().toLowerCase();
+        // Show only matching TR, hide rest of them
+        $.each($("#table tbody tr"), function() {
+            if($(this).text().toLowerCase().indexOf(searchText) === -1)
+               $(this).hide();
+            else
+               $(this).show();                
+        });
+    }); 
+
+
+
+
+
 
     $('.ui.progress').progress();
 

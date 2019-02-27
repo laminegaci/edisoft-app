@@ -32,22 +32,36 @@ label {
 
 
                 <form class="ui equal width large form" method="POST">
+
+                <div class="field">
+                            <label for="">Client:</label>
+                            <div class="ui search">
+                                <div class="ui icon input">
+                                    <input class="prompt" type="text" placeholder="Common passwords...">
+                                    <i class="search icon"></i>
+                                </div>
+                                <div class="results"></div>
+                            </div>
+
+                        </div>
                     <div class="fields">
                         <div class="field">
                             <label>Nom du site</label>
-                            <input type="text" placeholder="Username" name="nom_site" autocomplete="off" >
+                            <input type="text" placeholder="Username" name="nom_site" autocomplete="off">
                         </div>
 
 
 
+                        
 
 
                         <div class="field">
-                        <label for="">Date début</label>
+                            <label for="">Date début</label>
                             <div class="ui calendar" id="standard_calendar">
                                 <div class="ui input left icon">
                                     <i class="calendar icon"></i>
-                                    <input type="text" placeholder="Date de début.." name="date_debut" autocomplete="off" >
+                                    <input type="text" placeholder="Date de début.." name="date_debut"
+                                        autocomplete="off">
                                 </div>
                             </div>
 
@@ -77,7 +91,7 @@ label {
                             <label>Versement</label>
                             <div class="ui left icon input">
                                 <i class="hand holding usd icon"></i>
-                                <input type="text" name="versement" autocomplete="off" >
+                                <input type="text" name="versement" autocomplete="off">
 
                             </div>
                         </div>
@@ -162,29 +176,30 @@ label {
 
 <script>
 $('#standard_calendar')
-  .calendar({
+    .calendar({
 
-    type: 'date', 
-    formatter: {
-      date: function (date, settings) {
-      if (!date) return '';
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      return year + '-' + month + '-' + day;
-    }
-    }, 
+        type: 'date',
+        formatter: {
+            date: function(date, settings) {
+                if (!date) return '';
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                return year + '-' + month + '-' + day;
+            }
+        },
 
-    text: {
-      days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-      months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-      monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
-      today: 'Aujourd\'hui',
-      now: 'Maintenant'
-     
-    }
-  })
-;
+        text: {
+            days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+            months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+                'Octobre', 'Novembre', 'Decembre'
+            ],
+            monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+            today: 'Aujourd\'hui',
+            now: 'Maintenant'
+
+        }
+    });
 $('.ui.checkbox')
     .checkbox();
 
@@ -247,22 +262,22 @@ $('.ui.form')
                         type: 'number',
                         prompt: 'veuillez entrer versement valide'
                     },
-                    
 
-                    
+
+
 
 
                 ]
-            }, 
+            },
             date_debut: {
                 identifier: 'date_debut',
                 rules: [{
                         type: 'empty',
                         prompt: "<b>la date</b> ne doit pas être vide!"
                     }
-                    
 
-                    
+
+
 
 
                 ]
