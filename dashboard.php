@@ -224,19 +224,26 @@ include('includes/app_head.php');
 
                     <div class="ui fluid card">
                         <div class="ui content grid">
-                           <div class="row">
-                           <h2 class="thirteen wide column">Client à notifier!</h2>
-                            <div class="two wide column">
-                            
-                            <div class="ui search  column">
-                                <div class="ui icon input">
-                                    <input class="prompt" type="text" placeholder="Common passwords..." id="search">
-                                    <i class="search icon"></i>
+                            <div class="row">
+                                <h2 class="thirteen wide column">Hébérgements en urgence</h2>
+
+                                <div class="two wide column">
+
+                                    <div class="ui search  column">
+                                        <div class="ui icon input">
+                                            <input class="prompt" type="text" placeholder="Common passwords..."
+                                                id="search">
+                                            <i class="search icon"></i>
+                                        </div>
+                                        <div class="results"></div>
+                                    </div>
+                                    
                                 </div>
-                                <div class="results"></div>
+                                <h4 class="thirteen wide column">Expirés:&nbsp; <span class="ui red text">24</span></h4>
+                                <h4 class="thirteen wide column">En voie d'expiration:&nbsp <span class="ui orange text">24</span></h4>
+
                             </div>
-                            </div>
-                           </div>
+                           
 
                             <div class="row">
                                 <div id="left" class="column">
@@ -465,17 +472,17 @@ include('includes/app_head.php');
 $(function() {
 
 
-// Write on keyup event of keyword input element
-$("#search").keyup(function(){
+    // Write on keyup event of keyword input element
+    $("#search").keyup(function() {
         var searchText = $(this).val().toLowerCase();
         // Show only matching TR, hide rest of them
         $.each($("#table tbody tr"), function() {
-            if($(this).text().toLowerCase().indexOf(searchText) === -1)
-               $(this).hide();
+            if ($(this).text().toLowerCase().indexOf(searchText) === -1)
+                $(this).hide();
             else
-               $(this).show();                
+                $(this).show();
         });
-    }); 
+    });
 
 
 

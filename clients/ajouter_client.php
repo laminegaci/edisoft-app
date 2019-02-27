@@ -53,14 +53,14 @@ include("../includes/app_head.php");
                                 <input type="text" name="nom_cl" placeholder="Nom de client">
                             </div>
                             <div class="field">
-                                <label>Prenom</label>
+                                <label>Prénom</label>
                                 <input type="text" name="prenom_cl" placeholder="Prenom de client">
                             </div>
 
                         </div>
                         <div class="three fields">
                             <div class="field">
-                                <label style="">Adress</label>
+                                <label style="">Adresse</label>
                                 <input type="text" name="adresse" placeholder="Adresse">
                             </div>
                             <div class="field">
@@ -68,7 +68,7 @@ include("../includes/app_head.php");
                                 <input type="Email" name="email" placeholder="exemple@gmail.com">
                             </div>
                             <div class="field">
-                                <label>Telephon</label>
+                                <label>Téléphone</label>
                                 <input type="text" name="telephon" placeholder="">
                             </div>
 
