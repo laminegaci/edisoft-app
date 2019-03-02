@@ -36,7 +36,7 @@ select.ui.dropdown {
 
 
                 <div class="thirteen wide column">
-                    <form class="ui large form" method="POST">
+                    <form class="ui large form" method="POST" action="simple.php">
                         <div class="fields">
 
 
