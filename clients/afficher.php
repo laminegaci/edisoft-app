@@ -98,10 +98,10 @@ margin-top: 1% !important;
                             <div class="sixteen wide column">
                             
                                     <div class="ui top attached tabular menu">
-                                        <a class="active item" data-tab="first">Hébérgements(3)</a>
-                                        <a class="item" data-tab="second">Conceptions(2)</a>
+                                        <a class="active item" data-tab="firstAfficher">Hébérgements(3)</a>
+                                        <a class="item" data-tab="secondAfficher">Conceptions(2)</a>
                                       </div>
-                                      <div class="ui bottom attached tab segment active" data-tab="first">
+                                      <div class="ui bottom attached tab segment active" data-tab="firstAfficher">
                                       <table class="ui celled  table">
                             <thead>
                               <tr>
@@ -176,7 +176,7 @@ margin-top: 1% !important;
                             </tbody>
                   </table>
                                       </div>
-                                      <div class="ui bottom attached tab segment" data-tab="second">
+                                      <div class="ui bottom attached tab segment" data-tab="secondAfficher">
                                       <table class="ui olive table">
                             <thead>
                               <tr>
