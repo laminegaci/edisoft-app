@@ -29,7 +29,16 @@ margin-top: 1% !important;
 <div class="ui fluid container">
 
 
+<?php 
+if(!$id){
+  redirect_to('index.php');
+}
 
+$client = Client::find_by_id($id);
+
+
+
+?>
                     
                     
                     
@@ -41,7 +50,7 @@ margin-top: 1% !important;
 
                       <div class="ui segment eight wide centered column">
 
-                            <div class="ui  centered grid">
+                            <div class="ui centered grid">
                                 
                               
 
@@ -53,11 +62,10 @@ margin-top: 1% !important;
 
                                           <div class="twelve wide column">
                                           
-                                          <h3>client N° <?php echo $id; ?> &nbsp;BENOUNNAS Oussama</h3>
-                                          <h4>0558 90 57 64</h4>
-                                          <h4>oussama@benounnas.com</h4>
-                                          <h4>Ouled Fayet - Alger</h4>
-                                          <div class="ui massive star rating" data-rating="3" id="rating"></div>
+                                          <h3>client N° <?php echo h($client->id_cl);?> &nbsp; <?php echo h($client->nom_cl) . ' ' .  h($client->prenom_cl);?></h3>
+                                          <h4><?php echo h($client->num_tel_cl);?></h4>
+                                          <h4><?php echo h($client->email_cl);?></h4>
+                                          <h4><?php echo h($client->adresse_cl);?></h4>
                                           
                                           </div>
 

@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
 <style>
 #search {
     background: inherit !important;
@@ -23,12 +15,52 @@ label {
 }
 </style>
 
-
-<body>
-
-
     <?php 
 require_once("../includes/initialize.php");
+
+/////////////////////////////////////////////////////////////////////////////
+
+if(is_post_request() && isset($_POST['ajouter'])){
+      
+    /*
+    foreach ($_POST as $key => $value) {            
+      $_POST[$key] = test_input($value);
+      }
+    */
+
+   
+    //création et préparation de données pour les convertirs en objets 
+      $args = [];
+      $args['nom_cl'] = $_POST['nom_cl'] ?? NULL;
+      $args['prenom_cl'] = $_POST['prenom_cl'] ?? NULL;
+      $args['num_tel_cl'] = $_POST['telephone'] ?? NULL;
+      $args['email_cl'] = $_POST['email'] ?? NULL;
+      $args['adresse_cl'] = $_POST['adresse'] ?? NULL;
+
+      if($_POST['check'] == 'particulier'){
+        $args['type_cl'] = 0;
+      }else{
+      $args['type_cl'] = 1;
+      }
+      $args['nom_societe_cl'] = $_POST['entreprise'] ?? NULL;
+      $args['id_ad'] = /*$_POST[''] ?? NULL*/ 1;
+
+
+     // var_dump($args) . "<br>";
+      
+      $client = new Client($args);
+      $result = $client->create();
+
+      if($result == true){
+        redirect_to('index.php');
+      }else{
+         // echo "error";
+      }
+    
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
 include("../includes/app_head.php");
 ?>
 
@@ -38,6 +70,11 @@ include("../includes/app_head.php");
         <div class="ui fluid container">
 
             <?php include('../includes/menu_head.php'); ?>
+
+
+
+
+
 
             <div class="ui padded grid">
 
@@ -69,7 +106,7 @@ include("../includes/app_head.php");
                             </div>
                             <div class="field">
                                 <label>Téléphone</label>
-                                <input type="text" name="telephon" placeholder="">
+                                <input type="text" name="telephone" placeholder="+213 ...">
                             </div>
 
                         </div>
@@ -102,11 +139,11 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field">
 
-                                <input type="submit" class="ui button" value="Ajouter">
+                                <input type="submit" class="ui button" value="ajouter" name="ajouter">
                             </div>
                         </div>
 
-                        <div class="ui error message"></div>
+                        <div class="ui error message"><?php echo $php_errormsg ?? ''; ?></div>
                     </form><!-- end form -->
 
                 </div><!-- end segment-->
@@ -217,7 +254,3 @@ include("../includes/app_head.php");
     <?php 
 require_once("../includes/app_foot.php");
 ?>
-
-</body>
-
-</html>

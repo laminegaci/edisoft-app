@@ -7,4 +7,31 @@ function url_for($script_path) {
     }
     return WWW_ROOT . $script_path;
   }
+
+function u($string="") {
+  return urlencode($string);
+}
+
+function h($string="") {
+  return htmlspecialchars($string);
+}
+
+function redirect_to($location) {
+  header("Location: " . $location);
+  exit;
+}
+
+function is_post_request() {
+  return $_SERVER['REQUEST_METHOD'] == 'POST';
+}
+
+function is_get_request() {
+  return $_SERVER['REQUEST_METHOD'] == 'GET';
+}
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>
