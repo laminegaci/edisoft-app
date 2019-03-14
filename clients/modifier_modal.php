@@ -16,7 +16,14 @@ label {
 </style>
 
 
+<?php
+$client = Client::find_by_id($id);
 
+
+
+
+
+?>
 
 
 
@@ -34,7 +41,7 @@ label {
                             <i class="users icon"></i>
                             <i class="corner add icon"></i>
                         </i>&nbsp;modifier le client</h2>
-                    <form method="POST" class="ui form" id="modifier_form">
+                    <form method="POST" class="ui form" id="modifier_form<?php echo $id; ?>">
                         <div class="two fields">
                             <div class="field">
                                 <label>Nom</label>
@@ -49,7 +56,7 @@ label {
                         <div class="three fields">
                             <div class="field">
                                 <label style="">Adress</label>
-                                <input type="text" name="adresse" placeholder="Adresse">
+                                <input type="text" name="adresse" placeholder="Adresse" >
                             </div>
                             <div class="field">
                                 <label>E-mail</label>
@@ -65,8 +72,8 @@ label {
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="particulier" name="check" value="particulier" class="hidden"
-                                        checked>
+                                    <input type="radio" id="particulier<?php echo -$id; ?>" name="check" value="particulier" class="hidden"
+                                        <?php if($client->type_cl == 1) echo "checked";?> >
                                     <label>Particulier</label>
                                 </div>
                             </div>
@@ -75,21 +82,21 @@ label {
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="professionnel" name="check" value="professionnel"
-                                        class="hidden">
+                                    <input type="radio" id="professionnel<?php echo -$id; ?>" name="check" value="professionnel"
+                                        class="hidden" <?php if($client->type_cl == 0) echo "checked";?>>
                                     <label>Professionnel</label>
                                 </div>
                             </div>
                         </div>
                         <div class="one  fields">
-                            <div class="field" id="myfield" hidden>
+                            <div class="field" id="myfield<?php echo $id; ?>">
                                 <label>Nom de l'entreprise</label>
-                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck" disabled>
+                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck<?php echo $id; ?>">
                             </div>
                         </div>
                         <div class="one  fields">
                             <div class="field">
-
+                            
                                 <input type="submit" class="ui yellow button" value="Modifier">
                             </div>
                         </div>
@@ -173,21 +180,22 @@ $('#modif_refresh_button').click(()=>{
     $('.ui.radio.checkbox')
         .checkbox();
 
-    $('#particulier').change(function() {
-        $("#myfield").hide(500, function() {
 
-        });
-        document.getElementById("myCheck").disabled = true;
+    // $('#particulier<?php echo -$id; ?>').change(function() {
+    //     $("#myfield<?php echo $id; ?>").hide(500, function() {
 
-    });
-    $('#professionnel').change(function() {
-        $("#myfield").show(500, function() {
+    //     });
+    //     document.getElementById("myCheck<?php echo $id; ?>").disabled = true;
 
-        });
-        document.getElementById("myCheck").disabled = false;
+    // });
+    // $('#professionnel<?php echo -$id; ?>').change(function() {
+    //     $("#myfield<?php echo $id; ?>").show(500, function() {
 
-    });
+    //     });
+    //     document.getElementById("myCheck<?php echo $id; ?>").disabled = false;
 
+    // });
+    
 
     $('.ui.form')
         .form({
@@ -233,7 +241,7 @@ $('#modif_refresh_button').click(()=>{
                 telephon_cl: {
                     identifier: 'telephon',
                     rules: [{
-                            type: 'empty',
+                            type: 'number',
                             prompt: 'manque un numero telephon'
                         },
 
@@ -251,6 +259,21 @@ $('#modif_refresh_button').click(()=>{
 
             }
         });
+
+
+$('#modifier_form<?php echo $id; ?>')
+
+  .form('set values', {
+    nom_cl     : '<?php echo h($client->nom_cl); ?>',
+    prenom_cl  : '<?php echo h($client->prenom_cl); ?>',
+    adresse    : '<?php echo h($client->adresse_cl); ?>',
+    email      : '<?php echo h($client->email_cl); ?>',
+    telephon   : '<?php echo h($client->num_tel_cl); ?>',
+    check      : '<?php echo h($client->type_cl);?>',
+    entreprise : '<?php echo h($client->nom_societe_cl);?>',
+    terms      : true
+  })
+;
     </script>
 
 

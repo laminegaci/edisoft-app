@@ -10,11 +10,13 @@ class Client{
     static function set_database($database){
         self::$database = $database;
     }
+
     static protected $db_columns =['id_cl', 'nom_cl', 'prenom_cl', 'num_tel_cl', 'email_cl', 'adresse_cl', 'type_cl', 'nom_societe_cl', 'id_ad'];
+    
     static public function find_by_sql($sql){
 
         
-       $result = self::$database->query($sql);
+        $result = self::$database->query($sql);
         if(!$result){
             exit("erreur de requête.");
         };
@@ -79,6 +81,7 @@ class Client{
         }
         return $result;
     }
+    
 
     
     public function attributes(){

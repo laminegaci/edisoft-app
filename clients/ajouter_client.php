@@ -228,9 +228,9 @@ include("../includes/app_head.php");
                     ]
                 },
                 telephon_cl: {
-                    identifier: 'telephon',
+                    identifier: 'telephone',
                     rules: [{
-                            type: 'empty',
+                            type: 'number',
                             prompt: 'manque un numero telephon'
                         },
 
