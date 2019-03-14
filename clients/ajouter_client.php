@@ -38,11 +38,11 @@ if(is_post_request() && isset($_POST['ajouter'])){
       $args['adresse_cl'] = $_POST['adresse'] ?? NULL;
 
       if($_POST['check'] == 'particulier'){
-        $args['type_cl'] = 0;
+        $args['type_cl'] = 1;
       }else{
-      $args['type_cl'] = 1;
+      $args['type_cl'] = 0;
       }
-      $args['nom_societe_cl'] = $_POST['entreprise'] ?? NULL;
+      $args['nom_societe_cl'] = $_POST['entreprise'] ?? '/';
       $args['id_ad'] = /*$_POST[''] ?? NULL*/ 1;
 
 

@@ -1,11 +1,16 @@
 <div class="content">
 
+<?php
 
+if(isset($_POST) && !empty($_POST)){
+  echo var_dump($_POST);
+  return;
+}
 
+   
+?>
 
-
-
-    <div class="ui centered grid" id="delete_grid<?php echo $id; ?>">
+<div class="ui centered grid" id="delete_grid<?php echo $id; ?>">
         <div class="one column row">
             <div class="column">
                 <i class="huge icons">
@@ -16,7 +21,7 @@
         <div class="row">
 
             <div class="column">
-                <form action="" class="ui form" method="post" id="supp_form<?php echo $id; ?>">
+                <form action="supp_page.php" class="ui form" method="POST" id="supp_form<?php echo $id; ?>">
 
                     <h2>Voulez vous supprimer ce client N° <?php echo $id; ?>?</h2>
                     <input type="submit" value="OUI" class="ui huge right floated red button" name="oui" id="sub">
@@ -34,6 +39,7 @@
 
 
 <div id="supp_success<?php echo $id; ?>" hidden>
+
 
    
     <div class="ui centered grid">
@@ -66,12 +72,13 @@
 
 <script>
 $(function() {
+    
     $('#supp_form<?php echo $id; ?>').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
-            url: 'supprimer_modal.php', //this is the submit URL
+            url: "supp_page.php?id=<?php echo $id; ?>", //this is the submit URL
             type: 'POST', //or POST
-            data: $('#supp_form<?php echo $id; ?>').serialize(),
+            data: $(this).serialize(),
             success: function(data) {
                 $('#delete_grid<?php echo $id; ?>').transition({
                     animation: 'fade out',
@@ -91,4 +98,6 @@ $(function() {
 $('#supp_refresh_button<?php echo $id; ?>').click(() => {
     location.reload();
 })
+
 </script>
+

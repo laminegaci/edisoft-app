@@ -1,6 +1,9 @@
 <?php 
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
+
+
+
 ?>
 <style>
 label {
@@ -146,6 +149,19 @@ select.ui.dropdown {
 
 
 <script>
+
+$('.ui.search')
+  .search({
+    apiSettings: {
+        url: 'getclient.php/?q={query}'
+    }
+   
+
+    
+   
+    
+  })
+;
 $(document).ready(function() {
 
 
@@ -218,6 +234,12 @@ $(document).ready(function() {
 
             }
         });
+
+      
+
+
+
+
 });
 </script>
 

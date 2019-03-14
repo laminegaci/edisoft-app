@@ -29,7 +29,13 @@ include('function_modal.php');
          <div class="ui padded grid">
 
 
+         <?php 
 
+
+if(isset($_POST['oui'])){
+    echo "<h1>YAAAAAAAAAAAAAAAAAAAAAAAAAAAaw</h1>it works";
+}
+?>
              <div class="ui fifteen wide column row centered grid segment">
 
                  <div class="ui pointing secondary big menu">

@@ -7,7 +7,7 @@ class Client{
     /////// active record code
     static protected $database;
     
-    function set_database($database){
+    static function set_database($database){
         self::$database = $database;
     }
     static protected $db_columns =['id_cl', 'nom_cl', 'prenom_cl', 'num_tel_cl', 'email_cl', 'adresse_cl', 'type_cl', 'nom_societe_cl', 'id_ad'];
@@ -89,6 +89,32 @@ class Client{
         }
         return $attributes;
     }
+
+    static public function delete($id){
+        $sql = "DELETE FROM client WHERE id_cl =";
+        $sql .= "'" . $id ."';";
+        
+        $result = self::$database->query($sql);
+        if($result){
+           return $result;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
+
+    }
+
+    static public function find_by_name($string){
+        $sql = "SELECT * FROM client WHERE nom_cl LIKE ";
+        $sql .= "'" . self::$database->escape_string($string) ."%'";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+
+    }
+    
 
     /////// end record code////////////////////////////
 
