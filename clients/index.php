@@ -18,6 +18,13 @@ include('function_modal.php');
 .ui.button i {
     display: inline;
 }
+.limits{
+   /* height: 60%; */
+}
+.ui.fifteen.wide.column.row.centered.grid.segment{
+    height: 85vh;
+    overflow: scroll;
+}
  </style>
 
  <div class="page">
@@ -64,7 +71,7 @@ if(isset($_POST['oui'])){
                                     </div>
                      </div>
                  </div>
-                 <div class="ui bottom attached tab  active" data-tab="first">
+                 <div class="ui bottom attached tab  active limits" data-tab="first">
 
 
                      <?php 
@@ -73,7 +80,8 @@ if(isset($_POST['oui'])){
 $clients = Client::find_all();
 
 ?>
-                     <table class="ui striped  table" id="tabAll">
+               
+                    <table class="ui striped  table" id="tabAll">
                          <thead>
                              <tr>
                                  <th>#</th>
@@ -152,6 +160,7 @@ $clients = Client::find_all();
                          </tbody>
                      </table>
 
+               
 
 
 
