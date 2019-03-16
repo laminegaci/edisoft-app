@@ -1,14 +1,6 @@
 <div class="content">
 
-<?php
 
-if(isset($_POST) && !empty($_POST)){
-  echo var_dump($_POST);
-  return;
-}
-
-   
-?>
 
 <div class="ui centered grid" id="delete_grid<?php echo $id; ?>">
         <div class="one column row">

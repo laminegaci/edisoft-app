@@ -59,9 +59,29 @@ class Client{
         }
     }
 
+    static public function find_pro(){
+        $sql = "SELECT * FROM client ";
+        $sql .="WHERE type_cl=0";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+    }
+    static public function find_particulier(){
+        $sql = "SELECT * FROM client ";
+        $sql .="WHERE type_cl=1";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+    }
     public function create(){
         
-        $attributes = $this->attributes();
+        $attributes = $this->sanitized_attributes();//mna9yiin
 
         $sql = "INSERT INTO client(";
         $sql .= join(', ', array_keys($attributes));
@@ -92,6 +112,17 @@ class Client{
         }
         return $attributes;
     }
+    protected function sanitized_attributes(){
+        //hadi la fonction pour éviter SQL injection be fonction wessmha escapestring jaya fe 
+        //objet ta3 base de données
+        $sanitized = [];
+        foreach ($this->attributes() as $key => $value) {
+            
+            $sanitized[$key] = self::$database->escape_string($value);
+        }
+
+        return $sanitized;
+    } 
 
     static public function delete($id){
         $sql = "DELETE FROM client WHERE id_cl =";
@@ -117,7 +148,38 @@ class Client{
         }
 
     }
-    
+
+    public function update(){
+        $attributes = $this->sanitized_attributes();
+        $attributes_pairs = [];
+        foreach ($attributes as $key => $value) {
+            
+            $attributes_pairs[] = "{$key}='{$value}'";
+        }
+
+        $sql = "UPDATE client SET ";
+        $sql .= join(', ', $attributes_pairs);
+        $sql .= " WHERE id_cl='". self::$database->escape_string($this->id_cl)."' ";
+        $sql .= "LIMIT 1";
+        echo $sql . "<br>";
+        $result = self::$database->query($sql);
+
+        if($result){
+            $this->id_cl = self::$database->insert_id;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
+        return $result;
+        
+    }
+    public function merge_attributes($args=[]){
+
+        foreach ($args as $key => $value) {
+            if(property_exists($this, $key)){
+                $this->$key = $value;
+            }
+        }
+    }
 
     /////// end record code////////////////////////////
 
@@ -142,7 +204,7 @@ class Client{
         $this->email_cl = $args['email_cl'] ?? '';
         $this->adresse_cl = $args['adresse_cl'] ?? '';
         $this->type_cl = $args['type_cl'] ?? 0;
-        $this->nom_societe_cl = $args['nom_societe_cl'] ?? '/';
+        $this->nom_societe_cl = $args['nom_societe_cl'] ?? NULL;
         $this->id_ad = $args['id_ad'] ?? '';
 
 

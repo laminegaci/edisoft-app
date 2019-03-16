@@ -29,7 +29,7 @@ include('function_modal.php');
          <div class="ui padded grid">
 
 
-         <?php 
+             <?php 
 
 
 if(isset($_POST['oui'])){
@@ -54,10 +54,14 @@ if(isset($_POST['oui'])){
                              <i class="large plus circle icon"></i>
 
                          </a>
-                         <div class="ui action input">
-                             <input type="text" placeholder="Rechercher">
-                             <div class="ui button">Go</div>
-                         </div>
+                         <div class="ui search  ">
+                                        <div class="ui icon input">
+                                            <input class="prompt" type="text" placeholder="Rechercher..."
+                                                id="search">
+                                            <i class="search icon"></i>
+                                        </div>
+                                        <div class="results"></div>
+                                    </div>
                      </div>
                  </div>
                  <div class="ui bottom attached tab  active" data-tab="first">
@@ -69,7 +73,7 @@ if(isset($_POST['oui'])){
 $clients = Client::find_all();
 
 ?>
-                     <table class="ui striped  table">
+                     <table class="ui striped  table" id="tabAll">
                          <thead>
                              <tr>
                                  <th>#</th>
@@ -107,7 +111,8 @@ $clients = Client::find_all();
 
                                  <td>
 
-                                     <button class="ui tiny blue  button" data-button_id="<?php echo h($client->id_cl) ?>" data-type="afficher"><i
+                                     <button class="ui tiny blue  button"
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="afficher"><i
                                              class="folder open outline icon"></i><span>Afficher</span></button>
 
                                      <div class="ui large modal afficher a<?php echo h($client->id_cl) ?>">
@@ -118,7 +123,8 @@ $clients = Client::find_all();
                                  </td>
 
                                  <td>
-                                     <button class="ui tiny yellow  button" data-button_id="<?php echo h($client->id_cl) ?>" data-type="modifier"><i
+                                     <button class="ui tiny yellow  button"
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="modifier"><i
                                              class="edit outline icon"></i><span>Modifier</span></button>
                                      <div class="ui modal modifier m<?php echo h($client->id_cl) ?>">
                                          <div class="content">
@@ -128,7 +134,8 @@ $clients = Client::find_all();
                                  </td>
 
                                  <td>
-                                     <button class="ui tiny red button" data-button_id="<?php echo h($client->id_cl) ?>" data-type="supprimer"><i
+                                     <button class="ui tiny red button" data-button_id="<?php echo h($client->id_cl) ?>"
+                                         data-type="supprimer"><i
                                              class="edit outline icon"></i><span>Supprimer</span></button>
 
                                      <div class="ui modal supprimer s<?php echo h($client->id_cl) ?>">
@@ -150,7 +157,14 @@ $clients = Client::find_all();
 
                  </div>
                  <div class="ui bottom attached tab segment" data-tab="second">
-                     <table class="ui striped large   table">
+
+                     <?php 
+/////////////////////////////////////////////////////////////////////:::
+
+$clients = Client::find_pro();
+
+?>
+                     <table class="ui striped  table" id="tabPro">
                          <thead>
                              <tr>
                                  <th>#</th>
@@ -160,53 +174,84 @@ $clients = Client::find_all();
                                  <th>numéro de téléphone</th>
                                  <th>email</th>
                                  <th colspan="4">catégorie</th>
+
                              </tr>
                          </thead>
                          <tbody>
+
+                             <?php foreach($clients as $client){
+                                ?>
                              <tr>
-                                 <td>1</td>
-                                 <td>BENOUNNAS Oussama</td>
-                                 <td>Ouled Fayet</td>
-                                 <td>/</td>
-                                 <td>05 58 90 57 64</td>
-                                 <td>oussama@benounnas.com</td>
-                                 <td>Particulier</td>
-                                 <td>
-                                     <a href="" onclick=modal_afficher()><i
-                                             class="folder open outline icon"></i>afficher</a>
-                                 </td>
-                                 <td>
-                                     <a href=""><i class="edit outline icon"></i>modifier</a>
-                                 </td>
-                                 <td>
-                                     <a href=""><i class="ban icon"></i>supprimer</a>
-                                 </td>
-                             </tr>
-                             <tr>
-                                 <td>2</td>
-                                 <td>Gaci Mohamed Lamine</td>
-                                 <td>Souidania</td>
-                                 <td>Gaci incorporation</td>
-                                 <td>05 58 90 57 64</td>
-                                 <td>lamine@gaci.com</td>
-                                 <td>Pro</td>
-                                 <td>
-                                     <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                 </td>
-                                 <td>
-                                     <a href=""><i class="edit outline icon"></i>modifier</a>
-                                 </td>
-                                 <td>
-                                     <a href=""><i class="ban icon"></i>supprimer</a>
+                                 <td><?php echo h($client->id_cl);?></td>
+                                 <td><?php echo h($client->nom_cl) . ' ' .  h($client->prenom_cl);?></td>
+                                 <td><?php echo h($client->adresse_cl);?></td>
+                                 <td><?php echo h($client->nom_societe_cl);?></td>
+
+                                 <td><?php echo h($client->num_tel_cl);?></td>
+                                 <td><?php echo h($client->email_cl);?></td>
+                                 <td><?php if($client->type_cl == 1){ 
+                                    echo 'Particulier';}else{
+                                        echo 'Pro';
+                                    }
+                                    
+                                    
+                                ?>
 
                                  </td>
+
+
+                                 <td>
+
+                                     <button class="ui tiny blue  button"
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="afficher"><i
+                                             class="folder open outline icon"></i><span>Afficher</span></button>
+
+                                     <div class="ui large modal afficher pa<?php echo h($client->id_cl) ?>">
+                                         <div class="content">
+                                             <?php afficher_modal($client->id_cl); ?>
+                                         </div>
+                                     </div>
+                                 </td>
+
+                                 <td>
+                                     <button class="ui tiny yellow  button"
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="modifier"><i
+                                             class="edit outline icon"></i><span>Modifier</span></button>
+                                     <div class="ui modal modifier pm<?php echo h($client->id_cl) ?>">
+                                         <div class="content">
+                                             <?php modifier_modal($client->id_cl) ?>
+                                         </div>
+                                     </div>
+                                 </td>
+
+                                 <td>
+                                     <button class="ui tiny red button" data-button_id="<?php echo h($client->id_cl) ?>"
+                                         data-type="supprimer"><i
+                                             class="edit outline icon"></i><span>Supprimer</span></button>
+
+                                     <div class="ui modal supprimer ps<?php echo h($client->id_cl) ?>">
+                                         <?php supprimer_modal($client->id_cl); ?>
+                                     </div>
+                                 </td>
                              </tr>
 
+
+
+
+                             <?php
+                            } ?>
                          </tbody>
                      </table>
+
                  </div>
                  <div class="ui bottom attached tab segment" data-tab="third">
-                     <table class="ui striped large   table">
+                     <?php 
+/////////////////////////////////////////////////////////////////////:::
+
+$clients = Client::find_particulier();
+
+?>
+                     <table class="ui striped  table" id="tabParti">
                          <thead>
                              <tr>
                                  <th>#</th>
@@ -216,31 +261,74 @@ $clients = Client::find_all();
                                  <th>numéro de téléphone</th>
                                  <th>email</th>
                                  <th colspan="4">catégorie</th>
+
                              </tr>
                          </thead>
                          <tbody>
+
+                             <?php foreach($clients as $client){
+                                ?>
                              <tr>
-                                 <td>1</td>
-                                 <td>BENOUNNAS Oussama</td>
-                                 <td>Ouled Fayet</td>
-                                 <td>/</td>
-                                 <td>05 58 90 57 64</td>
-                                 <td>oussama@benounnas.com</td>
-                                 <td>Particulier</td>
-                                 <td>
-                                     <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                 </td>
-                                 <td>
-                                     <a href=""><i class="edit outline icon"></i>modifier</a>
-                                 </td>
-                                 <td>
-                                     <a href=""><i class="ban icon"></i>supprimer</a>
+                                 <td><?php echo h($client->id_cl);?></td>
+                                 <td><?php echo h($client->nom_cl) . ' ' .  h($client->prenom_cl);?></td>
+                                 <td><?php echo h($client->adresse_cl);?></td>
+                                 <td><?php echo h($client->nom_societe_cl);?></td>
+
+                                 <td><?php echo h($client->num_tel_cl);?></td>
+                                 <td><?php echo h($client->email_cl);?></td>
+                                 <td><?php if($client->type_cl == 1){ 
+                                    echo 'Particulier';}else{
+                                        echo 'Pro';
+                                    }
+                                    
+                                    
+                                ?>
+
                                  </td>
 
 
+                                 <td>
+
+                                     <button class="ui tiny blue  button"
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="afficher"><i
+                                             class="folder open outline icon"></i><span>Afficher</span></button>
+
+                                     <div class="ui large modal afficher pra<?php echo h($client->id_cl) ?>">
+                                         <div class="content">
+                                             <?php afficher_modal($client->id_cl); ?>
+                                         </div>
+                                     </div>
+                                 </td>
+
+                                 <td>
+                                     <button class="ui tiny yellow  button"
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="modifier"><i
+                                             class="edit outline icon"></i><span>Modifier</span></button>
+                                     <div class="ui modal modifier prm<?php echo h($client->id_cl) ?>">
+                                         <div class="content">
+                                             <?php modifier_modal($client->id_cl) ?>
+                                         </div>
+                                     </div>
+                                 </td>
+
+                                 <td>
+                                     <button class="ui tiny red button" data-button_id="<?php echo h($client->id_cl) ?>"
+                                         data-type="supprimer"><i
+                                             class="edit outline icon"></i><span>Supprimer</span></button>
+
+                                     <div class="ui modal supprimer prs<?php echo h($client->id_cl) ?>">
+                                         <?php supprimer_modal($client->id_cl); ?>
+                                     </div>
+                                 </td>
+                             </tr>
+
+
+
+
+                             <?php
+                            } ?>
                          </tbody>
                      </table>
-
                  </div>
 
 
@@ -269,6 +357,22 @@ $clients = Client::find_all();
 
      <script>
      $(document).ready(() => {
+         // Write on keyup event of keyword input element
+        
+  // Write on keyup event of keyword input element
+  $("#search").keyup(function() {
+        var searchText = $(this).val().toLowerCase();
+        // Show only matching TR, hide rest of them
+        $.each($("#tabAll tbody tr, #tabPro tbody tr, #tabParti tbody tr"), function() {
+            if ($(this).text().toLowerCase().indexOf(searchText) === -1)
+                $(this).hide();
+            else
+                $(this).show();
+        });
+    });
+
+
+      
 
 
 
