@@ -180,6 +180,33 @@ class Client{
             }
         }
     }
+    static public function rows_tot()
+    {
+        $sql = "select*from client";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_pro()
+    {
+        $sql = "select*from client where type_cl=0";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_part()
+    {
+        $sql = "select*from client where type_cl=1";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }    
 
     /////// end record code////////////////////////////
 

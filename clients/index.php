@@ -42,6 +42,9 @@ include('function_modal.php');
 if(isset($_POST['oui'])){
     echo "<h1>YAAAAAAAAAAAAAAAAAAAAAAAAAAAaw</h1>it works";
 }
+$rows = Client::rows_tot();
+$rows1 = Client::rows_pro();
+$rows2 = Client::rows_part();
 ?>
              <div class="ui fifteen wide column row centered grid segment">
 
@@ -51,9 +54,9 @@ if(isset($_POST['oui'])){
                      <h1 class="ui center aligned header item"><i class="users icon"></i>Clients</h1>
 
 
-                     <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(200)</a>
-                     <a class="item " data-tab="second"><i class="large user secret icon"></i>Professionel(100)</a>
-                     <a class="item" data-tab="third"><i class="large user icon"></i>Particulier(100)</a>
+                     <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(<?php echo $rows;?>)</a>
+                     <a class="item " data-tab="second"><i class="large user secret icon"></i>Professionel(<?php echo $rows1;?>)</a>
+                     <a class="item" data-tab="third"><i class="large user icon"></i>Particulier(<?php echo $rows2;?>)</a>
 
 
                      <div class="right item">
