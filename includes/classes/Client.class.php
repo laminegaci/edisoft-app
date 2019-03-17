@@ -21,15 +21,19 @@ class Client{
             exit("erreur de requête.");
         };
         // convert result into object
+        $array = [];
         $object_array = [];
+        $rows = $result->num_rows;
+        $array['row'] = $rows;
         while($record = $result->fetch_assoc()){
             $object_array [] = self::instantiate($record);
         };
+        $array['objects'] = $object_array;
        
        
         $result->free();
 
-        return $object_array;
+        return $array;
     }
 
     static public function find_all(){
@@ -180,33 +184,33 @@ class Client{
             }
         }
     }
-    static public function rows_tot()
-    {
-        $sql = "select*from client";
-        $result = self::$database->query($sql);
-        $row = $result->num_rows;
-        $result->free();
+    // static public function rows_tot()
+    // {
+    //     $sql = "select*from client";
+    //     $result = self::$database->query($sql);
+    //     $row = $result->num_rows;
+    //     $result->free();
 
-        return $row;
-    }
-    static public function rows_pro()
-    {
-        $sql = "select*from client where type_cl=0";
-        $result = self::$database->query($sql);
-        $row = $result->num_rows;
-        $result->free();
+    //     return $row;
+    // }
+    // static public function rows_pro()
+    // {
+    //     $sql = "select*from client where type_cl=0";
+    //     $result = self::$database->query($sql);
+    //     $row = $result->num_rows;
+    //     $result->free();
 
-        return $row;
-    }
-    static public function rows_part()
-    {
-        $sql = "select*from client where type_cl=1";
-        $result = self::$database->query($sql);
-        $row = $result->num_rows;
-        $result->free();
+    //     return $row;
+    // }
+    // static public function rows_part()
+    // {
+    //     $sql = "select*from client where type_cl=1";
+    //     $result = self::$database->query($sql);
+    //     $row = $result->num_rows;
+    //     $result->free();
 
-        return $row;
-    }    
+    //     return $row;
+    // }    
 
     /////// end record code////////////////////////////
 
