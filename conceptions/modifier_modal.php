@@ -44,55 +44,49 @@ $client = Client::find_by_id($id);
                     <form method="POST" class="ui form" id="modifier_form<?php echo $id; ?>" action="update_client.php?id=<?php echo $id; ?>">
                         <div class="two fields">
                             <div class="field">
-                                <label>Nom</label>
-                                <input type="text" name="nom_cl" placeholder="Nom de client">
+                                <label>commentaire</label>
+                                <div class="ui left icon input">
+                                    <i class="hand holding usd icon"></i>
+                                    <!-- <input type="text" name="comment" autocomplete="off"> -->
+                                    <textarea name="comment" cols="30" rows="3"></textarea>
+
+                                </div>
                             </div>
                             <div class="field">
-                                <label>Prenom</label>
-                                <input type="text" name="prenom_cl" placeholder="Prenom de client">
+                            <br>
+                            <label>Versement</label>
+                            <div class="ui left icon input">
+                                <i class="hand holding usd icon"></i>
+                                <input type="text" name="versement" autocomplete="off">
+
+                            </div>  
                             </div>
 
                         </div>
                         <div class="three fields">
                             <div class="field">
-                                <label style="">Adress</label>
-                                <input type="text" name="adresse" placeholder="Adresse" >
+                              
                             </div>
                             <div class="field">
-                                <label>E-mail</label>
-                                <input type="Email" name="email" placeholder="exemple@gmail.com">
-                            </div>
+                                <div class="ui slider" id="slider-1"></div>
+                                    <div class="ui input">
+                                    <input type="text" id="slider-input-1" >
+                                    </div>
+                                </div>
                             <div class="field">
-                                <label>Telephon</label>
-                                <input type="text" name="telephon" placeholder="">
+                               
                             </div>
 
                         </div>
-                        <label>Vous ètes:</label><br><br>
+                        
+                        
                         <div class="one  fields">
                             <div class="field">
-                                <div class="ui radio checkbox">
-                                    <input type="radio" id="particulier<?php echo -$id; ?>" name="check" value="particulier" class="hidden"
-                                        <?php if($client->type_cl == 1) echo "checked";?> >
-                                    <label>Particulier</label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="one  fields">
-                            <div class="field">
-                                <div class="ui radio checkbox">
-                                    <input type="radio" id="professionnel<?php echo -$id; ?>" name="check" value="professionnel"
-                                        class="hidden" <?php if($client->type_cl == 0){ echo "checked";}?>>
-                                    <label>Professionnel</label>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class=" one  fields">
-                            <div class="<?php if($client->type_cl == 1) echo "disabled";?> field" id="myfield<?php echo $id; ?>">
-                                <label>Nom de l'entreprise</label>
-                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck<?php echo $id; ?>">
-                            </div>
+                           
                         </div>
                         <div class="one  fields">
                             <div class="field">
@@ -150,12 +144,9 @@ $client = Client::find_by_id($id);
 
     <script>
 
-$(function() {
-      
-});
-
-
-
+$('.ui.slider')
+  .slider()
+;
     $('.menu .item')
         .tab();
 

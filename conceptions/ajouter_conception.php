@@ -79,6 +79,7 @@ label {
 
                     <div class="fields">
                         <div class="field">
+                        <br>
                             <label>Prix</label>
                             <div class="ui left icon input">
                                 <i class="dollar sign icon"></i>
@@ -88,10 +89,20 @@ label {
                         </div>
 
                         <div class="field">
+                        <br>
                             <label>Versement</label>
                             <div class="ui left icon input">
                                 <i class="hand holding usd icon"></i>
                                 <input type="text" name="versement" autocomplete="off">
+
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>commentaire</label>
+                            <div class="ui left icon input">
+                                <i class="hand holding usd icon"></i>
+                                <!-- <input type="text" name="comment" autocomplete="off"> -->
+                                <textarea name="comment" cols="30" rows="3"></textarea>
 
                             </div>
                         </div>

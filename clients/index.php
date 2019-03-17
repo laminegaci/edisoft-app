@@ -43,9 +43,9 @@ if(isset($_POST['oui'])){
     echo "<h1>YAAAAAAAAAAAAAAAAAAAAAAAAAAAaw</h1>it works";
 }
 
-// $rows = Client::rows_tot();
-// $rows1 = Client::rows_pro();
-// $rows2 = Client::rows_part();
+$rows = Client::rows_tot();
+$rows1 = Client::rows_pro();
+$rows2 = Client::rows_part();
 ?>
              <div class="ui fifteen wide column row centered grid segment">
 
@@ -55,9 +55,9 @@ if(isset($_POST['oui'])){
                      <h1 class="ui center aligned header item"><i class="users icon"></i>Clients</h1>
 
 
-                     <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(<?php echo Client::find_all()['row'];?>)</a>
-                     <a class="item " data-tab="second"><i class="large user secret icon"></i>Professionel(<?php echo Client::find_pro()['row'];?>)</a>
-                     <a class="item" data-tab="third"><i class="large user icon"></i>Particulier(<?php echo Client::find_particulier()['row'];?>)</a>
+                     <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(<?php echo $rows; ?>)</a>
+                     <a class="item " data-tab="second"><i class="large user secret icon"></i>Professionel(<?php echo $rows1; ?>)</a>
+                     <a class="item" data-tab="third"><i class="large user icon"></i>Particulier(<?php echo $rows2; ?>)</a>
 
 
                      <div class="right item">
@@ -81,7 +81,7 @@ if(isset($_POST['oui'])){
                      <?php 
 /////////////////////////////////////////////////////////////////////:::
 
-$clients = Client::find_all()['objects'];
+$clients = Client::find_all();
 
 ?>
                
@@ -174,7 +174,7 @@ $clients = Client::find_all()['objects'];
                      <?php 
 /////////////////////////////////////////////////////////////////////:::
 
-$clients = Client::find_pro()['objects'];
+$clients = Client::find_pro();
 
 ?>
                      <table class="ui striped  table" id="tabPro">
@@ -261,7 +261,7 @@ $clients = Client::find_pro()['objects'];
                      <?php 
 /////////////////////////////////////////////////////////////////////:::
 
-$clients = Client::find_particulier()['objects'];
+$clients = Client::find_particulier();
 
 ?>
                      <table class="ui striped  table" id="tabParti">

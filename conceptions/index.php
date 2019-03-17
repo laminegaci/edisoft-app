@@ -1,6 +1,9 @@
 <?php
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
+include('function_modal.php');
+
+
 ?>
 
 
@@ -73,6 +76,7 @@ include("../includes/app_head.php");
                                         <tr>
                                             <th>Client</th>
                                             <th>Nom du site</th>
+                                            <th>Type</th>
                                             <th>Prix</th>
                                             <th>Versement</th>
                                             <th>date de début</th>
@@ -83,8 +87,9 @@ include("../includes/app_head.php");
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Edisoft</td>
+                                            <td>Gaci lamine</td>
                                             <td>OEdisoft.dz</td>
+                                            <td>statique</td>
                                             <td>45000DA</td>
                                             <td>1650Da (50%)</td>
                                             <td>17-14-2019</td>
@@ -102,14 +107,24 @@ include("../includes/app_head.php");
                                                     <div class="item">Harmonie des couleurs</div>
                                                 </div>
                                             </td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
+                                            <td>
+                                                <button class="ui tiny yellow  button"
+                                                data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
+                                                class="edit outline icon"></i><span>Modifier</span></button>
+
+                                                <div class="ui modal 1">
+                                                  <div class="content">
+                                                  <?php modifier_modal(1) ?>
+
+                                                  </div>
+                                                </div>
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td>Edisoft</td>
+                                            <td>Bennounas oussama</td>
                                             <td>OEdisoft.dz</td>
+                                            <td>dynamique</td>
                                             <td>12000DA</td>
                                             <td>2000DA (16%)</td>
                                             <td>20-02-2019</td>
@@ -127,33 +142,17 @@ include("../includes/app_head.php");
                                                     <div class="item">Harmonie des couleurs</div>
                                                 </div>
                                             </td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
+                                            <td >
+                                            <button class="ui tiny yellow  button"
+                                                data-button_id="2<?php //echo el ID ?>" ><i
+                                                class="edit outline icon"></i><span>Modifier</span></button>
 
-                                        <tr>
-                                            <td>Edisoft</td>
-                                            <td>OEdisoft.dz</td>
-                                            <td>15000DA</td>
-                                            <td>10000DA (66%)</td>
-                                              <td>03-02-2019</td>
-                                            <td>15 jours</td>
-                                            <td>
-                                            <div class="ui orange progress" data-percent="50">
-                                                    <div class="bar"></div>
-                                                    <div class="label">50%</div>
+                                                <div class="ui modal 2">
+                                                  <div class="content">
+                                             <?php modifier_modal(2) ?>
+                                                      
+                                                  </div>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="ui bulleted list">
-                                                    <div class="item">conception de la base de données</div>
-
-                                                    <div class="item">Harmonie des couleurs</div>
-                                                </div>
-                                            </td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
                                             </td>
                                         </tr>
 
@@ -177,11 +176,6 @@ include("../includes/app_head.php");
                                             <td>OEdisoft.dz</td>
                                             <td>5000 Da</td>
                                             <td>17-02-2019</td>
-                                            
-                                           
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
                                         </tr>
 
                                         <tr>
@@ -189,10 +183,6 @@ include("../includes/app_head.php");
                                             <td>OEdisoft.dz</td>
                                             <td>6000DA</td>
                                             <td>20-02-2019</td>
-                                            
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
                                         </tr>
 
                                         <tr>
@@ -201,9 +191,7 @@ include("../includes/app_head.php");
                                             <td>15000DA</td>
                                               <td>03-02-2019</td>
                                            
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
+                                            
                                         </tr>
 
                                     </tbody>
@@ -271,8 +259,9 @@ include("../includes/app_head.php");
 
       </div><!--fin page-->
 
-
+     
 <script>
+  
 $('.ui.progress').progress();
 
 $('.ui.segment .menu .item')
@@ -280,10 +269,25 @@ $('.ui.segment .menu .item')
     context: '.ui.segment'
   })
 ;
+
+
+ $('button').click(function() {
+
+console.log("it works");
+
+
+let button_id = $(this).data('button_id'); // njib id
+console.log(button_id);
+
+$('.ui.modal.' + button_id).modal('show');
+
+// }
+ });
+
+
 </script>
 
 
 <?php
 require_once("../includes/app_foot.php");
-?>
 ?>
