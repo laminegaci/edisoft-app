@@ -16,7 +16,7 @@
                 <form action="supp_page.php" class="ui form" method="POST" id="supp_form<?php echo $id; ?>">
 
                     <h2>Voulez vous supprimer ce client N° <?php echo $id; ?>?</h2>
-                    <input type="submit" value="OUI" class="ui huge right floated red button" name="oui" id="sub">
+                    <input type="submit" value="OUI" class="ui huge right floated red button" name="oui" id="supp_refresh_button<?php echo $id; ?>">
                 </form>
             </div>
 
@@ -46,7 +46,7 @@
                     <br>
 
                     <div class="sixteen wide column">
-                        <button class="ui green button" id="supp_refresh_button<?php echo $id; ?>"><i class="sync alternate icon"></i>Actualiser</button>
+                        <button class="ui green button" id=""><i class="sync alternate icon"></i>Actualiser</button>
                     </div>
 
 
@@ -62,6 +62,8 @@
 </div>
 
 
+
+
 <script>
 $(function() {
     
@@ -72,7 +74,9 @@ $(function() {
             type: 'POST', //or POST
             data: $(this).serialize(),
             success: function(data) {
+                
                 $('#delete_grid<?php echo $id; ?>').transition({
+                    
                     animation: 'fade out',
                     interval: 500
                 })

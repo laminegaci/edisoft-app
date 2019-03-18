@@ -72,8 +72,8 @@ $client = Client::find_by_id($id);
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="particulier<?php echo -$id; ?>" name="check" value="particulier" class="hidden"
-                                        <?php if($client->type_cl == 1) echo "checked";?> >
+                                    <input type="radio" id="particulier<?php echo $id; ?>" name="check" value="particulier" class="hidden"
+                                        <?php if($client->type_cl == 1){echo "checked";} ?> >
                                     <label>Particulier</label>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ $client = Client::find_by_id($id);
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="professionnel<?php echo -$id; ?>" name="check" value="professionnel"
+                                    <input type="radio" id="professionnel<?php echo $id; ?>" name="check" value="professionnel"
                                         class="hidden" <?php if($client->type_cl == 0){ echo "checked";}?>>
                                     <label>Professionnel</label>
                                 </div>
@@ -163,24 +163,24 @@ $(function() {
         .checkbox();
 
 
-     $('#particulier<?php echo -$id; ?>').change(function() {
+     $('#particulier<?php echo $id; ?>').change(function() {
          $("#myfield<?php echo $id; ?>").hide(500, function() {
 
          });
          document.getElementById("myCheck<?php echo $id; ?>").disabled = true;
 
      });
-     $('#professionnel<?php echo -$id; ?>').change(function() {
+     $('#professionnel<?php echo $id; ?>').change(function() {
 
         $('#modifier_form<?php echo $id; ?>').form('add rule', 'entreprise', ['empty']); // hadi hia li rigaltha be js ta3 entreprise
          $("#myfield<?php echo $id; ?>").show(500, function() {
 
          });
-         $("#myfield<?php echo $id; ?>").removeClass('disabled');
-         document.getElementById("myCheck<?php echo $id; ?>").disabled = false;
+        //  $("#myfield<?php echo $id; ?>").removeClass('disabled');
+        //  document.getElementById("myCheck<?php echo $id; ?>").disabled = false;
 
      });
-    
+         
 
     $('#modifier_form<?php echo $id; ?>')
         .form({
