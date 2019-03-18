@@ -13,7 +13,7 @@
         <div class="row">
 
             <div class="column">
-                <form action="supp_page.php" class="ui form" method="POST" id="supp_form<?php echo $id; ?>">
+                <form action="supp_page.php?id=<?php echo $id; ?>" class="ui form" method="POST" id="supp_form<?php echo $id; ?>">
 
                     <h2>Voulez vous supprimer ce client N° <?php echo $id; ?>?</h2>
                     <input type="submit" value="OUI" class="ui huge right floated red button" name="oui" id="supp_refresh_button<?php echo $id; ?>">

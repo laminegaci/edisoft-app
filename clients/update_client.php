@@ -28,10 +28,12 @@ if(is_post_request() && isset($_POST['modifier'])){
 
    if($_POST['check'] == 'particulier'){
      $args['type_cl'] = 1;
+     $args['nom_societe_cl'] = '/';
    }else{
    $args['type_cl'] = 0;
+   $args['nom_societe_cl'] = $_POST['entreprise'];
    }
-   $args['nom_societe_cl'] = $_POST['entreprise'] ?? NULL;
+  
    $args['id_ad'] = /*$_POST[''] ?? NULL*/ 1;
    
 

@@ -15,56 +15,103 @@ label {
 }
 </style>
 
+    <?php 
+require_once("../includes/initialize.php");
 
-<?php
-$client = Client::find_by_id($id);
+/////////////////////////////////////////////////////////////////////////////
+
+if(is_post_request() && isset($_POST['ajouter'])){
+      
+    
+    foreach ($_POST as $key => $value) {            
+      $_POST[$key] = test_input($value);
+      }
+    
+
+   
+    //création et préparation de données pour les convertirs en objets 
+      $args = [];
+      $args['nom_cl'] = $_POST['nom_cl'] ?? NULL;
+      $args['prenom_cl'] = $_POST['prenom_cl'] ?? NULL;
+      $args['num_tel_cl'] = $_POST['telephone'] ?? NULL;
+      $args['email_cl'] = $_POST['email'] ?? NULL;
+      $args['adresse_cl'] = $_POST['adresse'] ?? NULL;
+
+      if($_POST['check'] == 'particulier'){
+        $args['type_cl'] = 1;
+      }else{
+      $args['type_cl'] = 0;
+      }
+      $args['nom_societe_cl'] = $_POST['entreprise'] ?? NULL;
+      $args['id_ad'] = /*$_POST[''] ?? NULL*/ 1;
 
 
+     // var_dump($args) . "<br>";
+      
+      $client = new Client($args);
+      $result = $client->create();
+
+      if($result == true){
+        redirect_to('index.php');
+      }else{
+         // echo "error";
+      }
+    
+}
 
 
-
+///////////////////////////////////////////////////////////////////////////////////
+include("../includes/app_head.php");
 ?>
-
-
 
 
     <div class="page">
 
         <div class="ui fluid container">
 
+            <?php include('../includes/menu_head.php');
+            
+            
+            $id= 3;
+            
+            ?>
+
+
+
+
+
 
             <div class="ui padded grid">
-            <h1>Modifier client N° <?php echo $id . $type_client; ?></h1>
 
-                <div class="ui fifteen wide column row centered grid" id="modifier_grid<?php echo $id . $type_client; ?>">
+                <div class="ui fifteen wide column row centered grid segment">
                     <h2 class="ui left aligned header"><i class=" icons">
                             <i class="users icon"></i>
                             <i class="corner add icon"></i>
-                        </i>&nbsp;modifier le client</h2>
-                    <form method="POST" class="ui form" id="modifier_form<?php echo $id . $type_client; ?>" action="update_client.php?id=<?php echo $id . $type_client; ?>">
+                        </i>&nbsp;Ajouter un client</h2>
+                    <form method="POST" class="ui form">
                         <div class="two fields">
                             <div class="field">
                                 <label>Nom</label>
                                 <input type="text" name="nom_cl" placeholder="Nom de client">
                             </div>
                             <div class="field">
-                                <label>Prenom</label>
+                                <label>Prénom</label>
                                 <input type="text" name="prenom_cl" placeholder="Prenom de client">
                             </div>
 
                         </div>
                         <div class="three fields">
                             <div class="field">
-                                <label style="">Adress</label>
-                                <input type="text" name="adresse" placeholder="Adresse" >
+                                <label style="">Adresse</label>
+                                <input type="text" name="adresse" placeholder="Adresse">
                             </div>
                             <div class="field">
                                 <label>E-mail</label>
                                 <input type="Email" name="email" placeholder="exemple@gmail.com">
                             </div>
                             <div class="field">
-                                <label>Telephon</label>
-                                <input type="text" name="telephon" placeholder="">
+                                <label>Téléphone</label>
+                                <input type="text" name="telephone" placeholder="+213 ...">
                             </div>
 
                         </div>
@@ -72,8 +119,8 @@ $client = Client::find_by_id($id);
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="particulier<?php echo $id . $type_client; ?>" name="check" value="particulier" class="hidden"
-                                        <?php if($client->type_cl == 1){echo "checked";} ?> >
+                                    <input type="radio" id="particulier<?php echo $id; ?>" name="check" value="particulier" class="hidden"
+                                        checked>
                                     <label>Particulier</label>
                                 </div>
                             </div>
@@ -82,26 +129,26 @@ $client = Client::find_by_id($id);
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="professionnel<?php echo $id . $type_client; ?>" name="check" value="professionnel"
-                                        class="hidden" <?php if($client->type_cl == 0){ echo "checked";}?>>
+                                    <input type="radio" id="professionnel<?php echo $id; ?>" name="check" value="professionnel"
+                                        class="hidden">
                                     <label>Professionnel</label>
                                 </div>
                             </div>
                         </div>
-                        <div class=" one  fields">
-                            <div class="<?php if($client->type_cl == 1) echo "disabled";?> field" id="myfield<?php echo $id . $type_client; ?>">
+                        <div class="one  fields">
+                            <div class="field" id="myfield<?php echo $id; ?>" hidden>
                                 <label>Nom de l'entreprise</label>
-                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck<?php echo $id . $type_client; ?>">
+                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck<?php echo $id; ?>" disabled>
                             </div>
                         </div>
                         <div class="one  fields">
                             <div class="field">
-                            
-                                <input type="submit" class="ui yellow button" value="Modifier" name="modifier">
+
+                                <input type="submit" class="ui button" value="ajouter" name="ajouter">
                             </div>
                         </div>
 
-                        <div class="ui error message"></div>
+                        <div class="ui error message"><?php echo $php_errormsg ?? ''; ?></div>
                     </form><!-- end form -->
 
                 </div><!-- end segment-->
@@ -120,71 +167,31 @@ $client = Client::find_by_id($id);
     </div>
     <!--fin page-->
 
-    <div id="modifier_success<?php echo $id . $type_client; ?>" hidden>
-
-
-<div class="ui centered grid">
-    <div class="ten wide column row">
-        <div class="row">
-            <div class="ui big success message">
-                <div class="sixteen wide column">
-                <i class="check big icon"></i><h2> modification réussite</h2> 
-                </div>
-                <br>
-                        
-                <div class="sixteen wide column">
-                <button class="ui green button" id="modif_refresh_button<?php echo $id . $type_client; ?>"><i class="sync alternate icon"></i>Actualiser</button>
-                </div>
-       
-
-            </div>
-        </div>
-        
-    </div>
-
-    <div class="row"></div>
-
-</div>
-</div>
-
 
     <script>
-
-$(function() {
-      
-});
-
-
-
     $('.menu .item')
         .tab();
 
     $('.ui.radio.checkbox')
         .checkbox();
 
+    $('#particulier<?php echo $id; ?>').change(function() {
+        $("#myfield<?php echo $id; ?>").hide(500, function() {
 
-     $('#particulier<?php echo $id . $type_client; ?>').change(function() {
-         
-        if(this.checked){
-        console.log('hna part');
-        
-            $('#myfield<?php echo $id . $type_client; ?>').addClass('disabled');
-        }
+        });
+        document.getElementById("myCheck<?php echo $id; ?>").disabled = true;
 
-     });
-     $('#professionnel<?php echo $id . $type_client; ?>').change(function() {
+    });
+    $('#professionnel<?php echo $id; ?>').change(function() {
+        $("#myfield<?php echo $id; ?>").show(500, function() {
 
-        if(this.checked){
-        console.log('hna pro');
+        });
+        document.getElementById("myCheck<?php echo $id; ?>").disabled = false;
 
-            $('#myfield<?php echo $id . $type_client; ?>').removeClass('disabled');
-            
-        }
+    });
 
-     });
-         
 
-    $('#modifier_form<?php echo $id . $type_client; ?>')
+    $('.ui.form')
         .form({
             on: 'blur',
             fields: {
@@ -226,34 +233,29 @@ $(function() {
                     ]
                 },
                 telephon_cl: {
-                    identifier: 'telephon',
+                    identifier: 'telephone',
                     rules: [{
                             type: 'number',
                             prompt: 'manque un numero telephon'
                         },
 
                     ]
-                }
-              
+                },
+                entreprise: {
+                    identifier: 'entreprise',
+                    rules: [{
+                            type: 'empty',
+                            prompt: 'manque un nom d\'entreprise'
+                        },
+
+                    ]
+                },
 
             }
         });
-
-
-$('#modifier_form<?php echo $id . $type_client; ?>')
-
-  .form('set values', {
-    nom_cl     : '<?php echo h($client->nom_cl); ?>',
-    prenom_cl  : '<?php echo h($client->prenom_cl); ?>',
-    adresse    : '<?php echo h($client->adresse_cl); ?>',
-    email      : '<?php echo h($client->email_cl); ?>',
-    telephon   : '<?php echo h($client->num_tel_cl); ?>',
-    check      : '<?php echo h($client->type_cl);?>',
-    entreprise : '<?php echo h($client->nom_societe_cl) ?? '';?>',
-    terms      : true
-  })
-;
     </script>
 
 
-    
+    <?php 
+require_once("../includes/app_foot.php");
+?>

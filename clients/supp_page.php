@@ -7,6 +7,7 @@ require_once('../includes/initialize.php');
 if(isset($id) && !empty($id)){
 
         $client = Client::delete($id);
+        redirect_to('index.php');
    
 }else{
     echo 'faragh';

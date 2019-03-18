@@ -17,7 +17,7 @@ function afficher_modal($id_tab){
 
 }
 
-function modifier_modal($id_tab){
+function modifier_modal($id_tab, $type_client){
 
     $id= $id_tab ?? false;
   

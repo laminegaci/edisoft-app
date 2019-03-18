@@ -234,7 +234,7 @@ class Client{
         $this->email_cl = $args['email_cl'] ?? '';
         $this->adresse_cl = $args['adresse_cl'] ?? '';
         $this->type_cl = $args['type_cl'] ?? 0;
-        $this->nom_societe_cl = $args['nom_societe_cl'] ?? NULL;
+        $this->nom_societe_cl = $args['nom_societe_cl'] ?? '';
         $this->id_ad = $args['id_ad'] ?? '';
 
 
