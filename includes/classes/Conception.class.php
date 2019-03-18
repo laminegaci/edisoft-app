@@ -1,7 +1,7 @@
 <?php 
 
 
-class conseption{
+class Conception{
 
 
     /////// active record code
@@ -11,29 +11,31 @@ class conseption{
         self::$database = $database;
     }
 
-    static protected $db_columns =['id_con', 'nom_con', 'type_con', 'date_db_con', 'delai_con', 'prix_con', 'versement_con', 'multilan_con', 'etat_con', 'commentaire_con', 'id_ad','id_cl'];
+    static protected $db_columns =['id_con', 'nom_con', 'type_con', 'langue_anglais', 'langue_arabe', 'date_db_con', 'delai_con', 'prix_con', 'versement_con', 'etat_con', 'commentaire_con', 'id_ad','id_cl'];
     
-    // static public function find_by_sql($sql){   
+    
+    
+    static public function find_by_sql($sql){   
 
         
-    //     $result = self::$database->query($sql);
-    //     if(!$result){
-    //         exit("erreur de requête.");
-    //     };
-    //     // convert result into object
+        $result = self::$database->query($sql);
+        if(!$result){
+            exit("erreur de requête.");
+        };
+        // convert result into object
         
-    //     $object_array = [];
+        $object_array = [];
         
         
-    //     while($record = $result->fetch_assoc()){
-    //         $object_array [] = self::instantiate($record);
-    //     };
+        while($record = $result->fetch_assoc()){
+            $object_array [] = self::instantiate($record);
+        };
        
        
-    //     $result->free();
+        $result->free();
 
-    //     return $object_array;
-    // }
+        return $object_array;
+    }
 
     //---------------------------------------------------------------------------------------
 
@@ -91,52 +93,52 @@ class conseption{
     // }
 
     //---------------------------------------------------------------------------------------
-    // public function create(){
+    public function create(){
         
-    //     $attributes = $this->sanitized_attributes();//mna9yiin
+        $attributes = $this->sanitized_attributes();//mna9yiin
 
-    //     $sql = "INSERT INTO client(";
-    //     $sql .= join(', ', array_keys($attributes));
-    //     $sql .= ") VALUES ('";
-    //     $sql .= join("', '", array_values($attributes) );
-    //     $sql .= "');";
+        $sql = "INSERT INTO conception(";
+        $sql .= join(', ', array_keys($attributes));
+        $sql .= ") VALUES ('";
+        $sql .= join("', '", array_values($attributes) );
+        $sql .= "');";
 
-    //    // echo $sql . "<br>";
+       // echo $sql . "<br>";
            
             
-    //     $result = self::$database-> query($sql);
+        $result = self::$database-> query($sql);
 
-    //     if($result){
-    //         $this->id_cl = self::$database->insert_id;
-    //     }else{
-    //      // echo var_dump(self::$database->error_list);
-    //     }
-    //     return $result;
-    // }
+        if($result){
+            $this->id_con = self::$database->insert_id;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
+        return $result;
+    }
     
 //---------------------------------------------------------------------------------------
     
-    // public function attributes(){
-    //     $attributes = [];
-    //     foreach (self::$db_columns as $column) {
-    //         if($column == 'id_cl'){ continue;};
-    //        $attributes[$column] = $this->$column;
-    //     }
-    //     return $attributes;
-    // }
+    public function attributes(){
+        $attributes = [];
+        foreach (self::$db_columns as $column) {
+            if($column == 'id_con'){ continue;};
+           $attributes[$column] = $this->$column;
+        }
+        return $attributes;
+    }
 
     //---------------------------------------------------------------------------------------
-    // protected function sanitized_attributes(){
-    //     //hadi la fonction pour éviter SQL injection be fonction wessmha escapestring jaya fe 
-    //     //objet ta3 base de données
-    //     $sanitized = [];
-    //     foreach ($this->attributes() as $key => $value) {
+    protected function sanitized_attributes(){
+        //hadi la fonction pour éviter SQL injection be fonction wessmha escapestring jaya fe 
+        //objet ta3 base de données
+        $sanitized = [];
+        foreach ($this->attributes() as $key => $value) {
             
-    //         $sanitized[$key] = self::$database->escape_string($value);
-    //     }
+            $sanitized[$key] = self::$database->escape_string($value);
+        }
 
-    //     return $sanitized;
-    // } 
+        return $sanitized;
+    } 
  
     //---------------------------------------------------------------------------------------
     // static public function delete($id){
@@ -190,14 +192,26 @@ class conseption{
     // }
     //---------------------------------------------------------------------------------------
 
-    // public function merge_attributes($args=[]){
+    public function find_names()
+    {
+            $sql = "SELECT nom_cl FROM client ";
+            $object_array= self::find_by_sql($sql);
+            if(!empty($object_array)){
+                return $object_array;
+            }else{
+                return false;
+            }
+    }
 
-    //     foreach ($args as $key => $value) {
-    //         if(property_exists($this, $key)){
-    //             $this->$key = $value;
-    //         }
-    //     }
-    // }
+    public function merge_attributes($args=[]){
+
+        foreach ($args as $key => $value) {
+            if(property_exists($this, $key)){
+                $this->$key = $value;
+            }
+            //else echo 'properté not'
+        }
+    }
     //---------------------------------------------------------------------------------------
     // static public function rows_tot()
     // {
@@ -231,14 +245,18 @@ class conseption{
 
     public $id_con; 
     public $nom_con; 
-    public $type_con; 
-    public $date_deb_con;
+    public $type_con;
+    public $langue_anglais;
+    public $langue_arabe; 
+    public $date_db_con;
     public $delai_con; 
     public $prix_con; 
     public $versement_con;
-    public $multilan_con; 
+    public $etat_con;
+    public $commentaire_con;
     public $id_ad;
     public $id_cl; 
+    
     public const CATEGORIES = ['statique', 'dynamique'];
 
     
@@ -246,20 +264,26 @@ class conseption{
     public function __construct($args=[])
     {
         $this->id_con = $args['id_con'] ?? '';
-        $this->nom_con = $args['nom_con'] ?? '';
         $this->type_con = $args['type_con'] ?? 0;
-        $this->date_deb_con = $args['date_deb_con'] ?? '';
+        $this->langue_anglais = $args['check_anglais'] ?? '';
+        $this->langue_arabe = $args['check_arabe'] ?? '';
+
+        $this->nom_con = $args['nom_con'] ?? '';
+       
+       
+        $this->date_db_con = $args['date_db_con'] ?? '';
         $this->delai_con = $args['delai_con'] ?? '';
         $this->prix_con = $args['prix_con'] ?? '';
         $this->versement_con = $args['versement_con'] ?? '';
-        $this->nom_societe_cl = $args['nom_societe_cl'] ?? NULL;
+        $this->etat_con = $args['etat_con'] ?? '';
+        $this->commentaire_con = $args['commentaire_con'] ?? '';
         $this->id_ad = $args['id_ad'] ?? '';
+        $this->id_cl = $args['id_ad'] ?? '';
 
 
 
     }
 
-    
 
 };
 

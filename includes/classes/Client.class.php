@@ -233,8 +233,13 @@ class Client{
         $this->num_tel_cl = $args['num_tel_cl'] ?? '';
         $this->email_cl = $args['email_cl'] ?? '';
         $this->adresse_cl = $args['adresse_cl'] ?? '';
+<<<<<<< HEAD
         $this->type_cl = $args['type_cl'] ?? 0;
         $this->nom_societe_cl = $args['nom_societe_cl'] ?? '';
+=======
+        $this->type_cl = $args['type_cl'] ?? 1;
+        $this->nom_societe_cl = $args['nom_societe_cl'] ?? NULL;
+>>>>>>> b99ca47a0a049deea2831e0a2df127b7935c9060
         $this->id_ad = $args['id_ad'] ?? '';
 
 
