@@ -77,6 +77,7 @@ include('function_modal.php');
                                             <th>Client</th>
                                             <th>Nom du site</th>
                                             <th>Type</th>
+                                            <th>Multilangue</th>
                                             <th>Prix</th>
                                             <th>Versement</th>
                                             <th>date de début</th>
@@ -90,6 +91,7 @@ include('function_modal.php');
                                             <td>Gaci lamine</td>
                                             <td>OEdisoft.dz</td>
                                             <td>statique</td>
+                                            <td>arab / anglais</td>
                                             <td>45000DA</td>
                                             <td>1650Da (50%)</td>
                                             <td>17-14-2019</td>
@@ -125,6 +127,7 @@ include('function_modal.php');
                                             <td>Bennounas oussama</td>
                                             <td>OEdisoft.dz</td>
                                             <td>dynamique</td>
+                                            <td>non</td>
                                             <td>12000DA</td>
                                             <td>2000DA (16%)</td>
                                             <td>20-02-2019</td>
