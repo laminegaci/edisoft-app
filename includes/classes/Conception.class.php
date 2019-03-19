@@ -11,7 +11,7 @@ class Conception{
         self::$database = $database;
     }
 
-    static protected $db_columns =['id_con', 'nom_con', 'type_con', 'langue_anglais', 'langue_arabe', 'date_db_con', 'delai_con', 'prix_con', 'versement_con', 'etat_con', 'commentaire_con', 'id_ad','id_cl'];
+    static protected $db_columns =['id_con', 'nom_con', 'type_con', 'date_deb_con', 'delai_con', 'prix_con', 'versement_con', 'multilan_con','etat_con', 'commentaire_con', 'id_ad','id_cl'];
     
     
     
@@ -139,6 +139,10 @@ class Conception{
 
         return $sanitized;
     } 
+
+     public function sani_echo(){
+        return $this->sanitized_attributes();
+    }
  
     //---------------------------------------------------------------------------------------
     // static public function delete($id){
@@ -246,39 +250,34 @@ class Conception{
     public $id_con; 
     public $nom_con; 
     public $type_con;
-    public $langue_anglais;
-    public $langue_arabe; 
-    public $date_db_con;
+    public $date_deb_con;
     public $delai_con; 
     public $prix_con; 
     public $versement_con;
+    public $multilan_con;
     public $etat_con;
     public $commentaire_con;
     public $id_ad;
     public $id_cl; 
     
-    public const CATEGORIES = ['statique', 'dynamique'];
 
     
     
     public function __construct($args=[])
     {
         $this->id_con = $args['id_con'] ?? '';
-        $this->type_con = $args['type_con'] ?? 0;
-        $this->langue_anglais = $args['check_anglais'] ?? '';
-        $this->langue_arabe = $args['check_arabe'] ?? '';
+        $this->type_con = $args['type_con'] ?? 'statique';
 
+        $this->multilan_con = $args['multilan_con'] ?? 'FR';
         $this->nom_con = $args['nom_con'] ?? '';
-       
-       
-        $this->date_db_con = $args['date_db_con'] ?? '';
+        $this->date_deb_con = $args['date_deb_con'] ?? '';
         $this->delai_con = $args['delai_con'] ?? '';
         $this->prix_con = $args['prix_con'] ?? '';
         $this->versement_con = $args['versement_con'] ?? '';
-        $this->etat_con = $args['etat_con'] ?? '';
+        $this->etat_con = $args['etat_con'] ?? 10;
         $this->commentaire_con = $args['commentaire_con'] ?? '';
-        $this->id_ad = $args['id_ad'] ?? '';
-        $this->id_cl = $args['id_ad'] ?? '';
+        $this->id_ad = $args['id_ad'] ?? 1;
+        $this->id_cl = $args['id_cl'] ?? '';
 
 
 

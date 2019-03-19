@@ -15,79 +15,18 @@ label {
 <?php 
 require_once("../includes/initialize.php");
 
-/////////////////////////////////////////////////////////////////////////////
-
-if(is_post_request() && isset($_POST['ajouter'])){
-      
-    /*
-    foreach ($_POST as $key => $value) {            
-      $_POST[$key] = test_input($value);
-      }
-    */
-
-   
-    //création et préparation de données pour les convertirs en objets 
-      $args = [];
-      
-      if($_POST['type_con'] == 'statique'){
-        $args['type_con'] = 0;
-      }else{
-      $args['type_con'] = 1;
-      }
-
-    //   if($_POST['check_anglais'] == 'anglais'){
-    //     $args['check_anglais'] = 'oui';
-    //   }else{
-    //   $args['check_anglais'] = 'Non';
-    //   }
-
-    //   if($_POST['check_arabe'] == 'arab'){
-    //     $args['check_arabe'] = 'oui';
-    //   }else{
-    //   $args['check_arabe'] = 'Non';
-    //   }
-
-      $args['check_anglais'] = $_POST['check_anglais'] ?? 'non';
-      $args['check_arabe'] = $_POST['check_arabe'] ?? 'non';
-
-      $args['nom_con'] = $_POST['nom_con'] ?? NULL;
-     
-      $args['date_db_con'] = $_POST['date_db_con'] ?? NULL;
-      $args['delai_con'] = $_POST['delai_con'] ?? NULL;
-      $args['prix_con'] = $_POST['prix_con'] ?? NULL;
-      $args['versement_con'] = $_POST['versement_con'] ?? NULL;
-      $args['commentaire_con'] = $_POST['commentaire_con'] ?? NULL;
-      
-      $args['id_ad'] = /*$_POST[''] ?? NULL*/ 1;
-      $args['id_cl'] = /*$_POST[''] ?? NULL*/ 1;
-      $args['etat_con'] = 0;
-
-
-      
-    //var_dump($args) . "<br>";
-      
-    $conception = new Conception($args);
-
-    //echo  var_dump($conception).'</br>';
-      $result = $conception->create();
-
-      if($result == true){
-        //redirect_to('index.php');
-        
-        header('location:index.php');
-      }else{
-         //echo "<div style='background-color:red;'>error</div>";
-         printf("<div style='background-color:orange;'>Errormessage: %s\n</div>", mysqli_errno());
-      }
-    
-}
 ?>
 
 <div class="page">
 
     <div class="ui fluid container">
 
-        <?php include('../includes/menu_head.php'); ?>
+        <?php include('../includes/menu_head.php'); 
+     
+
+        
+        
+        ?>
 
         <div class="ui padded grid">
 
@@ -100,22 +39,15 @@ if(is_post_request() && isset($_POST['ajouter'])){
 
 
 
-                <form class="ui equal width large form" method="POST">
+                <form class="ui equal width large form" method="POST" action="add_conception.php">
 
                     <div class="fields">
                             <div class="field">
                                 <label for="">Client:</label>
                                 <div class="ui search">
                                     <div class="ui icon input">
-                                    <?php ?>
-                                    <select name="nom_cl" id="">
-                                        <optgroup ><option value="">selectionner un client</option></optgroup>
-                                        <option value="amin1">amin1</option>
-                                        <option value="amin2">amin2</option>
-                                        <option value="amin3">amin3</option>
-                                        <option value="amin4">amin4</option>
-                                        <option value="amin5">amin5</option>
-                                    </select>
+                                        <input class="prompt" type="text" placeholder="Common passwords..." name="id_cl">
+                                        <i class="search icon"></i>
                                     </div>
                                     <div class="results"></div>
                                 </div>
@@ -138,11 +70,11 @@ if(is_post_request() && isset($_POST['ajouter'])){
                             <div class="field">
                             <label for="">Multilangue : </label>
                                 <div class="ui toggle checkbox"><br><br>
-                                    <input type="checkbox" tabindex="0"  value="anglais" class="hidden" name="check_anglais" style="margin-right:20px;">
+                                    <input type="checkbox" tabindex="0"  value="ENG" class="hidden" name="multilan_con[1]" style="margin-right:20px;">
                                     <label>Anglais</label>
                                 </div><br><br>
                                 <div class="ui toggle checkbox">
-                                    <input type="checkbox" tabindex="0" value="arab" class="hidden" name="check_arabe">
+                                    <input type="checkbox" tabindex="0" value="AR" class="hidden" name="multilan_con[2]">
                                     <label>Arabe</label>
                                 </div>
 
@@ -166,7 +98,7 @@ if(is_post_request() && isset($_POST['ajouter'])){
                             <div class="ui calendar" id="standard_calendar">
                                 <div class="ui input left icon">
                                     <i class="calendar icon"></i>
-                                    <input type="text" placeholder="Date de début.." name="date_db_con" autocomplete="off">
+                                    <input type="text" placeholder="Date de début.." name="date_deb_con" autocomplete="off">
                                 </div>
                             </div>
 
@@ -273,6 +205,18 @@ if(is_post_request() && isset($_POST['ajouter'])){
 
 
 <script>
+
+$('.ui.search')
+  .search({
+    apiSettings: {
+        url: 'getclient.php/?q={query}'
+    }
+   
+
+    
+   
+    
+  });
 $('#standard_calendar')
     .calendar({
 
@@ -283,7 +227,7 @@ $('#standard_calendar')
                 var day = date.getDate();
                 var month = date.getMonth() + 1;
                 var year = date.getFullYear();
-                return year + '-' + month + '-' + day;
+                return   year+ '-' +month   + '-' + day;
             }
         },
 
