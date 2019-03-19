@@ -34,14 +34,14 @@ $cons = Conception::find_by_id($id);
 
 
             <div class="ui padded grid">
-            <h1>Modifier conception N° <?php echo $id; ?></h1>
+            <h1>Modifier conception N° <?php echo $id  ?></h1>
 
-                <div class="ui fifteen wide column row centered grid" id="modifier_grid<?php echo $id; ?>">
+                <div class="ui fifteen wide column row centered grid" id="modifier_grid<?php echo $id .$type_modal; ?>">
                     <h2 class="ui left aligned header"><i class=" icons">
                             <i class="users icon"></i>
                             <i class="corner add icon"></i>
                         </i>&nbsp;modifier le client</h2>
-                    <form method="POST" class="ui form" id="modifier_form<?php echo $id; ?>" action="update_client.php?id=<?php echo $id; ?>">
+                    <form method="POST" class="ui form" id="modifier_form<?php echo $id .$type_modal; ?>" action="update_client.php?id=<?php echo $id .$type_modal; ?>">
                         <div class="two fields">
                             <div class="field">
                                 <label>commentaire</label>
@@ -114,7 +114,7 @@ $cons = Conception::find_by_id($id);
     </div>
     <!--fin page-->
 
-    <div id="modifier_success<?php echo $id; ?>" hidden>
+    <div id="modifier_success<?php echo $id .$type_modal; ?>" hidden>
 
 
 <div class="ui centered grid">
@@ -127,7 +127,7 @@ $cons = Conception::find_by_id($id);
                 <br>
                         
                 <div class="sixteen wide column">
-                <button class="ui green button" id="modif_refresh_button<?php echo $id; ?>"><i class="sync alternate icon"></i>Actualiser</button>
+                <button class="ui green button" id="modif_refresh_button<?php echo $id .$type_modal; ?>"><i class="sync alternate icon"></i>Actualiser</button>
                 </div>
        
 
@@ -155,7 +155,7 @@ $('.ui.slider')
 
 
 
-    $('#modifier_form<?php echo $id; ?>')
+    $('#modifier_form<?php echo $id .$type_modal; ?>')
         .form({
             on: 'blur',
             fields: {
@@ -212,7 +212,7 @@ $('.ui.slider')
 
         /*
 
-$('#modifier_form<?php echo $id; ?>')
+$('#modifier_form<?php echo $id .$type_modal; ?>')
 
   .form('set values', {
     nom_cl     : '<?php echo h($client->nom_cl); ?>',

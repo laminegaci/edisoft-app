@@ -3,7 +3,7 @@
 
 
 
-function modifier_modal($id_tab){
+function modifier_modal($id_tab, $type_modal){
 
     $id= $id_tab ?? false;
   

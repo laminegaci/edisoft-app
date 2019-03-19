@@ -131,7 +131,7 @@ $conception = Conception::find_all();
                                                 data-button_id="<?php echo h($cons->id_con) ?>" ><i
                                                 class="edit outline icon"></i><span>Modifier</span></button>
 
-                                                <div class="ui modal m<?php echo h($cons->id_con) ?>">
+                                                <div class="ui modal m<?php echo h($cons->id_con) . '' ?>">
                                                   <div class="content">
                                                   <?php modifier_modal($cons->id_con, '') ?>
 
@@ -245,12 +245,12 @@ $conception = Conception::find_statique();
                                             </td>
                                             <td>
                                                 <button class="ui tiny yellow  button"
-                                                data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
+                                                data-button_id="<?php echo h($cons->id_con) . 'statique'?>" ><i
                                                 class="edit outline icon"></i><span>Modifier</span></button>
 
-                                                <div class="ui modal 1">
+                                                <div class="ui modal m<?php echo h($cons->id_con) .'statique' ?>">
                                                   <div class="content">
-                                                  <?php modifier_modal(1) ?>
+                                                  <?php modifier_modal($cons->id_con ,'statique')?>
 
                                                   </div>
                                                 </div>
@@ -327,12 +327,12 @@ $conception = Conception::find_dynamique();
                                             </td>
                                             <td>
                                                 <button class="ui tiny yellow  button"
-                                                data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
+                                                data-button_id="<?php echo h($cons->id_con) . 'dynamique' ?>" ><i
                                                 class="edit outline icon"></i><span>Modifier</span></button>
 
-                                                <div class="ui modal <?php echo h($cons->id_con);?>">
+                                                <div class="ui modal m<?php echo h($cons->id_con) . 'dynamique';?>">
                                                   <div class="content">
-                                                  <?php modifier_modal(h($cons->id_con)); ?>
+                                                  <?php modifier_modal($cons->id_con, 'dynamique'); ?>
 
                                                   </div>
                                                 </div>
