@@ -6,7 +6,9 @@ require_once("../includes/initialize.php");
    if(is_post_request() && isset($_POST['ajouter'])){
 
     $_POST['multilan_con'] = join('-', $_POST['multilan_con']);
-    $_POST['id_cl'] = substr($_POST['id_cl'], 0, 2);
+    $position_tire= strpos($_POST['id_cl'],  '-');
+
+    $_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
    
 
     
