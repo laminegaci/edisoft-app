@@ -1,7 +1,7 @@
 <?php 
 
 
-function supprimer_modal($id_tab){
+function supprimer_modal($id_tab, $type_client){
 
     
     $id= $id_tab ?? false;
@@ -9,7 +9,7 @@ function supprimer_modal($id_tab){
 
 }
 
-function afficher_modal($id_tab){
+function afficher_modal($id_tab, $type_client){
 
     $id= $id_tab ?? false;
   
