@@ -330,9 +330,9 @@ $conception = Conception::find_dynamique();
                                                 data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
                                                 class="edit outline icon"></i><span>Modifier</span></button>
 
-                                                <div class="ui modal 1">
+                                                <div class="ui modal <?php echo h($cons->id_con);?>">
                                                   <div class="content">
-                                                  <?php modifier_modal(1) ?>
+                                                  <?php modifier_modal(h($cons->id_con)); ?>
 
                                                   </div>
                                                 </div>
@@ -393,7 +393,7 @@ $('.ui.segment .menu .item')
 ;
 
 function modifier_modal(id){
-  $('.ui.modal.' + id)
+  $('.ui.modal.m' + id)
     .modal('show');
 }
  $('button').click(function() {

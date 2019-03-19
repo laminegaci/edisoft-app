@@ -154,24 +154,6 @@ $('.ui.slider')
         .checkbox();
 
 
-     $('#particulier<?php echo -$id; ?>').change(function() {
-         $("#myfield<?php echo $id; ?>").hide(500, function() {
-
-         });
-         document.getElementById("myCheck<?php echo $id; ?>").disabled = true;
-
-     });
-     $('#professionnel<?php echo -$id; ?>').change(function() {
-
-        $('#modifier_form<?php echo $id; ?>').form('add rule', 'entreprise', ['empty']); // hadi hia li rigaltha be js ta3 entreprise
-         $("#myfield<?php echo $id; ?>").show(500, function() {
-
-         });
-         $("#myfield<?php echo $id; ?>").removeClass('disabled');
-         document.getElementById("myCheck<?php echo $id; ?>").disabled = false;
-
-     });
-    
 
     $('#modifier_form<?php echo $id; ?>')
         .form({
@@ -228,6 +210,7 @@ $('.ui.slider')
             }
         });
 
+        /*
 
 $('#modifier_form<?php echo $id; ?>')
 
@@ -242,6 +225,7 @@ $('#modifier_form<?php echo $id; ?>')
     terms      : true
   })
 ;
+*/
     </script>
 
 
