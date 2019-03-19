@@ -154,7 +154,11 @@ if(!isset($page_title)){
                   <div class="content">Factures</div>
                 </a>
                
-       
+        <a class="item" href="<?php echo url_for('pack/index.php'); ?>">
+        <i class="large boxes icon"></i>
+                  <div class="content">Pack</div>
+                </a>
+               
       </div>      
     </div>
     <!-- end leftbar -->    
