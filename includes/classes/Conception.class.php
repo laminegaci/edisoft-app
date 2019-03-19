@@ -39,58 +39,58 @@ class Conception{
 
     //---------------------------------------------------------------------------------------
 
-    // static public function find_all(){
-    //     $sql = "SELECT * FROM client";
-    //    return self::find_by_sql($sql);
-    // }
+    static public function find_all(){
+        $sql = "SELECT * FROM conception";
+       return self::find_by_sql($sql);
+    }
 
     //---------------------------------------------------------------------------------------
-    // static protected function instantiate($record){
-    //     $object = new self;
-    //     //
-    //     foreach ($record as $property => $value) {
-    //         if(property_exists($object, $property)){
-    //             $object->$property = $value;
-    //         }
-    //     }
-    //     return $object;
-    // }
+    static protected function instantiate($record){
+        $object = new self;
+        //
+        foreach ($record as $property => $value) {
+            if(property_exists($object, $property)){
+                $object->$property = $value;
+            }
+        }
+        return $object;
+    }
     //---------------------------------------------------------------------------------------
     
-    // static public function find_by_id($id){
-    //     $sql = "SELECT * FROM client ";
-    //     $sql .="WHERE id_cl='". self::$database->escape_string($id) ."'";
-    //     $object_array= self::find_by_sql($sql);
-    //     if(!empty($object_array)){
-    //         return array_shift($object_array);
-    //     }else{
-    //         return false;
-    //     }
-    // }
+    static public function find_by_id($id){
+        $sql = "SELECT * FROM conception ";
+        $sql .="WHERE id_con='". self::$database->escape_string($id) ."'";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return array_shift($object_array);
+        }else{
+            return false;
+        }
+    }
     //---------------------------------------------------------------------------------------
 
-    // static public function find_pro(){
-    //     $sql = "SELECT * FROM client ";
-    //     $sql .="WHERE type_cl=0";
-    //     $object_array= self::find_by_sql($sql);
-    //     if(!empty($object_array)){
-    //         return $object_array;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+    static public function find_statique(){
+        $sql = "SELECT * FROM conception ";
+        $sql .="WHERE type_con='statique'";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+    }
 
     //---------------------------------------------------------------------------------------
-    // static public function find_particulier(){
-    //     $sql = "SELECT * FROM client ";
-    //     $sql .="WHERE type_cl=1";
-    //     $object_array= self::find_by_sql($sql);
-    //     if(!empty($object_array)){
-    //         return $object_array;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+    static public function find_dynamique(){
+        $sql = "SELECT * FROM conception ";
+        $sql .="WHERE type_con='dynamique'";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+    }
 
     //---------------------------------------------------------------------------------------
     public function create(){
@@ -217,33 +217,33 @@ class Conception{
         }
     }
     //---------------------------------------------------------------------------------------
-    // static public function rows_tot()
-    // {
-    //     $sql = "select*from client";
-    //     $result = self::$database->query($sql);
-    //     $row = $result->num_rows;
-    //     $result->free();
+    static public function rows_tot()
+    {
+        $sql = "select*from conception";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
 
-    //     return $row;
-    // }
-    // static public function rows_pro()
-    // {
-    //     $sql = "select*from client where type_cl=0";
-    //     $result = self::$database->query($sql);
-    //     $row = $result->num_rows;
-    //     $result->free();
+        return $row;
+    }
+    static public function rows_statique()
+    {
+        $sql = "select*from conception where type_con='statique'";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
 
-    //     return $row;
-    // }
-    // static public function rows_part()
-    // {
-    //     $sql = "select*from client where type_cl=1";
-    //     $result = self::$database->query($sql);
-    //     $row = $result->num_rows;
-    //     $result->free();
+        return $row;
+    }
+    static public function rows_dynamique()
+    {
+        $sql = "select*from conception where type_con='dynamique'";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
 
-    //     return $row;
-    // }    
+        return $row;
+    }    
 
     /////// end record code////////////////////////////
 
@@ -266,9 +266,9 @@ class Conception{
     public function __construct($args=[])
     {
         $this->id_con = $args['id_con'] ?? '';
-        $this->type_con = $args['type_con'] ?? 'statique';
+        $this->type_con = $args['type_con'] ?? '';
 
-        $this->multilan_con = $args['multilan_con'] ?? 'FR';
+        $this->multilan_con = $args['multilan_con'] ?? 'non';
         $this->nom_con = $args['nom_con'] ?? '';
         $this->date_deb_con = $args['date_deb_con'] ?? '';
         $this->delai_con = $args['delai_con'] ?? '';

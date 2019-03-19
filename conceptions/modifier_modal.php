@@ -17,7 +17,7 @@ label {
 
 
 <?php
-$client = Client::find_by_id($id);
+$cons = Conception::find_by_id($id);
 
 
 
@@ -34,7 +34,7 @@ $client = Client::find_by_id($id);
 
 
             <div class="ui padded grid">
-            <h1>Modifier client N° <?php echo $id; ?></h1>
+            <h1>Modifier conception N° <?php echo $id; ?></h1>
 
                 <div class="ui fifteen wide column row centered grid" id="modifier_grid<?php echo $id; ?>">
                     <h2 class="ui left aligned header"><i class=" icons">

@@ -9,7 +9,12 @@ include('function_modal.php');
 
 <?php include('../includes/menu_head.php'); ?>
 
- 
+<style>
+.ui.fifteen.wide.column.row.centered.grid.segment{
+    height: 85vh;
+    overflow: scroll;
+}
+</style>
 <div class="page">
 
 <div class="ui fluid container">
@@ -42,11 +47,15 @@ include('function_modal.php');
   
 
                             <h1 class="ui center aligned header item"><i class="code icon"></i>Conceptions</h1>        
+<?php
+$rows = Conception::rows_tot();
+$rows1 = Conception::rows_statique();
+$rows2 = Conception::rows_dynamique();
+?>
 
-
-                              <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(200)</a>
-                              <a class="item " data-tab="second"><i class="large html5 icon"></i>Statique(100)</a>
-                              <a class="item" data-tab="third"><i class="large node js icon"></i>Dynamique(100)</a>
+                              <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(<?php echo $rows; ?>)</a>
+                              <a class="item " data-tab="second"><i class="large html5 icon"></i>Statique(<?php echo $rows1; ?>)</a>
+                              <a class="item" data-tab="third"><i class="large node js icon"></i>Dynamique(<?php echo $rows2; ?>)</a>
                             
 
                               <div class="right item">
@@ -70,10 +79,15 @@ include('function_modal.php');
                               </div>
                               <div class="ui bottom attached tab segment active" data-tab="first/a">
                               <!-- 1 A -->
+<?php 
 
+$conception = Conception::find_all();
+
+?>
                               <table class="ui celled yellow table">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Client</th>
                                             <th>Nom du site</th>
                                             <th>Type</th>
@@ -87,78 +101,48 @@ include('function_modal.php');
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach($conception as $cons){
+                                ?>
                                         <tr>
-                                            <td>Gaci lamine</td>
-                                            <td>OEdisoft.dz</td>
-                                            <td>statique</td>
-                                            <td>arab / anglais</td>
-                                            <td>45000DA</td>
-                                            <td>1650Da (50%)</td>
-                                            <td>17-14-2019</td>
-                                            <td>15 jours</td>
+                                            <td><?php echo h($cons->id_con);?></td>
+                                            <td><?php echo h($cons->id_cl);?></td>
+                                            <td><?php echo h($cons->nom_con);?></td>
+                                            <td><?php echo h($cons->type_con);?></td>
+                                            <td><?php echo h($cons->multilan_con);?></td>
+                                            <td><?php echo h($cons->prix_con);?></td>
+                                            <td><?php echo h($cons->versement_con);?></td>
+                                            <td><?php echo h($cons->date_deb_con);?></td>
+                                            <td>------</td>
                                             <td>
                                             <div class="ui red progress" data-percent="20">
                                                     <div class="bar"></div>
-                                                    <div class="label">20%</div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?></div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ui bulleted list">
-                                                    <div class="item">conception de la base de données</div>
+                                                    <div class="item"><?php echo h($cons->commentaire_con);?></div>
 
-                                                    <div class="item">Harmonie des couleurs</div>
+                                                    
                                                 </div>
                                             </td>
                                             <td>
                                                 <button class="ui tiny yellow  button"
-                                                data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
+                                                data-button_id="<?php echo h($cons->id_con) ?>" ><i
                                                 class="edit outline icon"></i><span>Modifier</span></button>
 
-                                                <div class="ui modal 1">
+                                                <div class="ui modal m<?php echo h($cons->id_con) ?>">
                                                   <div class="content">
-                                                  <?php modifier_modal(1) ?>
+                                                  <?php modifier_modal($cons->id_con, '') ?>
 
                                                   </div>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <tr>
-                                            <td>Bennounas oussama</td>
-                                            <td>OEdisoft.dz</td>
-                                            <td>dynamique</td>
-                                            <td>non</td>
-                                            <td>12000DA</td>
-                                            <td>2000DA (16%)</td>
-                                            <td>20-02-2019</td>
-                                            <td>15 jours</td>
-                                            <td>
-                                                <div class="ui teal progress" data-percent="74">
-                                                    <div class="bar"></div>
-                                                    <div class="label">74%</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ui bulleted list">
-                                                    <div class="item">conception de la base de données</div>
-
-                                                    <div class="item">Harmonie des couleurs</div>
-                                                </div>
-                                            </td>
-                                            <td >
-                                            <button class="ui tiny yellow  button"
-                                                data-button_id="2<?php //echo el ID ?>" ><i
-                                                class="edit outline icon"></i><span>Modifier</span></button>
-
-                                                <div class="ui modal 2">
-                                                  <div class="content">
-                                             <?php modifier_modal(2) ?>
-                                                      
-                                                  </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
+                                       
+                                        <?php
+                                        } ?>
                                     </tbody>
                                 </table>
                               
@@ -202,7 +186,7 @@ include('function_modal.php');
                               
                               
                               </div>
-                              <div class="ui bottom attached tab segment" data-tab="first/c">1C</div>
+                             
                             </div>
 
 
@@ -211,10 +195,79 @@ include('function_modal.php');
                               <div class="ui top attached tabular menu">
                                 <a class="item active" data-tab="second/a"><i class="spinner yellow icon"></i>en cours</a>
                                 <a class="item " data-tab="second/b"><i class="check green circle icon"></i>terminées</a>
+                                
                               </div>
-                              <div class="ui bottom attached tab segment active" data-tab="second/a">2A</div>
+                              <div class="ui bottom attached tab segment active" data-tab="second/a">
+<?php
+$conception = Conception::find_statique();
+?>
+                              <table class="ui celled yellow table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Client</th>
+                                            <th>Nom du site</th>
+                                            <th>Type</th>
+                                            <th>Multilangue</th>
+                                            <th>Prix</th>
+                                            <th>Versement</th>
+                                            <th>date de début</th>
+                                            <th>délai restant</th>
+                                            <th>état d'avancement</th>
+                                            <th colspan="2">Commentaire</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($conception as $cons){
+                                ?>
+                                        <tr>
+                                            <td><?php echo h($cons->id_con);?></td>
+                                            <td><?php echo h($cons->id_cl);?></td>
+                                            <td><?php echo h($cons->nom_con);?></td>
+                                            <td><?php echo h($cons->type_con);?></td>
+                                            <td><?php echo h($cons->multilan_con);?></td>
+                                            <td><?php echo h($cons->prix_con);?></td>
+                                            <td><?php echo h($cons->versement_con);?></td>
+                                            <td><?php echo h($cons->date_deb_con);?></td>
+                                            <td>------</td>
+                                            <td>
+                                            <div class="ui red progress" data-percent="20">
+                                                    <div class="bar"></div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui bulleted list">
+                                                    <div class="item"><?php echo h($cons->commentaire_con);?></div>
+
+                                                    
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="ui tiny yellow  button"
+                                                data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
+                                                class="edit outline icon"></i><span>Modifier</span></button>
+
+                                                <div class="ui modal 1">
+                                                  <div class="content">
+                                                  <?php modifier_modal(1) ?>
+
+                                                  </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                       
+                                        <?php
+                                        } ?>
+                                    </tbody>
+                                </table>
+                              
+                              </div>
+
+
                               <div class="ui bottom attached tab segment " data-tab="second/b">2B</div>
-                              <div class="ui bottom attached tab segment" data-tab="second/c">2C</div>
+                              
                             </div>
 
 
@@ -225,9 +278,75 @@ include('function_modal.php');
                                 <a class="item active" data-tab="third/a"><i class="spinner yellow icon"></i>en cours</a>
                                 <a class="item" data-tab="third/b"><i class="check green circle icon"></i>terminées</a>
                               </div>
-                              <div class="ui bottom attached tab segment active" data-tab="third/a">3A</div>
+                              <div class="ui bottom attached tab segment active" data-tab="third/a">
+<?php
+$conception = Conception::find_dynamique();
+?>
+
+                              <table class="ui celled yellow table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Client</th>
+                                            <th>Nom du site</th>
+                                            <th>Type</th>
+                                            <th>Multilangue</th>
+                                            <th>Prix</th>
+                                            <th>Versement</th>
+                                            <th>date de début</th>
+                                            <th>délai restant</th>
+                                            <th>état d'avancement</th>
+                                            <th colspan="2">Commentaire</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($conception as $cons){
+                                ?>
+                                        <tr>
+                                            <td><?php echo h($cons->id_con);?></td>
+                                            <td><?php echo h($cons->id_cl);?></td>
+                                            <td><?php echo h($cons->nom_con);?></td>
+                                            <td><?php echo h($cons->type_con);?></td>
+                                            <td><?php echo h($cons->multilan_con);?></td>
+                                            <td><?php echo h($cons->prix_con);?></td>
+                                            <td><?php echo h($cons->versement_con);?></td>
+                                            <td><?php echo h($cons->date_deb_con);?></td>
+                                            <td>------</td>
+                                            <td>
+                                            <div class="ui red progress" data-percent="20">
+                                                    <div class="bar"></div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui bulleted list">
+                                                    <div class="item"><?php echo h($cons->commentaire_con);?></div>
+
+                                                    
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="ui tiny yellow  button"
+                                                data-button_id="1<?php //echo h($client->id_cl) ?>" ><i
+                                                class="edit outline icon"></i><span>Modifier</span></button>
+
+                                                <div class="ui modal 1">
+                                                  <div class="content">
+                                                  <?php modifier_modal(1) ?>
+
+                                                  </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                       
+                                        <?php
+                                        } ?>
+                                    </tbody>
+                                </table>
+                              </div>
                               <div class="ui bottom attached tab segment" data-tab="third/b">3B</div>
-                              <div class="ui bottom attached tab segment" data-tab="third/c">3C</div>
+                              
                             </div>
 
                             
@@ -273,7 +392,10 @@ $('.ui.segment .menu .item')
   })
 ;
 
-
+function modifier_modal(id){
+  $('.ui.modal.' + id)
+    .modal('show');
+}
  $('button').click(function() {
 
 console.log("it works");
@@ -282,7 +404,7 @@ console.log("it works");
 let button_id = $(this).data('button_id'); // njib id
 console.log(button_id);
 
-$('.ui.modal.' + button_id).modal('show');
+  modifier_modal(button_id);
 
 // }
  });
