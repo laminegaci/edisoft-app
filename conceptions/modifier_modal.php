@@ -68,12 +68,21 @@ $cons = Conception::find_by_id($id);
                               
                             </div>
                             <div class="field">
-                                <label for="">etat</label>
-                                <div class="ui slider" id="slider-1"></div>
+                                <!-- <div class="ui slider" id="slider-<?php echo $id . $type_modal  ?>"></div>
                                     <div class="ui input">
-                                    <input type="text" id="slider-input-1" >
+
+                                    <input type="text" id="slider-input-<?php echo $id . $type_modal  ?>" name="etat" value="">
+                                
+
                                     </div>
-                                </div>
+                                </div> -->
+                                <!-- <div class="ui labeled  slider s<?php echo $id . $type_modal  ?>" id="slider-"></div>
+                                        <div class="ui input">
+                                            <input type="text" id="slider-input-<?php echo $id . $type_modal  ?>" disabled="">
+                                        </div>
+                                </div> -->
+                                <label for="">Etat</label>
+                                <input type="text" name="etat_con">
                             <div class="field">
                                
                             </div>
@@ -145,9 +154,19 @@ $cons = Conception::find_by_id($id);
 
     <script>
 
-$('.ui.slider')
-  .slider()
+$('#slider-<?php echo $id . $type_modal  ?>')
+  .slider({
+    min: 0,
+    max: 100,
+    start: 30,
+    onChange: function(value){
+       
+    
+        $('#slider-input-<?php echo $id . $type_modal  ?>').val(value)
+    }
+  })
 ;
+
     $('.menu .item')
         .tab();
 
@@ -218,7 +237,7 @@ $('#modifier_form<?php echo $id . $type_modal; ?>')
   .form('set values', {
     comment     : '<?php echo h($cons->commentaire_con); ?>',
     versement  : '<?php echo h($cons->versement_con); ?>',
-   
+    etat_con   : '<?php echo h($cons->etat_con); ?>',
     terms      : true
   })
 ;
