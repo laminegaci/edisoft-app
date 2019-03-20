@@ -21,6 +21,7 @@ include("../includes/app_head.php");
 
         <?php include('../includes/menu_head.php');
    $hebergement = new Hebergement;
+   $client = new Client;
         
         ?>
 
@@ -68,9 +69,10 @@ include("../includes/app_head.php");
                             <a class="item" data-tab="first/j"><i class="sun outline icon"></i>Sun</a>
 
                         </div>
-                        <div class="ui bottom attached active tab segment" data-tab="first/a">
+                        <div class="ui bottom attached active tab " data-tab="first/a">
 <?php 
-   $hebergements= $hebergement->find_all();
+   $hebergements= $hebergement->find_where('DNS');
+   //var_dump($hebergements);
    
 ?>
 
@@ -89,17 +91,31 @@ include("../includes/app_head.php");
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
                                     <tr>
-                                        <td>1</td>
-                                        <td>BENOUNNAS Oussama</td>
-                                        <td>Thunder</td>
-                                        <td>.com</td>
-                                        <td>février 16, 2019</td>
-                                        <td>février 16, 2019</td>
-                                        <td>3Go</td>
-                                        <td>6200 Da</td>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
                                     </tr>
                                    
+                                    <?php
+                                   }
+                                }
+                                ?>
                                 </tbody>
                             </table>
 
@@ -107,15 +123,485 @@ include("../includes/app_head.php");
 
 
                         </div>
-                        <div class="ui bottom attached tab segment" data-tab="first/b">1B</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/c">1C</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/d">1d</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/e">1e</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/f">1f</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/g">1g</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/h">1h</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/i">1i</div>
-                        <div class="ui bottom attached tab segment" data-tab="first/j">1J</div>
+
+                        <div class="ui bottom attached tab" data-tab="first/b">
+                    
+                    
+<?php 
+   $hebergements= $hebergement->find_where('wind');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    
+                    
+                    </div> <!-- fin Wind -->
+                        <div class="ui bottom attached tab" data-tab="first/c">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('thunder');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    
+                    </div>  
+                    <!-- fin Thunder -->
+
+
+
+                        <div class="ui bottom attached tab" data-tab="first/d">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('wave');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
+                    <!-- fin wave -->
+
+
+                        <div class="ui bottom attached tab" data-tab="first/e">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('tornado');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
+                                <!-- fin tornado -->
+
+                        <div class="ui bottom attached tab" data-tab="first/f">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('storm');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
+
+                    <!-- fin storm -->
+                        <div class="ui bottom attached tab" data-tab="first/g">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('sunshine');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
+
+                        <!-- fin sunshine -->
+                        <div class="ui bottom attached tab" data-tab="first/h">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('moon');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
+
+
+                        <div class="ui bottom attached tab" data-tab="first/i">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('earth');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
+                        <div class="ui bottom attached tab" data-tab="first/j">
+                    
+<?php 
+   $hebergements= $hebergement->find_where('sun');
+   //var_dump($hebergements);
+   
+?>
+
+                            <table class="ui striped table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>client</th>
+                                        <th>nom pack</th>
+                                        <th>nom de domaine</th>
+                                        <th>date début</th>
+                                        <th>date d'expiration</th>
+                                        <th>espace pack</th>
+                                        <th>prix pack</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                
+                                if ($hebergements) {
+                                   
+                                   foreach ($hebergements as $hebergement) {
+                                       # code...
+                                 
+                                 ?>
+
+                                    <tr>
+                                        <td><?php echo h($hebergement->id_heb); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_pack) ;?></td>
+                                        <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><?php echo h($hebergement->date_deb_heb); ?></td>
+                                        <td><?php echo h($hebergement->date_fin_heb) ;?></td>
+                                        <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
+                                        <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                       
+                                    </tr>
+                                   
+                                    <?php
+                                   }
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                    </div>
 
 
 

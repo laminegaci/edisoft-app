@@ -39,8 +39,15 @@ class Hebergement{
 
     //---------------------------------------------------------------------------------------
 
-    static public function find_all(){
-        $sql = "SELECT * FROM hebergement";
+    static public function find_where($pack){
+        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack, hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
+        FROM hebergement
+        JOIN client 
+        ON hebergement.id_cl = client.id_cl
+        JOIN pack 
+        ON hebergement.id_pack = pack.id_pack
+        WHERE nom_pack = '" . $pack ."';";
+        
        return self::find_by_sql($sql);
     }
 
@@ -217,7 +224,9 @@ class Hebergement{
     public $id_ad;
     public $id_cl; 
     public $id_pack; 
-    
+    public $nom_cl;
+    public $prenom_cl;
+    public $nom_pack;
 
     
     
