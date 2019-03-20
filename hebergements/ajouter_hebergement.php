@@ -2,7 +2,6 @@
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
 
-
 ?>
 <style>
 label {
@@ -24,8 +23,19 @@ select.ui.dropdown {
 
     <div class="ui fluid container">
 
-        <?php include('../includes/menu_head.php'); ?>
+       
 
+
+        <?php 
+      include('../includes/menu_head.php');
+
+
+        $pack = new Pack;
+        $packs= $pack->find_all();
+        
+ 
+
+        ?>
         <div class="ui padded grid">
 
             <div class="ui fifteen wide column row centered grid segment">
@@ -38,7 +48,7 @@ select.ui.dropdown {
 
 
                 <div class="thirteen wide column">
-                    <form class="ui large form" method="POST" action="simple.php">
+                    <form class="ui large form" method="POST" action="add_hebergement.php">
                         <div class="fields">
 
 
@@ -46,7 +56,7 @@ select.ui.dropdown {
                                 <label for="">Client:</label>
                                 <div class="ui search">
                                     <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="Common passwords...">
+                                        <input class="prompt" type="text" placeholder="Common passwords..." name="id_cl">
                                         <i class="search icon"></i>
                                     </div>
                                     <div class="results"></div>
@@ -57,23 +67,20 @@ select.ui.dropdown {
 
                             <div class="eight wide field">
                                 <label for="">Hébérgement:</label>
-                                <select class="ui   " id="menu_type" name="type_hebergement" required>
+                                <select class="ui   " id="menu_type" name="nom_pack" required>
                                     <div class="menu">
                                         <option value="">Pack..</option>
 
-                                        <option value="1">Nom de domaine</option>
+                                    <?php 
+                                        foreach ($packs as $pack) {
+                                            # code...
+                                      
+                                    ?>
+                                        <option value="<?php echo h($pack->nom_pack) ?>" > <?php echo h($pack->nom_pack) ?></option>
+                                       
 
-                                        <option value="2">Wind</option>
-                                        <option value="3">Thunder</option>
-                                        <option value="4">Wave</option>
-
-                                        <option value="5">Tornado</option>
-                                        <option value="6">Storm</option>
-                                        <option value="7">Sunshine</option>
-
-                                        <option value="8">Moon</option>
-                                        <option value="9">Earth</option>
-                                        <option value="10">Sun</option>
+                                        <?php
+                                        }?>
                                     </div>
 
                                 </select>
@@ -89,7 +96,7 @@ select.ui.dropdown {
                         <div class="fields">
                         <div class="eight wide field">
                                 <label>URL</label>
-                                <input type="text" placeholder="Edisoft.com" name="URL" autocomplete="off">
+                                <input type="text" placeholder="Edisoft.com" name="url_heb" autocomplete="off">
                             </div>
 
 
@@ -98,7 +105,7 @@ select.ui.dropdown {
                                 <div class="ui calendar standard_calendar">
                                     <div class="ui input left icon">
                                         <i class="calendar icon"></i>
-                                        <input type="text" placeholder="Date de début.." name="date_debut"
+                                        <input type="text" placeholder="Date de début.." name="date_deb_heb"
                                             autocomplete="off" value="">
                                     </div>
                                 </div>
@@ -107,7 +114,7 @@ select.ui.dropdown {
                         </div>
 
                         <div class="field">
-                            <input type="submit" class="ui big green right floated button" value="Ajouter">
+                            <input type="submit" class="ui big green right floated button" value="Ajouter" name="ajouter">
 
                         </div>
                         <div class="ui error message"></div>

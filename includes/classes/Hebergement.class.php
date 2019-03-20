@@ -223,15 +223,15 @@ class Hebergement{
     
     public function __construct($args=[])
     {
-        $this->id_con = $args['id_heb'] ?? '';
-        $this->id_con = $args['url_heb'] ?? '';
-        $this->id_con = $args['date_deb_heb'] ?? '';
-        $this->id_con = $args['date_fin_heb'] ?? '';
-        $this->id_con = $args['espace_heb'] ?? '';
-        $this->id_con = $args['prix'] ?? '';
-        $this->id_con = $args['id_ad'] ?? '';
-        $this->id_con = $args['id_cl'] ?? '';
-        $this->id_con = $args['id_pack'] ?? '';
+        $this->id_heb = $args['id_heb'] ?? '';
+        $this->url_heb = $args['url_heb'] ?? '';
+        $this->date_deb_heb = $args['date_deb_heb'] ?? '';
+        $this->date_fin_heb = $args['date_fin_heb'] ?? '';
+        $this->espace_heb = $args['espace_heb'] ?? '';
+        $this->prix = $args['prix'] ?? '';
+        $this->id_ad = $args['id_ad'] ?? '';
+        $this->id_cl = $args['id_cl'] ?? '';
+        $this->id_pack = $args['id_pack'] ?? '';
         
 
 

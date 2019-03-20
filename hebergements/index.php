@@ -19,7 +19,10 @@ include("../includes/app_head.php");
 
     <div class="ui fluid container">
 
-        <?php include('../includes/menu_head.php'); ?>
+        <?php include('../includes/menu_head.php');
+   $hebergement = new Hebergement;
+        
+        ?>
 
         <div class="ui padded grid">
 
@@ -66,7 +69,10 @@ include("../includes/app_head.php");
 
                         </div>
                         <div class="ui bottom attached active tab segment" data-tab="first/a">
-
+<?php 
+   $hebergements= $hebergement->find_all();
+   
+?>
 
                             <table class="ui striped table">
                                 <thead>

@@ -34,4 +34,6 @@ $database = db_connect();
 Client::set_database($database);
 Conception::set_database($database);
 Pack::set_database($database);
+Hebergement::set_database($database);
+
 ?>
