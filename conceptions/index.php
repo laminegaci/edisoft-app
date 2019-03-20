@@ -7,7 +7,9 @@ include('function_modal.php');
 ?>
 
 
-<?php include('../includes/menu_head.php'); ?>
+<?php include('../includes/menu_head.php');
+
+ ?>
 
 <style>
 .ui.fifteen.wide.column.row.centered.grid.segment{
@@ -102,10 +104,12 @@ $conception = Conception::find_all();
                                     </thead>
                                     <tbody>
                                     <?php foreach($conception as $cons){
+                                      $id = $cons->id_cl;
+                                      $name = Conception::find_name($id);
                                 ?>
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
-                                            <td><?php echo h($cons->id_cl);?></td>
+                                            <td><?php echo $name; ?></td>
                                             <td><?php echo h($cons->nom_con);?></td>
                                             <td><?php echo h($cons->type_con);?></td>
                                             <td><?php echo h($cons->multilan_con);?></td>
@@ -219,10 +223,12 @@ $conception = Conception::find_statique();
                                     </thead>
                                     <tbody>
                                     <?php foreach($conception as $cons){
+                                      $id=$cons->id_cl;
+                                      $name = Conception::find_name($id);
                                 ?>
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
-                                            <td><?php echo h($cons->id_cl);?></td>
+                                            <td><?php echo $name;?></td>
                                             <td><?php echo h($cons->nom_con);?></td>
                                             <td><?php echo h($cons->type_con);?></td>
                                             <td><?php echo h($cons->multilan_con);?></td>
@@ -301,10 +307,13 @@ $conception = Conception::find_dynamique();
                                     </thead>
                                     <tbody>
                                     <?php foreach($conception as $cons){
+                                      $id = $cons->id_cl;
+                                      $name = Conception::find_name($id);
+
                                 ?>
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
-                                            <td><?php echo h($cons->id_cl);?></td>
+                                            <td><?php echo $name;?></td>
                                             <td><?php echo h($cons->nom_con);?></td>
                                             <td><?php echo h($cons->type_con);?></td>
                                             <td><?php echo h($cons->multilan_con);?></td>

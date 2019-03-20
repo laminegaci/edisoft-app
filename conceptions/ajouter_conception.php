@@ -46,7 +46,7 @@ require_once("../includes/initialize.php");
                                 <label for="">Client:</label>
                                 <div class="ui search">
                                     <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="Common passwords..." name="id_cl">
+                                        <input class="prompt" type="text" placeholder="cherche client" name="id_cl">
                                         <i class="search icon"></i>
                                     </div>
                                     <div class="results"></div>
