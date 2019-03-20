@@ -40,7 +40,11 @@ class Conception{
     //---------------------------------------------------------------------------------------
 
     static public function find_all(){
-        $sql = "SELECT * FROM conception";
+        $sql = "SELECT * FROM conception where etat_con < 100"; 
+       return self::find_by_sql($sql);
+    }
+    static public function find_all_terminer(){
+        $sql = "SELECT * FROM conception where etat_con=100";
        return self::find_by_sql($sql);
     }
 
@@ -71,7 +75,7 @@ class Conception{
 
     static public function find_statique(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='statique'";
+        $sql .="WHERE type_con='statique' and etat_con<100";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -79,11 +83,31 @@ class Conception{
             return false;
         }
     }
-
+    
+    static public function find_stat_terminer(){
+        $sql = "SELECT * FROM conception ";
+        $sql .="WHERE type_con='statique' and etat_con=100";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+    }
     //---------------------------------------------------------------------------------------
     static public function find_dynamique(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='dynamique'";
+        $sql .="WHERE type_con='dynamique' and etat_con<100";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+    }
+    static public function find_dyn_terminer(){
+        $sql = "SELECT * FROM conception ";
+        $sql .="WHERE type_con='dynamique'  and etat_con=100";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -181,7 +205,7 @@ class Conception{
 
         $sql = "UPDATE conception SET ";
         $sql .= join(', ', $attributes_pairs);
-        $sql .= " WHERE id_cl='". self::$database->escape_string($this->id_cl)."' ";
+        $sql .= " WHERE id_con='". self::$database->escape_string($this->id_con)."' ";
         $sql .= "LIMIT 1";
         echo $sql . "<br>";
         $result = self::$database->query($sql);
@@ -194,6 +218,32 @@ class Conception{
         return $result;
         
     }
+    //---------------------------------------------------------------------------------------
+
+    // public function update(){
+    //     // $attributes = $this->sanitized_attributes();
+    //     // $attributes_pairs = [];
+    //     // foreach ($attributes as $key => $value) {
+            
+    //     //     $attributes_pairs[] = "{$key}='{$value}'";
+    //     // }
+
+    //     $sql = "UPDATE conception SET ";
+    //     $sql .= join(', ', $args['commentaire_con'] = $_POST['comment']);
+    //     $sql .= join(', ', $args['versement_con'] = $_POST['versement']);
+    //     $sql .= " WHERE id_con='". self::$database->escape_string($this->id_con)."' ";
+    //     $sql .= "LIMIT 1";
+    //     echo $sql . "<br>";
+    //     $result = self::$database->query($sql);
+
+    //     if($result){
+    //         $this->id_cl = self::$database->insert_id;
+    //     }else{
+    //      echo var_dump(self::$database->error_list);
+    //     }
+    //     return $result;
+        
+    // }
     //---------------------------------------------------------------------------------------
 
     public function find_names()
@@ -254,6 +304,24 @@ class Conception{
         
 
         return $nom_client;
+     }
+     static function date_fin($d_debut,$delai_j){
+        //  $sql = "SELECT ADDDATE($date_db,$delai);";
+        //  $result = self::$database->query($sql);
+
+        //  return $result;
+        $date=date_create($d_debut);
+        date_add($date,date_interval_create_from_date_string($delai_j.'days'));
+        
+        return date_format($date,"Y-m-d");
+     }
+
+     static function delai($date_d,$date_f){
+        $date1=date_create($date_d);
+        $date2=date_create($date_f);
+        $diff=date_diff($date1,$date2);
+        
+        return $diff->format("%R%a jour");
      }
 
     /////// end record code////////////////////////////

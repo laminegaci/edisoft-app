@@ -65,11 +65,16 @@ $rows2 = Conception::rows_dynamique();
                                      <i class="large plus circle icon"></i>
                                                                           
                                </a>
-                                      <div class="ui action input">
-                                        <input type="text" placeholder="Rechercher">
-                                        <div class="ui button">Go</div>
-                                      </div>
-                                    </div>
+                               <div class="ui search  ">
+                                        <div class="ui icon input">
+                                            <input class="prompt" type="text" placeholder="Rechercher..."
+                                                id="search">
+                                            <i class="search icon"></i>
+                                        </div>
+                                        <div class="results"></div>
+                                </div>
+                                      
+                                </div>
                             </div>
 
 
@@ -86,7 +91,7 @@ $rows2 = Conception::rows_dynamique();
 $conception = Conception::find_all();
 
 ?>
-                              <table class="ui celled yellow table">
+                              <table class="ui celled yellow table" id="tabAll">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -106,6 +111,9 @@ $conception = Conception::find_all();
                                     <?php foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
+                                      $date_now =  (new \DateTime())->format('Y-m-d');
+                                      $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
+                                      $delai = Conception::delai($date_now,$date_fin);
                                 ?>
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
@@ -116,9 +124,9 @@ $conception = Conception::find_all();
                                             <td><?php echo h($cons->prix_con);?></td>
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
-                                            <td>------</td>
+                                            <td><?php echo h($cons->delai_con) . ' rest' . '('. $delai . /*$date_fin*/'' .')';?></td>
                                             <td>
-                                            <div class="ui red progress" data-percent="20">
+                                            <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
                                                     <div class="label"><?php echo h($cons->etat_con);?></div>
                                                 </div>
@@ -152,7 +160,12 @@ $conception = Conception::find_all();
                               
                               </div>
                               <div class="ui bottom attached tab segment " data-tab="first/b">
-                              <table class="ui celled green table">
+<?php 
+
+$conception = Conception::find_all_terminer();
+
+?>
+                              <table class="ui celled green table" id="tabAll">
                                     <thead>
                                         <tr>
                                             <th>Client</th>
@@ -162,29 +175,21 @@ $conception = Conception::find_all();
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach($conception as $cons){
+                                      $id = $cons->id_cl;
+                                      $name = Conception::find_name($id);
+                                      
+                                ?>
                                         <tr>
-                                            <td>Edisoft</td>
-                                            <td>OEdisoft.dz</td>
-                                            <td>5000 Da</td>
-                                            <td>17-02-2019</td>
+                                            <td><?php echo $name; ?></td>
+                                            <td><?php echo h($cons->nom_con); ?></td>
+                                            <td><?php echo h($cons->prix_con); ?></td>
+                                            <td><?php echo h($cons->date_deb_con); ?></td>
                                         </tr>
 
-                                        <tr>
-                                            <td>Edisoft</td>
-                                            <td>OEdisoft.dz</td>
-                                            <td>6000DA</td>
-                                            <td>20-02-2019</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Edisoft</td>
-                                            <td>OEdisoft.dz</td>
-                                            <td>15000DA</td>
-                                              <td>03-02-2019</td>
-                                           
-                                            
-                                        </tr>
-
+                                       
+                                        <?php
+                                        } ?>
                                     </tbody>
                                 </table>
                               
@@ -205,7 +210,7 @@ $conception = Conception::find_all();
 <?php
 $conception = Conception::find_statique();
 ?>
-                              <table class="ui celled yellow table">
+                              <table class="ui celled yellow table" id="tabstatique">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -225,6 +230,9 @@ $conception = Conception::find_statique();
                                     <?php foreach($conception as $cons){
                                       $id=$cons->id_cl;
                                       $name = Conception::find_name($id);
+                                      $date_now =  (new \DateTime())->format('Y-m-d');
+                                      $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
+                                      $delai = Conception::delai($date_now,$date_fin);
                                 ?>
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
@@ -235,9 +243,9 @@ $conception = Conception::find_statique();
                                             <td><?php echo h($cons->prix_con);?></td>
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
-                                            <td>------</td>
+                                            <td><?php echo $delai;?></td>
                                             <td>
-                                            <div class="ui red progress" data-percent="20">
+                                            <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
                                                     <div class="label"><?php echo h($cons->etat_con);?></div>
                                                 </div>
@@ -272,7 +280,42 @@ $conception = Conception::find_statique();
                               </div>
 
 
-                              <div class="ui bottom attached tab segment " data-tab="second/b">2B</div>
+                              <div class="ui bottom attached tab segment " data-tab="second/b">
+                              <?php 
+
+$conception = Conception::find_stat_terminer();
+
+?>
+                              <table class="ui celled green table" id="tabstatique">
+                                    <thead>
+                                        <tr>
+                                            <th>Client</th>
+                                            <th>Nom du site</th>
+                                            <th>Prix</th>
+                                            <th colspan="2">date de début</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($conception as $cons){
+                                      $id = $cons->id_cl;
+                                      $name = Conception::find_name($id);
+                                      
+                                ?>
+                                        <tr>
+                                            <td><?php echo $name; ?></td>
+                                            <td><?php echo h($cons->nom_con); ?></td>
+                                            <td><?php echo h($cons->prix_con); ?></td>
+                                            <td><?php echo h($cons->date_deb_con); ?></td>
+                                        </tr>
+
+                                       
+                                        <?php
+                                        } ?>
+                                    </tbody>
+                                </table>  
+                              
+                            
+                              </div>
                               
                             </div>
 
@@ -289,7 +332,7 @@ $conception = Conception::find_statique();
 $conception = Conception::find_dynamique();
 ?>
 
-                              <table class="ui celled yellow table">
+                              <table class="ui celled yellow table" id="tabdynamique">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -309,6 +352,9 @@ $conception = Conception::find_dynamique();
                                     <?php foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
+                                      $date_now =  (new \DateTime())->format('Y-m-d');
+                                      $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
+                                      $delai = Conception::delai($date_now,$date_fin);
 
                                 ?>
                                         <tr>
@@ -320,9 +366,9 @@ $conception = Conception::find_dynamique();
                                             <td><?php echo h($cons->prix_con);?></td>
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
-                                            <td>------</td>
+                                            <td><?php echo $delai;?></td>
                                             <td>
-                                            <div class="ui red progress" data-percent="20">
+                                            <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
                                                     <div class="label"><?php echo h($cons->etat_con);?></div>
                                                 </div>
@@ -354,7 +400,40 @@ $conception = Conception::find_dynamique();
                                     </tbody>
                                 </table>
                               </div>
-                              <div class="ui bottom attached tab segment" data-tab="third/b">3B</div>
+                              <div class="ui bottom attached tab segment" data-tab="third/b">
+                              <?php 
+
+$conception = Conception::find_dyn_terminer();
+
+?>
+                              <table class="ui celled green table" id="tabdynamique">
+                                    <thead>
+                                        <tr>
+                                            <th>Client</th>
+                                            <th>Nom du site</th>
+                                            <th>Prix</th>
+                                            <th colspan="2">date de début</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($conception as $cons){
+                                      $id = $cons->id_cl;
+                                      $name = Conception::find_name($id);
+                                      
+                                ?>
+                                        <tr>
+                                            <td><?php echo $name; ?></td>
+                                            <td><?php echo h($cons->nom_con); ?></td>
+                                            <td><?php echo h($cons->prix_con); ?></td>
+                                            <td><?php echo h($cons->date_deb_con); ?></td>
+                                        </tr>
+
+                                       
+                                        <?php
+                                        } ?>
+                                    </tbody>
+                                </table>
+                              </div>
                               
                             </div>
 
@@ -392,6 +471,9 @@ $conception = Conception::find_dynamique();
 
      
 <script>
+$('.ui.slider')
+  .slider()
+;
   
 $('.ui.progress').progress();
 
@@ -418,6 +500,16 @@ console.log(button_id);
 // }
  });
 
+ $("#search").keyup(function() {
+        var searchText = $(this).val().toLowerCase();
+        // Show only matching TR, hide rest of them
+        $.each($("#tabAll tbody tr, #tabstatique tbody tr, #tabdynamique tbody tr"), function() {
+            if ($(this).text().toLowerCase().indexOf(searchText) === -1)
+                $(this).hide();
+            else
+                $(this).show();
+        });
+    });
 
 </script>
 
