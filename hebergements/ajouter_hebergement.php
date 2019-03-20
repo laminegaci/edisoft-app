@@ -1,6 +1,8 @@
 <?php 
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
+
+
 ?>
 <style>
 label {
@@ -55,7 +57,7 @@ select.ui.dropdown {
 
                             <div class="eight wide field">
                                 <label for="">Hébérgement:</label>
-                                <select class="ui  icon dropdown" id="menu_type" name="type_hebergement" required>
+                                <select class="ui   " id="menu_type" name="type_hebergement" required>
                                     <div class="menu">
                                         <option value="">Pack..</option>
 
@@ -138,7 +140,18 @@ select.ui.dropdown {
 <script>
 $(document).ready(function() {
 
+   
+    $('.ui.search')
+  .search({
+    apiSettings: {
+        url: 'getclient.php/?q={query}'
+    }
+   
 
+    
+   
+    
+  });
     $('.selection.dropdown, #menu_type')
         .dropdown();
 

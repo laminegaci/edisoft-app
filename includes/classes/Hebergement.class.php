@@ -40,7 +40,7 @@ class Hebergement{
     //---------------------------------------------------------------------------------------
 
     static public function find_all(){
-        $sql = "SELECT * FROM conception";
+        $sql = "SELECT * FROM hebergement";
        return self::find_by_sql($sql);
     }
 
@@ -58,8 +58,8 @@ class Hebergement{
     //---------------------------------------------------------------------------------------
     
     static public function find_by_id($id){
-        $sql = "SELECT * FROM conception ";
-        $sql .="WHERE id_con='". self::$database->escape_string($id) ."'";
+        $sql = "SELECT * FROM hebergement ";
+        $sql .="WHERE id_heb='". self::$database->escape_string($id) ."'";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return array_shift($object_array);
@@ -69,35 +69,13 @@ class Hebergement{
     }
     //---------------------------------------------------------------------------------------
 
-    static public function find_statique(){
-        $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='statique'";
-        $object_array= self::find_by_sql($sql);
-        if(!empty($object_array)){
-            return $object_array;
-        }else{
-            return false;
-        }
-    }
-
-    //---------------------------------------------------------------------------------------
-    static public function find_dynamique(){
-        $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='dynamique'";
-        $object_array= self::find_by_sql($sql);
-        if(!empty($object_array)){
-            return $object_array;
-        }else{
-            return false;
-        }
-    }
 
     //---------------------------------------------------------------------------------------
     public function create(){
         
         $attributes = $this->sanitized_attributes();//mna9yiin
 
-        $sql = "INSERT INTO conception(";
+        $sql = "INSERT INTO hebergement(";
         $sql .= join(', ', array_keys($attributes));
         $sql .= ") VALUES ('";
         $sql .= join("', '", array_values($attributes) );
@@ -109,7 +87,7 @@ class Hebergement{
         $result = self::$database-> query($sql);
 
         if($result){
-            $this->id_con = self::$database->insert_id;
+            $this->id_heb = self::$database->insert_id;
         }else{
          echo var_dump(self::$database->error_list);
         }
@@ -121,7 +99,7 @@ class Hebergement{
     public function attributes(){
         $attributes = [];
         foreach (self::$db_columns as $column) {
-            if($column == 'id_con'){ continue;};
+            if($column == 'id_heb'){ continue;};
            $attributes[$column] = $this->$column;
         }
         return $attributes;
@@ -145,60 +123,60 @@ class Hebergement{
     }
  
     //---------------------------------------------------------------------------------------
-    // static public function delete($id){
-    //     $sql = "DELETE FROM client WHERE id_cl =";
-    //     $sql .= "'" . $id ."';";
+    static public function delete($id){
+        $sql = "DELETE FROM hebergement WHERE id_heb =";
+        $sql .= "'" . $id ."';";
         
-    //     $result = self::$database->query($sql);
-    //     if($result){
-    //        return $result;
-    //     }else{
-    //      echo var_dump(self::$database->error_list);
-    //     }
+        $result = self::$database->query($sql);
+        if($result){
+           return $result;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
 
-    // }
+    }
 //---------------------------------------------------------------------------------------
 
-    // static public function find_by_name($string){
-    //     $sql = "SELECT * FROM client WHERE nom_cl LIKE ";
-    //     $sql .= "'" . self::$database->escape_string($string) ."%'";
-    //     $object_array= self::find_by_sql($sql);
-    //     if(!empty($object_array)){
-    //         return $object_array;
-    //     }else{
-    //         return false;
-    //     }
+     static public function find_by_name($string){
+         $sql = "SELECT * FROM hebergement WHERE url_heb LIKE ";
+         $sql .= "'" . self::$database->escape_string($string) ."%'";
+         $object_array= self::find_by_sql($sql);
+         if(!empty($object_array)){
+             return $object_array;
+         }else{
+             return false;
+         }
 
-    // }
+     }
 //---------------------------------------------------------------------------------------
-    // public function update(){
-    //     $attributes = $this->sanitized_attributes();
-    //     $attributes_pairs = [];
-    //     foreach ($attributes as $key => $value) {
+     public function update(){
+         $attributes = $this->sanitized_attributes();
+         $attributes_pairs = [];
+         foreach ($attributes as $key => $value) {
             
-    //         $attributes_pairs[] = "{$key}='{$value}'";
-    //     }
+             $attributes_pairs[] = "{$key}='{$value}'";
+         }
 
-    //     $sql = "UPDATE client SET ";
-    //     $sql .= join(', ', $attributes_pairs);
-    //     $sql .= " WHERE id_cl='". self::$database->escape_string($this->id_cl)."' ";
-    //     $sql .= "LIMIT 1";
-    //     echo $sql . "<br>";
-    //     $result = self::$database->query($sql);
+         $sql = "UPDATE hebergement SET ";
+         $sql .= join(', ', $attributes_pairs);
+         $sql .= " WHERE id_heb='". self::$database->escape_string($this->id_heb)."' ";
+         $sql .= "LIMIT 1";
+         echo $sql . "<br>";
+         $result = self::$database->query($sql);
 
-    //     if($result){
-    //         $this->id_cl = self::$database->insert_id;
-    //     }else{
-    //      echo var_dump(self::$database->error_list);
-    //     }
-    //     return $result;
+         if($result){
+             $this->id_heb = self::$database->insert_id;
+         }else{
+          echo var_dump(self::$database->error_list);
+         }
+         return $result;
         
-    // }
+     }
     //---------------------------------------------------------------------------------------
 
     public function find_names()
     {
-            $sql = "SELECT nom_cl FROM client ";
+            $sql = "SELECT url_heb FROM hebergement ";
             $object_array= self::find_by_sql($sql);
             if(!empty($object_array)){
                 return $object_array;
@@ -219,31 +197,14 @@ class Hebergement{
     //---------------------------------------------------------------------------------------
     static public function rows_tot()
     {
-        $sql = "select*from conception";
+        $sql = "select*from hebergement";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
         $result->free();
 
         return $row;
     }
-    static public function rows_statique()
-    {
-        $sql = "select*from conception where type_con='statique'";
-        $result = self::$database->query($sql);
-        $row = $result->num_rows;
-        $result->free();
-
-        return $row;
-    }
-    static public function rows_dynamique()
-    {
-        $sql = "select*from conception where type_con='dynamique'";
-        $result = self::$database->query($sql);
-        $row = $result->num_rows;
-        $result->free();
-
-        return $row;
-    }    
+     
 
     /////// end record code////////////////////////////
 

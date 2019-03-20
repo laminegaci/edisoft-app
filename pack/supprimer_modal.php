@@ -66,7 +66,7 @@
 
 <script>
 $(function() {
-    
+   
     $('#supp_form<?php echo $id . $type_client;; ?>').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
@@ -92,6 +92,7 @@ $(function() {
     });
 });
 $('#supp_refresh_button<?php echo $id . $type_client;; ?>').click(() => {
+    location.reload();
     location.reload();
 })
 
