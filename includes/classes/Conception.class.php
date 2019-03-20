@@ -171,29 +171,29 @@ class Conception{
 
     // }
 //---------------------------------------------------------------------------------------
-    // public function update(){
-    //     $attributes = $this->sanitized_attributes();
-    //     $attributes_pairs = [];
-    //     foreach ($attributes as $key => $value) {
+    public function update(){
+        $attributes = $this->sanitized_attributes();
+        $attributes_pairs = [];
+        foreach ($attributes as $key => $value) {
             
-    //         $attributes_pairs[] = "{$key}='{$value}'";
-    //     }
+            $attributes_pairs[] = "{$key}='{$value}'";
+        }
 
-    //     $sql = "UPDATE client SET ";
-    //     $sql .= join(', ', $attributes_pairs);
-    //     $sql .= " WHERE id_cl='". self::$database->escape_string($this->id_cl)."' ";
-    //     $sql .= "LIMIT 1";
-    //     echo $sql . "<br>";
-    //     $result = self::$database->query($sql);
+        $sql = "UPDATE conception SET ";
+        $sql .= join(', ', $attributes_pairs);
+        $sql .= " WHERE id_cl='". self::$database->escape_string($this->id_cl)."' ";
+        $sql .= "LIMIT 1";
+        echo $sql . "<br>";
+        $result = self::$database->query($sql);
 
-    //     if($result){
-    //         $this->id_cl = self::$database->insert_id;
-    //     }else{
-    //      echo var_dump(self::$database->error_list);
-    //     }
-    //     return $result;
+        if($result){
+            $this->id_cl = self::$database->insert_id;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
+        return $result;
         
-    // }
+    }
     //---------------------------------------------------------------------------------------
 
     public function find_names()
@@ -244,6 +244,17 @@ class Conception{
 
         return $row;
     }    
+     static function find_name($id){
+        $sql = "SELECT DISTINCT nom_cl,prenom_cl from client INNER JOIN conception on client.id_cl=conception.id_cl where conception.id_cl=$id";
+        $result = self::$database->query($sql);
+        while($objet = $result->fetch_assoc()){
+            $nom_client = $objet['nom_cl'].' ' .$objet['prenom_cl'];
+        };
+        
+        
+
+        return $nom_client;
+     }
 
     /////// end record code////////////////////////////
 
@@ -285,6 +296,4 @@ class Conception{
 
 
 };
-
-
 ?>

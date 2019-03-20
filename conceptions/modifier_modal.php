@@ -34,14 +34,14 @@ $cons = Conception::find_by_id($id);
 
 
             <div class="ui padded grid">
-            <h1>Modifier conception N° <?php echo $id  ?></h1>
+            <h1>Modifier conception N° <?php echo $id . $type_modal  ?></h1>
 
-                <div class="ui fifteen wide column row centered grid" id="modifier_grid<?php echo $id .$type_modal; ?>">
+                <div class="ui fifteen wide column row centered grid" id="modifier_grid<?php echo $id . $type_modal; ?>">
                     <h2 class="ui left aligned header"><i class=" icons">
-                            <i class="users icon"></i>
-                            <i class="corner add icon"></i>
-                        </i>&nbsp;modifier le client</h2>
-                    <form method="POST" class="ui form" id="modifier_form<?php echo $id .$type_modal; ?>" action="update_client.php?id=<?php echo $id .$type_modal; ?>">
+                            <i class="code icon"></i>
+                            <i class=""></i>
+                        </i>&nbsp;modifier Conception</h2>
+                    <form method="POST" class="ui form" id="modifier_form<?php echo $id . $type_modal; ?>" action="update_conception.php?id=<?php echo $id .$type_modal; ?>">
                         <div class="two fields">
                             <div class="field">
                                 <label>commentaire</label>
@@ -68,6 +68,7 @@ $cons = Conception::find_by_id($id);
                               
                             </div>
                             <div class="field">
+                                <label for="">etat</label>
                                 <div class="ui slider" id="slider-1"></div>
                                     <div class="ui input">
                                     <input type="text" id="slider-input-1" >
@@ -210,22 +211,17 @@ $('.ui.slider')
             }
         });
 
-        /*
 
-$('#modifier_form<?php echo $id .$type_modal; ?>')
+
+$('#modifier_form<?php echo $id . $type_modal; ?>')
 
   .form('set values', {
-    nom_cl     : '<?php echo h($client->nom_cl); ?>',
-    prenom_cl  : '<?php echo h($client->prenom_cl); ?>',
-    adresse    : '<?php echo h($client->adresse_cl); ?>',
-    email      : '<?php echo h($client->email_cl); ?>',
-    telephon   : '<?php echo h($client->num_tel_cl); ?>',
-    check      : '<?php echo h($client->type_cl);?>',
-    entreprise : '<?php echo h($client->nom_societe_cl) ?? '';?>',
+    comment     : '<?php echo h($cons->commentaire_con); ?>',
+    versement  : '<?php echo h($cons->versement_con); ?>',
+   
     terms      : true
   })
 ;
-*/
     </script>
 
 
