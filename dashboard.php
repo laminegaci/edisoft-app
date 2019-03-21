@@ -578,7 +578,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Domaine", "Domaine+pack"],
 
         datasets: [{
-            data: [<?php echo round($percent_dns,0);?>, <?php echo round($percent_dns,0);?>],
+            data: [<?php echo round($percent_dns,0);?>, <?php echo round($percent_else,0);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
