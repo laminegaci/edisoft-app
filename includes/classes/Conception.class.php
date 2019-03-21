@@ -107,7 +107,7 @@ class Conception{
     }
     static public function find_dyn_terminer(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='dynamique'  and etat_con=100";
+        $sql .="WHERE type_con='dynamique' and etat_con=100";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;

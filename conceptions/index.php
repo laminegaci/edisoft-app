@@ -61,18 +61,19 @@ $rows2 = Conception::rows_dynamique();
                             
 
                               <div class="right item">
-                              <a href="ajouter_conception.php" class="">
-                                     <i class="large plus circle icon"></i>
-                                                                          
-                               </a>
-                               <div class="ui search  ">
-                                        <div class="ui icon input">
-                                            <input class="prompt" type="text" placeholder="Rechercher..."
-                                                id="search">
-                                            <i class="search icon"></i>
-                                        </div>
-                                        <div class="results"></div>
-                                </div>
+                                  <a href="ajouter_conception.php" class="">
+                                        <i class="large plus circle icon"></i>
+                                                                              
+                                  </a>
+                                  <div class="ui search  ">
+                                            <div class="ui icon input">
+                                                <input class="prompt" type="text" placeholder="Rechercher..."
+                                                    id="search">  
+                                                <i class="search icon"></i>
+                                            </div>
+                                            <div class="results">
+                                            </div>
+                                    </div>
                                       
                                 </div>
                             </div>

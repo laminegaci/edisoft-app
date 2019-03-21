@@ -226,6 +226,24 @@ class Hebergement{
 
         return $row;
     }
+    static public function rows_dns()
+    {
+        $sql = "select*from hebergement where id_pack=1";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_else()
+    {
+        $sql = "select*from hebergement where id_pack!=1";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
      
 
     /////// end record code////////////////////////////
