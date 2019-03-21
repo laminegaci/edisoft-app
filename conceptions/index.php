@@ -108,7 +108,8 @@ $conception = Conception::find_all();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($conception as $cons){
+                                    <?php if($conception){
+                                      foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
                                       $date_now =  (new \DateTime())->format('Y-m-d');
@@ -154,7 +155,9 @@ $conception = Conception::find_all();
 
                                        
                                         <?php
-                                        } ?>
+                                        }
+                                       }
+                                       else echo '<h3 style="color:red;">pas de conception ajouter</h3>'; ?>
                                     </tbody>
                                 </table>
                               
@@ -175,7 +178,8 @@ $conception = Conception::find_all_terminer();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($conception as $cons){
+                                    <?php if($conception){
+                                      foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
                                       
@@ -189,7 +193,10 @@ $conception = Conception::find_all_terminer();
 
                                        
                                         <?php
-                                        } ?>
+                                        }
+                                       }
+                                       else echo '<h3 style="color:red;">pas de conception terminer</h3>'; ?> 
+                                        
                                     </tbody>
                                 </table>
                               
@@ -227,13 +234,15 @@ $conception = Conception::find_statique();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($conception as $cons){
+                                    <?php  if($conception){
+                                      foreach($conception as $cons){
                                       $id=$cons->id_cl;
                                       $name = Conception::find_name($id);
                                       $date_now =  (new \DateTime())->format('Y-m-d');
                                       $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
                                       $delai = Conception::delai($date_now,$date_fin);
                                 ?>
+                                        <?php?> 
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
                                             <td><?php echo $name;?></td>
@@ -271,9 +280,12 @@ $conception = Conception::find_statique();
                                             </td>
                                         </tr>
 
-                                       
+                                        
                                         <?php
-                                        } ?>
+                                        }
+                                      }
+                                      else  echo '<h3 style="color:red;">pas de conception statique ajouter</h3>';
+                                         ?>
                                     </tbody>
                                 </table>
                               
@@ -296,7 +308,8 @@ $conception = Conception::find_stat_terminer();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($conception as $cons){
+                                    <?php if($conception){
+                                      foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
                                       
@@ -310,7 +323,9 @@ $conception = Conception::find_stat_terminer();
 
                                        
                                         <?php
-                                        } ?>
+                                        }
+                                      }
+                                      else  echo "<h3 style='color:red;'>pas de conception statique terminer</h3>"; ?>
                                     </tbody>
                                 </table>  
                               
@@ -349,7 +364,8 @@ $conception = Conception::find_dynamique();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($conception as $cons){
+                                    <?php if($conception){
+                                       foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
                                       $date_now =  (new \DateTime())->format('Y-m-d');
@@ -396,7 +412,10 @@ $conception = Conception::find_dynamique();
 
                                        
                                         <?php
-                                        } ?>
+                                        } 
+                                      }
+                                      else echo '<h3 style="color:red;">pas de conception dynamique ajouter</h3>';
+                                        ?>
                                     </tbody>
                                 </table>
                               </div>
@@ -416,7 +435,9 @@ $conception = Conception::find_dyn_terminer();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($conception as $cons){
+                                    <?php 
+                                    if($conception){
+                                    foreach($conception as $cons){
                                       $id = $cons->id_cl;
                                       $name = Conception::find_name($id);
                                       
@@ -430,7 +451,10 @@ $conception = Conception::find_dyn_terminer();
 
                                        
                                         <?php
-                                        } ?>
+                                        }
+                                      }
+                                      else echo '<h3 style="color:red;">pas de conception dynamique terminer</h3>';
+                                         ?>
                                     </tbody>
                                 </table>
                               </div>
