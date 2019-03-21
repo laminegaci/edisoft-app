@@ -7,7 +7,14 @@ include('includes/app_head.php');
 
     <div class="ui fluid container">
 
+<?php
 
+$row_cl = Client::rows_tot();
+$row_cl_part = Client::rows_part();
+$row_cl_pro = Client::rows_pro();
+
+
+?>
 
         <!-- begin row stats-->
         <div class="ui row equal width padded grid" id="example1">
@@ -33,8 +40,8 @@ include('includes/app_head.php');
 
 
                                 <div class="label">
-                                    <span class="ui center aligned header">10000</span> <br>
-                                    <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine
+                                    <span class="ui center aligned header"><?php echo $row_cl;?></span> <br>
+                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
 
 
@@ -42,8 +49,8 @@ include('includes/app_head.php');
                                     <div class="canvas">
                                         <canvas id="myChart1"></canvas>
 
-                                        <span><b>Partiulier:</b> 10%</span>
-                                        <span><b>Profitionnel:</b> 20%</span>
+                                        <span><b>Partiulier:</b> <?php echo '('.$row_cl_part.')'; $percent_part=$row_cl_part*100/$row_cl;echo round($percent_part,0);?>%</span>
+                                        <span><b>Profitionnel:</b><?php echo '('.$row_cl_pro.')'; $percent_pro=$row_cl_pro*100/$row_cl;echo round($percent_pro,0);?> %</span>
 
                                     </div>
 
@@ -83,7 +90,7 @@ include('includes/app_head.php');
                                 <div class="label">
                                     <span class="ui center aligned header">1000000 DZD</span> <br>
 
-                                    <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine
+                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
 
 
@@ -116,6 +123,11 @@ include('includes/app_head.php');
                         <div class=" ">
                             <div class="ui grid ">
                                 <div class="row">
+<?php 
+$row_hyb = Hebergement::rows_tot();
+$row_hyb_dns = Hebergement::rows_dns();
+$row_hyb_else = Hebergement::rows_else();
+?>
                                     <h4 class="column">Total Hébérgement</h4>
                                 </div>
 
@@ -130,8 +142,8 @@ include('includes/app_head.php');
 
 
                                 <div class="label">
-                                    <span class="ui center aligned header">10000</span> <br>
-                                    <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine
+                                    <span class="ui center aligned header"><?php echo $row_hyb; ?></span> <br>
+                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
 
 
@@ -139,8 +151,8 @@ include('includes/app_head.php');
                                     <div class="canvas">
                                         <canvas id="myChart3"></canvas>
 
-                                        <span><b>domaine:</b> 40%</span>
-                                        <span><b>domaine+pack: </b>60%</span>
+                                        <span><b>domaine:</b> <?php echo '('.$row_hyb_dns.')';$percent_dns=$row_hyb_dns*100/$row_hyb;echo round($percent_dns,0);?>%</span>
+                                        <span><b>domaine+pack: </b><?php echo '('.$row_hyb_else.')';$percent_else=$row_hyb_else*100/$row_hyb;echo round($percent_else,0);?>%</span>
 
                                     </div>
 
@@ -164,7 +176,11 @@ include('includes/app_head.php');
                         <div class=" ">
                             <div class="ui grid ">
                                 <div class="row">
-
+<?php
+$row_con = Conception::rows_tot();
+$row_con_stat = Conception::rows_statique();
+$row_con_dyn = Conception::rows_dynamique();
+?>
                                     <h4 class="column">Total Conception</h4>
                                 </div>
 
@@ -179,16 +195,16 @@ include('includes/app_head.php');
 
 
                                 <div class="label">
-                                    <span class="ui center aligned header">10000</span> <br>
-                                    <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine
+                                    <span class="ui center aligned header"><?php echo $row_con;?></span> <br>
+                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
                                 <div class="centered row">
 
                                     <div class="canvas">
                                         <canvas id="myChart4"></canvas>
 
-                                        <span><b>Statique:</b> 50%</span>
-                                        <span><b>Dynamique:</b> 50M</span>
+                                        <span><b>Statique:</b><?php echo '('.$row_con_stat.')'; $percent_stat=$row_con_stat*100/$row_con;echo round($percent_stat,0);?>%</span>
+                                        <span><b>Dynamique:</b><?php echo '('.$row_con_dyn.')'; $percent_dyn=$row_con_dyn*100/$row_con;echo round($percent_dyn,0);?> %</span>
                                     </div>
 
                                 </div>
@@ -518,7 +534,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Particulier", "Profitionnel"],
 
         datasets: [{
-            data: [50, 50],
+            data: [<?php echo round($percent_part,0);?>, <?php echo round($percent_pro,0);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -562,7 +578,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Domaine", "Domaine+pack"],
 
         datasets: [{
-            data: [40, 60],
+            data: [<?php echo round($percent_dns,0);?>, <?php echo round($percent_dns,0);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -584,7 +600,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Statique", "Dynamique"],
 
         datasets: [{
-            data: [50, 50],
+            data: [<?php echo round($percent_stat,0);?>, <?php echo round($percent_dyn,0);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',

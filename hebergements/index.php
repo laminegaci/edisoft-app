@@ -36,8 +36,10 @@ include("../includes/app_head.php");
 
                     <h1 class="ui center aligned header item"><i class="server icon"></i>Hébérgements</h1>
 
-
-                    <a class="item active" data-tab="first"><i class="large box icon"></i>Tout(200)</a>
+                    <?php
+$rows = Hebergement::rows_tot();
+?>
+                    <a class="item active" data-tab="first"><i class="large box icon"></i>Tout(<?php echo $rows;?>)</a>
 
 
                     <div class="right item">
