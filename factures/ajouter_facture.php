@@ -47,7 +47,7 @@ select.ui.dropdown {
                                 <label for="">Client:</label>
                                 <div class="ui search">
                                     <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="Common passwords...">
+                                        <input class="prompt" type="text" placeholder="Common passwords..." name="id_cl">
                                         <i class="search icon"></i>
                                     </div>
                                     <div class="results"></div>
@@ -68,14 +68,14 @@ select.ui.dropdown {
                                             <div class="field">
 
                                             <label for="">Paiement en :</label>
-                                <select class="ui  icon dropdown" id="menu_type" name="type_hebergement" required>
+                                <select class="ui  icon dropdown" id="menu_type" name="type_pai_fact" required>
                                     <div class="menu">
                                         <option value="">type...</option>
 
-                                        <option value="1">Chéque</option>
+                                        <option value="cheque">Chéque</option>
 
-                                        <option value="2">Espéce</option>
-                                        <option value="3">CCP</option>
+                                        <option value="espece">Espéce</option>
+                                        <option value="ccp">CCP</option>
                                        
                                     </div>
 
@@ -84,42 +84,12 @@ select.ui.dropdown {
 
                         </div>
 
-                        <div class="fields">
-                            <div class="field">
-
-                            <table class="ui striped table" hidden>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th></th>
-                                        <th>Nombre de packs</th>                                     
-                                        <th>Totale TTC</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>BENOUNNAS Oussama</td>
-                                      <td>3 packs</td>
-                                      <td>7500 DA</td>
-
-                                    </tr>
-                                   
-                                </tbody>
-                            </table>
-
-
-
-                            </div>
-
-
-                        </div>
+                       
                         
 
                         <div class="field">
-                            <input type="submit" class="ui big green right floated button" value="Imprimer">
-
+                            <input type="submit" class="ui big green right floated button" value="Imprimer" name="imprimer">
+                            
                         </div>
                         <div class="ui error message"></div>
 

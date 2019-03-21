@@ -20,6 +20,7 @@ class Hebergement{
         
         $result = self::$database->query($sql);
         if(!$result){
+            echo var_dump(self::$database->error_list);
             exit("erreur de requête.");
         };
         // convert result into object
@@ -47,6 +48,20 @@ class Hebergement{
         JOIN pack 
         ON hebergement.id_pack = pack.id_pack
         WHERE nom_pack = '" . $pack ."';";
+        
+       return self::find_by_sql($sql);
+    }
+
+     //---------------------------------------------------------------------------------------
+
+     static public function find_where_client($id_client){
+        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack, hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
+        FROM hebergement
+        JOIN client 
+        ON hebergement.id_cl = client.id_cl
+        JOIN pack 
+        ON hebergement.id_pack = pack.id_pack
+        WHERE client.id_cl = '" . $id_client ."';";
         
        return self::find_by_sql($sql);
     }
