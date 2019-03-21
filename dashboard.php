@@ -245,7 +245,7 @@ $row_con_dyn = Conception::rows_dynamique();
 
                                 <div class="two wide column">
 
-                                    <div class="ui search  column">
+                                    <div class="ui  search  column">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="Common passwords..."
                                                 id="search">
@@ -490,6 +490,7 @@ $(function() {
 
     // Write on keyup event of keyword input element
     $("#search").keyup(function() {
+        $('.ui.search').toggleClass('blue loading double');
         var searchText = $(this).val().toLowerCase();
         // Show only matching TR, hide rest of them
         $.each($("#table tbody tr"), function() {
