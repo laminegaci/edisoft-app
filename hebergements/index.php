@@ -89,7 +89,7 @@ $rows = Hebergement::rows_tot();
                                         <th>date d'expiration</th>
                                         <th>espace pack</th>
                                         <th>prix pack</th>
-                                        
+                                        <th>etat</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,13 +104,14 @@ $rows = Hebergement::rows_tot();
 
                                     <tr>
                                         <td><?php echo h($hebergement->id_heb); ?></td>
-                                        <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl ." ". $hebergement->nom_cl); ?></td>
                                         <td><?php echo h($hebergement->nom_pack) ;?></td>
                                         <td><?php echo h($hebergement->url_heb) ;?></td>
                                         <td><?php echo h($hebergement->date_deb_heb); ?></td>
                                         <td><?php echo h($hebergement->date_fin_heb) ;?></td>
                                         <td><?php echo h($hebergement->espace_heb) . " <b>GO</b>";?></td>
                                         <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
+                                        <td><?php  if($hebergement->id_fact == NULL){echo 'non payé';}else{echo 'payé';} ?></td>
                                        
                                     </tr>
                                    

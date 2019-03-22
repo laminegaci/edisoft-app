@@ -41,7 +41,7 @@ class Hebergement{
     //---------------------------------------------------------------------------------------
 
     static public function find_where($pack){
-        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack, hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
+        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack,hebergement.id_fact,  hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
         FROM hebergement
         JOIN client 
         ON hebergement.id_cl = client.id_cl
@@ -55,13 +55,13 @@ class Hebergement{
      //---------------------------------------------------------------------------------------
 
      static public function find_where_client($id_client){
-        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack, hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
+        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack,hebergement.id_heb, hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
         FROM hebergement
         JOIN client 
         ON hebergement.id_cl = client.id_cl
         JOIN pack 
         ON hebergement.id_pack = pack.id_pack
-        WHERE client.id_cl = '" . $id_client ."';";
+        WHERE hebergement.id_fact IS  NULL AND client.id_cl = '" . $id_client ."';";
         
        return self::find_by_sql($sql);
     }
@@ -260,7 +260,7 @@ class Hebergement{
     public $nom_cl;
     public $prenom_cl;
     public $nom_pack;
-
+    public $id_fact;
     
     
     public function __construct($args=[])
@@ -274,6 +274,8 @@ class Hebergement{
         $this->id_ad = $args['id_ad'] ?? '';
         $this->id_cl = $args['id_cl'] ?? '';
         $this->id_pack = $args['id_pack'] ?? '';
+        $this->id_fact = $args['id_fact'] ?? NULL;
+
         
 
 

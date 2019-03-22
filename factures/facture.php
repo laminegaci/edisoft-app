@@ -1,6 +1,29 @@
 <?php
+
 require_once("../includes/initialize.php");
-include("../includes/app_head.php");
+
+
+if (is_post_request() && isset($_POST['imprimer'])) {
+
+    include("../includes/app_head.php");
+
+    //var_dump($_POST);
+  $type_pai_fact =   $_POST["type_pai_fact"];
+    $client = $_POST['id_cl'];
+     $position_tire= strpos($_POST['id_cl'],  '-');
+   $_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
+   
+   $achats = Hebergement::find_where_client($_POST['id_cl']);
+   //var_dump($achats);
+   
+   $totale = 0;
+   
+   }else{
+       redirect_to('index.php');
+   }
+
+
+
 
 
 
@@ -35,21 +58,8 @@ html {
     <div class="ui fluid container">
 
         <?php 
-if (is_post_request() && isset($_POST['imprimer'])) {
-
- //var_dump($_POST);
- $client = $_POST['id_cl'];
-  $position_tire= strpos($_POST['id_cl'],  '-');
-$_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
-
-$achats = Hebergement::find_where_client($_POST['id_cl']);
-//var_dump($result);
-
-$totale = 0;
-
-}
 ?>
-
+do
 
 
 
@@ -59,15 +69,19 @@ $totale = 0;
 
             <div class="ui fifteen wide column row centered grid segment">
 
-                <button onclick="generate()" class="ui yellow button">Imprimer</button>
-                <h1>Validation de facture Client: <?php echo $client ?? ''; ?></h1>
+            
+                <h1>Validation de facture Client: <span class="ui red text"><?php echo $client ?? ''; ?></span></h1>
 
-
+    <?php $infosClient = Client::find_by_id($client) ;
+    $heb_array = [];
+   
+    ?>
 
                 <table id="table" class="ui table">
                     <thead>
                         <tr>
-                          
+                         
+                        <th>#</th>
                          <th>pack</th>
                          <th>nom de domaine</th>
                             <th>Date début</th>
@@ -82,6 +96,7 @@ $totale = 0;
               foreach ($achats as $achat) {
             ?>
                         <tr>
+                        <td><?php echo h($achat->id_heb)?></td>
                            
                             <td><?php echo h($achat->nom_pack)?></td>
                             <td><?php echo h($achat->url_heb)?></td>
@@ -89,7 +104,8 @@ $totale = 0;
                             <td><?php echo h($achat->date_fin_heb)?></td>
                             <td><?php echo h($achat->espace_heb)?></td>
                             <td><?php echo h($achat->prix);
-                            
+                            $totale += $achat->prix;
+                            $heb_array[] = $achat->id_heb;
                             ?></td>
                             
                             
@@ -97,6 +113,23 @@ $totale = 0;
                         <?php
           }
          }?>
+
+<tr></tr>
+<tr></tr>
+<tr>
+    <td></td>
+    <td></td>
+
+    <td></td>
+
+    <td></td>
+
+    <td></td>
+    <td>Totale : <b><?php echo $totale. " DA"; ?> </b></td>
+
+</tr>
+
+
                     </tbody>
                 </table>
 
@@ -109,7 +142,14 @@ $totale = 0;
 
 
 
+                <form action="add_facture.php" method="post">
+                    <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
+                    <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
+                    <input type="text" name="id_cl" value="<?php echo $_POST['id_cl']  ?? ''; ?>" hidden>
+                    <input type="text" name="heb_array" value="<?php echo h(serialize($heb_array))  ?? ''; ?>" hidden>
 
+              <input type="submit" onclick="generate()" class="ui yellow button" name="valider" value="Valider et imprimer"> 
+              </form>
             </div>
         </div>
 
@@ -120,7 +160,6 @@ $totale = 0;
 
 
 </div>
-
 
 
 
@@ -155,10 +194,10 @@ function generate() {
     doc.text('www.edisoft.dz', 16, 48);
     doc.setFontSize(18);
     doc.setFontStyle("bold");
-    doc.text('BENOUNNAS Oussama', 96, 62);
-    doc.text('SARL Infotics', 96, 68);
-    doc.text('Tel: 0558 90 57 64', 96, 74);
-    doc.text('oussama@benounnas.com', 96, 80);
+    doc.text('<?php echo h($infosClient->nom_cl . " ". $infosClient->prenom_cl); ?>', 96, 62);
+    doc.text('<?php echo h($infosClient->nom_societe_cl) ?>', 96, 68);
+    doc.text('Tel: <?php echo h($infosClient->num_tel_cl)?>', 96, 74);
+    doc.text('<?php echo h($infosClient->email_cl) ?>', 96, 80);
 
     doc.setFontStyle("normal");
     doc.setFontSize(13);
@@ -171,11 +210,33 @@ function generate() {
         ["#", "pack", "nom de domaine", "date début", "date d'expiration", "espace", "prix"]
     ];
     var body = [
-        ["", "Wind", "benounnas.com", "2/03/2019", "2/03/2020", "3 Go", "2500 DA"],
-        ["", "Sunshine", "oussama.com", "2/03/2019", "2/03/2022", "3 Go", "3500 DA"],
+        
+        <?php 
+        if($achats){
+           
+            $nbr= count($achats);
+            foreach ($achats as $achat) {
+                echo '["",';
+                 echo '"' . h($achat->nom_pack).'",';
+                 echo '"'. h($achat->url_heb).'",';
+                 echo '"'. h($achat->date_deb_heb).'",';
+                 echo '"'. h($achat->date_fin_heb).'",';
+                 echo '"'. h($achat->espace_heb).' GO",';
+                 echo '"'. h($achat->prix).' DA"';
+                
+                 echo '],';
+           
+            
+                }};
+        ?>
+
+
+
+
+
         ["", "", "", "", "", "", ""],
 
-        ["", "2 packs", "", "", "", "", "6000 DA"],
+        ["", "<?php echo $nbr . " ";?> packs", "", "", "", "", "<?php echo $totale . " " ;?> DA"],
 
 
 
@@ -198,7 +259,7 @@ function generate() {
 
 
 
-    doc.output("dataurlnewwindow");
+   doc.output("dataurlnewwindow");
 }
 </script>
 

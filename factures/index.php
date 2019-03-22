@@ -55,30 +55,35 @@ include("../includes/app_head.php");
                         </div>
                         <div class="ui bottom attached active tab segment" data-tab="first/a">
 
-
+<?php $factures = Facture::find_all(); ?>
                             <table class="ui striped table" >
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>client</th>
                                         <th>Date d'impression</th>   
-                                        <th>Nombre de packs</th>                                     
+                                                                            
                                         <th>Totale TTC</th>
                                         <th>Payement en</th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php if($factures){
+                                        foreach ($factures as $facture) {
+                                           $client = Client::find_by_id($facture->id_cl);
+                                    ?>
                                     <tr>
-                                      <td>1</td>
-                                      <td>BENOUNNAS Oussama</td>
-                                      <td>3/3/2019</td>
-                                      <td>3 packs</td>
-                                      <td>7500 DA</td>
-                                      <td>espéce</td>
+                                      <td><?php echo h($facture->id_fact);?></td>
+                                      <td><?php echo h($client->nom_cl ." " .$client->prenom_cl);?></td>
+                                      <td><?php echo h($facture->date_fact);?></td>
+                                      <td><?php echo h($facture->totale_fact);?></td>
+                                      <td><?php echo h($facture->type_pai_fact);?></td>
+                                      <td></td>
 
                                     </tr>
-                                   
+                                    <?php }
+                                    } ?>
                                 </tbody>
                             </table>
 

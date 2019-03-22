@@ -243,7 +243,7 @@ $conception = Conception::find_statique();
                                       $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
                                       $delai = Conception::delai($date_now,$date_fin);
                                 ?>
-                                        <?php?> 
+                                   
                                         <tr>
                                             <td><?php echo h($cons->id_con);?></td>
                                             <td><?php echo $name;?></td>

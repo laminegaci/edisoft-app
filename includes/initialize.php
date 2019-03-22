@@ -35,5 +35,6 @@ Client::set_database($database);
 Conception::set_database($database);
 Pack::set_database($database);
 Hebergement::set_database($database);
+Facture::set_database($database);
 
 ?>
