@@ -112,54 +112,8 @@ class Admin{
         return $sanitized;
     } 
 
-    static public function delete($id){
-        $sql = "DELETE FROM pack WHERE id_pack =";
-        $sql .= "'" . $id ."';";
-        
-        $result = self::$database->query($sql);
-        if($result){
-           return $result;
-        }else{
-         echo var_dump(self::$database->error_list);
-        }
 
-    }
 
-    static public function find_by_name($string){
-        $sql = "SELECT * FROM pack WHERE nom_pack LIKE ";
-        $sql .= "'" . self::$database->escape_string($string) ."%'";
-        $object_array= self::find_by_sql($sql);
-        if(!empty($object_array)){
-            return $object_array;
-        }else{
-            return false;
-        }
-
-    }
-
-    public function update(){
-        $attributes = $this->sanitized_attributes();
-        $attributes_pairs = [];
-        foreach ($attributes as $key => $value) {
-            
-            $attributes_pairs[] = "{$key}='{$value}'";
-        }
-
-        $sql = "UPDATE pack SET ";
-        $sql .= join(', ', $attributes_pairs);
-        $sql .= " WHERE id_pack='". self::$database->escape_string($this->id_pack)."' ";
-        $sql .= "LIMIT 1";
-        echo $sql . "<br>";
-        $result = self::$database->query($sql);
-
-        if($result){
-            $this->id_pack = self::$database->insert_id;
-        }else{
-         echo var_dump(self::$database->error_list);
-        }
-        return $result;
-        
-    }
     public function merge_attributes($args=[]){
 
         foreach ($args as $key => $value) {

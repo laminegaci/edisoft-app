@@ -29,7 +29,7 @@ if(is_post_request() && isset($_POST['inscrire'])){
       if($result == true){
        
         echo "<script>alert('success')</script>";
-        redirect_to('../index.php');
+        redirect_to('../dashboard.php');
       }else{
          echo "error";
          echo "<script>alert('failes')</script>";
