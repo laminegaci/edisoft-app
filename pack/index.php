@@ -64,7 +64,7 @@ $rows2 = pack::rows_part();
                              <i class="large plus circle icon"></i>
 
                          </a>
-                         <div class="ui search  ">
+                         <div class="ui loading search  ">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="Rechercher..."
                                                 id="search">
@@ -90,7 +90,7 @@ $packs = Pack::find_all();
                                  <th>#</th>
                                  <th>Nom Pack</th>
                                  <th>Espace </th>
-                                 <th  colspan="3">Prix</th>
+                                 <th  colspan="3">Prix (DA)</th>
                                  
                                  
 

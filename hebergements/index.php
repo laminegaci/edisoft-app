@@ -13,6 +13,10 @@ include("../includes/app_head.php");
 .prompt {
     border-radius: 5px !important;
 }
+.ui.fifteen.wide.column.row.centered.grid.segment{
+    height: 85vh;
+    overflow: scroll;
+}
 </style>
 
 <div class="page">
@@ -38,6 +42,7 @@ include("../includes/app_head.php");
 
                     <?php
 $rows = Hebergement::rows_tot();
+
 ?>
                     <a class="item active" data-tab="first"><i class="large box icon"></i>Tout(<?php echo $rows;?>)</a>
 
@@ -47,14 +52,19 @@ $rows = Hebergement::rows_tot();
                             <i class="large plus circle icon"></i>
 
                         </a>
-                        <div class="ui action input">
-                            <input type="text" placeholder="Rechercher">
-                            <div class="ui button">Go</div>
+                        <div class="ui loading search  ">
+                                        <div class="ui icon input">
+                                            <input class="prompt" type="text" placeholder="chercher..."
+                                                id="search">
+                                            <i class="search icon"></i>
+                                        </div>
+                                        <div class="results"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="ui tab  active" data-tab="first">
+                <?php if($rows==0) echo '<h3 style="color:red">pas d\'hybergement ajouter</h3>';?>
                         <div class="ui top attached tabular  menu">
                             <a class="active item" data-tab="first/a"><i class="at icon"></i>Nom de domaine</a>
                             <a class="item" data-tab="first/b"><i class="wind icon"></i>Wind</a>

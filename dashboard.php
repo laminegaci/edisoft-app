@@ -13,8 +13,20 @@ $row_cl = Client::rows_tot();
 $row_cl_part = Client::rows_part();
 $row_cl_pro = Client::rows_pro();
 
+function get_percent($row_tot,$row_side)
+{
+    if($row_tot>0){
+        $int = $row_side*100/$row_tot;
+        $percent =  round($int,0);
+    }
+    else {
+        $percent = 0;
+    }
 
+    return $percent;
+}
 ?>
+
 
         <!-- begin row stats-->
         <div class="ui row equal width padded grid" id="example1">
@@ -49,8 +61,8 @@ $row_cl_pro = Client::rows_pro();
                                     <div class="canvas">
                                         <canvas id="myChart1"></canvas>
 
-                                        <span><b>Partiulier:</b> <?php echo '('.$row_cl_part.')'; $percent_part=$row_cl_part*100/$row_cl;echo round($percent_part,0);?>%</span>
-                                        <span><b>Profitionnel:</b><?php echo '('.$row_cl_pro.')'; $percent_pro=$row_cl_pro*100/$row_cl;echo round($percent_pro,0);?> %</span>
+                                        <span><b>Partiulier:</b> <?php echo '('.$row_cl_part.')'; echo get_percent($row_cl,$row_cl_part);?> %</span>
+                                        <span><b>Profitionnel:</b><?php echo '('.$row_cl_pro.')'; echo get_percent($row_cl,$row_cl_pro);?> %</span>
 
                                     </div>
 
@@ -151,8 +163,8 @@ $row_hyb_else = Hebergement::rows_else();
                                     <div class="canvas">
                                         <canvas id="myChart3"></canvas>
 
-                                        <span><b>domaine:</b> <?php echo '('.$row_hyb_dns.')';$percent_dns=$row_hyb_dns*100/$row_hyb;echo round($percent_dns,0);?>%</span>
-                                        <span><b>domaine+pack: </b><?php echo '('.$row_hyb_else.')';$percent_else=$row_hyb_else*100/$row_hyb;echo round($percent_else,0);?>%</span>
+                                        <span><b>domaine:</b> <?php echo '('.$row_hyb_dns.')';echo get_percent($row_hyb,$row_hyb_dns);?>%</span>
+                                        <span><b>domaine+pack: </b><?php echo '('.$row_hyb_else.')';echo get_percent($row_hyb,$row_hyb_else);?>%</span>
 
                                     </div>
 
@@ -203,8 +215,8 @@ $row_con_dyn = Conception::rows_dynamique();
                                     <div class="canvas">
                                         <canvas id="myChart4"></canvas>
 
-                                        <span><b>Statique:</b><?php echo '('.$row_con_stat.')'; $percent_stat=$row_con_stat*100/$row_con;echo round($percent_stat,0);?>%</span>
-                                        <span><b>Dynamique:</b><?php echo '('.$row_con_dyn.')'; $percent_dyn=$row_con_dyn*100/$row_con;echo round($percent_dyn,0);?> %</span>
+                                        <span><b>Statique:</b><?php echo '('.$row_con_stat.')'; echo get_percent($row_con,$row_con_stat);?>%</span>
+                                        <span><b>Dynamique:</b><?php echo '('.$row_con_dyn.')'; echo get_percent($row_con,$row_con_dyn); ?> %</span>
                                     </div>
 
                                 </div>
@@ -245,9 +257,9 @@ $row_con_dyn = Conception::rows_dynamique();
 
                                 <div class="two wide column">
 
-                                    <div class="ui  search  column">
+                                    <div class="ui loading search  column">
                                         <div class="ui icon input">
-                                            <input class="prompt" type="text" placeholder="Common passwords..."
+                                            <input class="prompt" type="text" placeholder="cherher..."
                                                 id="search">
                                             <i class="search icon"></i>
                                         </div>
@@ -490,7 +502,6 @@ $(function() {
 
     // Write on keyup event of keyword input element
     $("#search").keyup(function() {
-        $('.ui.search').toggleClass('blue loading double');
         var searchText = $(this).val().toLowerCase();
         // Show only matching TR, hide rest of them
         $.each($("#table tbody tr"), function() {
@@ -535,7 +546,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Particulier", "Profitionnel"],
 
         datasets: [{
-            data: [<?php echo round($percent_part,0);?>, <?php echo round($percent_pro,0);?>],
+            data: [<?php echo get_percent($row_cl,$row_cl_part);?>, <?php echo get_percent($row_cl,$row_cl_pro);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -579,7 +590,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Domaine", "Domaine+pack"],
 
         datasets: [{
-            data: [<?php echo round($percent_dns,0);?>, <?php echo round($percent_else,0);?>],
+            data: [<?php echo get_percent($row_cl,$row_hyb_dns);?>,<?php echo get_percent($row_cl,$row_hyb_else);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -601,7 +612,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Statique", "Dynamique"],
 
         datasets: [{
-            data: [<?php echo round($percent_stat,0);?>, <?php echo round($percent_dyn,0);?>],
+            data: [<?php echo get_percent($row_cl,$row_con_stat);?>, <?php echo get_percent($row_cl,$row_con_dyn);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',

@@ -66,14 +66,14 @@ $rows2 = Client::rows_part();
                              <i class="large plus circle icon"></i>
 
                          </a>
-                         <div class="ui search  ">
+                        <div class="ui loading search  ">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="Rechercher..."
                                                 id="search">
                                             <i class="search icon"></i>
                                         </div>
                                         <div class="results"></div>
-                                    </div>
+                        </div>
                      </div>
                  </div>
                  <div class="ui bottom attached tab  active limits" data-tab="first">
@@ -101,7 +101,9 @@ $clients = Client::find_all();
                          </thead>
                          <tbody>
 
-                             <?php foreach($clients as $client){
+                             <?php 
+                             if($clients){
+                             foreach($clients as $client){
                                 ?>
                              <tr>
                                  <td><?php echo h($client->id_cl);?></td>
@@ -161,7 +163,10 @@ $clients = Client::find_all();
 
 
                              <?php
-                            } ?>
+                            } 
+                        }
+                            else echo '<h3 style="color:red;">pas de client ajouter</h3>';
+                        ?>
                          </tbody>
                      </table>
 
@@ -254,7 +259,9 @@ $clients = Client::find_pro();
 
                              <?php
                                  }
-                             }?>
+                             }
+                            
+                            else echo '<h3 style="color:red;">pas de client professionnel ajouter</h3>'; ?>
                          </tbody>
                      </table>
                     
@@ -344,7 +351,8 @@ $clients = Client::find_particulier();
 
                              <?php
                                   }
-                              }?>
+                              }else echo '<h3 style="color:red;">pas de client particulier ajouter</h3>';
+                              ?>
                          </tbody>
                      </table>
              </div>
@@ -369,6 +377,10 @@ $clients = Client::find_particulier();
 
 
      <script>
+$('#search').toggleclass(function()){
+
+};
+
      $(document).ready(() => {
          // Write on keyup event of keyword input element
         

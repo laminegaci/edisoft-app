@@ -8,9 +8,15 @@ include("../includes/app_head.php");
     background: inherit !important;
     margin-bottom: 10px;
     border: 0;
+
+}
+.ui.fifteen.wide.column.row.centered.grid.segment{
+    height: 85vh;
+    overflow: scroll;
 }
 
 .prompt {
+    border:1px solid;
     border-radius: 5px !important;
 }
 </style>
@@ -40,10 +46,16 @@ include("../includes/app_head.php");
                             <i class="large plus circle icon"></i>
 
                         </a>
-                        <div class="ui action input">
-                            <input type="text" placeholder="Rechercher">
-                            <div class="ui button">Go</div>
+                        <div class="ui loading search  ">
+                                            <div class="ui icon input">
+                                                <input class="prompt" type="text" placeholder="Rechercher..."
+                                                    id="search">  
+                                                <i class="search icon"></i>
+                                            </div>
+                                            <div class="results">
+                                            </div>
                         </div>
+                        
                     </div>
                 </div>
 
