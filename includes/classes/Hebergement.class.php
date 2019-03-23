@@ -244,8 +244,82 @@ class Hebergement{
 
         return $row;
     }
-     
 
+    static function find_expired(){
+        $sql = "SELECT * FROM hebergement ";
+        $sql .="where DATEDIFF(date_fin_heb,now()) < 0";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+
+    }
+
+    static public function find_going_expired(){
+        $sql = "SELECT * FROM hebergement ";
+        $sql .="where DATEDIFF(date_fin_heb,now()) < 30 and DATEDIFF(date_fin_heb,now()) > 0";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+
+    }
+
+    static public function find_delai($p_date){
+        $date_expire = $p_date;    
+        $date = new DateTime($date_expire);
+        $now = new DateTime();
+
+        echo $now->diff($date)->format(" %R%a jour, %h heur %i minuts");
+    }
+
+    static public function rows_expiré()
+    {
+        $sql = "select*from hebergement ";
+        $sql .="where DATEDIFF(date_fin_heb,now()) < 0";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_envoie_expiré()
+    {
+        $sql = "select*from hebergement ";
+        $sql .="where DATEDIFF(date_fin_heb,now()) < 30 and DATEDIFF(date_fin_heb,now()) > 0";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static function find_name($id){
+        $sql = "SELECT DISTINCT nom_cl,prenom_cl from client INNER JOIN hebergement on client.id_cl=hebergement.id_cl where hebergement.id_cl=$id;";
+        $result = self::$database->query($sql);
+        while($objet = $result->fetch_assoc()){
+            $nom_client = $objet['nom_cl'].' ' .$objet['prenom_cl'];
+        };
+        
+        
+
+        return $nom_client;
+     }
+     static function find_pack($id_p){
+        $sql = "SELECT DISTINCT nom_pack from pack INNER JOIN hebergement on pack.id_pack=hebergement.id_pack where hebergement.id_pack=$id_p;";
+        $result = self::$database->query($sql);
+        while($objet = $result->fetch_assoc()){
+            $nom_pack = $objet['nom_pack'];;
+        };
+        
+        
+
+        return $nom_pack;
+     }
+    
     /////// end record code////////////////////////////
 
     public $id_heb; 

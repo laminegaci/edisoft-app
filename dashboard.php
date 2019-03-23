@@ -8,11 +8,6 @@ include('includes/app_head.php');
     <div class="ui fluid container">
 
 <?php
-
-$row_cl = Client::rows_tot();
-$row_cl_part = Client::rows_part();
-$row_cl_pro = Client::rows_pro();
-
 function get_percent($row_tot,$row_side)
 {
     if($row_tot>0){
@@ -25,7 +20,18 @@ function get_percent($row_tot,$row_side)
 
     return $percent;
 }
+
+$row_cl = Client::rows_tot();
+$row_cl_part = Client::rows_part();
+$row_cl_pro = Client::rows_pro();
+
 ?>
+<style>
+.ui.fluid.card{
+    height: 65vh;
+    overflow: scroll;
+}
+</style>
 
 
         <!-- begin row stats-->
@@ -254,6 +260,10 @@ $row_con_dyn = Conception::rows_dynamique();
                         <div class="ui content grid">
                             <div class="row">
                                 <h2 class="thirteen wide column">Hébérgements en urgence</h2>
+                                <?php
+$rows_exp = Hebergement::rows_expiré();
+$rows_envoie = Hebergement::rows_envoie_expiré();
+?>
 
                                 <div class="two wide column">
 
@@ -267,8 +277,10 @@ $row_con_dyn = Conception::rows_dynamique();
                                     </div>
                                     
                                 </div>
-                                <h4 class="thirteen wide column">Expirés:&nbsp; <span class="ui red text">24</span></h4>
-                                <h4 class="thirteen wide column">En voie d'expiration:&nbsp <span class="ui orange text">24</span></h4>
+
+
+                                <h4 class="thirteen wide column">Expirés:&nbsp; <span class="ui red text"><?php echo $rows_exp;?></span></h4>
+                                <h4 class="thirteen wide column">En voie d'expiration:&nbsp <span class="ui orange text"><?php echo $rows_envoie;?></span></h4>
 
                             </div>
                            
@@ -279,86 +291,91 @@ $row_con_dyn = Conception::rows_dynamique();
                                         <thead>
                                             <tr>
                                                 <th>Nom et Prénom</th>
-                                                <th>Hébérgement</th>
+                                                <th>pack</th>
                                                 <th>URL</th>
                                                 <th>date expiration</th>
                                                 <th colspan="3">jours restants</th>
                                             </tr>
                                         </thead>
+<?php
+$hyb_expiré = Hebergement::find_expired();
+?>
                                         <tbody>
+                                            <?php
+                                            
+                                            
+                                            if($hyb_expiré){
+                                                foreach($hyb_expiré as $expiré){
+                                                    $date_now =  (new \DateTime())->format('Y-m-d G:i:s');
+                                                    $id=$expiré->id_cl;
+                                                    $name = Hebergement::find_name($id);
+                                                    $id_p = $expiré->id_pack;
+                                                    $nom_pack = Hebergement::find_pack($id_p);
+                                                    
+                                                     ?>
                                             <tr class="red">
-                                                <td><i class="skull crossbones icon"></i>BENOUNNAS Oussama</td>
-                                                <td>Pack Sunshine</td>
-                                                <td>benounnas.com</td>
-                                                <td>10/2/2019</td>
-                                                <td><b>-3 jours</b></td>
+                                                <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?></td>
+                                                <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
+                                                <td><?php echo h($expiré->url_heb) ;?></td>
+                                                <td><?php echo h($expiré->date_fin_heb) ;?></td>
+                                                <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
 
-                                                <td class="selectable ">
-                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
-
-                                                </td>
-
-                                                <td class="selectable ">
-
-                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
-
-                                                </td>
+                                                
                                             </tr>
-                                            <tr class="orange">
-                                                <td><i class="exclamation triangle icon"></i>Gaci Mohammed lamine</td>
-                                                <td>Pack Thunder</td>
-                                                <td>mohammed.org</td>
-                                                <td>3/2/2019</td>
-                                                <td><b>10 jours</b></td>
+                                            
+                                            
+                                            <?php 
+                                                }
+                                            }
+                                            else echo 'pas d\'ebergement expiré';
+                                            ?>
 
-                                                <td class="selectable ">
-                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
+<?php
+$hebergement = new Hebergement;
+$client = new Client;
+$hyb_expiré = $hebergement->find_going_expired();
+?>
 
-                                                </td>
+                                            
+                                            <?php
+                                            
+                                            if($hyb_expiré){
+                                                foreach($hyb_expiré as $expiré){
+                                                    $date_now =  (new \DateTime())->format('Y-m-d G:i:s');
+                                                    $id=$expiré->id_cl;
+                                                    $name = Hebergement::find_name($id);
+                                                    $id_p = $expiré->id_pack;
+                                                    $nom_pack = Hebergement::find_pack($id_p);
+                                                    
+                                                    
+                                                     ?>
+                                            <tr class="green">
+                                                <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?></td>
+                                                <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
+                                                <td><?php echo h($expiré->url_heb) ;?></td>
+                                                <td><?php echo h($expiré->date_fin_heb) ;?></td>
+                                                <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
 
-                                                <td class="selectable ">
-
-                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
-
-                                                </td>
+                                                
                                             </tr>
+                                            <?php 
+                                                }
+                                            }
+                                            else echo '<h3  style="color:red;">pas d\'ebergement en voie d\'expiration</h3>';
+                                            ?>
+                                            
+                                            
 
-                                            <tr class="orange">
-                                                <td><i class="exclamation triangle icon"></i>Ryan Reynolds</td>
+                                            <!-- <tr class="orange">
+                                                <td><i class="exclamation triangle icon"></i>---</td>
                                                 <td>Pack wind</td>
                                                 <td>mohammed.org</td>
                                                 <td>28/2/2019</td>
                                                 <td><b>7 jours</b></td>
 
-                                                <td class="selectable ">
-                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
-
-                                                </td>
-
-                                                <td class="selectable ">
-
-                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
-
-                                                </td>
-                                            </tr>
-                                            <tr class="orange">
-                                                <td><i class="exclamation triangle icon"></i>Brad pitt</td>
-                                                <td>Pack storm</td>
-                                                <td>mohammed.org</td>
-                                                <td>14/2/2019</td>
-                                                <td><b>29 jours</b></td>
-
-                                                <td class="selectable ">
-                                                    <a href=""><i class="minus circle icon"></i>&nbsp;Supprimer</a>
-
-                                                </td>
-
-                                                <td class="selectable ">
-
-                                                    <a href=""><i class="sync icon"></i>&nbsp;renouvler</a>
-
-                                                </td>
-                                            </tr>
+                                                
+                                            </tr> -->
+                                           
 
                                         </tbody>
                                     </table>

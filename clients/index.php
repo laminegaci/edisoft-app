@@ -66,10 +66,10 @@ $rows2 = Client::rows_part();
                              <i class="large plus circle icon"></i>
 
                          </a>
-                        <div class="ui loading search  ">
+                        <div class="ui search  ">
                                         <div class="ui icon input">
-                                            <input class="prompt" type="text" placeholder="Rechercher..."
-                                                id="search">
+                                            <input class="prompt" type="text" placeholder="chercher..." id="search">
+                                                
                                             <i class="search icon"></i>
                                         </div>
                                         <div class="results"></div>
@@ -377,11 +377,8 @@ $clients = Client::find_particulier();
 
 
      <script>
-$('#search').toggleclass(function()){
 
-};
-
-     $(document).ready(() => {
+$(document).ready(() => {
          // Write on keyup event of keyword input element
         
   // Write on keyup event of keyword input element
@@ -394,7 +391,7 @@ $('#search').toggleclass(function()){
             else
                 $(this).show();
         });
-    });
+});
 
 
       
