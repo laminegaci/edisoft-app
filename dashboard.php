@@ -95,7 +95,9 @@ $row_cl_pro = Client::rows_pro();
                                     <h4 class="column">Total Revenue </h4>
                                 </div>
 
-
+<?php
+$total = Facture::find_total_revenu();
+?>
 
 
 
@@ -106,7 +108,7 @@ $row_cl_pro = Client::rows_pro();
 
 
                                 <div class="label">
-                                    <span class="ui center aligned header">1000000 DZD</span> <br>
+                                    <span class="ui center aligned header"><?php echo $total;  ?></span> <br>
 
                                     <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
@@ -319,9 +321,13 @@ $hyb_expiré = Hebergement::find_expired();
                                                 <td><?php echo h($expiré->url_heb) ;?></td>
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
-
+                                                <form action="" method="POST">
+                                                <td> <button class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
+                                                <td> <button class="ui tiny red button" name="renouvler"><i class="sync icon"></i><span>Renouvler  </span></button></td>
+                                                </form>       
                                                 
                                             </tr>
+                                           
                                             
                                             
                                             <?php 
@@ -350,18 +356,19 @@ $hyb_expiré = $hebergement->find_going_expired();
                                                     
                                                      ?>
                                             <tr class="green">
-                                                <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?></td>
+                                                <td><i class="exclamation triangle orange icon"></i><?php echo $id.'-'.$name;?></td>
                                                 <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
                                                 <td><?php echo h($expiré->url_heb) ;?></td>
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
-
+                                                <td></td>
+                                                <td></td>
                                                 
                                             </tr>
                                             <?php 
                                                 }
                                             }
-                                            else echo '<h3  style="color:red;">pas d\'ebergement en voie d\'expiration</h3>';
+                                            else echo '<h3  style="color:red;">pas d\'ebergement ni expiré ni en voie d\'expiration</h3>';
                                             ?>
                                             
                                             
@@ -388,7 +395,11 @@ $hyb_expiré = $hebergement->find_going_expired();
                 </div><!-- fin de colonne-->
 
             </div>
+<?php
 
+$conception = Conception::find_all_dash();
+
+?>
             <div class="row">
                 <div class="column ">
                     <!-- début des avertissements-->
@@ -404,76 +415,53 @@ $hyb_expiré = $hebergement->find_going_expired();
                                             <th>Nom du site</th>
                                             <th>délai restant</th>
                                             <th>état d'avancement</th>
+                                            <th>Versement</th>
+                                            <th>Prix</th>
                                             <th colspan="2">Commentaire</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    if($conception){
+                                        foreach($conception as $cons)
+                                        {
+                                      $id = $cons->id_cl;
+                                      $name = Conception::find_name($id);
+                                      $date_now =  (new \DateTime())->format('Y-m-d');
+                                      $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
+                                      $delai = Conception::delai($date_now,$date_fin);
+
+
+                                        
+                                    ?>
                                     <tbody>
                                         <tr>
-                                            <td>Ooredoo</td>
-                                            <td>Oooredoo.dz</td>
-                                            <td>15 jours</td>
+                                            <td><?php echo $name;?></td>
+                                            <td><?php echo h($cons->nom_con); ?> </td>
+                                            <td><?php echo $delai;?></td>
                                             <td>
-                                                <div class="ui red progress" data-percent="20">
+                                                <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
-                                                    <div class="label">20%</div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
                                                 </div>
                                             </td>
+                                            <td><?php echo h($cons->versement_con).' DA';?></td>
+                                            <td><?php echo h($cons->prix_con).' DA';?></td>
+                                            
                                             <td>
                                                 <div class="ui bulleted list">
-                                                    <div class="item">conception de la base de données</div>
-
-                                                    <div class="item">Harmonie des couleurs</div>
+                                                <div class="item"><?php echo h($cons->commentaire_con);?></div>
                                                 </div>
                                             </td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
+                                            
                                         </tr>
 
-                                        <tr>
-                                            <td>Ooredoo</td>
-                                            <td>Oooredoo.dz</td>
-                                            <td>15 jours</td>
-                                            <td>
-                                                <div class="ui teal progress" data-percent="74">
-                                                    <div class="bar"></div>
-                                                    <div class="label">74%</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ui bulleted list">
-                                                    <div class="item">conception de la base de données</div>
+                                       
 
-                                                    <div class="item">Harmonie des couleurs</div>
-                                                </div>
-                                            </td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Ooredoo</td>
-                                            <td>Oooredoo.dz</td>
-                                            <td>15 jours</td>
-                                            <td>
-                                                <div class="ui orange progress" data-percent="50">
-                                                    <div class="bar"></div>
-                                                    <div class="label">50%</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ui bulleted list">
-                                                    <div class="item">conception de la base de données</div>
-
-                                                    <div class="item">Harmonie des couleurs</div>
-                                                </div>
-                                            </td>
-                                            <td class="selectable">
-                                                <a href=""><i class="large info circle icon"></i>&nbsp;infos</a>
-                                            </td>
-                                        </tr>
-
+                                        
+                                        <?php
+                                        }
+                                    }else echo '<h3 style="color:red;">pas de conception a finir</h3>'; 
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -506,8 +494,16 @@ $hyb_expiré = $hebergement->find_going_expired();
 
 </div>
 
+<?php 
+if(isset($_POST['supprimer'])){
 
+echo "<script>alert('supprimer');</script>";
+}
+if(isset($_POST['renouvler'])){
 
+    echo "<script>alert('renouvler');</script>";
+    }
+?>
 
 
 <script src="dist/Chart.bundle.js"></script>

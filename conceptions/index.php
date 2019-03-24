@@ -130,7 +130,7 @@ $conception = Conception::find_all();
                                             <td>
                                             <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?></div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
                                                 </div>
                                             </td>
                                             <td>
@@ -257,7 +257,7 @@ $conception = Conception::find_statique();
                                             <td>
                                             <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?></div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
                                                 </div>
                                             </td>
                                             <td>
@@ -387,7 +387,7 @@ $conception = Conception::find_dynamique();
                                             <td>
                                             <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
                                                     <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?></div>
+                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
                                                 </div>
                                             </td>
                                             <td>

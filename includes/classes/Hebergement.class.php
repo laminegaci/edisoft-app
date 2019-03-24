@@ -244,6 +244,16 @@ class Hebergement{
 
         return $row;
     }
+    static public function find_total_revenu()
+    {
+        $sql = "SELECT SUM(total_fact) FROM facture";
+        $result = self::$database->query($sql);
+        var_dump($result);
+        // $value = $result->fetch_assoc();
+        // return $value;
+        
+
+    }
 
     static function find_expired(){
         $sql = "SELECT * FROM hebergement ";

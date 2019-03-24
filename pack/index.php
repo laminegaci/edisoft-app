@@ -89,7 +89,7 @@ $packs = Pack::find_all();
                              <tr>
                                  <th>#</th>
                                  <th>Nom Pack</th>
-                                 <th>Espace </th>
+                                 <th>Espace de stockage</th>
                                  <th  colspan="3">Prix (DA)</th>
                                  
                                  
