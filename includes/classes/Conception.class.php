@@ -43,6 +43,11 @@ class Conception{
         $sql = "SELECT * FROM conception where etat_con < 100"; 
        return self::find_by_sql($sql);
     }
+    
+    static public function find_all_dash(){
+        $sql = "SELECT*FROM `conception` where etat_con<100 ORDER by etat_con desc LIMIT 3;"; 
+        return self::find_by_sql($sql);
+    }
     static public function find_all_terminer(){
         $sql = "SELECT * FROM conception where etat_con=100";
        return self::find_by_sql($sql);

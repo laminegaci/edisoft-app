@@ -151,6 +151,22 @@ class Facture{
         return $row;
     }
 
+    static public function find_total_revenu()
+    {
+        $sql = "SELECT SUM(totale_fact) FROM facture";
+        $result = self::$database->query($sql);
+        $array = $result->fetch_assoc();
+        foreach($array as $key => $value)
+        {
+            $som = $value;
+        }
+        
+        
+        return ($value);
+        
+
+    }
+
     /////// end record code////////////////////////////
 
     public $id_fact; 

@@ -163,7 +163,7 @@ $('.ui.form')
             prompt : 'merci d\'entrer votre mot de pass'
           },
           {
-            type   : 'minLength[8]',
+            type   : 'minLength[12]',
             prompt : 'votre mot de pass doit avoir au moin {ruleValue} caractère'
           }
         ]
