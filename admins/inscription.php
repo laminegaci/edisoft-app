@@ -98,10 +98,7 @@
                                  
                 </div>
 
-                <div class="row">
-                <p><a href="../index.php">connecter</a></p>
-
-                </div>
+               
               
       </div>
 <?php
