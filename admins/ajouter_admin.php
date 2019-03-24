@@ -13,27 +13,32 @@ if(is_post_request() && isset($_POST['inscrire'])){
    
     //création et préparation de données pour les convertirs en objets 
       $args = [];
-      $args['username'] = $_POST['username'];
-      if($_POST['password_1']==$_POST['password_2'])
-      {
-        $args['password'] = $_POST['password_1'];
-      }
-      
+      $args['password_ad'] = $_POST['password_ad'] ?? '';
+      $args['username_ad'] = $_POST['username_ad'] ?? '';
+      $args['confirm_password'] = $_POST['confirm_password'] ?? '';
+     
       
 
-     //var_dump($args) . "<br>";
+    //var_dump($args) . "<br>";
       
+     
       $admin = new Admin($args);
+     
+
       $result = $admin->hash_password();
 
-      if($result == true){
+     // var_dump($result);
+      
+      if($result === true){
        
-        echo "<script>alert('success')</script>";
+        
         redirect_to('../dashboard.php');
       }else{
-         echo "error";
-         echo "<script>alert('failes')</script>";
+        session_start();
+        $_SESSION['errors'] = $result;//ykhabi les erreurs ta3 validate()
+        redirect_to('inscription.php');//bah yweli hna
       }
+      
     
 }
 

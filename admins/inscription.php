@@ -68,7 +68,7 @@
                <div class="field ">
                 <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" name="username" placeholder="nom d'utilisateur">
+                    <input type="text" name="username_ad" placeholder="nom d'utilisateur">
                 </div>
                 </div>
                </div>
@@ -78,14 +78,14 @@
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="lock icon"></i>
-                            <input name="password_1" type="password" placeholder="mot de pass" >
+                            <input name="password_ad" type="password" placeholder="mot de pass" >
                     
                         </div>
                     </div>
                     <div class="field">
                     <div class="ui left icon input">
                                         <i class="lock icon"></i>
-                        <input name="password_2" type="password" placeholder="confirmé mot de pass">
+                        <input name="confirm_password" type="password" placeholder="confirmé mot de pass">
                         </div>
                     </div>
                 </div>
@@ -104,18 +104,38 @@
                 </div>
               
       </div>
-
-      <div class="ui error message"></div>
-
+<?php
+session_start();
+?>
+   
     </form>
    
+    <div class="<?php if(isset($_SESSION['errors'])){ echo 'ui error message'; ?>">
+  <i class="close icon"></i>
+  <div class="header">
+   Il y'a des erreurs dans votre inscription 
+  </div>
+  <ul class="list">
+                   
+  <?php
+      
+      foreach ($_SESSION['errors'] as $error) {
+     
+        echo '<li>'. $error . '</li>';
+      }
   
+  }
+  ?>
+  </ul>
+</div>
   </div>
   
 </div>
 
 
-<script src="<?php echo url_for('dist/semantic.min.js'); ?>"></script>
+<script src="<?php 
+session_destroy();
+echo url_for('dist/semantic.min.js'); ?>"></script>
 
   <script>
 

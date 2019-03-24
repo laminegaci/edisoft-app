@@ -49,11 +49,13 @@
       <div class="ui raised segment grid">
 
                 <div class="centered row">
+                  
             <img src="<?php echo url_for('images/logo.png') ?>" class="">
                 
                 </div>
 
             <div class="row">
+              
                 <h2 class="ui blue image header centered row">
                 <div class="content">
                     Se connecter
@@ -84,10 +86,7 @@
                                  
                 </div>
 
-                <div class="row">
-                <p><a href="admins/inscription.php">crée compte</a></p>
-
-                </div>
+               
               
       </div>
 
