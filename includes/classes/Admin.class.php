@@ -143,6 +143,10 @@ class Admin{
     public function set_hashed_password(){
         $this->hashed_password = password_hash($this->password_ad, PASSWORD_BCRYPT);
     }
+    public function verify_password($password){
+        return password_verify($password, $this->hashed_password);
+    }
+
     public function hash_password(){
        
         $validation = $this->validate();

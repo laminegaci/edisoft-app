@@ -1,5 +1,46 @@
 
-<?php require_once('includes/initialize.php') ;?>
+<?php require_once('includes/initialize.php') ;
+
+
+
+$errors = [];
+$username = '';
+$password = '';
+
+if(is_post_request()) {
+
+  $username = $_POST['username'] ?? '';
+  $password = $_POST['password'] ?? '';
+
+  // Validations
+  if(is_blank($username)) {
+    $errors[] = "nom d'utilisateur est vide!";
+  }
+  if(is_blank($password)) {
+    $errors[] = "mot de passe est vide!";
+  }
+
+  // if there were no errors, try to login
+  if(empty($errors)) {
+    $admin = Admin::find_by_username($username);
+    // test if admin found and password is correct
+    if($admin != false && $admin->verify_password($password)) {
+      // Mark admin as logged in
+      redirect_to(url_for('dashboard.php'));
+    } else {
+      // username not found or password does not match
+      $errors[] = "mot de passe ou nom d'utilisateur erroné :/ ";
+    }
+
+  }
+
+ // var_dump($errors);
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,15 +127,31 @@
                                  
                 </div>
 
-               
+              
               
       </div>
 
-      <div class="ui error message"></div>
+      <div class="<?php if(!empty($errors)){ echo 'ui negative message'; ?>">
+  <i class="close icon"></i>
+  <div class="header">
+   Il y'a des erreurs dans votre inscription 
+  </div>
+  <ul class="list">
+                   
+  <?php
+      
+      foreach ($errors as $error) {
+     
+        echo '<li>'. $error . '</li>';
+      }
+  
+  }
+  ?>
+  </ul>
+</div>
 
     </form>
  
-  
   </div>
   
 </div>
@@ -103,39 +160,8 @@
 
   <script>
 
-$('.ui.form')
-  .form({
-    on: 'blur',
-    fields: {
-    
-      username: {
-        identifier: 'username',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'merci d\'entrer votre nom'
-          },
-                   
-        ]
-      },
-      password: {
-        identifier: 'password',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'merci d\'entrer votre mot de pass'
-          },
-          {
-            type   : 'minLength[8]',
-            prompt : 'votre mot de pass doit avoir au moin {ruleValue} caractère'
-          }
-        ]
-      },
-      
-    }
-  })
-;
 </script>
+
 
   
 
