@@ -1,6 +1,6 @@
 <?php 
 require_once("initialize.php");
-
+require_login();
 
 if(!isset($page_title)){
    $page_title = 'Edisoft';

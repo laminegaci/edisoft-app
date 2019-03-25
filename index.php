@@ -26,6 +26,7 @@ if(is_post_request()) {
     // test if admin found and password is correct
     if($admin != false && $admin->verify_password($password)) {
       // Mark admin as logged in
+      $session->login($admin);
       redirect_to(url_for('dashboard.php'));
     } else {
       // username not found or password does not match

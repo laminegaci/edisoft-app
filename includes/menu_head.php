@@ -31,7 +31,7 @@ padding-left: 50px;
                   
                     
                      
-                    <a href="">  <i class="power off red link icon"></i></a>
+                    <a href="<?php echo url_for('logout.php');?>">  <i class="power off red link icon"></i></a>
                    
                        
                     </div>

@@ -38,4 +38,7 @@ Hebergement::set_database($database);
 Facture::set_database($database);
 Admin::set_database($database);
 
+$session = new Session;
+
+
 ?>

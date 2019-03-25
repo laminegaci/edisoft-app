@@ -101,9 +101,7 @@
                
               
       </div>
-<?php
-session_start();
-?>
+
    
     </form>
    

@@ -79,4 +79,14 @@ function test_input($data) {
       return false;
     }
   }
+  ///////////////////// Session 
+
+  function require_login(){
+    global $session;
+    if($session->is_logged_in()){
+
+    }else{
+        redirect_to(url_for('index.php'));
+    }
+  }
 ?>

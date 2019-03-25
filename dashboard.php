@@ -1,4 +1,8 @@
 <?php require_once('includes/initialize.php') ;
+
+require_login();
+
+
 include('includes/app_head.php');
 ?>
 <?php include('includes/menu_head.php'); ?>
