@@ -2,7 +2,6 @@
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
 include('function_modal.php');
-$hssab = 0;
 ?>
 
  <style>

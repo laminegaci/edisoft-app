@@ -112,7 +112,7 @@ $total = Facture::find_total_revenu();
 
 
                                 <div class="label">
-                                    <span class="ui center aligned header"><?php echo $total;  ?></span> <br>
+                                    <span class="ui center aligned header"><?php echo $total.' DA';  ?></span> <br>
 
                                     <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>

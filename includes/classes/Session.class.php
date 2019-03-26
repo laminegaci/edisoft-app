@@ -3,17 +3,19 @@
 class Session{
     
     private $admin_id;
+    public $username;
 
     public function __construct()
     {
         session_start();
         $this->check_stored_login();
     }
-    public function login($admin){
+    public function login($admin,$admin_name){
 
         if($admin){
             session_regenerate_id(); 
             $_SESSION['admin_id'] = $admin->id_ad;
+            
             $this->admin_id = $admin->id_ad;
  
         }

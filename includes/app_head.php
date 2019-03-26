@@ -132,6 +132,13 @@ if(!isset($page_title)){
           <i class="sidebar large icon"></i>
         </a>
         
+        
+        <a class="item bar" href="<?php echo url_for("admins/index.php"); ?>">
+          <i class="user large icon"></i>
+          <div class="content">Admins</div>
+        </a>
+        
+        
         <a class="item bar" href="<?php echo url_for('dashboard.php'); ?>">
           <i class="home large icon"></i>
           <div class="content">Accueil</div>

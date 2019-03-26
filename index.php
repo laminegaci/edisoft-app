@@ -23,12 +23,16 @@ if(is_post_request()) {
   // if there were no errors, try to login
   if(empty($errors)) {
     $admin = Admin::find_by_username($username);
+    
     // test if admin found and password is correct
     if($admin != false && $admin->verify_password($password)) {
       // Mark admin as logged in
-      $session->login($admin);
+      $session->login($admin,$admin_name);
       redirect_to(url_for('dashboard.php'));
-    } else {
+
+      
+    } 
+    else {
       // username not found or password does not match
       $errors[] = "mot de passe ou nom d'utilisateur erroné :/ ";
     }
@@ -135,7 +139,7 @@ if(is_post_request()) {
       <div class="<?php if(!empty($errors)){ echo 'ui negative message'; ?>">
   <i class="close icon"></i>
   <div class="header">
-   Il y'a des erreurs dans votre inscription 
+   
   </div>
   <ul class="list">
                    

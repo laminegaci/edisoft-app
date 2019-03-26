@@ -56,14 +56,16 @@ class Admin{
     }
     
     static public function find_by_id($id){
-        $sql = "SELECT * FROM pack ";
-        $sql .="WHERE id_pack='". self::$database->escape_string($id) ."'";
-        $object_array= self::find_by_sql($sql);
-        if(!empty($object_array)){
-            return array_shift($object_array);
-        }else{
-            return false;
+        $sql = "SELECT username_ad FROM admin ";
+        $sql .="WHERE id_ad='". self::$database->escape_string($id) ."'";
+        $result = self::$database->query($sql);
+        $array = $result->fetch_assoc();
+        foreach($array as $key => $value)
+        {
+             return $value;
         }
+        
+        var_dump($array);
     }
 
    
@@ -184,8 +186,8 @@ class Admin{
 
           if(is_blank($this->password_ad)) {
             $this->errors[] = "le mot de passe ne doit pas être vide.";
-          } elseif (!has_length($this->password_ad, array('min' => 12))) {
-            $this->errors[] = "le mot de passe doit contenir au moins 12 caractéres ou plus";
+          } elseif (!has_length($this->password_ad, array('min' => 8))) {
+            $this->errors[] = "le mot de passe doit contenir au moins 8 caractéres ou plus";
           } elseif (!preg_match('/[A-Z]/', $this->password_ad)) {
             $this->errors[] = "le mot de passe doit contenir au moins un caractére majiscule";
           } elseif (!preg_match('/[a-z]/', $this->password_ad)) {

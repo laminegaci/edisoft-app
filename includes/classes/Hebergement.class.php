@@ -244,20 +244,11 @@ class Hebergement{
 
         return $row;
     }
-    static public function find_total_revenu()
-    {
-        $sql = "SELECT SUM(total_fact) FROM facture";
-        $result = self::$database->query($sql);
-        var_dump($result);
-        // $value = $result->fetch_assoc();
-        // return $value;
-        
-
-    }
+    
 
     static function find_expired(){
         $sql = "SELECT * FROM hebergement ";
-        $sql .="where DATEDIFF(date_fin_heb,now()) < 0";
+        $sql .="where DATEDIFF(date_fin_heb,now()) <= 0";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -290,7 +281,7 @@ class Hebergement{
     static public function rows_expiré()
     {
         $sql = "select*from hebergement ";
-        $sql .="where DATEDIFF(date_fin_heb,now()) < 0";
+        $sql .="where DATEDIFF(date_fin_heb,now()) <= 0";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
         $result->free();

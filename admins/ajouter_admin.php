@@ -30,13 +30,12 @@ if(is_post_request() && isset($_POST['inscrire'])){
      // var_dump($result);
       
       if($result === true){
-       
-        
-        redirect_to('../dashboard.php');
+              
+        redirect_to('index.php');
       }else{
         session_start();
         $_SESSION['errors'] = $result;//ykhabi les erreurs ta3 validate()
-        redirect_to('inscription.php');//bah yweli hna
+        redirect_to('add_admin.php');//bah yweli hna
       }
       
     
@@ -45,3 +44,7 @@ if(is_post_request() && isset($_POST['inscrire'])){
 
 ///////////////////////////////////////////////////////////////////////////////////
 ?>
+<?php 
+//session_destroy();
+$_SESSION['errors'] = [];
+echo url_for('dist/semantic.min.js'); ?>

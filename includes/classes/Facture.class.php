@@ -162,7 +162,7 @@ class Facture{
         }
         
         
-        return ($value);
+        return $som;
         
 
     }

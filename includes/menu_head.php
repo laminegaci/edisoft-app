@@ -1,3 +1,8 @@
+<?php
+require_once("initialize.php");
+
+
+?>
 <style>
 img{
     font-size:35px;
@@ -25,7 +30,8 @@ padding-left: 50px;
                 <div class="right menu">
                 <div class="item">
                     <i class="user icon"></i>
-                    Bouberita
+<?php $username = Admin::find_by_id($_SESSION['admin_id'])?>
+                        <?php echo $username.''.$_SESSION['admin_id']; ?>
                     </div>
                     <div class="item">
                   
