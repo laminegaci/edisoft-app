@@ -196,8 +196,7 @@ class Hebergement{
      }
     //---------------------------------------------------------------------------------------
 
-    public function find_names()
-    {
+    public function find_names(){
             $sql = "SELECT url_heb FROM hebergement ";
             $object_array= self::find_by_sql($sql);
             if(!empty($object_array)){
@@ -217,8 +216,7 @@ class Hebergement{
         }
     }
     //---------------------------------------------------------------------------------------
-    static public function rows_tot()
-    {
+    static public function rows_tot(){
         $sql = "select*from hebergement";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
@@ -226,8 +224,7 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_dns()
-    {
+    static public function rows_dns(){
         $sql = "select*from hebergement where id_pack=1";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
@@ -235,8 +232,7 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_else()
-    {
+    static public function rows_else(){
         $sql = "select*from hebergement where id_pack!=1";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
@@ -278,8 +274,7 @@ class Hebergement{
         echo $now->diff($date)->format(" %R%a jour, %h heur %i minuts");
     }
 
-    static public function rows_expiré()
-    {
+    static public function rows_expiré(){
         $sql = "select*from hebergement ";
         $sql .="where DATEDIFF(date_fin_heb,now()) <= 0";
         $result = self::$database->query($sql);
@@ -288,8 +283,7 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_envoie_expiré()
-    {
+    static public function rows_envoie_expiré(){
         $sql = "select*from hebergement ";
         $sql .="where DATEDIFF(date_fin_heb,now()) < 30 and DATEDIFF(date_fin_heb,now()) > 0";
         $result = self::$database->query($sql);

@@ -192,6 +192,7 @@ class Client{
 
         return $row;
     }
+    
     static public function rows_pro()
     {
         $sql = "select*from client where type_cl=0";

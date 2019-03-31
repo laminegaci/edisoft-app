@@ -108,7 +108,7 @@ $rows = Hebergement::rows_tot();
                                 if ($hebergements) {
                                    
                                    foreach ($hebergements as $hebergement) {
-                                       # code...
+                                    
                                  
                                  ?>
 
