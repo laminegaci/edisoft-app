@@ -132,11 +132,17 @@ if(!isset($page_title)){
           <i class="sidebar large icon"></i>
         </a>
         
-        
-        <a class="item bar" href="<?php echo url_for("admins/index.php"); ?>">
-          <i class="user large icon"></i>
-          <div class="content">Admins</div>
-        </a>
+    
+        <?php 
+        if($_SESSION['admin_id'] == 1) 
+        { echo '
+            <a class="item bar" href="';?><?php echo url_for("admins/index.php"); ?><?php echo '">';?>
+              <?php echo '<i class="user large icon"></i>
+              <div class="content">Admins</div>
+            </a>
+        ';
+        }
+        ?>
         
         
         <a class="item bar" href="<?php echo url_for('dashboard.php'); ?>">

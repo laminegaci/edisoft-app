@@ -40,7 +40,7 @@ class Admin{
     }
 
     static public function find_all(){
-        $sql = "SELECT * FROM pack";
+        $sql = "SELECT * FROM admin";
        return self::find_by_sql($sql);
     }
 

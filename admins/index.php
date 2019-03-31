@@ -1,7 +1,11 @@
 <?php 
 require_once("../includes/initialize.php");
+if(require_login() && ! $session->check_one()){
+    redirect_to(url_for('dashboard.php'));
+    }else{
+        
+    }
 include("../includes/app_head.php");
-
 
 ?>
 
@@ -36,18 +40,6 @@ include("../includes/app_head.php");
 
          <div class="ui padded grid">
 
-
-             <?php 
-
-
-
-
-$rows = pack::rows_tot();
-/*
-$rows1 = pack::rows_pro();
-$rows2 = pack::rows_part();
-*/
-?>
              <div class="ui fifteen wide column row centered grid segment">
 
                  <div class="ui pointing secondary big menu">
@@ -56,7 +48,7 @@ $rows2 = pack::rows_part();
                      <h1 class="ui center aligned header item"><i class="boxes icon"></i>Admin</h1>
 
 
-                     <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(<?php echo $rows; ?>)</a>
+                     <!-- <a class="item active" data-tab="first"><i class="large list icon"></i></a> -->
                    
 
                      <div class="right item">
@@ -64,7 +56,7 @@ $rows2 = pack::rows_part();
                              <i class="large plus circle icon"></i>
 
                          </a>
-                         <div class="ui loading search  ">
+                         <div class="ui search  ">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="Rechercher..."
                                                 id="search">
@@ -80,7 +72,7 @@ $rows2 = pack::rows_part();
                      <?php 
 /////////////////////////////////////////////////////////////////////:::
 
-
+$admins = Admin::find_all();
 
 ?>
                
@@ -96,8 +88,18 @@ $rows2 = pack::rows_part();
                              </tr>
                          </thead>
                          <tbody>
-
-                            
+                             <?php 
+                             if($admins){
+                                foreach($admins as $admin){
+                             ?>
+                             <tr>
+                            <td><?php echo h($admin->id_ad);?></td>
+                            <td><?php echo h($admin->username_ad);?></td>
+                            </tr>
+                            <?php
+                                }
+                            }
+                            ?>
                          </tbody>
                      </table>
 

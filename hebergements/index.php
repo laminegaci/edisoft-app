@@ -52,7 +52,7 @@ $rows = Hebergement::rows_tot();
                             <i class="large plus circle icon"></i>
 
                         </a>
-                        <div class="ui loading search  ">
+                        <div class="ui search  ">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="chercher..."
                                                 id="search">

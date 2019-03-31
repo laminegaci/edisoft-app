@@ -15,7 +15,7 @@ class Session{
         if($admin){
             session_regenerate_id(); 
             $_SESSION['admin_id'] = $admin->id_ad;
-            
+            $_SESSION['username'] = $admin->username_ad;
             $this->admin_id = $admin->id_ad;
  
         }
@@ -37,6 +37,13 @@ class Session{
         if(isset( $_SESSION['admin_id'])){
             $this->admin_id =  $_SESSION['admin_id'];
         }
+    }
+    public function check_one(){
+       if(  $this->admin_id == 1){
+           return true;
+       }else{
+           return false;
+       }
     }
 }
 

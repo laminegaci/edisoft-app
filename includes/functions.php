@@ -84,9 +84,12 @@ function test_input($data) {
   function require_login(){
     global $session;
     if($session->is_logged_in()){
+      return true;
 
     }else{
+      
         redirect_to(url_for('index.php'));
+        return false;
     }
   }
 ?>

@@ -1,7 +1,9 @@
 
 <?php
 require_once("../includes/initialize.php");
-
+if(require_login() && $session->show_id() !== 1){
+  redirect_to(url_for('dashboard.php'));
+  }
 if(is_post_request() && isset($_POST['inscrire'])){
       
     /*
@@ -44,7 +46,3 @@ if(is_post_request() && isset($_POST['inscrire'])){
 
 ///////////////////////////////////////////////////////////////////////////////////
 ?>
-<?php 
-//session_destroy();
-$_SESSION['errors'] = [];
-echo url_for('dist/semantic.min.js'); ?>

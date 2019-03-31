@@ -273,7 +273,7 @@ $rows_envoie = Hebergement::rows_envoie_expiré();
 
                                 <div class="two wide column">
 
-                                    <div class="ui loading search  column">
+                                    <div class="ui search  column" id="load_search">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="cherher..."
                                                 id="search">
@@ -519,6 +519,7 @@ $(function() {
 
     // Write on keyup event of keyword input element
     $("#search").keyup(function() {
+        $('#load_search').toggleClass('loading');
         var searchText = $(this).val().toLowerCase();
         // Show only matching TR, hide rest of them
         $.each($("#table tbody tr"), function() {
