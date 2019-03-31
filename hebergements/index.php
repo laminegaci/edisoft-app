@@ -174,7 +174,7 @@ $rows = Hebergement::rows_tot();
                                     <tr>
                                         <td><?php echo h($hebergement->id_heb); ?></td>
                                         <td><?php echo h($hebergement->prenom_cl . $hebergement->nom_cl); ?></td>
-                                        <!-- <td><?php?></td> -->
+                                       
                                         <td><?php echo h($hebergement->url_heb) ;?></td>
                                         <td><?php echo h($hebergement->date_deb_heb); ?></td>
                                         <td><?php echo h($hebergement->date_fin_heb) ;?></td>

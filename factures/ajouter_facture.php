@@ -25,7 +25,10 @@ select.ui.dropdown {
 
     <div class="ui fluid container">
 
-        <?php include('../includes/menu_head.php'); ?>
+        <?php include('../includes/menu_head.php');
+     $clients = Client::find_all();
+        
+        ?>
 
         <div class="ui padded grid">
 
@@ -45,13 +48,16 @@ select.ui.dropdown {
 
                             <div class="ten wide field">
                                 <label for="">Client:</label>
-                                <div class="ui search">
-                                    <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="Common passwords..." name="id_cl">
-                                        <i class="search icon"></i>
-                                    </div>
-                                    <div class="results"></div>
-                                </div>
+                                <select class="ui search dropdown" name="id_cl">
+                                <option value="">Client..</option>
+                               <?php foreach ($clients as $client) {
+                                   ?>
+                                <option value="<?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?>">  <?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?></option>
+
+                                <?php
+                               }?>
+                                </select>
+
 
                             </div>
 
@@ -134,7 +140,9 @@ $('.ui.search')
 ;
 $(document).ready(function() {
 
-
+    $('.ui.dropdown')
+  .dropdown()
+;
     $('.selection.dropdown, #menu_type')
         .dropdown();
 

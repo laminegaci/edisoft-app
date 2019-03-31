@@ -24,7 +24,10 @@ require_once("../includes/initialize.php");
         <?php include('../includes/menu_head.php'); 
      
 
-        
+     $clients = Client::find_all();
+    
+     
+     
         
         ?>
 
@@ -44,13 +47,17 @@ require_once("../includes/initialize.php");
                     <div class="fields">
                             <div class="field">
                                 <label for="">Client:</label>
-                                <div class="ui search">
-                                    <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="cherche client" name="id_cl">
-                                        <i class="search icon"></i>
-                                    </div>
-                                    <div class="results"></div>
-                                </div>
+                                
+                                <select class="ui search dropdown" name="id_cl">
+                                <option value="">Client..</option>
+                               <?php foreach ($clients as $client) {
+                                   ?>
+                                <option value="<?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?>">  <?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?></option>
+
+                                <?php
+                               }?>
+                                </select>
+
                             </div>
                             <div class="field">
                                 <label for="fruit">Selectionner type du site</label>
@@ -205,7 +212,9 @@ require_once("../includes/initialize.php");
 
 
 <script>
-
+$('.ui.dropdown')
+  .dropdown()
+;
 $('.ui.search')
   .search({
     apiSettings: {

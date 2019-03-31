@@ -32,6 +32,7 @@ select.ui.dropdown {
 
         $pack = new Pack;
         $packs= $pack->find_all();
+     $clients = Client::find_all();
         
  
 
@@ -54,13 +55,15 @@ select.ui.dropdown {
 
                             <div class="eight wide field">
                                 <label for="">Client:</label>
-                                <div class="ui search">
-                                    <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="Common passwords..." name="id_cl">
-                                        <i class="search icon"></i>
-                                    </div>
-                                    <div class="results"></div>
-                                </div>
+                                <select class="ui search dropdown" name="id_cl">
+                                <option value="">Client..</option>
+                               <?php foreach ($clients as $client) {
+                                   ?>
+                                <option value="<?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?>">  <?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?></option>
+
+                                <?php
+                               }?>
+                                </select>
 
                             </div>
 
@@ -146,7 +149,9 @@ select.ui.dropdown {
 
 <script>
 $(document).ready(function() {
-
+    $('.ui.dropdown')
+  .dropdown()
+;
    
     $('.ui.search')
   .search({
