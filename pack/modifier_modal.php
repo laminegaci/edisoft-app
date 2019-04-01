@@ -1,14 +1,6 @@
 
 <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
-}
 
-.prompt {
-    border-radius: 5px !important;
-}
 
 label {
     float: left;

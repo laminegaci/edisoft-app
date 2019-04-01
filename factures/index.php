@@ -37,7 +37,7 @@ include("../includes/app_head.php");
 
                     <div class="right item">
                         <a href="ajouter_facture.php" class="">
-                            <i class="large plus circle icon"></i>
+                            <i class="huge plus circle icon"></i>
 
                         </a>
                         <div class="ui search  ">

@@ -58,7 +58,7 @@ $rows = Client::rows_tot();
                                     
                      <div class="right item">
                          <a href="ajouter_client.php" class="">
-                             <i class="large plus circle icon"></i>
+                             <i class="huge plus circle icon"></i>
 
                          </a>
                          <div class="ui search  ">
@@ -142,8 +142,8 @@ $clients = Client::find_all();
                                  <td>
 
                                      <button class="ui tiny blue  button"
-                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="afficher"><i
-                                             class="folder open outline icon"></i><span>Afficher</span></button>
+                                         data-button_id="<?php echo h($client->id_cl) ?>" data-type="afficher">
+                                         <i class="question icon"></i><span>Afficher</span></button>
 
                                      <div class="ui large modal afficher a<?php echo h($client->id_cl) ?>">
                                          <div class="content">
@@ -165,8 +165,8 @@ $clients = Client::find_all();
 
                                  <td>
                                      <button class="ui tiny red button" data-button_id="<?php echo h($client->id_cl) ?>"
-                                         data-type="supprimer"><i
-                                             class="edit outline icon"></i><span>Supprimer</span></button>
+                                         data-type="supprimer">
+                                         <i class="user slash icon"></i><span>Supprimer</span></button>
 
                                      <div class="ui modal supprimer s<?php echo h($client->id_cl) ?>">
                                          <?php supprimer_modal($client->id_cl, ''); ?>

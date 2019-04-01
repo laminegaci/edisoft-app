@@ -6,16 +6,9 @@ include('function_modal.php');
 ?>
 
  <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
+.ui.search .prompt{
+    border-radius: 500rem !important;
 }
-
-.prompt {
-    border-radius: 5px !important;
-}
-
 .ui.button i {
     display: inline;
 }
@@ -61,7 +54,7 @@ $rows2 = pack::rows_part();
 
                      <div class="right item">
                          <a href="ajouter_pack.php" class="">
-                             <i class="large plus circle icon"></i>
+                             <i class="huge plus circle icon"></i>
 
                          </a>
                          <div class="ui search  ">
@@ -124,8 +117,8 @@ $packs = Pack::find_all();
 
                                  <td class="collapsing">
                                      <button class="ui tiny red button" data-button_id="<?php echo h($pack->id_pack) ?>"
-                                         data-type="supprimer"><i
-                                             class="edit outline icon"></i><span>Supprimer</span></button>
+                                         data-type="supprimer">
+                                         <i class="ban icon"></i><span>Supprimer</span></button>
 
                                      <div class="ui modal supprimer s<?php echo h($pack->id_pack) ?>">
                                          <?php supprimer_modal($pack->id_pack, ''); ?>

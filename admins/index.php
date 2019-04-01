@@ -10,15 +10,6 @@ include("../includes/app_head.php");
 ?>
 
  <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
-}
-
-.prompt {
-    border-radius: 5px !important;
-}
 
 .ui.button i {
     display: inline;
@@ -45,7 +36,7 @@ include("../includes/app_head.php");
                  <div class="ui pointing secondary big menu">
 
 
-                     <h1 class="ui center aligned header item"><i class="boxes icon"></i>Admin</h1>
+                     <h1 class="ui center aligned header item"><i class="key icon"></i><i class="lock open icon"></i>Admin</h1>
 
 
                      <!-- <a class="item active" data-tab="first"><i class="large list icon"></i></a> -->
@@ -53,7 +44,7 @@ include("../includes/app_head.php");
 
                      <div class="right item">
                          <a href="add_admin.php" class="">
-                             <i class="large plus circle icon"></i>
+                             <i class="huge plus circle icon"></i>
 
                          </a>
                          <div class="ui search  ">
