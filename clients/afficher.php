@@ -114,16 +114,15 @@ $client = Client::find_by_id($id);
                           </thead>
 <?php
 $hybergement = Hebergement::find_hyber_by_id($client->id_cl);
-//$nom_pack = Hebergement::find_pack($hybergement->id_pack);
-//var_dump($hybergement->id_pack);
+
 ?>
                           <tbody>
                           <?php
                            
                              if($hybergement){
                                 foreach($hybergement as $hyber){
-                                  $id_p = $hyber->id_pack;
-                                  //$nom_pack = Hebergement::find_pack($id_p);
+                                $id_p = $hyber->id_pack;
+                                $nom_pack = Hebergement::find_pack($id_p);
                                    
                                   
                           ?>
@@ -132,7 +131,7 @@ $hybergement = Hebergement::find_hyber_by_id($client->id_cl);
                               <td><?php echo h($hyber->id_heb);?></td>
                               <td><?php echo h($client->nom_cl) . ' ' .  h($client->prenom_cl);?></td>
                               <td><?php echo h($hyber->url_heb);?></td>
-                              <td><?php echo h($hyber->id_pack);?></td>
+                              <td><?php if($hyber->espace_heb ==0) echo 'Domaine';else {echo $nom_pack.'(<small>' . $hyber->espace_heb . '</small>)';}?></td>
                               <td><?php echo h($hyber->date_deb_heb);?></td>
                               <td><?php echo h($hyber->date_fin_heb);?></td>
                               <td><?php echo h($hyber->prix);?></td>
@@ -158,27 +157,38 @@ $hybergement = Hebergement::find_hyber_by_id($client->id_cl);
                               <th>Langue</th>
                               <th>début du conception</th>
                               <th>délai</th>
-                              <th>état d'avancement</th>
-                              <th>commentaire</th>
                               <th>Prix</th>
-                              <th>versement</th>
                               
                             </tr>
                           </thead>
+<?php
+$conception = Conception::find_cons_by_id($client->id_cl);
+?>
                           <tbody>
+                          <?php
+                              if($conception){
+                                foreach($conception as $conc){
+
+                                
+                              
+                              ?>
                               <tr>
-                                <td>1</td>
-                                <td>dynamique</td>
-                                <td>edisoft.dz</td>
-                                <td>Fr</td>
-                                <td>8/02/2019</td>
-                                <td>30 jours</td>
-                                <td>90%</td>
-                                <td>partie commande restante</td>
-                                <td>15000 DA</td>
-                                <td>5000 DA</td>
+                              <td><?php echo h($conc->id_con);?></td>
+                              <td><?php echo h($conc->type_con);?></td>
+                              <td><?php echo h($conc->nom_con);?></td>
+                              <td><?php echo h($conc->multilan_con);?></td>
+                              <td><?php echo h($conc->date_deb_con);?></td>
+                              <td><?php echo h($conc->delai_con);?></td>
+                              <td><?php echo h($conc->prix_con);?></td>
+
+                              
                               </tr>
                              
+                             <?php
+                                  
+                                }
+                              }
+                              ?>
                             </tbody>
                   </table>
                                       </div>
