@@ -36,7 +36,7 @@ class Client{
     }
 
     static public function find_all(){
-        $sql = "SELECT * FROM client";
+        $sql = "SELECT * FROM client ORDER by id_cl DESC";
        return self::find_by_sql($sql);
     }
 
@@ -192,6 +192,7 @@ class Client{
 
         return $row;
     }
+    
     static public function rows_pro()
     {
         $sql = "select*from client where type_cl=0";

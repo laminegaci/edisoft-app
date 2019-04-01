@@ -208,9 +208,21 @@ class Hebergement{
         
      }
     //---------------------------------------------------------------------------------------
+     public static function find_all(){
 
-    public function find_names()
-    {
+        $sql = "SELECT client.nom_cl, client.prenom_cl, pack.nom_pack,hebergement.id_heb,hebergement.id_fact,  hebergement.url_heb,hebergement.date_deb_heb,hebergement.date_fin_heb,hebergement.espace_heb,hebergement.prix
+        FROM hebergement
+        JOIN client 
+        ON hebergement.id_cl = client.id_cl
+        JOIN pack 
+        ON hebergement.id_pack = pack.id_pack
+        ORDER by id_heb DESC
+        ";
+       return self::find_by_sql($sql);
+        
+     }
+     
+    public function find_names(){
             $sql = "SELECT url_heb FROM hebergement ";
             $object_array= self::find_by_sql($sql);
             if(!empty($object_array)){
@@ -230,8 +242,7 @@ class Hebergement{
         }
     }
     //---------------------------------------------------------------------------------------
-    static public function rows_tot()
-    {
+    static public function rows_tot(){
         $sql = "select*from hebergement";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
@@ -239,8 +250,7 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_dns()
-    {
+    static public function rows_dns(){
         $sql = "select*from hebergement where id_pack=1";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
@@ -248,8 +258,7 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_else()
-    {
+    static public function rows_else(){
         $sql = "select*from hebergement where id_pack!=1";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
@@ -291,8 +300,7 @@ class Hebergement{
         echo $now->diff($date)->format(" %R%a jour, %h heur %i minuts");
     }
 
-    static public function rows_expiré()
-    {
+    static public function rows_expiré(){
         $sql = "select*from hebergement ";
         $sql .="where DATEDIFF(date_fin_heb,now()) <= 0";
         $result = self::$database->query($sql);
@@ -301,8 +309,7 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_envoie_expiré()
-    {
+    static public function rows_envoie_expiré(){
         $sql = "select*from hebergement ";
         $sql .="where DATEDIFF(date_fin_heb,now()) < 30 and DATEDIFF(date_fin_heb,now()) > 0";
         $result = self::$database->query($sql);
