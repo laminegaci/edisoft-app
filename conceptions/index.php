@@ -104,7 +104,6 @@ $conception = Conception::find_all();
                                             <th>Versement</th>
                                             <th>date de début</th>
                                             <th>délai restant</th>
-                                            <th>état d'avancement</th>
                                             <th colspan="2">Commentaire</th>
                                         </tr>
                                     </thead>
@@ -127,12 +126,7 @@ $conception = Conception::find_all();
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
                                             <td><?php echo h($cons->delai_con) . ' rest' . '('. $delai . /*$date_fin*/'' .')';?></td>
-                                            <td>
-                                            <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
-                                                    <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
-                                                </div>
-                                            </td>
+                                          
                                             <td>
                                                 <div class="ui bulleted list">
                                                     <div class="item"><?php echo h($cons->commentaire_con);?></div>
@@ -230,7 +224,7 @@ $conception = Conception::find_statique();
                                             <th>Versement</th>
                                             <th>date de début</th>
                                             <th>délai restant</th>
-                                            <th>état d'avancement</th>
+                                           
                                             <th colspan="2">Commentaire</th>
                                         </tr>
                                     </thead>
@@ -254,12 +248,7 @@ $conception = Conception::find_statique();
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
                                             <td><?php echo $delai;?></td>
-                                            <td>
-                                            <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
-                                                    <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
-                                                </div>
-                                            </td>
+                                          
                                             <td>
                                                 <div class="ui bulleted list">
                                                     <div class="item"><?php echo h($cons->commentaire_con);?></div>
@@ -360,7 +349,7 @@ $conception = Conception::find_dynamique();
                                             <th>Versement</th>
                                             <th>date de début</th>
                                             <th>délai restant</th>
-                                            <th>état d'avancement</th>
+                                            
                                             <th colspan="2">Commentaire</th>
                                         </tr>
                                     </thead>
@@ -384,12 +373,7 @@ $conception = Conception::find_dynamique();
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
                                             <td><?php echo $delai;?></td>
-                                            <td>
-                                            <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
-                                                    <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
-                                                </div>
-                                            </td>
+                                           
                                             <td>
                                                 <div class="ui bulleted list">
                                                     <div class="item"><?php echo h($cons->commentaire_con);?></div>

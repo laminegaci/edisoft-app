@@ -40,16 +40,16 @@ class Conception{
     //---------------------------------------------------------------------------------------
 
     static public function find_all(){
-        $sql = "SELECT * FROM conception where etat_con < 100"; 
+        $sql = "SELECT * FROM conception where  etat_con != 'termine'"; 
        return self::find_by_sql($sql);
     }
     
     static public function find_all_dash(){
-        $sql = "SELECT*FROM `conception` where etat_con<100 ORDER by etat_con desc LIMIT 3;"; 
+        $sql = "SELECT*FROM `conception` where  etat_con != 'termine' ORDER by etat_con desc LIMIT 3;"; 
         return self::find_by_sql($sql);
     }
     static public function find_all_terminer(){
-        $sql = "SELECT * FROM conception where etat_con=100";
+        $sql = "SELECT * FROM conception where etat_con='termine'";
        return self::find_by_sql($sql);
     }
 
@@ -80,7 +80,7 @@ class Conception{
 
     static public function find_statique(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='statique' and etat_con<100";
+        $sql .="WHERE type_con='statique' and etat_con != 'termine'";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -91,7 +91,7 @@ class Conception{
     
     static public function find_stat_terminer(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='statique' and etat_con=100";
+        $sql .="WHERE type_con='statique' and  etat_con != 'termine'";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -102,7 +102,7 @@ class Conception{
     //---------------------------------------------------------------------------------------
     static public function find_dynamique(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='dynamique' and etat_con<100";
+        $sql .="WHERE type_con='dynamique' and  etat_con != 'termine'";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -112,7 +112,7 @@ class Conception{
     }
     static public function find_dyn_terminer(){
         $sql = "SELECT * FROM conception ";
-        $sql .="WHERE type_con='dynamique' and etat_con=100";
+        $sql .="WHERE type_con='dynamique' and  etat_con != 'termine'";
         $object_array= self::find_by_sql($sql);
         if(!empty($object_array)){
             return $object_array;
@@ -358,7 +358,7 @@ class Conception{
         $this->delai_con = $args['delai_con'] ?? '';
         $this->prix_con = $args['prix_con'] ?? '';
         $this->versement_con = $args['versement_con'] ?? '';
-        $this->etat_con = $args['etat_con'] ?? 10;
+        $this->etat_con = $args['etat_con'] ?? NULL;
         $this->commentaire_con = $args['commentaire_con'] ?? '';
         $this->id_ad = $args['id_ad'] ?? 1;
         $this->id_cl = $args['id_cl'] ?? '';
