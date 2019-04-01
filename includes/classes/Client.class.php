@@ -36,7 +36,7 @@ class Client{
     }
 
     static public function find_all(){
-        $sql = "SELECT * FROM client";
+        $sql = "SELECT * FROM client ORDER by id_cl DESC";
        return self::find_by_sql($sql);
     }
 

@@ -17,6 +17,9 @@ include("../includes/app_head.php");
     height: 85vh;
     overflow: scroll;
 }
+.ui.big.form select{
+height: 100%;
+}
 </style>
 
 <div class="page">
@@ -62,30 +65,55 @@ $rows = Hebergement::rows_tot();
                         </div>
                     </div>
                 </div>
-
-                <div class="ui tab  active" data-tab="first">
-                <?php if($rows==0) echo '<h3 style="color:red">pas d\'hybergement ajouter</h3>';?>
-                        <div class="ui top attached tabular  menu">
-                            
-
-                        </div>
-                        <div class="ui bottom attached active tab " data-tab="first/a">
-<?php 
+                <?php 
    $hebergements= $hebergement->find_all();
-   //var_dump($hebergements);
+   $pack = new Pack;
+   $packs= $pack->find_all();
+   //var_dump($pack);
    
 ?>
 
-                            <table class="ui striped table">
+                <div class="ui tab  active" data-tab="first">
+                <?php if($rows==0) echo '<h3 style="color:red">pas d\'hybergement ajouter</h3>';?>
+                <div class="row">
+                     <div class=" column">
+                         <div class="ui big form">
+                             <div class="fields">
+                                 <div class=" five wide field" >
+                                    <select name="" id="selectFilter" class="ui dropdown">
+                                        <option value="" id="all">Tout</option>
+                                      <?php 
+                                
+                                if ($packs) {
+                                    foreach ($packs as $pack) {
+                                        ?>
+
+                                        <option value="<?php echo h($pack->nom_pack);?>" id="<?php echo h($pack->nom_pack);?>"><?php echo h($pack->nom_pack);?></option>
+                                   
+                                   <?php
+                                    }
+                                } ?>
+                                    </select>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                        <div class="ui bottom attached active tab " data-tab="first/a">
+
+
+
+                            <table class="ui striped large table" id="tabAll">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>client</th>
                                         
                                         <th>nom de domaine</th>
+                                        <th>pack</th>
+
                                         <th>date début</th>
                                         <th>date d'expiration</th>
-                                        <th>pack</th>
                                         <th>prix pack</th>
                                         <th>etat</th>
                                     </tr>
@@ -100,14 +128,16 @@ $rows = Hebergement::rows_tot();
                                  
                                  ?>
 
-                                    <tr>
+                                    <tr class="all <?php echo h($hebergement->nom_pack);?>">
                                         <td><?php echo h($hebergement->id_heb); ?></td>
-                                        <td><?php echo h($client->prenom_cl ." ". $client->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->prenom_cl ." ". $hebergement->nom_cl); ?></td>
                                         
                                         <td><?php echo h($hebergement->url_heb) ;?></td>
+                                        <td><b><?php echo h($hebergement->nom_pack);?></b><small>(<?php echo h($hebergement->espace_heb); ?>Go)</small></td>
+
                                         <td><?php echo h($hebergement->date_deb_heb); ?></td>
                                         <td><?php echo h($hebergement->date_fin_heb) ;?></td>
-                                        <td><?php echo h($hebergement->nom_pack);?></td>
+
                                         <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
                                         <td><?php  if($hebergement->id_fact == NULL){echo 'non payé';}else{echo 'payé';} ?></td>
                                        
@@ -178,8 +208,24 @@ $rows = Hebergement::rows_tot();
 
 
 <script>
+     $('#selectFilter').change(function () {
+                                        $(".all").hide();
+                                        $("." + $(this).find(":selected").attr("id")).show();
+                             });
+
 $('.menu .item')
     .tab();
+
+    $("#search").keyup(function() {
+                 var searchText = $(this).val().toLowerCase();
+                 // Show only matching TR, hide rest of them
+                 $.each($("#tabAll tbody tr, #tabPro tbody tr, #tabParti tbody tr"), function() {
+                     if ($(this).text().toLowerCase().indexOf(searchText) === -1)
+                         $(this).hide();
+                     else
+                         $(this).show();
+                 });
+             });
 </script>
 
 
