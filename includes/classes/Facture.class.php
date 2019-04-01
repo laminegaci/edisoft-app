@@ -143,7 +143,35 @@ class Facture{
     }
     static public function rows_tot()
     {
-        $sql = "select*from pack";
+        $sql = "select*from facture";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+
+    static public function rows_cache()
+    {
+        $sql = "select*from facture where type_pai_fact='cache'";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_cheque()
+    {
+        $sql = "select*from facture where type_pai_fact='cheque'";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_ccp()
+    {
+        $sql = "select*from facture where type_pai_fact='ccp'";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
         $result->free();
