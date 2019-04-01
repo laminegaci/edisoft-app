@@ -5,14 +5,8 @@ include('function_modal.php');
 ?>
 
  <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
-}
-
-.prompt {
-    border-radius: 5px !important;
+.ui.search .prompt{
+    border-radius: 500rem !important;
 }
 
 .ui.button i {
@@ -61,7 +55,7 @@ $rows = Client::rows_tot();
                      <a class="item active" data-tab="first"><i
                              class="large list icon"></i>Tout(<?php echo $rows; ?>)</a>
 
-
+                                    
                      <div class="right item">
                          <a href="ajouter_client.php" class="">
                              <i class="large plus circle icon"></i>

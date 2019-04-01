@@ -60,6 +60,7 @@ $rows2 = Conception::rows_dynamique();
                               <a class="item" data-tab="third"><i class="large node js icon"></i>Dynamique(<?php echo $rows2; ?>)</a>
                             
 
+                              
                               <div class="right item">
                                   <a href="ajouter_conception.php" class="">
                                         <i class="large plus circle icon"></i>

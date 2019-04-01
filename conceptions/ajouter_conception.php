@@ -132,15 +132,7 @@ require_once("../includes/initialize.php");
                             </div>
                         </div>
 
-                        <div class="field">
-                        <br>
-                            <label>Versement</label>
-                            <div class="ui left icon input">
-                                <i class="hand holding usd icon"></i>
-                                <input type="text" name="versement_con" autocomplete="off">
-
-                            </div>
-                        </div>
+                    
                         <div class="field">
                             <label>commentaire</label>
                             <div class="ui left icon input">

@@ -4,14 +4,8 @@ include("../includes/app_head.php");
 ?>
 
 <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
-}
-
-.prompt {
-    border-radius: 5px !important;
+.ui.search .prompt{
+    border-radius: 500rem !important;
 }
 .ui.fifteen.wide.column.row.centered.grid.segment{
     height: 85vh;

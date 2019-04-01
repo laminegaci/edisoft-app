@@ -4,20 +4,14 @@ include("../includes/app_head.php");
 ?>
 
 <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
 
-}
 .ui.fifteen.wide.column.row.centered.grid.segment{
     height: 85vh;
     overflow: scroll;
 }
 
-.prompt {
-    border:1px solid;
-    border-radius: 5px !important;
+.ui.search .prompt{
+    border-radius: 500rem !important;
 }
 </style>
 

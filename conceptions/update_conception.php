@@ -16,12 +16,12 @@ if(is_post_request() && isset($_POST['modifier'])){
       }
     */
 
-   
+ 
+    
    $args = [];
   
 
    $args['commentaire_con'] = $_POST['comment'] ?? NULL;
-   $args['versement_con'] = $_POST['versement'] ?? NULL;
    $args['etat_con'] = $_POST['etat_con'] ?? NULL;
    
    
@@ -35,5 +35,6 @@ if(is_post_request() && isset($_POST['modifier'])){
       echo '<script> alert("mamchatch");</script>';
       echo var_dump(self::$database->error_list);
   }
+  
 }
 ?>

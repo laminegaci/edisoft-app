@@ -28,7 +28,10 @@ require_once("../includes/initialize.php");
       $args['delai_con'] = $_POST['delai_con'] ?? NULL;
       $args['type_con'] = $_POST['type_con'] ?? 'statique';
       $args['prix_con'] = $_POST['prix_con'] ?? NULL;
-      $args['versement_con'] = $_POST['versement_con'] ?? NULL;
+
+      $args['versement_con'] = ($_POST['prix_con'] * 30 / 100) ?? NULL;
+
+
       $args['multilan_con'] = $_POST['multilan_con'] ?? NULL;
       $args['etat_con'] = $_POST['etat_con'] ?? NULL;
       $args['commentaire_con'] = $_POST['commentaire_con'] ?? NULL;
