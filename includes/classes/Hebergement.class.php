@@ -195,7 +195,13 @@ class Hebergement{
         
      }
     //---------------------------------------------------------------------------------------
+     public static function find_all(){
 
+        $sql = "SELECT * FROM hebergement";
+       return self::find_by_sql($sql);
+        
+     }
+     
     public function find_names(){
             $sql = "SELECT url_heb FROM hebergement ";
             $object_array= self::find_by_sql($sql);
