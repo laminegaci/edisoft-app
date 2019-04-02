@@ -128,7 +128,7 @@ $rows = Hebergement::rows_tot();
                                  
                                  ?>
 
-                                    <tr class="all <?php echo h($hebergement->nom_pack);?>">
+                                    <tr <?php if($hebergement->id_fact == NULL){echo "class='red'";}?> class="all <?php echo h($hebergement->nom_pack);?>">
                                         <td><?php echo h($hebergement->id_heb); ?></td>
                                         <td><?php echo h($hebergement->prenom_cl ." ". $hebergement->nom_cl); ?></td>
                                         
@@ -139,7 +139,7 @@ $rows = Hebergement::rows_tot();
                                         <td><?php echo h($hebergement->date_fin_heb) ;?></td>
 
                                         <td><?php echo h($hebergement->prix). " <b>Da</b>" ;?></td>
-                                        <td><?php  if($hebergement->id_fact == NULL){echo 'non payé';}else{echo 'payé';} ?></td>
+                                        <td ><?php  if($hebergement->id_fact == NULL){echo 'non payé';}else{echo 'payé';} ?></td>
                                        
                                     </tr>
                                    

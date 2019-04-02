@@ -11,29 +11,30 @@ if (isset($_POST['valider'])) {
 
     $args['totale_fact'] =  $_POST['totale_fact'] ?? '';
     $args['type_pai_fact'] =  $_POST['type_pai_fact'] ?? '';
+    $args['image_cheque'] =  $_POST['image_cheque'] ?? '';
     $args['date_fact'] =  date('Y-m-d');
     //var_dump($args);
     $heb_array = unserialize($_POST['heb_array']);
     
 
     $facture = new Facture($args);
-    
-    $result = $facture->create();
-    if($result){
+    var_dump($facture);
+    // $result = $facture->create();
+    // if($result){
 
       
-        $update = Facture::update_heb_id($heb_array);
+    //     $update = Facture::update_heb_id($heb_array);
       
-      if($update){
-        redirect_to('index.php');
+    //   if($update){
+    //     redirect_to('index.php');
 
-      }else{
-          echo "madarch update";
-      }
+    //   }else{
+    //       echo "madarch update";
+    //   }
 
-    }else{
-        echo 'erreur créée';
-    }
+    // }else{
+    //     echo 'erreur créée';
+    // }
     
 }
 

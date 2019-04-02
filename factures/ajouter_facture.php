@@ -42,7 +42,7 @@ select.ui.dropdown {
 
 
                 <div class="thirteen wide column">
-                    <form class="ui large form" method="POST" action="facture.php">
+                    <form class="ui large form" method="POST" action="facture.php" enctype="multipart/form-data">
                         <div class="fields">
 
 
@@ -74,14 +74,14 @@ select.ui.dropdown {
                                             <div class="field">
 
                                             <label for="">Paiement en :</label>
-                                <select class="ui  icon dropdown" id="menu_type" name="type_pai_fact" required>
+                                <select class="ui  icon dropdown" id="menu_type" name="type_pai_fact" >
                                     <div class="menu">
                                         <option value="">type...</option>
 
-                                        <option value="cheque">Chéque</option>
+                                        <option value="cheque" id="cheque">Chéque</option>
 
-                                        <option value="espece">Espéce</option>
-                                        <option value="ccp">CCP</option>
+                                        <option value="espece" id="espece">Espéce</option>
+                                        <option value="ccp" id="ccp">CCP</option>
                                        
                                     </div>
 
@@ -89,10 +89,12 @@ select.ui.dropdown {
                                             </div>
 
                         </div>
-
-                       
-                        
-
+                        <div class="fields">
+                        <div class="field"  >
+                            <input type="file" name="cheque">
+                            
+                        </div>
+                        </div>
                         <div class="field">
                             <input type="submit" class="ui big green right floated button" value="Imprimer" name="imprimer">
                             
@@ -100,6 +102,7 @@ select.ui.dropdown {
                         <div class="ui error message"></div>
 
                     </form>
+                    
 
                 </div>
 
@@ -123,7 +126,6 @@ select.ui.dropdown {
 </div>
 <!--fin page-->
 
-
 <script>
 
 $('.ui.search')
@@ -131,16 +133,12 @@ $('.ui.search')
     apiSettings: {
         url: 'getclient.php/?q={query}'
     }
-   
+});
 
-    
-   
-    
-  })
-;
+
 $(document).ready(function() {
 
-    $('.ui.dropdown')
+$('.ui.dropdown')
   .dropdown()
 ;
     $('.selection.dropdown, #menu_type')
@@ -174,51 +172,39 @@ $(document).ready(function() {
 
             }
         });
+});
 
-
-
-
-    $('.ui.form')
+$('.ui.large.form')
         .form({
             on: 'blur',
             fields: {
 
-                url_dns: {
-                    identifier: 'url_dns',
+                id_cl: {
+                    identifier: 'id_cl',
                     rules: [{
                             type: 'empty',
-                            prompt: '<b>URL de site</b> ne doit pas être vide!'
+                            prompt: '<b>Client</b> ne doit pas être vide!'
                         }
 
 
 
                     ]
                 },
-                date_debut: {
-                    identifier: 'date_debut',
+                type_pai_fact: {
+                    identifier: 'type_pai_fact',
                     rules: [{
                             type: 'empty',
-                            prompt: '<b>la date de début</b> ne doit pas être vide!'
+                            prompt: '<b>type de payement</b> ne doit pas être vide!'
                         }
 
 
 
                     ]
-                }
-
-
-
-
-
+                },
+               
             }
         });
 
-      
-
-
-
-
-});
 </script>
 
 
