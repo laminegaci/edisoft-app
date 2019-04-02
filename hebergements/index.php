@@ -128,7 +128,7 @@ $rows = Hebergement::rows_tot();
                                  
                                  ?>
 
-                                    <tr <?php if($hebergement->id_fact == NULL){echo "class='red'";}?> class="all <?php echo h($hebergement->nom_pack);?>">
+                                    <tr class="all <?php echo h($hebergement->nom_pack);?>">
                                         <td><?php echo h($hebergement->id_heb); ?></td>
                                         <td><?php echo h($hebergement->prenom_cl ." ". $hebergement->nom_cl); ?></td>
                                         
