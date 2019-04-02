@@ -1,4 +1,6 @@
-
+<?php 
+require_once("../includes/initialize.php");
+?>
 
 <style>
 
@@ -63,32 +65,19 @@ $client = Client::find_by_id($id);
                                           <div class="twelve wide column">
                                           
                                           <h3>client N° <?php echo h($client->id_cl);?> &nbsp; <?php echo h($client->nom_cl) . ' ' .  h($client->prenom_cl);?></h3>
-                                          <h4><?php echo h($client->num_tel_cl);?></h4>
-                                          <h4><?php echo h($client->email_cl);?></h4>
-                                          <h4><?php echo h($client->adresse_cl);?></h4>
+                                          <h4><strong>Teléphone :</strong><?php echo h($client->num_tel_cl);?></h4>
+                                          <h4><strong>Email :</strong><?php echo h($client->email_cl);?></h4>
+                                          <h4><strong>Adresse :</strong><?php echo h($client->adresse_cl);?></h4>
                                           
                                           </div>
 
                                         
                                 </div>
-                                <div class="ui divider"></div>
+                                
                                     
                                     <div class="ui centered grid row">
                                     
-                                    <div class="five wide column">
-                                    <a class="ui green fluid basic  button" href="mailto:benounnas.oussama@gmail.com"><i class="envelope outline icon"></i>Email</a>
-                                    </div>
-
-                                    <div class="five wide column">
-                                    <a class="ui red fluid basic button"><i class="bell outline icon"></i>Notifier</a>
-
-                                    </div>
-
-                                    <div class="five wide column">
-                                    <button class="ui blue fluid basic button"><i class="info icon"></i>Informer</button>
-
-                                    </div>
-                                    
+                                                      
                                    
 
                                     </div>
@@ -114,74 +103,47 @@ $client = Client::find_by_id($id);
                             <thead>
                               <tr>
                                 <th>#</th>
-                              <th>date début</th>
+                                <th>Nom et prenom</th>
+                                <th>nom de domaine</th>
+                                <th>Pack</th>
+                                <th>date début</th>
+                                <th>date d'expiration</th>
 
-                              <th>date d'expiration</th>
-                              <th>Pack choisi</th>
-                              <th>nom de domaine</th>
-                              <th>Espace disque hébérgé</th>
                               <th colspan="4">Prix</th>
                             </tr>
                           </thead>
-                          <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>8/02/2019</td>
-                                <td class="red">8/02/2020</td>
-                                <td>Sunshine</td>
-                                <td>benounnas.com</td>
-                                <td>20Go</td>
-                                <td>15000 DA</td>
-                                <td>
-                                                                     <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                                                     </td>
-                                                                     <td>
-                                                                     <a href=""><i class="edit outline icon"></i>modifier</a>
-                                                                     </td>
-                                                                     <td>
-                                                                     <a href=""><i class="ban icon"></i>supprimer</a>
-                                                                     </td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>8/02/2019</td>
-                                <td >8/02/2020</td>
-                                <td>Sunshine</td>
-                                <td>benounnas.com</td>
-                                <td>20Go</td>
-                                <td>15000 DA</td>
-                                <td>
-                                
-                                                                     <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                                                     </td>
-                                                                     <td>
-                                                                     <a href=""><i class="edit outline icon"></i>modifier</a>
-                                                                     </td>
-                                                                     <td>
-                                                                     <a href=""><i class="ban icon"></i>supprimer</a>
-                                                                     </td>
-                              </tr>
+<?php
+$hybergement = Hebergement::find_hyber_by_id($client->id_cl);
 
-                              <tr class="red">
-                                <td>1</td>
-                                <td>8/02/2019</td>
-                                <td class="">8/02/2020</td>
-                                <td>Sunshine</td>
-                                <td>benounnas.com</td>
-                                <td>20Go</td>
-                                <td>15000 DA</td>
-                                <td>
-                                                                     <a href=""><i class="folder open outline icon"></i>afficher</a>
-                                                                     </td>
-                                                                     <td>
-                                                                     <a href=""><i class="edit outline icon"></i>modifier</a>
-                                                                     </td>
-                                                                     <td>
-                                                                     <a href=""><i class="ban icon"></i>supprimer</a>
-                                                                     </td>
+?>
+                          <tbody>
+                          <?php
+                           
+                             if($hybergement){
+                                foreach($hybergement as $hyber){
+                                $id_p = $hyber->id_pack;
+                                $nom_pack = Hebergement::find_pack($id_p);
+                                   
+                                  
+                          ?>
+
+                              <tr>
+                              <td><?php echo h($hyber->id_heb);?></td>
+                              <td><?php echo h($client->nom_cl) . ' ' .  h($client->prenom_cl);?></td>
+                              <td><?php echo h($hyber->url_heb);?></td>
+                              <td><?php if($hyber->espace_heb ==0) echo 'Domaine';else {echo $nom_pack.'(<small>' . $hyber->espace_heb . '</small>)';}?></td>
+                              <td><?php echo h($hyber->date_deb_heb);?></td>
+                              <td><?php echo h($hyber->date_fin_heb);?></td>
+                              <td><?php echo h($hyber->prix);?></td>
                               </tr>
+                              <?php
+                                }
+                            }
+                        
+                            ?>
                              
-                            </tbody>
+                             
+                          </tbody>
                   </table>
                                       </div>
                                       <div class="ui bottom attached tab segment" data-tab="secondAfficher">
@@ -195,27 +157,38 @@ $client = Client::find_by_id($id);
                               <th>Langue</th>
                               <th>début du conception</th>
                               <th>délai</th>
-                              <th>état d'avancement</th>
-                              <th>commentaire</th>
                               <th>Prix</th>
-                              <th>versement</th>
                               
                             </tr>
                           </thead>
+<?php
+$conception = Conception::find_cons_by_id($client->id_cl);
+?>
                           <tbody>
+                          <?php
+                              if($conception){
+                                foreach($conception as $conc){
+
+                                
+                              
+                              ?>
                               <tr>
-                                <td>1</td>
-                                <td>dynamique</td>
-                                <td>edisoft.dz</td>
-                                <td>Fr</td>
-                                <td>8/02/2019</td>
-                                <td>30 jours</td>
-                                <td>90%</td>
-                                <td>partie commande restante</td>
-                                <td>15000 DA</td>
-                                <td>5000 DA</td>
+                              <td><?php echo h($conc->id_con);?></td>
+                              <td><?php echo h($conc->type_con);?></td>
+                              <td><?php echo h($conc->nom_con);?></td>
+                              <td><?php echo h($conc->multilan_con);?></td>
+                              <td><?php echo h($conc->date_deb_con);?></td>
+                              <td><?php echo h($conc->delai_con);?></td>
+                              <td><?php echo h($conc->prix_con);?></td>
+
+                              
                               </tr>
                              
+                             <?php
+                                  
+                                }
+                              }
+                              ?>
                             </tbody>
                   </table>
                                       </div>

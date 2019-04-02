@@ -68,9 +68,9 @@ include("../includes/app_head.php");
                                         <th>#</th>
                                         <th>client</th>
                                         <th>Date d'impression</th>   
-                                                                            
                                         <th>Totale TTC</th>
                                         <th>Payement en</th>
+                                        <th>cheque</th>
                                         
                                     </tr>
                                 </thead>
@@ -85,7 +85,7 @@ include("../includes/app_head.php");
                                       <td><?php echo h($facture->date_fact);?></td>
                                       <td><?php echo h($facture->totale_fact);?></td>
                                       <td><?php echo h($facture->type_pai_fact);?></td>
-                                      <td></td>
+                                      <td ><?php if($facture->cheque == NULL){ echo "/";}else { echo '<img style="width:100px;height:20px;" src="hd_9e30c22c900e7397c80bb8141eaef079.jpg" alt="">';}?></td>
 
                                     </tr>
                                     <?php }

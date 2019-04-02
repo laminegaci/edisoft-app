@@ -42,7 +42,7 @@ if(is_post_request() && isset($_POST['ajouter'])){
       }else{
       $args['type_cl'] = 0;
       }
-      $args['nom_societe_cl'] = $_POST['entreprise'] ?? NULL;
+      $args['nom_societe_cl'] = $_POST['entreprise'] ?? '/';
       $args['id_ad'] = /*$_POST[''] ?? NULL*/ 1;
 
 

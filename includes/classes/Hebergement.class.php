@@ -170,6 +170,19 @@ class Hebergement{
          }
 
      }
+
+     static public function find_hyber_by_id($id){
+        $sql = "SELECT * FROM hebergement WHERE id_cl = $id ";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+
+    }
+
+
 //---------------------------------------------------------------------------------------
      public function update(){
          $attributes = $this->sanitized_attributes();
@@ -316,8 +329,8 @@ class Hebergement{
 
         return $nom_client;
      }
-     static function find_pack($id_p){
-        $sql = "SELECT DISTINCT nom_pack from pack INNER JOIN hebergement on pack.id_pack=hebergement.id_pack where hebergement.id_pack=$id_p;";
+     static public function find_pack($id){
+        $sql = "SELECT DISTINCT nom_pack from pack INNER JOIN hebergement on pack.id_pack=hebergement.id_pack where hebergement.id_pack=$id;";
         $result = self::$database->query($sql);
         while($objet = $result->fetch_assoc()){
             $nom_pack = $objet['nom_pack'];;

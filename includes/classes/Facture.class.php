@@ -15,6 +15,7 @@ class Facture{
        'id_fact', 
        'date_fact',
        'type_pai_fact', 
+       'cheque',
        'totale_fact', 
        'id_ad', 
        
@@ -143,7 +144,35 @@ class Facture{
     }
     static public function rows_tot()
     {
-        $sql = "select*from pack";
+        $sql = "select*from facture";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+
+    static public function rows_cache()
+    {
+        $sql = "select*from facture where type_pai_fact='cache'";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_cheque()
+    {
+        $sql = "select*from facture where type_pai_fact='cheque'";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+
+        return $row;
+    }
+    static public function rows_ccp()
+    {
+        $sql = "select*from facture where type_pai_fact='ccp'";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
         $result->free();
@@ -172,6 +201,7 @@ class Facture{
     public $id_fact; 
     public $date_fact;
     public $type_pai_fact; 
+    public $cheque;
     public $totale_fact; 
     public $id_ad; 
   
@@ -184,6 +214,7 @@ class Facture{
         $this->id_fact = $args['id_fact'] ?? '';
         $this->date_fact = $args['date_fact'] ?? '';
         $this->type_pai_fact = $args['type_pai_fact'] ?? '';
+        $this->cheque = $args['cheque'] ?? '/';
         $this->prix_pack = $args['prix_pack'] ?? '';
         $this->totale_fact = $args['totale_fact'] ?? '';
         $this->id_ad = $args['id_ad'] ?? '';

@@ -271,6 +271,17 @@ class Conception{
             //else echo 'properté not'
         }
     }
+
+    static public function find_cons_by_id($id){
+        $sql = "SELECT * FROM conception WHERE id_cl = $id ";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+
+    }
     //---------------------------------------------------------------------------------------
     static public function rows_tot()
     {

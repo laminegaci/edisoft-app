@@ -3,15 +3,20 @@
 require_once("../includes/initialize.php");
 
 
+
+
 if (is_post_request() && isset($_POST['imprimer'])) {
 
     include("../includes/app_head.php");
 
     //var_dump($_POST);
-  $type_pai_fact =   $_POST["type_pai_fact"];
-    $client = $_POST['id_cl'];
-     $position_tire= strpos($_POST['id_cl'],  '-');
-   $_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
+    
+$type_pai_fact =   $_POST["type_pai_fact"];
+$cheque = $_POST["cheque"];
+$client = $_POST['id_cl'];
+
+$position_tire= strpos($_POST['id_cl'],  '-');
+$_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
    
    $achats = Hebergement::find_where_client($_POST['id_cl']);
    //var_dump($achats);
@@ -74,7 +79,7 @@ html {
 
     <?php $infosClient = Client::find_by_id($client) ;
     $heb_array = [];
-   
+    echo $client.''.$type_pai_fact.''.$cheque;    
     ?>
 
                 <table id="table" class="ui table">
@@ -145,6 +150,7 @@ html {
                 <form action="add_facture.php" method="post">
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
                     <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
+                    <input type="text" name="image_cheque" value="<?php echo $cheque ?? ''; ?>" hidden>
                     <input type="text" name="id_cl" value="<?php echo $_POST['id_cl']  ?? ''; ?>" hidden>
                     <input type="text" name="heb_array" value="<?php echo h(serialize($heb_array))  ?? ''; ?>" hidden>
 

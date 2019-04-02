@@ -91,6 +91,19 @@ class Admin{
         }
         return $result;
     }
+
+    static public function delete($id){
+        $sql = "DELETE FROM admin WHERE id_ad =";
+        $sql .= "'" . $id ."';";
+        
+        $result = self::$database->query($sql);
+        if($result){
+           return $result;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
+
+    }
     
 
     

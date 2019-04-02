@@ -72,6 +72,8 @@ $admins = Admin::find_all();
                              <tr>
                                  <th>#</th>
                                  <th>username</th>
+                                 <th>denière login</th>
+                                 <th></th>
                                  
                                  
                                  
@@ -82,14 +84,21 @@ $admins = Admin::find_all();
                              <?php 
                              if($admins){
                                 foreach($admins as $admin){
+                                   
                              ?>
                              <tr>
                             <td><?php echo h($admin->id_ad);?></td>
                             <td><?php echo h($admin->username_ad);?></td>
+                            <td></td>
+                            <form action=""  method='POST'>
+                            
+                            <td><button  class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
+                            </form>
                             </tr>
                             <?php
                                 }
                             }
+                        
                             ?>
                          </tbody>
                      </table>
@@ -119,10 +128,18 @@ $admins = Admin::find_all();
 
      </div>
      <!--fin page-->
+<?php
+ 
+
+?>
+
+<script>
 
 
-     <script>
-     $(document).ready(() => {
+
+
+
+$(document).ready(() => {
          // Write on keyup event of keyword input element
         
   // Write on keyup event of keyword input element
@@ -138,68 +155,11 @@ $admins = Admin::find_all();
     });
 
 
-      
+$('.menu .item')
+ .tab();
 
 
-
-         function modal_supprimer(id) {
-
-
-
-             $('.ui.modal.supprimer.s' + id)
-                 .modal('show');
-         }
-
-         function modal_afficher(id) {
-
-
-             $('.ui.modal.afficher.a' + id)
-                 .modal('show');
-         }
-
-         function modal_modifier(id) {
-
-
-
-             $('.ui.modal.modifier.m' + id)
-                 .modal('show');
-         }
-
-         $('button').click(function() {
-
-
-             let button_type = $(this).data('type'); //nrecupérer type
-
-             let button_id = $(this).data('button_id'); // njib id
-             //modal_supprimer(button_id);
-
-             switch (button_type) {
-                 case 'supprimer':
-                     modal_supprimer(button_id);
-                     break;
-                 case 'modifier':
-                     modal_modifier(button_id);
-                     break;
-                 case 'afficher':
-                     modal_afficher(button_id);
-                     break;
-
-
-             }
-         });
-
-
-
-
-         $('.menu .item')
-             .tab();
-
-
-
-
-
-
-     }) //fin ready
+}) //fin ready
 </script>
 
 

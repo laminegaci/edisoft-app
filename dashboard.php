@@ -101,6 +101,12 @@ $row_cl_pro = Client::rows_pro();
 
 <?php
 $total = Facture::find_total_revenu();
+$rows_tot = Facture::rows_tot();
+$rows_cache = Facture::rows_cache();
+$rows_cheque = Facture::rows_cheque();
+$rows_ccp = Facture::rows_ccp();
+
+
 ?>
 
 
@@ -112,7 +118,7 @@ $total = Facture::find_total_revenu();
 
 
                                 <div class="label">
-                                    <span class="ui center aligned header"><?php echo $total.' DA';  ?></span> <br>
+                                    <span class="ui center aligned header"><?php echo $total.' DA'. $rows_tot;  ?></span> <br>
 
                                     <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
@@ -121,10 +127,11 @@ $total = Facture::find_total_revenu();
                                 <div class="centered row">
                                     <div class="canvas">
                                         <canvas id="myChart2"></canvas>
-
-                                        <span><b>Cache:</b> 10%</span>
-                                        <span><b>Chèque:</b> 20%</span>
-                                        <span><b>CCP:</b> 70%</span>
+                                        <span><b>Cache:</b> <?php echo '('.$rows_cache.')';echo get_percent($rows_tot,$rows_cache);?> %</span>
+                                        <span><b>Chèque:</b> <?php echo '('.$rows_cheque.')';echo get_percent($rows_tot,$rows_cheque);?> %</span>
+                                        <span><b>CCP:</b> <?php echo '('.$rows_ccp.')';echo get_percent($rows_tot,$rows_ccp);?> %</span>
+                                        
+                                        
                                     </div>
 
                                 </div>
@@ -296,6 +303,7 @@ $rows_envoie = Hebergement::rows_envoie_expiré();
                                     <table class="ui striped large selectable  red table" id="table">
                                         <thead>
                                             <tr>
+                                            
                                                 <th>Nom et Prénom</th>
                                                 <th>pack</th>
                                                 <th>URL</th>
@@ -320,14 +328,15 @@ $hyb_expiré = Hebergement::find_expired();
                                                     
                                                      ?>
                                             <tr class="red">
+                                                
                                                 <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?></td>
                                                 <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
                                                 <td><?php echo h($expiré->url_heb) ;?></td>
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
-                                                <form action="" method="POST">
+                                                <form action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>" method="POST">
                                                 <td> <button class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
-                                                <td> <button class="ui tiny red button" name="renouvler"><i class="sync icon"></i><span>Renouvler  </span></button></td>
+                                                <td> </td>
                                                 </form>       
                                                 
                                             </tr>
@@ -499,14 +508,12 @@ $conception = Conception::find_all_dash();
 </div>
 
 <?php 
+
 if(isset($_POST['supprimer'])){
 
 echo "<script>alert('supprimer');</script>";
 }
-if(isset($_POST['renouvler'])){
 
-    echo "<script>alert('renouvler');</script>";
-    }
 ?>
 
 
@@ -586,7 +593,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Cache", "Chèque", "CCP"],
 
         datasets: [{
-            data: [10, 20, 70],
+            data: [<?php echo get_percent($rows_tot,$rows_cache);?>, <?php echo get_percent($rows_tot,$rows_cheque);?>, <?php echo get_percent($rows_tot,$rows_ccp);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
