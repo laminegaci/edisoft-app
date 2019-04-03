@@ -6,7 +6,7 @@ require_login();
 include('includes/app_head.php');
 ?>
 <?php include('includes/menu_head.php'); ?>
-
+<?php $bool = $_SESSION['toast'] ?? false; ?>
 <div class="page">
 
     <div class="ui fluid container">
@@ -521,6 +521,23 @@ echo "<script>alert('supprimer');</script>";
 <script src="dist/jquery.circliful.js"></script>
 
 <script>
+$(document).ready(() => {
+    <?php
+if($bool){
+    echo "
+    $('body')
+ .toast({
+   class: 'success',
+   message: `hybergement a été supprimer !`
+ })
+;
+    ";
+}    
+$_SESSION['toast'] = false;
+?>
+
+})
+
 $(function() {
 
 

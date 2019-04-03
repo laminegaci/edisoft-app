@@ -204,20 +204,21 @@ require_once("../includes/initialize.php");
 
 
 <script>
-$('.ui.dropdown')
-  .dropdown()
+
+$('.ui.search.dropdown')
+  .dropdown({
+      ignoreDiacritics: true,
+      sortSelect: true,
+      fullTextSearch: 'exact'
+  })
 ;
+
 $('.ui.search')
   .search({
     apiSettings: {
         url: 'getclient.php/?q={query}'
     }
-   
-
-    
-   
-    
-  });
+   });
 $('#standard_calendar')
     .calendar({
 

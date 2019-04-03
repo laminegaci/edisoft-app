@@ -8,6 +8,7 @@ if(require_login() && ! $session->check_one()){
 include("../includes/app_head.php");
 
 ?>
+<?php $bool = $_SESSION['toast'] ?? false; ?>
 
  <style>
 
@@ -90,7 +91,7 @@ $admins = Admin::find_all();
                             <td><?php echo h($admin->id_ad);?></td>
                             <td><?php echo h($admin->username_ad);?></td>
                             <td></td>
-                            <form action=""  method='POST'>
+                            <form action="sup_admin.php"  method='POST'>
                             
                             <td><button  class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
                             </form>
@@ -129,6 +130,7 @@ $admins = Admin::find_all();
      </div>
      <!--fin page-->
 <?php
+
  
 
 ?>
@@ -138,10 +140,22 @@ $admins = Admin::find_all();
 
 
 
-
 $(document).ready(() => {
-         // Write on keyup event of keyword input element
-        
+
+<?php
+if($bool){
+    echo "
+    $('body')
+ .toast({
+   class: 'success',
+   message: `admin a été supprimer !`
+ })
+;
+    ";
+}    
+$_SESSION['toast'] = false;
+?>
+         // Write on keyup event of keyword input element  
   // Write on keyup event of keyword input element
   $("#search").keyup(function() {
         var searchText = $(this).val().toLowerCase();

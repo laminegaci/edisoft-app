@@ -42,7 +42,7 @@ select.ui.dropdown {
 
 
                 <div class="thirteen wide column">
-                    <form class="ui large form" method="POST" action="facture.php" enctype="multipart/form-data">
+                    <form class="ui large form" method="POST" action="facture.php" >
                         <div class="fields">
 
 
@@ -90,10 +90,8 @@ select.ui.dropdown {
 
                         </div>
                         <div class="fields">
-                        <div class="field"  >
-                            <input type="file" name="cheque">
+                            <div class="field"  >
                             
-                        </div>
                         </div>
                         <div class="field">
                             <input type="submit" class="ui big green right floated button" value="Imprimer" name="imprimer">
@@ -102,6 +100,7 @@ select.ui.dropdown {
                         <div class="ui error message"></div>
 
                     </form>
+                   
                     
 
                 </div>
@@ -128,6 +127,14 @@ select.ui.dropdown {
 
 <script>
 
+$('.ui.dropdown')
+  .dropdown({
+      ignoreDiacritics: true,
+      sortSelect: true,
+      fullTextSearch: 'exact'
+  })
+;
+
 $('.ui.search')
   .search({
     apiSettings: {
@@ -138,11 +145,13 @@ $('.ui.search')
 
 $(document).ready(function() {
 
-$('.ui.dropdown')
-  .dropdown()
-;
+
     $('.selection.dropdown, #menu_type')
-        .dropdown();
+        .dropdown({
+            ignoreDiacritics: true,
+      sortSelect: true,
+      fullTextSearch: 'exact'
+        });
 
     $('.standard_calendar')
         .calendar({

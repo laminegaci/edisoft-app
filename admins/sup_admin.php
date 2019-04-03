@@ -6,6 +6,9 @@ require_once('../includes/initialize.php');
  
 
 echo $id."waslaaaaaaaaaat";
+session_start();
+$_SESSION['toast'] = true;
+redirect_to('index.php');
 
 // if(isset($id) && !empty($id)){
 

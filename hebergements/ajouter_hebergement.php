@@ -55,7 +55,7 @@ select.ui.dropdown {
 
                             <div class="eight wide field">
                                 <label for="">Client:</label>
-                                <select class="ui search dropdown" name="id_cl">
+                                <select class="ui search dropdown cl" name="id_cl">
                                 <option value="">Client..</option>
                                <?php foreach ($clients as $client) {
                                    ?>
@@ -148,24 +148,29 @@ select.ui.dropdown {
 
 
 <script>
-$(document).ready(function() {
-    $('.ui.dropdown')
-  .dropdown()
+
+$('.ui.search.dropdown.cl')
+  .dropdown({
+      ignoreDiacritics: true,
+      sortSelect: true,
+      fullTextSearch: 'exact'
+  })
 ;
-   
-    $('.ui.search')
+$('.ui.search')
   .search({
     apiSettings: {
         url: 'getclient.php/?q={query}'
     }
-   
+});
+$(document).ready(function() {
+    
 
-    
-   
-    
-  });
     $('.selection.dropdown, #menu_type')
-        .dropdown();
+        .dropdown({
+            ignoreDiacritics: true,
+      sortSelect: true,
+      fullTextSearch: 'exact'
+        });
 
     $('.standard_calendar')
         .calendar({

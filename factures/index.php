@@ -78,6 +78,7 @@ include("../includes/app_head.php");
                                     <?php if($factures){
                                         foreach ($factures as $facture) {
                                            $client = Client::find_by_id($facture->id_cl);
+                                          
                                     ?>
                                     <tr>
                                       <td><?php echo h($facture->id_fact);?></td>
@@ -85,11 +86,13 @@ include("../includes/app_head.php");
                                       <td><?php echo h($facture->date_fact);?></td>
                                       <td><?php echo h($facture->totale_fact);?></td>
                                       <td><?php echo h($facture->type_pai_fact);?></td>
-                                      <td ><?php if($facture->cheque == NULL){ echo "/";}else { echo '<img style="width:100px;height:20px;" src="hd_9e30c22c900e7397c80bb8141eaef079.jpg" alt="">';}?></td>
+                                      
+                                      <td ><?php if($facture->cheque == NULL){ echo "/";}else { echo '<img style="width:100px;height:20px;" src="uploads/'.$facture->cheque.'" alt="malgahach">';}?></td>
 
                                     </tr>
                                     <?php }
                                     } ?>
+                                    
                                 </tbody>
                             </table>
 

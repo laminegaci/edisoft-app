@@ -214,7 +214,7 @@ class Facture{
         $this->id_fact = $args['id_fact'] ?? '';
         $this->date_fact = $args['date_fact'] ?? '';
         $this->type_pai_fact = $args['type_pai_fact'] ?? '';
-        $this->cheque = $args['cheque'] ?? '/';
+        $this->cheque = $args['image'] ?? '/';
         $this->prix_pack = $args['prix_pack'] ?? '';
         $this->totale_fact = $args['totale_fact'] ?? '';
         $this->id_ad = $args['id_ad'] ?? '';
