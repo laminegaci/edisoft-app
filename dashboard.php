@@ -103,7 +103,7 @@ $row_cl_pro = Client::rows_pro();
 $total = Facture::find_total_revenu();
 $rows_tot = Facture::rows_tot();
 $rows_cache = Facture::rows_cache();
-$rows_cheque = Facture::rows_cheque();
+$rows_cheque = Facture::rows_ccp_img_fact();
 $rows_ccp = Facture::rows_ccp();
 
 
