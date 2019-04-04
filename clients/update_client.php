@@ -41,6 +41,9 @@ if(is_post_request() && isset($_POST['modifier'])){
   $result =$client->update();
   if($result){
     //echo 'jazat la requete';
+    session_start();
+    $_SESSION['toast'] = true;
+    $_SESSION['toastType'] = "modification";
     redirect_to('index.php');
   }else{
      //echo 'mamchatch';

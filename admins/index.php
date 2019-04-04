@@ -148,7 +148,7 @@ if($bool){
     $('body')
  .toast({
    class: 'success',
-   message: `admin a été supprimer !`
+   message: `admin a été supprimé !`
  })
 ;
     ";

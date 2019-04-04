@@ -12,7 +12,7 @@ if (is_post_request() && isset($_POST['imprimer'])) {
     //var_dump($_POST);
     
 $type_pai_fact =   $_POST["type_pai_fact"];
-$cheque = $_POST["image"];
+
 $client = $_POST['id_cl'];
 
 $position_tire= strpos($_POST['id_cl'],  '-');
@@ -79,7 +79,7 @@ html {
 
     <?php $infosClient = Client::find_by_id($client) ;
     $heb_array = [];
-    echo $client.''.$type_pai_fact.''.$cheque;    
+    echo $client.''.$type_pai_fact;    
     ?>
 
                 <table id="table" class="ui table">
@@ -150,7 +150,7 @@ html {
                 <form action="add_facture.php" method="post" enctype="multipart/form-data">
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
                     <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
-                    <input type="file" name="image"  <?php if($type_pai_fact !== 'cheque'){ echo 'hidden'; }?> >
+                    <input type="file" name="image"  <?php if($type_pai_fact !== 'ccp'){ echo 'hidden'; }?> >
                     <input type="text" name="id_cl" value="<?php echo $_POST['id_cl']  ?? ''; ?>" hidden>
                     <input type="text" name="heb_array" value="<?php echo h(serialize($heb_array))  ?? ''; ?>" hidden>
 

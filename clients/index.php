@@ -2,6 +2,7 @@
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
 include('function_modal.php');
+$bool = $_SESSION['toast'] ;
 ?>
 
  <style>
@@ -211,10 +212,24 @@ $clients = Client::find_all();
          </div>
          <!--fin page-->
 
+       
 
          <script>
          $(document).ready(() => {
-             
+            <?php
+if($bool){
+    echo "
+    $('body')
+ .toast({
+   class: 'success',
+  
+    message: `une ".  $_SESSION['toastType'] ."a été effectuée avec succés!`
+ })
+;
+    ";
+}    
+$_SESSION['toast'] = false;
+?>
              $('.selection.dropdown')
                  .dropdown();
              // Write on keyup event of keyword input element
