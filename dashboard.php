@@ -427,7 +427,7 @@ $conception = Conception::find_all_dash();
                                             <th>Client</th>
                                             <th>Nom du site</th>
                                             <th>délai restant</th>
-                                            <th>état d'avancement</th>
+                                           
                                             <th>Versement</th>
                                             <th>Prix</th>
                                             <th colspan="2">Commentaire</th>
@@ -451,12 +451,7 @@ $conception = Conception::find_all_dash();
                                             <td><?php echo $name;?></td>
                                             <td><?php echo h($cons->nom_con); ?> </td>
                                             <td><?php echo $delai;?></td>
-                                            <td>
-                                                <div class="ui indicating small progress" data-percent="<?php echo h($cons->etat_con);?>">
-                                                    <div class="bar"></div>
-                                                    <div class="label"><?php echo h($cons->etat_con);?>%</div>
-                                                </div>
-                                            </td>
+                                            
                                             <td><?php echo h($cons->versement_con).' DA';?></td>
                                             <td><?php echo h($cons->prix_con).' DA';?></td>
                                             
