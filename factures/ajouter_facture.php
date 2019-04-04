@@ -138,7 +138,7 @@ $('.ui.dropdown')
 $('.ui.search')
   .search({
     apiSettings: {
-        url: 'getclient.php/?q={query}'
+    url: 'getclient.php/?q={query}'
     }
 });
 
