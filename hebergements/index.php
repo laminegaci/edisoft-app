@@ -35,18 +35,17 @@ height: 100%;
                 <div class="ui pointing secondary big menu">
 
 
-                    <h1 class="ui center aligned header item"><i class="server icon"></i>Hébérgements</h1>
+                    <h1 class="ui  header item"><i class="server icon"></i>Hébérgements</h1>
 
                     <?php
 $rows = Hebergement::rows_tot();
 
 ?>
-                    <a class="item active" data-tab="first"><i class="large box icon"></i>Tout(<?php echo $rows;?>)</a>
 
 
                     <div class="right item">
                         <a href="ajouter_hebergement.php" class="">
-                            <i class="huge plus circle icon"></i>
+                            <i class="big plus circle icon"></i>
 
                         </a>
                         <div class="ui search  ">
@@ -75,7 +74,7 @@ $rows = Hebergement::rows_tot();
                              <div class="fields">
                                  <div class=" five wide field" >
                                     <select name="" id="selectFilter" class="ui dropdown">
-                                        <option value="" id="all">Tout</option>
+                                        <option value="" id="all">Tout <?php echo $rows ?></option>
                                       <?php 
                                 
                                 if ($packs) {

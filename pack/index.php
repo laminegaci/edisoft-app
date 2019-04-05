@@ -46,15 +46,14 @@ $rows2 = pack::rows_part();
                  <div class="ui pointing secondary big menu">
 
 
-                     <h1 class="ui center aligned header item"><i class="boxes icon"></i>Packs</h1>
+                     <h1 class="ui header item"><i class="boxes icon"></i>Packs</h1>
 
 
-                     <a class="item active" data-tab="first"><i class="large list icon"></i>Tout(<?php echo $rows; ?>)</a>
                    
 
                      <div class="right item">
                          <a href="ajouter_pack.php" class="">
-                             <i class="huge plus circle icon"></i>
+                             <i class="big plus circle icon"></i>
 
                          </a>
                          <div class="ui search  ">

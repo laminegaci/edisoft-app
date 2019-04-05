@@ -48,7 +48,7 @@ include('function_modal.php');
                             <div class="ui pointing secondary big menu">
   
 
-                            <h1 class="ui center aligned header item"><i class="code icon"></i>Conceptions</h1>        
+                            <h1 class="ui  header item"><i class="code icon"></i>Conceptions</h1>        
 <?php
 $rows = Conception::rows_tot();
 $rows1 = Conception::rows_statique();
@@ -63,7 +63,7 @@ $rows2 = Conception::rows_dynamique();
                               
                               <div class="right item">
                                   <a href="ajouter_conception.php" class="">
-                                        <i class="huge plus circle icon"></i>
+                                        <i class="big plus circle icon"></i>
                                                                               
                                   </a>
                                   <div class="ui search  ">

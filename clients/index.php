@@ -43,6 +43,8 @@ if(isset($_POST['oui'])){
 }
 
 $rows = Client::rows_tot();
+$rows_particulier = Client::rows_part();
+$rows_pro = Client::rows_pro();
 
 ?>
              <div class="ui fifteen wide column row centered grid segment">
@@ -50,16 +52,15 @@ $rows = Client::rows_tot();
                  <div class="ui pointing secondary big menu">
 
 
-                     <h1 class="ui center aligned header item"><i class="users icon"></i>Clients</h1>
+                     <h1 class="ui  header item"><i class="users icon"></i>Clients</h1>
 
 
-                     <a class="item active" data-tab="first"><i
-                             class="large list icon"></i>Tout(<?php echo $rows; ?>)</a>
+                   
 
                                     
                      <div class="right item">
                          <a href="ajouter_client.php" class="">
-                             <i class="huge plus circle icon"></i>
+                             <i class="big plus circle icon"></i>
 
                          </a>
                          <div class="ui search  ">
@@ -79,9 +80,9 @@ $rows = Client::rows_tot();
                              <div class="fields">
                                  <div class=" five wide field" >
                                     <select name="" id="selectFilter" class="ui dropdown">
-                                        <option value="" id="all">Tout</option>
-                                        <option value="pro" id="pro">Pro</option>
-                                        <option value="" id="particulier">Particulier</option>
+                                        <option value="" id="all">Tout (<?php echo (!empty($rows)) ? $rows : 0;  ?>)</option>
+                                        <option value="pro" id="pro">Pro(<?php echo (!empty($rows_pro)) ? $rows_pro : 0;  ?>)</option>
+                                        <option value="" id="particulier">Particulier(<?php echo (!empty($rows_particulier)) ? $rows_particulier : 0;  ?>)</option>
 
                                     </select>
                                  </div>

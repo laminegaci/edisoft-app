@@ -30,14 +30,14 @@ include("../includes/app_head.php");
                 <div class="ui pointing secondary big menu">
 
 
-                    <h1 class="ui center aligned header item"><i class="server icon"></i>Factures</h1>
+                    <h1 class="ui  header item"><i class="server icon"></i>Factures</h1>
 
 
                    
 
                     <div class="right item">
                         <a href="ajouter_facture.php" class="">
-                            <i class="huge plus circle icon"></i>
+                            <i class="big plus circle icon"></i>
 
                         </a>
                         <div class="ui search  ">
