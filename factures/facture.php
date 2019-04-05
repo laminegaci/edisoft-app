@@ -76,10 +76,11 @@ html {
 
             
                 <h1>Validation de facture Client: <span class="ui red text"><?php echo $client ?? ''; ?></span></h1>
+                <h2 class="ui yellow header"><?php if(empty( $heb_array)){echo '<i class="exclamation triangle icon"></i>ce client a payé tout les hébérgements commandés';} ?></h2>
 
     <?php $infosClient = Client::find_by_id($client) ;
     $heb_array = [];
-    echo $client.''.$type_pai_fact;    
+  
     ?>
 
                 <table id="table" class="ui table">
@@ -147,7 +148,7 @@ html {
 
 
 
-                <form action="add_facture.php" method="post" enctype="multipart/form-data">
+                <form action="add_facture.php" method="post" enctype="multipart/form-data" <?php if(empty( $heb_array)){echo 'hidden';} ?> >
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
                     <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
                     <input type="file" name="image"  <?php if($type_pai_fact !== 'ccp'){ echo 'hidden'; }?> >

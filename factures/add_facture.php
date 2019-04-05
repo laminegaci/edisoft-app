@@ -50,7 +50,7 @@ if ($uploadOk == 0) {
 //
 
 ///////////// Insertion de la facture :)///////////////////
-echo $_FILES['image']['name'];
+//echo $_FILES['image']['name'];
 if (isset($_POST['valider'])) {
 
     $args = [];
@@ -71,7 +71,8 @@ if (isset($_POST['valider'])) {
     if($result){
 
       
-        $update = Facture::update_heb_id($heb_array);
+
+       $update = Facture::update_heb_id($heb_array, $facture->id_fact);
       
       if($update){
         redirect_to('index.php');

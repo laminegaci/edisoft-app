@@ -95,10 +95,13 @@ class Facture{
         return $result;
     }
     
-    public static  function update_heb_id($ids=[]){
+    public static  function update_heb_id($ids=[], $id_fact){
         
         foreach ($ids as $id) {
-           $sql = "UPDATE hebergement SET id_fact = '1' WHERE id_heb = '";
+           $sql = "UPDATE hebergement SET id_fact = '" ;
+           
+           $sql .= $id_fact;
+           $sql .= "' WHERE id_heb = '";
            $sql .=   $id ."';";
           $resultat =  self::$database->query($sql);
         }

@@ -38,9 +38,6 @@ height: 100%;
              <?php 
 
 
-if(isset($_POST['oui'])){
-    echo "<h1>YAAAAAAAAAAAAAAAAAAAAAAAAAAAaw</h1>it works";
-}
 
 $rows = Client::rows_tot();
 $rows_particulier = Client::rows_part();

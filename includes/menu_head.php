@@ -4,8 +4,8 @@ require_once("initialize.php");
 
 ?>
 <style>
-img{
-    font-size:35px;
+a img{
+    width:5em !important;
 }
 .ui.top.fixed{
 padding-left: 100px;
@@ -20,7 +20,7 @@ padding-left: 100px;
                               
               <div class="ui top fixed  fluid big menu">
                 <div class="header item">
-                    <img src="<?php echo url_for('images/logo.png');?>" alt="">
+                 <a href="<?php echo url_for('dashboard.php'); ?>">   <img src="<?php echo url_for('images/logo.png');?>" alt=""></a>
                 </div>
                 
                 
