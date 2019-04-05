@@ -56,7 +56,7 @@ if(is_post_request()) {
 
   <!-- Site Properties -->
   <title>Login</title>
-   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href='dist/semantic.css'>
     <script src="dist/jquery-3.3.1.min.js"></script> 
 
@@ -82,6 +82,19 @@ if(is_post_request()) {
 .field{
   width:100%;
 }
+
+.fa{
+  position:absolute;
+  left:425px;
+  top:12px;
+  font-size:17px;
+  cursor:pointer;
+  color:#999;
+}
+.fa.active{
+  color:red;
+}
+
   </style>
   
 </head>
@@ -120,8 +133,10 @@ if(is_post_request()) {
                 
                 <div class="field ">
                 <div class="ui left icon input">
+
                     <i class="lock icon"></i>
-                    <input type="password" name="password" placeholder="mot de passe">
+                    <i class="fa fa-eye" id="eye"></i>
+                    <input type="password" id="pdw" name="password" placeholder="mot de passe">
                 </div>
                 </div>
                 </div>
@@ -163,10 +178,23 @@ if(is_post_request()) {
 
 <script src="dist/semantic.min.js"></script>
 
-  <script>
+
+<script>
+  var pdw = document.getElementById('pdw');
+  var eye = document.getElementById('eye');
+
+  eye.addEventListener('click',togglePass);
+  
+  function togglePass(){
+      eye.classList.toggle('active');
+
+      (pdw.type == 'password') ? pdw.type = 'text' :
+      pdw.type = 'password';
+      console.log('9asso');
+  }
+
 
 </script>
-
 
   
 

@@ -104,6 +104,8 @@ $total = Facture::find_total_revenu();
 $rows_tot = Facture::rows_tot();
 $rows_cache = Facture::rows_cache();
 $rows_cheque = Facture::rows_ccp_img_fact();
+$rows_type_cheque = Facture::rows_type_cheque();
+
 $rows_ccp = Facture::rows_ccp();
 
 
@@ -127,8 +129,8 @@ $rows_ccp = Facture::rows_ccp();
                                 <div class="centered row">
                                     <div class="canvas">
                                         <canvas id="myChart2"></canvas>
-                                        <span><b>Cache:</b> <?php echo '('.$rows_cache.')';echo get_percent($rows_tot,$rows_cache);?> %</span>
-                                        <span><b>Chèque:</b> <?php echo '('.$rows_cheque.')';echo get_percent($rows_tot,$rows_cheque);?> %</span>
+                                        <span><b>Espece:</b> <?php echo '('.$rows_cache.')';echo get_percent($rows_tot,$rows_cache);?> %</span>
+                                        <span><b>Chèque:</b> <?php echo '('.$rows_type_cheque.')';echo get_percent($rows_tot,$rows_type_cheque);?> %</span>
                                         <span><b>CCP:</b> <?php echo '('.$rows_ccp.')';echo get_percent($rows_tot,$rows_ccp);?> %</span>
                                         
                                         
@@ -427,7 +429,7 @@ $conception = Conception::find_all_dash();
                                             <th>Client</th>
                                             <th>Nom du site</th>
                                             <th>délai restant</th>
-                                           
+                                            
                                             <th>Versement</th>
                                             <th>Prix</th>
                                             <th colspan="2">Commentaire</th>
@@ -605,7 +607,7 @@ var myPieChart = new Chart(ctx, {
         labels: ["Cache", "Chèque", "CCP"],
 
         datasets: [{
-            data: [<?php echo get_percent($rows_tot,$rows_cache);?>, <?php echo get_percent($rows_tot,$rows_cheque);?>, <?php echo get_percent($rows_tot,$rows_ccp);?>],
+            data: [<?php echo get_percent($rows_tot,$rows_cache);?>, <?php echo get_percent($rows_tot,$rows_type_cheque);?>, <?php echo get_percent($rows_tot,$rows_ccp);?>],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
