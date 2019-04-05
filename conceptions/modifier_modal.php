@@ -1,13 +1,7 @@
 <style>
-#search {
-    background: inherit !important;
-    margin-bottom: 10px;
-    border: 0;
-}
 
-.prompt {
-    border-radius: 5px !important;
-}
+
+
 
 label {
     float: left;
@@ -27,7 +21,6 @@ $cons = Conception::find_by_id($id);
 
 
 
-<div class="page">
 
     <div class="ui fluid container">
 
@@ -42,8 +35,8 @@ $cons = Conception::find_by_id($id);
                     </i>&nbsp;modifier Conception</h2>
                 <form method="POST" class="ui large form" id="modifier_form<?php echo $id . $type_modal; ?>"
                     action="update_conception.php?id=<?php echo $id .$type_modal; ?>">
-                    <div class="two fields">
-                        <div class="field">
+                  
+                        <div class="sixteen wide field">
                             <label>commentaire</label>
                             <div class="ui left icon input">
                                 <i class="hand holding usd icon"></i>
@@ -54,7 +47,7 @@ $cons = Conception::find_by_id($id);
                         </div>
                         
 
-                    </div>
+                   
                  
 
 
@@ -95,8 +88,6 @@ $cons = Conception::find_by_id($id);
 
 
 
-</div>
-<!--fin page-->
 
 <div id="modifier_success<?php echo $id .$type_modal; ?>" hidden>
 

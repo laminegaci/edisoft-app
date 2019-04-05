@@ -48,7 +48,7 @@ include("../includes/app_head.php");
                              <i class="big plus circle icon"></i>
 
                          </a>
-                         <div class="ui search  ">
+                         <div class="ui search  " id="load_search">
                                         <div class="ui icon input">
                                             <input class="prompt" type="text" placeholder="Rechercher..."
                                                 id="search">

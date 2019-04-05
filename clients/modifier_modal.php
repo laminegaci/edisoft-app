@@ -24,7 +24,7 @@ $client = Client::find_by_id($id);
 
 
 
-    <div class="page">
+   
 
         <div class="ui fluid container">
 
@@ -113,8 +113,6 @@ $client = Client::find_by_id($id);
 
 
 
-    </div>
-    <!--fin page-->
 
     <div id="modifier_success<?php echo $id . $type_client; ?>" hidden>
 

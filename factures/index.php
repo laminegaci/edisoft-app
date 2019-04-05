@@ -40,7 +40,7 @@ include("../includes/app_head.php");
                             <i class="big plus circle icon"></i>
 
                         </a>
-                        <div class="ui search  ">
+                        <div class="ui search  " id="load_search">
                                             <div class="ui icon input">
                                                 <input class="prompt" type="text" placeholder="Rechercher..."
                                                     id="search">  
@@ -62,7 +62,7 @@ include("../includes/app_head.php");
                         <div class="ui bottom attached active tab segment" data-tab="first/a">
 
 <?php $factures = Facture::find_all(); ?>
-                            <table class="ui striped table" >
+                            <table class="ui striped table" id="tabAll" >
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -139,6 +139,17 @@ include("../includes/app_head.php");
 <script>
 $('.menu .item')
     .tab();
+
+    $("#search").keyup(function() {
+                 var searchText = $(this).val().toLowerCase();
+                 // Show only matching TR, hide rest of them
+                 $.each($("#tabAll tbody tr"), function() {
+                     if ($(this).text().toLowerCase().indexOf(searchText) === -1)
+                         $(this).hide();
+                     else
+                         $(this).show();
+                 });
+             });
 </script>
 
 

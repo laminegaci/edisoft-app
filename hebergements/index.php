@@ -39,6 +39,7 @@ height: 100%;
 
                     <?php
 $rows = Hebergement::rows_tot();
+$rows = Hebergement::rows_tot();
 
 ?>
 
@@ -49,7 +50,7 @@ $rows = Hebergement::rows_tot();
 
                         </a>
                         <div class="ui search  ">
-                                        <div class="ui icon input">
+                                        <div class="ui icon input" id="load_search">
                                             <input class="prompt" type="text" placeholder="chercher..."
                                                 id="search">
                                             <i class="search icon"></i>

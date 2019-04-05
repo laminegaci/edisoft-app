@@ -24,9 +24,10 @@ margin-top: 1% !important;
   background-color: #E4FE19;
   color: black;
 }
+
 </style>
 
-<div class="page">
+
 
 <div class="ui fluid container">
 
@@ -214,7 +215,7 @@ $conception = Conception::find_cons_by_id($client->id_cl);
 
 
 
-      </div><!--fin page-->
+  
 
       <script>
 

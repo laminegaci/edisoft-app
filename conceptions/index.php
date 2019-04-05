@@ -12,6 +12,11 @@ include('function_modal.php');
  ?>
 
 <style>
+
+.ui.search .prompt{
+    border-radius: 500rem !important;
+}
+
 .ui.fifteen.wide.column.row.centered.grid.segment{
     height: 85vh;
     overflow: scroll;
@@ -66,7 +71,7 @@ $rows2 = Conception::rows_dynamique();
                                         <i class="big plus circle icon"></i>
                                                                               
                                   </a>
-                                  <div class="ui search  ">
+                                  <div class="ui search  " id="load_search">
                                             <div class="ui icon input">
                                                 <input class="prompt" type="text" placeholder="chercher..."
                                                     id="search">  
