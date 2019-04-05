@@ -8,7 +8,7 @@ img{
     font-size:35px;
 }
 .ui.top.fixed{
-padding-left: 50px;
+padding-left: 100px;
 }
 
 </style>

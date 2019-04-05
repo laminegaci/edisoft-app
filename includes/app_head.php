@@ -34,20 +34,20 @@ if(!isset($page_title)){
         top: 0;
         left: 0;
         height: 100%;
-        width: 50px; /*default width*/
-        background-color: #119EE7  ;
+        width: 100px; /*default width*/
+        background-color: rgba(30,30,30,0.9)  ;
         transition: width 0.4s;
         z-index: 1000;
         overflow: hidden;
       }
 #leftbar-toggle{
   color:white;
-  padding: 15px 10px 20px;
+  padding: 15px 40px 20px;
   display: inline-block;
   width: 50px;
 }
       .leftbar .ui.link.list .item {
-        padding: 15px 0 15px;
+        padding: 25px 0 15px;
       }
 
       .leftbar .ui.link.list .item .icon, .leftbar .ui.link.list .item .content {
@@ -55,7 +55,7 @@ if(!isset($page_title)){
       }
 
       .leftbar .ui.link.list .item:hover {
-        background-color: white;
+        background-color:rgb(255,255,255,0.3);
       }
 
       .leftbar .ui.link.list .item:hover .icon, .leftbar .ui.link.list .item:hover .content {
@@ -76,7 +76,7 @@ if(!isset($page_title)){
 
       .leftbar .ui.link.list .item .icon::before {
         display: inline-block;
-        width: 50px;
+        width: 100px;
       }
       .ui .middle.aligned.link .list .content{
         
@@ -84,7 +84,7 @@ if(!isset($page_title)){
       .page {
         transform: translateX(0);
         transition: margin-left 0.4s, transform 0.4s;
-        padding-left: 50px;
+        padding-left: 100px;
         padding-top: 5%;
 
       }

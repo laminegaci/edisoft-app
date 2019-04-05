@@ -6,7 +6,7 @@ CREATE TABLE admin(
     id_ad TINYINT(1) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
     username_ad VARCHAR(20), 
     hashed_password VARCHAR(255)
-);
+)ENGINE=INNODB;
 
 CREATE TABLE pack(
     id_pack TINYINT(2) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
@@ -15,7 +15,7 @@ CREATE TABLE pack(
     prix_pack INT(7), 
     id_ad TINYINT(1), 
     FOREIGN KEY (id_ad) REFERENCES admin (id_ad )  ON UPDATE CASCADE ON DELETE CASCADE
-);
+)ENGINE=INNODB;
 
 
 CREATE TABLE client(
@@ -30,7 +30,7 @@ CREATE TABLE client(
     id_ad TINYINT(1),
     FOREIGN KEY (id_ad) REFERENCES admin (id_ad )  ON UPDATE CASCADE ON DELETE CASCADE
 
-);
+)ENGINE=INNODB;
 CREATE TABLE conception(
     id_con INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
     nom_con  VARCHAR(45), 
@@ -48,7 +48,7 @@ CREATE TABLE conception(
     FOREIGN KEY (id_cl) REFERENCES client (id_cl )  ON UPDATE CASCADE ON DELETE CASCADE
 
 
-);
+)ENGINE=INNODB;
 CREATE TABLE facture(
     id_fact INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,  
     date_fact DATE, 
@@ -65,7 +65,7 @@ CREATE TABLE facture(
 
 
 
-);
+)ENGINE=INNODB;
 
 CREATE TABLE hebergement(
 id_heb  INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,   
@@ -84,7 +84,7 @@ id_cl INT(4),
   FOREIGN KEY (id_fact) REFERENCES facture (id_fact )  ON UPDATE CASCADE ON DELETE CASCADE
 
 
-);
+)ENGINE=INNODB;
 
 INSERT INTO admin (id_ad, username_ad, hashed_password) VALUES (1, 'adminedisoft', '$2y$10$WCqh.jGepS7cEYfkTC7DeuspDJpWsU9uLeVjAeWYx2/cdgnl1ZkIK');
 
