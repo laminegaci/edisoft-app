@@ -82,8 +82,6 @@ $client = Client::find_by_id($id);
                                    
 
                                     </div>
-
-
                             </div>
                       </div>
                     
@@ -96,8 +94,8 @@ $client = Client::find_by_id($id);
                             <div class="sixteen wide column">
                             
                                     <div class="ui top attached tabular menu">
-                                        <a class="active item" data-tab="firstAfficher">Hébérgements(3)</a>
-                                        <a class="item" data-tab="secondAfficher">Conceptions(2)</a>
+                                        <a class="active item" data-tab="firstAfficher">Hébérgements</a>
+                                        <a class="item" data-tab="secondAfficher">Conceptions</a>
                                       </div>
                                       <div class="ui bottom attached tab segment active" data-tab="firstAfficher">
                                       <table class="ui celled  table">

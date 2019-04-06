@@ -2,6 +2,7 @@
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
 include('function_modal.php');
+$bool = $_SESSION['toast'] ;
 
 
 ?>
@@ -158,7 +159,7 @@ $conception = Conception::find_all();
                                         <?php
                                         }
                                        }
-                                       else echo '<h3 style="color:red;">pas de conception ajouter</h3>'; ?>
+                                       else echo '<h3 style="color:red;">pas de conception en cours</h3>'; ?>
                                     </tbody>
                                 </table>
                               
@@ -196,7 +197,7 @@ $conception = Conception::find_all_terminer();
                                         <?php
                                         }
                                        }
-                                       else echo '<h3 style="color:red;">pas de conception terminer</h3>'; ?> 
+                                       else echo '<h3 style="color:red;">pas de conception terminée</h3>'; ?> 
                                         
                                     </tbody>
                                 </table>
@@ -280,7 +281,7 @@ $conception = Conception::find_statique();
                                         <?php
                                         }
                                       }
-                                      else  echo '<h3 style="color:red;">pas de conception statique ajouter</h3>';
+                                      else  echo '<h3 style="color:red;">pas de conception statique en cours</h3>';
                                          ?>
                                     </tbody>
                                 </table>
@@ -321,7 +322,7 @@ $conception = Conception::find_stat_terminer();
                                         <?php
                                         }
                                       }
-                                      else  echo "<h3 style='color:red;'>pas de conception statique terminer</h3>"; ?>
+                                      else  echo "<h3 style='color:red;'>pas de conception statique terminée</h3>"; ?>
                                     </tbody>
                                 </table>  
                               
@@ -405,7 +406,7 @@ $conception = Conception::find_dynamique();
                                         <?php
                                         } 
                                       }
-                                      else echo '<h3 style="color:red;">pas de conception dynamique ajouter</h3>';
+                                      else echo '<h3 style="color:red;">pas de conception dynamique en cours</h3>';
                                         ?>
                                     </tbody>
                                 </table>
@@ -444,7 +445,7 @@ $conception = Conception::find_dyn_terminer();
                                         <?php
                                         }
                                       }
-                                      else echo '<h3 style="color:red;">pas de conception dynamique terminer</h3>';
+                                      else echo '<h3 style="color:red;">pas de conception dynamique terminée</h3>';
                                          ?>
                                     </tbody>
                                 </table>
@@ -486,6 +487,20 @@ $conception = Conception::find_dyn_terminer();
 
      
 <script>
+  <?php
+if($bool){
+    echo "
+    $('body')
+ .toast({
+   class: 'success',
+  
+    message: `une ".  $_SESSION['toastType'] ."a été effectuée avec succés!`
+ })
+;
+    ";
+}    
+$_SESSION['toast'] = false;
+?> 
 $('.ui.slider')
   .slider()
 ;

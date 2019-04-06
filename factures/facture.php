@@ -6,26 +6,24 @@ require_once("../includes/initialize.php");
 
 
 if (is_post_request() && isset($_POST['imprimer'])) {
-
     include("../includes/app_head.php");
 
     //var_dump($_POST);
     
-$type_pai_fact =   $_POST["type_pai_fact"];
+    $type_pai_fact =   $_POST["type_pai_fact"];
 
-$client = $_POST['id_cl'];
+    $client = $_POST['id_cl'];
 
-$position_tire= strpos($_POST['id_cl'],  '-');
-$_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
+    $position_tire= strpos($_POST['id_cl'], '-');
+    $_POST['id_cl'] = substr($_POST['id_cl'], 0, $position_tire);
    
-   $achats = Hebergement::find_where_client($_POST['id_cl']);
-   //var_dump($achats);
+    $achats = Hebergement::find_where_client($_POST['id_cl']);
+    //var_dump($achats);
    
-   $totale = 0;
-   
-   }else{
-       redirect_to('index.php');
-   }
+    $totale = 0;
+} else {
+    redirect_to('index.php');
+}
 
 
 
@@ -62,7 +60,7 @@ html {
 
     <div class="ui fluid container">
 
-        <?php 
+        <?php
 ?>
 
 
@@ -76,7 +74,6 @@ html {
 
             
                 <h1>Validation de facture Client: <span class="ui red text"><?php echo $client ?? ''; ?></span></h1>
-                <h2 class="ui yellow header"><?php if(empty( $heb_array)){echo '<i class="exclamation triangle icon"></i>ce client a payé tout les hébérgements commandés';} ?></h2>
 
     <?php $infosClient = Client::find_by_id($client) ;
     $heb_array = [];
@@ -98,8 +95,8 @@ html {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if($achats){
-              foreach ($achats as $achat) {
+                        <?php if ($achats) {
+        foreach ($achats as $achat) {
             ?>
                         <tr>
                         <td><?php echo h($achat->id_heb)?></td>
@@ -110,15 +107,14 @@ html {
                             <td><?php echo h($achat->date_fin_heb)?></td>
                             <td><?php echo h($achat->espace_heb)?></td>
                             <td><?php echo h($achat->prix);
-                            $totale += $achat->prix;
-                            $heb_array[] = $achat->id_heb;
-                            ?></td>
+            $totale += $achat->prix;
+            $heb_array[] = $achat->id_heb; ?></td>
                             
                             
                         </tr>
                         <?php
-          }
-         }?>
+        }
+    }?>
 
 <tr></tr>
 <tr></tr>
@@ -138,6 +134,9 @@ html {
 
                     </tbody>
                 </table>
+                <h2 class="ui yellow header"><?php if (empty($heb_array)) {
+        echo '<i class="exclamation triangle icon"></i>ce client a payé tout les hébérgements commandés';
+    } ?></h2>
 
 
 
@@ -148,10 +147,14 @@ html {
 
 
 
-                <form action="add_facture.php" method="post" enctype="multipart/form-data" <?php if(empty( $heb_array)){echo 'hidden';} ?> >
+                <form action="add_facture.php" method="post" enctype="multipart/form-data" <?php if (empty($heb_array)) {
+        echo 'hidden';
+    } ?> >
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
                     <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
-                    <input type="file" name="image"  <?php if($type_pai_fact !== 'ccp'){ echo 'hidden'; }?> >
+                    <input type="file" name="image"  <?php if ($type_pai_fact !== 'ccp') {
+        echo 'hidden';
+    }?> >
                     <input type="text" name="id_cl" value="<?php echo $_POST['id_cl']  ?? ''; ?>" hidden>
                     <input type="text" name="heb_array" value="<?php echo h(serialize($heb_array))  ?? ''; ?>" hidden>
 
@@ -218,23 +221,21 @@ function generate() {
     ];
     var body = [
         
-        <?php 
-        if($achats){
-           
+        <?php
+        if ($achats) {
             $nbr= count($achats);
             foreach ($achats as $achat) {
                 echo '["",';
-                 echo '"' . h($achat->nom_pack).'",';
-                 echo '"'. h($achat->url_heb).'",';
-                 echo '"'. h($achat->date_deb_heb).'",';
-                 echo '"'. h($achat->date_fin_heb).'",';
-                 echo '"'. h($achat->espace_heb).' GO",';
-                 echo '"'. h($achat->prix).' DA"';
+                echo '"' . h($achat->nom_pack).'",';
+                echo '"'. h($achat->url_heb).'",';
+                echo '"'. h($achat->date_deb_heb).'",';
+                echo '"'. h($achat->date_fin_heb).'",';
+                echo '"'. h($achat->espace_heb).' GO",';
+                echo '"'. h($achat->prix).' DA"';
                 
-                 echo '],';
-           
-            
-                }};
+                echo '],';
+            }
+        };
         ?>
 
 
