@@ -230,7 +230,7 @@ include("../includes/app_head.php");
                 telephon_cl: {
                     identifier: 'telephone',
                     rules: [{
-                            type: 'number',
+                            type: 'empty',
                             prompt: 'manque un numero telephon'
                         },
 
@@ -248,6 +248,7 @@ include("../includes/app_head.php");
 
             }
         });
+       
     </script>
 
 

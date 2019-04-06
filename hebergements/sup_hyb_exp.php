@@ -6,17 +6,17 @@ require_once('../includes/initialize.php');
  session_start();
 $_SESSION['toast'] = true;
  
- redirect_to('../dashboard.php');
+// redirect_to('../dashboard.php');
  //echo $id."waslaaaaaaaaaat";
-// if(isset($id) && !empty($id)){
+if(isset($id) && !empty($id)){
 
-//         $hybergement = Hebergement::delete($id);
+        $hybergement = Hebergement::delete($id);
         
-//         redirect_to('../dashboard.php');
+        redirect_to('../dashboard.php');
         
    
-// }else{
-//     //echo 'faragh';
-// }
+}else{
+    //echo 'faragh';
+}
 
 ?>

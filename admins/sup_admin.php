@@ -5,20 +5,20 @@ require_once('../includes/initialize.php');
  $id = $_GET['id'] ?? NULL;
  
 
-echo $id."waslaaaaaaaaaat";
+//echo $id."waslaaaaaaaaaat";
 session_start();
 $_SESSION['toast'] = true;
-redirect_to('index.php');
+//redirect_to('index.php');
 
-// if(isset($id) && !empty($id)){
+if(isset($id) && !empty($id)){
 
-//         $admins = Admin::delete($id);
+        $admins = Admin::delete($id);
         
-//         redirect_to('index.php');
+        redirect_to('index.php');
         
    
-// }else{
-//     //echo 'faragh';
-// }
+}else{
+    //echo 'faragh';
+}
 
 ?>
