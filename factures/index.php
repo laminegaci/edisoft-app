@@ -13,6 +13,10 @@ include("../includes/app_head.php");
 .ui.search .prompt{
     border-radius: 500rem !important;
 }
+.open_fact{
+        border-right:3px solid #119ee7;
+        }
+
 </style>
 
 <div class="page">

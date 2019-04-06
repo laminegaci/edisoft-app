@@ -14,6 +14,9 @@ include("../includes/app_head.php");
 .ui.big.form select{
 height: 100%;
 }
+.open_heb{
+        border-right:3px solid #119ee7;
+        }
 </style>
 
 <div class="page">

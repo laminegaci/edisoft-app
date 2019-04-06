@@ -19,6 +19,10 @@ include('function_modal.php');
     height: 85vh;
     overflow: scroll;
 }
+.open_pack{
+        border-right:3px solid #119ee7;
+        }
+
  </style>
 
  <div class="page">

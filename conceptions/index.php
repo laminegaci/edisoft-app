@@ -22,6 +22,9 @@ $bool = $_SESSION['toast'] ;
     height: 85vh;
     overflow: scroll;
 }
+.open_cons{
+        border-right:3px solid #119ee7;
+        }
 </style>
 <div class="page">
 
@@ -132,7 +135,7 @@ $conception = Conception::find_all();
                                             <td><?php echo h($cons->prix_con);?></td>
                                             <td><?php echo h($cons->versement_con);?></td>
                                             <td><?php echo h($cons->date_deb_con);?></td>
-                                            <td><?php echo h($cons->delai_con) . ' rest' . '('. $delai . /*$date_fin*/'' .')';?></td>
+                                            <td><?php echo /*h($cons->delai_con) . ' rest' . '('. */$delai /*.$date_fin'' .')'*/;?></td>
                                           
                                             <td>
                                                 <div class="ui bulleted list">

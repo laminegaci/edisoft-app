@@ -22,6 +22,9 @@ include("../includes/app_head.php");
     height: 85vh;
     overflow: scroll;
 }
+.open_ad{
+        border-right:3px solid #119ee7;
+        }
  </style>
 
  <div class="page">

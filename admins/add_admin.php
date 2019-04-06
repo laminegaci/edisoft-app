@@ -22,6 +22,9 @@ if(require_login() && ! $session->check_one()){
 label {
     float: left;
 }
+.open_ad{
+        border-right:3px solid #119ee7;
+        }
 </style>
 
     <?php 
@@ -39,9 +42,15 @@ include("../includes/app_head.php");
             
 
             <div class="ui padded centered  grid">
-            <h1>Ajouter admin  </h1>
+           
 
-                <div class="ui fifteen wide column " id="modifier_grid">
+                <div class="ui fifteen wide column row centered grid segment " id="modifier_grid">
+                <h2 class="ui left aligned header">
+                        <i class=" icons">
+                          <i class="user icon"></i>
+                           
+                        </i>
+                Ajouter admin </h2>
                     
                     <form method="POST" class="ui form centered grid" action="ajouter_admin.php">
                       

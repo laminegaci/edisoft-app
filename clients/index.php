@@ -24,6 +24,9 @@ height: 100%;
     height: 85vh;
     overflow: scroll;
 }
+.open_cl{
+        border-right:3px solid #119ee7;
+        }
  </style>
 
  <div class="page">

@@ -8,7 +8,7 @@ a img{
     width:5em !important;
 }
 .ui.top.fixed{
-padding-left: 100px;
+padding-left: 80px;
 }
 
 </style>
@@ -18,7 +18,7 @@ padding-left: 100px;
             <!-- begin row head-->
     <div class="" >
                               
-              <div class="ui top fixed  fluid big menu">
+              <div class="ui top fixed  fluid menu">
                 <div class="header item">
                  <a href="<?php echo url_for('dashboard.php'); ?>">   <img src="<?php echo url_for('images/logo.png');?>" alt=""></a>
                 </div>

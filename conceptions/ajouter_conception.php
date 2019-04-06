@@ -10,6 +10,9 @@ label {
 .ui.checkbox {
     display: block;
 }
+.open_cons{
+        border-right:3px solid #119ee7;
+        }
 </style>
 
 <?php 

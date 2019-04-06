@@ -17,6 +17,10 @@ label {
 select.ui.dropdown {
     height: 100%;
 }
+.open_fact{
+        border-right:3px solid #119ee7;
+        }
+
 </style>
 
 

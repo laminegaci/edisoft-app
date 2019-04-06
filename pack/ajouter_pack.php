@@ -13,6 +13,9 @@
 label {
     float: left;
 }
+.open_pack{
+        border-right:3px solid #119ee7;
+        }
 </style>
 
     <?php 
@@ -63,9 +66,15 @@ include("../includes/app_head.php");
             <?php include('../includes/menu_head.php'); ?>
 
             <div class="ui padded centered  grid">
-            <h1>Ajouter pack  </h1>
+           
 
-                <div class="ui fifteen wide column " id="modifier_grid">
+                <div class="ui fifteen wide column row centered grid segment " id="modifier_grid">
+                <h2 class="ui left aligned header">
+                        <i class=" icons">
+                          <i class="boxes icon"></i>
+                           
+                        </i>
+                Ajouter Pack </h2>
                     
                     <form method="POST" class="ui form centered grid" id="modifier_form">
                       

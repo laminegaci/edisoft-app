@@ -24,7 +24,6 @@ function get_percent($row_tot,$row_side)
 
     return $percent;
 }
-
 $row_cl = Client::rows_tot();
 $row_cl_part = Client::rows_part();
 $row_cl_pro = Client::rows_pro();
@@ -38,6 +37,10 @@ $row_cl_pro = Client::rows_pro();
         #left{
             padding-left: 0 !important;
             padding-right: 0 !important;
+        }
+        
+        .open_dash{
+        border-right:3px solid #119ee7;
         }
         </style>
 
@@ -371,10 +374,9 @@ $hyb_expiré = Hebergement::find_expired();
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?>
                                                 </td>
-                                                <form
-                                                    action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>"
-                                                    method="POST">
-                                                    <td> <button class="ui tiny red button" name="supprimer"><i
+                                                <form action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>" method="POST">
+                                                    <td> <button class="ui tiny red button" name="supprimer">
+                                                </form>
 
                                             </tr>
 

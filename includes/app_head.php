@@ -27,7 +27,7 @@ if(!isset($page_title)){
      html, body{
        height: 100%;
      /* background-image: url('<?php echo  url_for("images/prism.png"); ?>')*/
-     background-color: #ABABAB;
+     background-color: #e9ebee;
      }
       /* menu */
 
@@ -36,15 +36,15 @@ if(!isset($page_title)){
         top: 0;
         left: 0;
         height: 100%;
-        width: 100px; /*default width*/
-        background-color: rgba(30,30,30)  ;
+        width: 80px; /*default width*/
+        background-color: #363535  ;
         transition: width 0.4s;
         z-index: 1000;
         overflow: hidden;
       }
 #leftbar-toggle{
   color:white;
-  padding: 15px 40px 20px;
+  padding: 15px 27px 20px;
   display: inline-block;
   width: 50px;
 }
@@ -78,7 +78,7 @@ if(!isset($page_title)){
 
       .leftbar .ui.link.list .item .icon::before {
         display: inline-block;
-        width: 100px;
+        width: 80px;
       }
       .ui .middle.aligned.link .list .content{
         
@@ -86,7 +86,7 @@ if(!isset($page_title)){
       .page {
         transform: translateX(0);
         transition: margin-left 0.4s, transform 0.4s;
-        padding-left: 100px;
+        padding-left: 80px;
         padding-top: 5%;
 
       }
@@ -99,6 +99,7 @@ if(!isset($page_title)){
     
     width: 100%;
 }
+
       
 /* #head{
    
@@ -138,7 +139,7 @@ if(!isset($page_title)){
         <?php 
         if($_SESSION['admin_id'] == 1) 
         { echo '
-            <a class="item bar" href="';?><?php echo url_for("admins/index.php"); ?><?php echo '">';?>
+            <a class="item open_ad bar" href="';?><?php echo url_for("admins/index.php"); ?><?php echo '">';?>
               <?php echo '<i class="user large icon"></i>
               <div class="content">Admins</div>
             </a>
@@ -147,29 +148,29 @@ if(!isset($page_title)){
         ?>
         
         
-        <a class="item bar" href="<?php echo url_for('dashboard.php'); ?>">
+        <a class="item open_dash bar" href="<?php echo url_for('dashboard.php'); ?>">
           <i class="home large icon"></i>
           <div class="content">Accueil</div>
         </a>
-        <a class="item" href="<?php echo url_for('clients/index.php'); ?>">
+        <a class="item open_cl" href="<?php echo url_for('clients/index.php'); ?>">
           <i class="users large icon"></i>
           <div class="content">Client</div>
         </a>
-        <a class="item" href="<?php echo url_for('conceptions/index.php'); ?>">
+        <a class="item open_cons" href="<?php echo url_for('conceptions/index.php'); ?>">
             <i class="file code large icon"></i>
             <div class="content">Conception</div>
           </a>
-          <a class="item" href="<?php echo url_for('hebergements/index.php'); ?>">
+          <a class="item open_heb" href="<?php echo url_for('hebergements/index.php'); ?>">
               <i class="database large icon"></i>
               <div class="content">Hébergement</div>
             </a>
            
-              <a class="item" href="<?php echo url_for('factures/index.php'); ?>">
+              <a class="item open_fact" href="<?php echo url_for('factures/index.php'); ?>">
               <i class="file alternate outline large icon"></i>
                   <div class="content">Factures</div>
                 </a>
                
-        <a class="item" href="<?php echo url_for('pack/index.php'); ?>">
+        <a class="item open_pack" href="<?php echo url_for('pack/index.php'); ?>">
         <i class="large boxes icon"></i>
                   <div class="content">Pack</div>
                 </a>
