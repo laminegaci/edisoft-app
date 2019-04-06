@@ -54,12 +54,8 @@ include("../includes/app_head.php");
                 </div>
 
                 <div class="ui tab  active" data-tab="first">
-                        <div class="ui top attached tabular  menu">
-                            <a class="active item" data-tab="first/a">Tout</a>
-                         
-
-                        </div>
-                        <div class="ui bottom attached active tab segment" data-tab="first/a">
+                       
+                        <div class="ui bottom attached active tab " data-tab="first/a">
 
 <?php $factures = Facture::find_all(); ?>
                             <table class="ui striped table" id="tabAll" >

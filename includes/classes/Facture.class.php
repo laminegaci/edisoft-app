@@ -45,7 +45,7 @@ class Facture{
     }
 
     static public function find_all(){
-        $sql = "SELECT * FROM facture";
+        $sql = "SELECT * FROM facture ORDER BY id_fact DESC";
        return self::find_by_sql($sql);
     }
 

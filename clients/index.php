@@ -79,7 +79,7 @@ $rows_pro = Client::rows_pro();
                                     <select name="" id="selectFilter" class="ui dropdown">
                                         <option value="" id="all">Tout (<?php echo (!empty($rows)) ? $rows : 0;  ?>)</option>
                                         <option value="pro" id="pro">Pro(<?php echo (!empty($rows_pro)) ? $rows_pro : 0;  ?>)</option>
-                                        <option value="" id="particulier">Particulier(<?php echo (!empty($rows)) ? $rows : 0;  ?>)</option>
+                                        <option value="" id="particulier">Particulier(<?php echo (!empty($rows_particulier)) ? $rows_particulier : 0;  ?>)</option>
 
                                     </select>
                                  </div>

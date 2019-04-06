@@ -29,7 +29,14 @@ function is_get_request() {
   return $_SERVER['REQUEST_METHOD'] == 'GET';
 }
 
+function convertToKilo($n) {
+  if($n>=1000000000000) return round(($n/1000000000000),1).'T';
+  else if($n>=1000000000) return round(($n/1000000000),1).'B';
+  else if($n>=1000000) return round(($n/1000000),1).'M';
+  else if($n>=1000) return round(($n/1000),1).'K';
 
+  return number_format($n);
+}
 
 
 ////////////////////////Validation functions (check admin class)

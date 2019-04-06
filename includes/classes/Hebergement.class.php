@@ -149,13 +149,15 @@ class Hebergement{
         $sql = "DELETE FROM hebergement WHERE id_heb =";
         $sql .= "'" . $id ."';";
         
+        //echo $sql;
+        
         $result = self::$database->query($sql);
         if($result){
            return $result;
         }else{
          echo var_dump(self::$database->error_list);
         }
-
+            
     }
 //---------------------------------------------------------------------------------------
 
@@ -242,6 +244,7 @@ class Hebergement{
         }
     }
     //---------------------------------------------------------------------------------------
+    
     static public function rows_tot(){
         $sql = "select*from hebergement";
         $result = self::$database->query($sql);
@@ -258,8 +261,9 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_else(){
-        $sql = "select*from hebergement where id_pack!=1";
+    static public function rows_where_id($id){
+        $sql = "select*from hebergement where id_pack=";
+        $sql .= "'" . $id . "';";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
         $result->free();
@@ -324,7 +328,9 @@ class Hebergement{
         while($objet = $result->fetch_assoc()){
             $nom_client = $objet['nom_cl'].' ' .$objet['prenom_cl'];
         };
+    
         
+    
         
 
         return $nom_client;
@@ -340,6 +346,13 @@ class Hebergement{
 
         return $nom_pack;
      }
+     static public function rows_else(){
+        $sql = "select*from hebergement where id_pack!=1";
+        $result = self::$database->query($sql);
+        $row = $result->num_rows;
+        $result->free();
+        return $row;
+    }
     
     /////// end record code////////////////////////////
 
