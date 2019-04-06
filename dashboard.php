@@ -183,15 +183,9 @@ $rows_ccp = Facture::rows_ccp();
                             <div class="ui grid ">
                                 <div class="row">
                                     <?php 
-<<<<<<< HEAD
 $row_hyb = Hebergement::rows_tot() ?? 0;
 $row_hyb_dns = Hebergement::rows_dns() ?? 0;
 $row_hyb_else = Hebergement::rows_else() ?? 0;
-=======
-$row_hyb = Hebergement::rows_tot();
-$row_hyb_dns = Hebergement::rows_dns();
-$row_hyb_else = Hebergement::rows_else();
->>>>>>> recup_dash
 ?>
                                     <h4 class="column">  <i class="database  icon"></i>Total Hébérgement</h4>
                                 </div>
@@ -219,15 +213,9 @@ $row_hyb_else = Hebergement::rows_else();
                                         <br>
 
                                         <span><b>domaine:</b>
-<<<<<<< HEAD
                                             <?php echo get_percent($row_hyb,$row_hyb_dns ?? 0);?>%</span>&nbsp;
                                         <span><b>domaine+pack:
                                             </b><?php echo get_percent($row_hyb,$row_hyb_else ?? 0);?>%</span>&nbsp;
-=======
-                                            <?php echo get_percent($row_hyb,$row_hyb_dns);?>%</span>&nbsp;
-                                        <span><b>domaine+pack:
-                                            </b><?php echo get_percent($row_hyb,$row_hyb_else);?>%</span>&nbsp;
->>>>>>> recup_dash
 
                                     </div>
 
@@ -351,11 +339,6 @@ $rows_envoie = Hebergement::rows_envoie_expiré();
                                     <table class="ui striped large selectable  red table" id="table">
                                         <thead>
                                             <tr>
-<<<<<<< HEAD
-
-=======
-                                                    <th>#</th>
->>>>>>> recup_dash
                                                 <th>Nom et Prénom</th>
                                                 <th>pack</th>
                                                 <th>URL</th>
@@ -381,10 +364,6 @@ $hyb_expiré = Hebergement::find_expired();
                                                      ?>
                                             <tr class="red">
 
-<<<<<<< HEAD
-=======
-                                            <td><?php echo h($expiré->id_heb) ;?></td>
->>>>>>> recup_dash
                                                 <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?>
                                                 </td>
                                                 <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
@@ -395,30 +374,8 @@ $hyb_expiré = Hebergement::find_expired();
                                                 <form
                                                     action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>"
                                                     method="POST">
-<<<<<<< HEAD
                                                     <td> <button class="ui tiny red button" name="supprimer"><i
-=======
-                                                    <td> 
-                                                        <button class="ui  red button" name="supprimer"><i
->>>>>>> recup_dash
-                                                                class="minus circle icon"></i><span>Supprimer</span></button>
-                                                    </td>
-                                                    <td> </td>
-                                                </form>
 
-<<<<<<< HEAD
-=======
-                                                <form
-                                                    action="hebergements/renouv_hyb_exp.php?id_heb=<?php echo $expiré->id_heb;?>&id_pack=<?php echo $expiré->id_pack;?>"
-                                                    method="POST">
-                                                    <td> 
-                                                        <button class="ui  teal button" name="supprimer"><i
-                                                                class="recycle circle icon"></i><span>renouveler</span></button>
-                                                    </td>
-                                                    <td> </td>
-                                                </form>
-
->>>>>>> recup_dash
                                             </tr>
 
 
@@ -448,13 +405,7 @@ $hyb_expiré = $hebergement->find_going_expired();
                                                     
                                                     
                                                      ?>
-<<<<<<< HEAD
                                             <tr class="green">
-=======
-                                            <tr class="orange">
-                                            <td><?php echo h($expiré->id_heb) ;?></td>
-
->>>>>>> recup_dash
                                                 <td><i
                                                         class="exclamation triangle orange icon"></i><?php echo $id.'-'.$name;?>
                                                 </td>
