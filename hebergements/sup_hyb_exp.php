@@ -3,20 +3,25 @@ require_once('../includes/initialize.php');
 
 
  $id = $_GET['id'] ?? NULL;
- session_start();
+// session_start();
 $_SESSION['toast'] = true;
+$_SESSION['toastType'] = "Supression";
  
- redirect_to('../dashboard.php');
  //echo $id."waslaaaaaaaaaat";
-// if(isset($id) && !empty($id)){
+if(isset($id) && !empty($id)){
 
-//         $hybergement = Hebergement::delete($id);
+        $hybergement = Hebergement::delete($id);
         
-//         redirect_to('../dashboard.php');
-        
+       if($hybergement){
+        redirect_to('../dashboard.php');
+         
+       }else{
+           echo "erreur de suppression";
+            var_dump($hybergement);
+       }
    
-// }else{
-//     //echo 'faragh';
-// }
+}else{
+    //echo 'faragh';
+}
 
 ?>

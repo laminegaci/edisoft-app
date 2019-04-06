@@ -26,8 +26,8 @@ if(!isset($page_title)){
       
      html, body{
        height: 100%;
-      /* background-color:  #BCC1CF;*/
-      background-image: url("<?php url_for('images/prism.png') ?>");
+     /* background-image: url('<?php echo  url_for("images/prism.png"); ?>')*/
+     background-color: #ABABAB;
      }
       /* menu */
 
@@ -37,7 +37,7 @@ if(!isset($page_title)){
         left: 0;
         height: 100%;
         width: 100px; /*default width*/
-        background-color: rgba(30,30,30,0.9)  ;
+        background-color: rgba(30,30,30)  ;
         transition: width 0.4s;
         z-index: 1000;
         overflow: hidden;

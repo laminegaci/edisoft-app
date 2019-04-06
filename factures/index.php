@@ -54,12 +54,8 @@ include("../includes/app_head.php");
                 </div>
 
                 <div class="ui tab  active" data-tab="first">
-                        <div class="ui top attached tabular  menu">
-                            <a class="active item" data-tab="first/a">Tout</a>
-                         
-
-                        </div>
-                        <div class="ui bottom attached active tab segment" data-tab="first/a">
+                       
+                        <div class="ui bottom attached active tab " data-tab="first/a">
 
 <?php $factures = Facture::find_all(); ?>
                             <table class="ui striped table" id="tabAll" >
@@ -87,7 +83,8 @@ include("../includes/app_head.php");
                                       <td><?php echo h($facture->totale_fact);?></td>
                                       <td><?php echo h($facture->type_pai_fact);?></td>
                                       
-                                      <td ><?php if($facture->ccp_img_fact == NULL){ echo "/";}else { echo '<img style="width:100px;height:20px;" src="uploads/'.$facture->ccp_img_fact.'" alt="malgahach">';}?></td>
+                                      <td ><?php if($facture->ccp_img_fact == NULL){ echo "/";}else { echo "<a href='uploads/{$facture->ccp_img_fact}' data-lightbox='{$facture->ccp_img_fact}' data-title=''><img class='ui mini image' src='uploads/{$facture->ccp_img_fact}'></a>
+";}?></td>
 
                                     </tr>
                                     <?php }
