@@ -19,6 +19,8 @@ if(!isset($page_title)){
     <script src="<?php echo url_for('dist/jquery-3.3.1.min.js');?>"></script>
     
     <script src="<?php echo url_for('dist/semantic.js') ?>"></script>
+    <link rel="stylesheet" href="<?php echo url_for('dist/lightbox.css'); ?>">
+
     
     <style>
       

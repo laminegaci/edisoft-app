@@ -258,8 +258,9 @@ class Hebergement{
 
         return $row;
     }
-    static public function rows_else(){
-        $sql = "select*from hebergement where id_pack!=1";
+    static public function rows_where_id($id){
+        $sql = "select*from hebergement where id_pack=";
+        $sql .= "'" . $id . "';";
         $result = self::$database->query($sql);
         $row = $result->num_rows;
         $result->free();

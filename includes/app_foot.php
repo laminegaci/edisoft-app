@@ -1,4 +1,8 @@
 
+
+
+
+<script src="<?php echo url_for('dist/lightbox.js'); ?>"></script>
     <script>
 
 

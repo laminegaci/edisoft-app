@@ -39,7 +39,7 @@ height: 100%;
 
                     <?php
 $rows = Hebergement::rows_tot();
-$rows = Hebergement::rows_tot();
+
 
 ?>
 
@@ -75,14 +75,16 @@ $rows = Hebergement::rows_tot();
                              <div class="fields">
                                  <div class=" five wide field" >
                                     <select name="" id="selectFilter" class="ui dropdown">
-                                        <option value="" id="all">Tout <?php echo $rows ?></option>
+                                        <option value="" id="all">Tout (<?php echo $rows ?>)</option>
                                       <?php 
                                 
                                 if ($packs) {
                                     foreach ($packs as $pack) {
                                         ?>
 
-                                        <option value="<?php echo h($pack->nom_pack);?>" id="<?php echo h($pack->nom_pack);?>"><?php echo h($pack->nom_pack);?></option>
+                                        <option value="<?php echo h($pack->nom_pack);?>" id="<?php echo h($pack->nom_pack);?>">
+                                        <?php echo h($pack->nom_pack) . ' (' . Hebergement::rows_where_id($pack->id_pack) . ')';?>
+                                    </option>
                                    
                                    <?php
                                     }

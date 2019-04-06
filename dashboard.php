@@ -11,7 +11,7 @@ include('includes/app_head.php');
 
     <div class="ui fluid container">
 
-<?php
+        <?php
 function get_percent($row_tot,$row_side)
 {
     if($row_tot>0){
@@ -30,12 +30,16 @@ $row_cl_part = Client::rows_part();
 $row_cl_pro = Client::rows_pro();
 
 ?>
-<style>
-.ui.fluid.card{
-    height: 65vh;
-    overflow: scroll;
-}
-</style>
+        <style>
+        .ui.fluid.card {
+            height: 65vh;
+            overflow: scroll;
+        }
+        #left{
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        </style>
 
 
         <!-- begin row stats-->
@@ -48,31 +52,40 @@ $row_cl_pro = Client::rows_pro();
                         <div class=" ">
                             <div class="ui grid ">
                                 <div class="row">
-                                    <h4 class="column">Total clients</h4>
+                                    <h4 class="column"> <i class="users large icon"></i>Total clients</h4>
                                 </div>
 
 
 
 
 
-                                <div class="value">
-                                    <i class="users huge icon"></i>
+                               <div class="ui row centered grid">
+                                   <div class="ten wide column">
+                                   <div class="ui horizontal large statistic">
+                                    <div class="value">
+                                        <?php echo $row_cl;?>
+                                    </div>
+                                    <div class="label">
+                                        Clients
+                                    </div>
                                 </div>
-
-
-
-                                <div class="label">
-                                    <span class="ui center aligned header"><?php echo $row_cl;?></span> <br>
-                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
-                                </div>
+                                   </div>
+                               </div>
 
 
                                 <div class="centered row">
                                     <div class="canvas">
                                         <canvas id="myChart1"></canvas>
+                                        <br>
 
-                                        <span><b>Partiulier:</b> <?php echo '('.$row_cl_part.')'; echo get_percent($row_cl,$row_cl_part);?> %</span>
-                                        <span><b>Profitionnel:</b><?php echo '('.$row_cl_pro.')'; echo get_percent($row_cl,$row_cl_pro);?> %</span>
+                                        <span><b>Partiulier:</b>
+                                            <?php echo get_percent($row_cl,$row_cl_part) ;?>% &nbsp;
+                                            
+                                            </span>
+                                            <span><b>Professionnel:</b>
+                                            <?php echo get_percent($row_cl,$row_cl_pro) ;?>% &nbsp;
+                                            
+                                            </span>
 
                                     </div>
 
@@ -92,48 +105,61 @@ $row_cl_pro = Client::rows_pro();
 
 
                 <div class="ui card">
-                    <div class="ui statistics content">
-                        <div class=" ">
-                            <div class="ui grid ">
-                                <div class="row">
-                                    <h4 class="column">Total Revenue </h4>
-                                </div>
-
-<?php
-$total = Facture::find_total_revenu();
-$rows_tot = Facture::rows_tot();
-$rows_cache = Facture::rows_cache();
-$rows_cheque = Facture::rows_ccp_img_fact();
-$rows_type_cheque = Facture::rows_type_cheque();
+                <?php
+$total = Facture::find_total_revenu() ?? 0;
+$rows_tot = Facture::rows_tot() ?? 0;
+$rows_cache = Facture::rows_cache() ?? 0;
+$rows_cheque = Facture::rows_ccp_img_fact() ?? 0;
+$rows_type_cheque = Facture::rows_type_cheque() ?? 0;
 
 $rows_ccp = Facture::rows_ccp();
 
 
 ?>
 
+                    <div class="ui statistics content">
+                        <div class=" ">
+                            <div class="ui grid ">
+                                <div class="row">
+                                    <h4 class="column"><i class="large money bill alternate outline icon"></i>Total Revenue </h4>
+                                </div>
 
-
-                                <div class="value">
-                                    <i class="huge money bill alternate outline icon"></i>
+                                <div class="ui row centered grid">
+                                   <div class="ten wide column">
+                                <div class="ui horizontal large statistic">
+                                    <div class="value">
+                                       
+                                        <?php echo convertToKilo($total);
+                                         ?>
+                                    </div>
+                                    <div class="label">
+                                        DA
+                                    </div>
+                                </div>
+                                </div>
                                 </div>
 
 
-
-                                <div class="label">
-                                    <span class="ui center aligned header"><?php echo $total.' DA'. $rows_tot;  ?></span> <br>
-
-                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
-                                </div>
 
 
                                 <div class="centered row">
                                     <div class="canvas">
                                         <canvas id="myChart2"></canvas>
-                                        <span><b>Espece:</b> <?php echo '('.$rows_cache.')';echo get_percent($rows_tot,$rows_cache);?> %</span>
-                                        <span><b>Chèque:</b> <?php echo '('.$rows_type_cheque.')';echo get_percent($rows_tot,$rows_type_cheque);?> %</span>
-                                        <span><b>CCP:</b> <?php echo '('.$rows_ccp.')';echo get_percent($rows_tot,$rows_ccp);?> %</span>
-                                        
-                                        
+                                        <br>
+
+                                        <span><b>Espece:</b>
+                                            <?php echo get_percent($rows_tot,$rows_cache);?>
+                                            %</span> &nbsp;
+                                            
+                                        <span><b>Chèque:</b>
+                                            <?php echo  get_percent($rows_tot,$rows_type_cheque);?>
+                                            %</span> &nbsp;
+                                            
+                                        <span><b>CCP:</b>
+                                            <?php echo get_percent($rows_tot,$rows_ccp);?>
+                                            %</span>
+
+
                                     </div>
 
                                 </div>
@@ -156,36 +182,40 @@ $rows_ccp = Facture::rows_ccp();
                         <div class=" ">
                             <div class="ui grid ">
                                 <div class="row">
-<?php 
-$row_hyb = Hebergement::rows_tot();
-$row_hyb_dns = Hebergement::rows_dns();
-$row_hyb_else = Hebergement::rows_else();
+                                    <?php 
+$row_hyb = Hebergement::rows_tot() ?? 0;
+$row_hyb_dns = Hebergement::rows_dns() ?? 0;
+$row_hyb_else = Hebergement::rows_else() ?? 0;
 ?>
-                                    <h4 class="column">Total Hébérgement</h4>
+                                    <h4 class="column">  <i class="database  icon"></i>Total Hébérgement</h4>
                                 </div>
 
 
 
+                                <div class="ui row centered grid">
+                                   <div class="ten wide column">
 
-
-                                <div class="value">
-                                    <i class="database huge icon"></i>
+                                <div class="ui horizontal large statistic">
+                                    <div class="value">
+                                       
+                                    <?php echo $row_hyb; ?>
+                                    </div>
+                                    <div class="label">
+                                        Hébérgements
+                                    </div>
                                 </div>
-
-
-
-                                <div class="label">
-                                    <span class="ui center aligned header"><?php echo $row_hyb; ?></span> <br>
-                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
                                 </div>
-
+                                </div>
 
                                 <div class="centered row">
                                     <div class="canvas">
                                         <canvas id="myChart3"></canvas>
+                                        <br>
 
-                                        <span><b>domaine:</b> <?php echo '('.$row_hyb_dns.')';echo get_percent($row_hyb,$row_hyb_dns);?>%</span>
-                                        <span><b>domaine+pack: </b><?php echo '('.$row_hyb_else.')';echo get_percent($row_hyb,$row_hyb_else);?>%</span>
+                                        <span><b>domaine:</b>
+                                            <?php echo get_percent($row_hyb,$row_hyb_dns ?? 0);?>%</span>&nbsp;
+                                        <span><b>domaine+pack:
+                                            </b><?php echo get_percent($row_hyb,$row_hyb_else ?? 0);?>%</span>&nbsp;
 
                                     </div>
 
@@ -209,35 +239,38 @@ $row_hyb_else = Hebergement::rows_else();
                         <div class=" ">
                             <div class="ui grid ">
                                 <div class="row">
-<?php
+                                    <?php
 $row_con = Conception::rows_tot();
 $row_con_stat = Conception::rows_statique();
 $row_con_dyn = Conception::rows_dynamique();
 ?>
-                                    <h4 class="column">Total Conception</h4>
+                                    <h4 class="column">  <i class="file code  icon"></i>Total Conception</h4>
                                 </div>
 
 
 
+                                <div class="ui row centered grid">
+                                   <div class="ten wide column">
 
-                                <div class="value">
-                                    <i class="file code huge icon"></i>
-
+                                <div class="ui horizontal large statistic">
+                                    <div class="value">
+                                       
+                                    <?php echo $row_con;?>
+                                    </div>
+                                    <div class="label">
+                                        Conceptions
+                                    </div>
                                 </div>
-
-
-
-                                <div class="label">
-                                    <span class="ui center aligned header"><?php echo $row_con;?></span> <br>
-                                    <!-- <span class="ui green center aligned header">+4%&nbsp;</span>cette semaine -->
+                                </div>
                                 </div>
                                 <div class="centered row">
 
                                     <div class="canvas">
                                         <canvas id="myChart4"></canvas>
-
-                                        <span><b>Statique:</b><?php echo '('.$row_con_stat.')'; echo get_percent($row_con,$row_con_stat);?>%</span>
-                                        <span><b>Dynamique:</b><?php echo '('.$row_con_dyn.')'; echo get_percent($row_con,$row_con_dyn); ?> %</span>
+                                            <br>
+                                        <span><b>Statique:</b><?php  echo get_percent($row_con,$row_con_stat);?>%</span>&nbsp;
+                                        <span><b>Dynamique:</b><?php echo get_percent($row_con,$row_con_dyn); ?>%&nbsp;
+                                           </span>
                                     </div>
 
                                 </div>
@@ -284,28 +317,29 @@ $rows_envoie = Hebergement::rows_envoie_expiré();
 
                                     <div class="ui search  column" id="load_search">
                                         <div class="ui icon input">
-                                            <input class="prompt" type="text" placeholder="cherher..."
-                                                id="search">
+                                            <input class="prompt" type="text" placeholder="cherher..." id="search">
                                             <i class="search icon"></i>
                                         </div>
                                         <div class="results"></div>
                                     </div>
-                                    
+
                                 </div>
 
 
-                                <h4 class="thirteen wide column">Expirés:&nbsp; <span class="ui red text"><?php echo $rows_exp;?></span></h4>
-                                <h4 class="thirteen wide column">En voie d'expiration:&nbsp <span class="ui orange text"><?php echo $rows_envoie;?></span></h4>
+                                <h4 class="thirteen wide column">Expirés:&nbsp; <span
+                                        class="ui red text"><?php echo $rows_exp;?></span></h4>
+                                <h4 class="thirteen wide column">En voie d'expiration:&nbsp <span
+                                        class="ui orange text"><?php echo $rows_envoie;?></span></h4>
 
                             </div>
-                           
+
 
                             <div class="row">
                                 <div id="left" class="column">
                                     <table class="ui striped large selectable  red table" id="table">
                                         <thead>
                                             <tr>
-                                            
+
                                                 <th>Nom et Prénom</th>
                                                 <th>pack</th>
                                                 <th>URL</th>
@@ -313,7 +347,7 @@ $rows_envoie = Hebergement::rows_envoie_expiré();
                                                 <th colspan="3">jours restants</th>
                                             </tr>
                                         </thead>
-<?php
+                                        <?php
 $hyb_expiré = Hebergement::find_expired();
 ?>
                                         <tbody>
@@ -330,34 +364,40 @@ $hyb_expiré = Hebergement::find_expired();
                                                     
                                                      ?>
                                             <tr class="red">
-                                                
-                                                <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?></td>
+
+                                                <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?>
+                                                </td>
                                                 <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
                                                 <td><?php echo h($expiré->url_heb) ;?></td>
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
-                                                <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
-                                                <form action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>" method="POST">
-                                                <td> <button class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
-                                                <td> </td>
-                                                </form>       
-                                                
+                                                <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?>
+                                                </td>
+                                                <form
+                                                    action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>"
+                                                    method="POST">
+                                                    <td> <button class="ui tiny red button" name="supprimer"><i
+                                                                class="minus circle icon"></i><span>Supprimer</span></button>
+                                                    </td>
+                                                    <td> </td>
+                                                </form>
+
                                             </tr>
-                                           
-                                            
-                                            
+
+
+
                                             <?php 
                                                 }
                                             }
-                                            else echo 'pas d\'ebergement expiré';
+                                           
                                             ?>
 
-<?php
+                                            <?php
 $hebergement = new Hebergement;
 $client = new Client;
 $hyb_expiré = $hebergement->find_going_expired();
 ?>
 
-                                            
+
                                             <?php
                                             
                                             if($hyb_expiré){
@@ -371,22 +411,25 @@ $hyb_expiré = $hebergement->find_going_expired();
                                                     
                                                      ?>
                                             <tr class="green">
-                                                <td><i class="exclamation triangle orange icon"></i><?php echo $id.'-'.$name;?></td>
+                                                <td><i
+                                                        class="exclamation triangle orange icon"></i><?php echo $id.'-'.$name;?>
+                                                </td>
                                                 <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
                                                 <td><?php echo h($expiré->url_heb) ;?></td>
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
-                                                <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?></td>
+                                                <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?>
+                                                </td>
                                                 <td></td>
                                                 <td></td>
-                                                
+
                                             </tr>
                                             <?php 
                                                 }
                                             }
-                                            else echo '<h3  style="color:red;">pas d\'ebergement ni expiré ni en voie d\'expiration</h3>';
+                                            else echo '<h3  class="ui green header"><i class="check circle icon"></i>pas d\'ebergement ni expiré ni en voie d\'expiration</h3>';
                                             ?>
-                                            
-                                            
+
+
 
                                             <!-- <tr class="orange">
                                                 <td><i class="exclamation triangle icon"></i>---</td>
@@ -397,7 +440,7 @@ $hyb_expiré = $hebergement->find_going_expired();
 
                                                 
                                             </tr> -->
-                                           
+
 
                                         </tbody>
                                     </table>
@@ -410,7 +453,7 @@ $hyb_expiré = $hebergement->find_going_expired();
                 </div><!-- fin de colonne-->
 
             </div>
-<?php
+            <?php
 
 $conception = Conception::find_all_dash();
 
@@ -429,7 +472,7 @@ $conception = Conception::find_all_dash();
                                             <th>Client</th>
                                             <th>Nom du site</th>
                                             <th>délai restant</th>
-                                            
+
                                             <th>Versement</th>
                                             <th>Prix</th>
                                             <th colspan="2">Commentaire</th>
@@ -453,24 +496,24 @@ $conception = Conception::find_all_dash();
                                             <td><?php echo $name;?></td>
                                             <td><?php echo h($cons->nom_con); ?> </td>
                                             <td><?php echo $delai;?></td>
-                                            
+
                                             <td><?php echo h($cons->versement_con).' DA';?></td>
                                             <td><?php echo h($cons->prix_con).' DA';?></td>
-                                            
+
                                             <td>
                                                 <div class="ui bulleted list">
-                                                <div class="item"><?php echo h($cons->commentaire_con);?></div>
+                                                    <div class="item"><?php echo h($cons->commentaire_con);?></div>
                                                 </div>
                                             </td>
-                                            
+
                                         </tr>
 
-                                       
 
-                                        
+
+
                                         <?php
                                         }
-                                    }else echo '<h3 style="color:orange;">pas de conception à finir</h3>'; 
+                                    }else echo '<h3 class="ui green header"><i class="check circle icon"></i>pas de conception en cours</h3>'; 
                                         ?>
                                     </tbody>
                                 </table>
@@ -582,10 +625,12 @@ var myPieChart = new Chart(ctx, {
     type: 'doughnut',
 
     data: {
-        labels: ["Particulier", "Profitionnel"],
+        labels: ["Particulier", "Professionel"],
 
         datasets: [{
-            data: [<?php echo get_percent($row_cl,$row_cl_part);?>, <?php echo get_percent($row_cl,$row_cl_pro);?>],
+            data: [<?php echo get_percent($row_cl,$row_cl_part);?>,
+                <?php echo get_percent($row_cl,$row_cl_pro);?>
+            ],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -607,7 +652,10 @@ var myPieChart = new Chart(ctx, {
         labels: ["Cache", "Chèque", "CCP"],
 
         datasets: [{
-            data: [<?php echo get_percent($rows_tot,$rows_cache);?>, <?php echo get_percent($rows_tot,$rows_type_cheque);?>, <?php echo get_percent($rows_tot,$rows_ccp);?>],
+            data: [<?php echo get_percent($rows_tot,$rows_cache);?>,
+                <?php echo get_percent($rows_tot,$rows_type_cheque);?>,
+                <?php echo get_percent($rows_tot,$rows_ccp);?>
+            ],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -629,7 +677,9 @@ var myPieChart = new Chart(ctx, {
         labels: ["Domaine", "Domaine+pack"],
 
         datasets: [{
-            data: [<?php echo get_percent($row_cl,$row_hyb_dns);?>,<?php echo get_percent($row_cl,$row_hyb_else);?>],
+            data: [<?php echo get_percent($row_cl,$row_hyb_dns);?>,
+                <?php echo get_percent($row_cl,$row_hyb_else);?>
+            ],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
@@ -651,7 +701,9 @@ var myPieChart = new Chart(ctx, {
         labels: ["Statique", "Dynamique"],
 
         datasets: [{
-            data: [<?php echo get_percent($row_cl,$row_con_stat);?>, <?php echo get_percent($row_cl,$row_con_dyn);?>],
+            data: [<?php echo get_percent($row_cl,$row_con_stat);?>,
+                <?php echo get_percent($row_cl,$row_con_dyn);?>
+            ],
             backgroundColor: [
                 '#2b2e4a',
                 '#e84545',
