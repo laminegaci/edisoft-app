@@ -506,7 +506,7 @@ $heb_non_payer = Hebergement::find_non_payer();
 
                                             <td><?php  echo $heb->url_heb; ?></td>
                                             <td><?php echo $heb->date_deb_heb; ?></td>
-                                            <form action="factures/ajouter_facture.php?id=<?php echo $id.'-'.$name;?>" method="POST">
+                                            <form action="factures/ajouter_facture.php?id=<?php echo u($id.'-'.$name);?>" method="POST">
                                                 <td> <button class="ui tiny green button" name="payer"><i class="circle icon"></i><span>Payer</span></button></td>
                                             </form>
                                            

@@ -55,7 +55,15 @@ select.ui.dropdown {
                             <div class="ten wide field">
                                 <label for="">Client:</label>
                                 <select class="ui search dropdown" name="id_cl" value=''>
-                                <option value="">Client..</option>
+                                <option value="<?php if(isset($_GET['id']) ){ echo urldecode($_GET['id']);  
+                                 } ?>" <?php if(isset($_GET['id']) ){ echo "selected";    }; ?> >
+                                <?php 
+                                 if(isset($_GET['id']) ){ echo urldecode($_GET['id']);  
+                                 }else{
+                                     echo 'Client:';
+                                 }; 
+                                ?></option>
+
                                <?php foreach ($clients as $client) {
                                    ?>
                                 <option value="<?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?>">  <?php echo $client->id_cl . '-'.$client->nom_cl . " " . $client->prenom_cl; ?></option>
