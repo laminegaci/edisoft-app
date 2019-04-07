@@ -26,6 +26,7 @@ height: 100%;
 }
 .open_cl{
         border-right:3px solid #119ee7;
+        
         }
  </style>
 

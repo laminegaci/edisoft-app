@@ -7,6 +7,8 @@ require_once('../includes/initialize.php');
  $hebergement = Hebergement::find_by_id($id_heb);
 // session_start();
 $_SESSION['toast'] = true;
+echo 'id_heberg = '.$_GET['id_heb'].'<br>';
+echo 'id_pack = '.$_GET['id_pack'].'<br>';
  
  //echo $id."waslaaaaaaaaaat";
 if(!is_null($id_heb) && !is_null($id_pack)){

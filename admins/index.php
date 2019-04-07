@@ -9,7 +9,7 @@ include("../includes/app_head.php");
 
 ?>
 <?php $bool = $_SESSION['toast'] ?? false; ?>
-
+<?php $bool_admin = $_SESSION['toast_admin'] ?? false; ?>
  <style>
 
 .ui.button i {
@@ -24,6 +24,7 @@ include("../includes/app_head.php");
 }
 .open_ad{
         border-right:3px solid #119ee7;
+        
         }
  </style>
 
@@ -76,7 +77,7 @@ $admins = Admin::find_all();
                              <tr>
                                  <th>#</th>
                                  <th>username</th>
-                                 <th>denière login</th>
+                                
                                  <th></th>
                                  
                                  
@@ -93,8 +94,8 @@ $admins = Admin::find_all();
                              <tr>
                             <td><?php echo h($admin->id_ad);?></td>
                             <td><?php echo h($admin->username_ad);?></td>
-                            <td></td>
-                            <form action="sup_admin.php"  method='POST'>
+                            
+                            <form action="sup_admin.php?id=<?php echo h($admin->id_ad);?>"  method='POST'>
                             
                             <td><button  class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
                             </form>
@@ -156,7 +157,18 @@ if($bool){
 ;
     ";
 }    
+if($bool_admin){
+    echo "
+    $('body')
+ .toast({
+   class: 'warning',
+   message: `vous pouvez pas supprimer l'admin !`
+ })
+;
+    ";
+}    
 $_SESSION['toast'] = false;
+$_SESSION['toast_admin'] = false;
 ?>
          // Write on keyup event of keyword input element  
   // Write on keyup event of keyword input element

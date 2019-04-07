@@ -15,6 +15,7 @@ label {
 }
 .open_cl{
         border-right:3px solid #119ee7;
+        
         }
 </style>
 
@@ -55,6 +56,10 @@ if(is_post_request() && isset($_POST['ajouter'])){
       $result = $client->create();
 
       if($result == true){
+        session_start();
+        $_SESSION['toast'] = true;
+        $_SESSION['toastType'] = "ajoute";
+
         redirect_to('index.php');
       }else{
          // echo "error";
@@ -196,10 +201,12 @@ include("../includes/app_head.php");
 
                 nom_cl: {
                     identifier: 'nom_cl',
-                    rules: [{
+                    rules: [
+                        {
                             type: 'empty',
                             prompt: 'manque un nom'
                         },
+                       
 
                     ]
                 },
@@ -214,7 +221,8 @@ include("../includes/app_head.php");
                 },
                 adresse_cl: {
                     identifier: 'adresse',
-                    rules: [{
+                    rules: [
+                        {
                             type: 'empty',
                             prompt: 'manque une adresse'
                         },
@@ -223,20 +231,26 @@ include("../includes/app_head.php");
                 },
                 email_cl: {
                     identifier: 'email',
-                    rules: [{
-                            type: 'empty',
-                            prompt: 'manque un email'
+                    rules: [
+                       
+                        {
+                            type: 'email',
+                            prompt: 'email non valid'
                         },
 
                     ]
                 },
                 telephon_cl: {
                     identifier: 'telephone',
-                    rules: [{
+                    rules: [
+                        {
                             type: 'empty',
                             prompt: 'manque un numero telephon'
                         },
-
+                        {
+                            type: 'number',
+                            prompt: 'numero telephon non valid'
+                        },
                     ]
                 },
                 entreprise: {

@@ -283,6 +283,17 @@ class Hebergement{
         }
 
     }
+    static function find_non_payer(){
+        $sql = "SELECT * FROM hebergement ";
+        $sql .="where id_fact is NULL";
+        $object_array= self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
+
+    }
 
     static public function find_going_expired(){
         $sql = "SELECT * FROM hebergement ";
@@ -301,7 +312,7 @@ class Hebergement{
         $date = new DateTime($date_expire);
         $now = new DateTime();
 
-        echo $now->diff($date)->format(" %R%a jour, %h heur %i minuts");
+        echo $now->diff($date)->format(" %R%a jour, %h heur ");
     }
 
     static public function rows_expiré(){

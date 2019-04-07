@@ -41,6 +41,7 @@ $row_cl_pro = Client::rows_pro();
         
         .open_dash{
         border-right:3px solid #119ee7;
+        
         }
         </style>
 
@@ -375,9 +376,12 @@ $hyb_expiré = Hebergement::find_expired();
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?>
                                                 </td>
                                                 <form action="hebergements/sup_hyb_exp.php?id=<?php echo $expiré->id_heb;?>" method="POST">
-                                                    <td> <button class="ui tiny red button" name="supprimer">
+                                                <td> <button class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
                                                 </form>
-
+                                                <form action="hebergements/renouv_hyb_exp.php?id_heb=<?php echo $expiré->id_heb;?>&id_pack=<?php echo $expiré->id_pack;?>" method="POST">
+                                                <td> <button class="ui tiny red button" name="renouvler"><i class="sync alternate circle icon"></i><span>Renouvler</span></button> </td>
+                                                </form>
+                                                <td></td>
                                             </tr>
 
 
@@ -407,7 +411,7 @@ $hyb_expiré = $hebergement->find_going_expired();
                                                     
                                                     
                                                      ?>
-                                            <tr class="green">
+                                            <tr class="orange">
                                                 <td><i
                                                         class="exclamation triangle orange icon"></i><?php echo $id.'-'.$name;?>
                                                 </td>
@@ -417,7 +421,7 @@ $hyb_expiré = $hebergement->find_going_expired();
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?>
                                                 </td>
                                                 <td></td>
-                                                <td></td><td></td>
+                                                <td></td>
                                                 <td></td>
 
                                             </tr>
@@ -453,7 +457,8 @@ $hyb_expiré = $hebergement->find_going_expired();
             </div>
             <?php
 
-$conception = Conception::find_all_dash();
+//$conception = Conception::find_all_dash();
+$heb_non_payer = Hebergement::find_non_payer();
 
 ?>
             <div class="row">
@@ -462,47 +467,50 @@ $conception = Conception::find_all_dash();
 
                     <div class="ui fluid card">
                         <div class="content">
-                            <h2><i class="code icon"></i>&nbsp;Conception non terminée</h2>
+                            <h2><i class="code icon"></i>&nbsp;Hebergement non payer</h2>
                             <div id="middle">
-                                <table class="ui celled orange table">
+                                <table class="ui celled table">
                                     <thead>
                                         <tr>
-                                            <th>Client</th>
-                                            <th>Nom du site</th>
-                                            <th>délai restant</th>
-
-                                            <th>Versement</th>
-                                            <th>Prix</th>
-                                            <th colspan="2">Commentaire</th>
+                                        <th>#</th>
+                                        <th>Nom et Prénom</th>
+                                        <th>pack</th>
+                                        <th>URL</th>
+                                        <th>date début</th>
+                                        <th></th>
+                                        
                                         </tr>
                                     </thead>
                                     <?php
-                                    if($conception){
-                                        foreach($conception as $cons)
+                                    if($heb_non_payer){
+                                        foreach($heb_non_payer as $heb)
                                         {
-                                      $id = $cons->id_cl;
-                                      $name = Conception::find_name($id);
-                                      $date_now =  (new \DateTime())->format('Y-m-d');
-                                      $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
-                                      $delai = Conception::delai($date_now,$date_fin);
+                                            $id=$heb->id_cl;
+                                            $name = Hebergement::find_name($id);
+                                            $id_p = $heb->id_pack;
+                                            $nom_pack = Hebergement::find_pack($id_p);
+                                    //   $id = $cons->id_cl;
+                                    //   $name = Conception::find_name($id);
+                                    //   $date_now =  (new \DateTime())->format('Y-m-d');
+                                    //   $date_fin = Conception::date_fin($cons->date_deb_con,$cons->delai_con);
+                                    //   $delai = Conception::delai($date_now,$date_fin);
 
 
                                         
                                     ?>
                                     <tbody>
                                         <tr>
-                                            <td><?php echo $name;?></td>
-                                            <td><?php echo h($cons->nom_con); ?> </td>
-                                            <td><?php echo $delai;?></td>
+                                            <td><?php echo $heb->id_heb; ?></td>
+                                            <td><?php echo $id.'-'.$name; ?> </td>
+                                            <td><?php echo $id_p.'-'.$nom_pack;?></td>
 
-                                            <td><?php echo h($cons->versement_con).' DA';?></td>
-                                            <td><?php echo h($cons->prix_con).' DA';?></td>
-
-                                            <td>
-                                                <div class="ui bulleted list">
-                                                    <div class="item"><?php echo h($cons->commentaire_con);?></div>
-                                                </div>
-                                            </td>
+                                            <td><?php  echo $heb->url_heb; ?></td>
+                                            <td><?php echo $heb->date_deb_heb; ?></td>
+                                            <form action="factures/ajouter_facture.php?id=<?php echo $id.'-'.$name;?>" method="POST">
+                                                <td> <button class="ui tiny green button" name="payer"><i class="circle icon"></i><span>Payer</span></button></td>
+                                            </form>
+                                           
+                                            
 
                                         </tr>
 
@@ -632,7 +640,7 @@ var myPieChart = new Chart(ctx, {
             ],
             backgroundColor: [
                 '#2b2e4a',
-                '#e84545',
+                '#119ee7',
 
             ]
 
@@ -648,7 +656,7 @@ var myPieChart = new Chart(ctx, {
     type: 'doughnut',
 
     data: {
-        labels: ["Cache", "Chèque", "CCP"],
+        labels: ["Espece", "Chèque", "CCP"],
 
         datasets: [{
             data: [<?php echo get_percent($rows_tot,$rows_cache);?>,
@@ -656,9 +664,13 @@ var myPieChart = new Chart(ctx, {
                 <?php echo get_percent($rows_tot,$rows_ccp);?>
             ],
             backgroundColor: [
-                '#2b2e4a',
+                '#119ee7',
                 '#e84545',
-                '#903749'
+                '#2b2e4a'
+
+                // '#2b2e4a',
+                // '#e84545',
+                // '#903749'
 
             ]
 
@@ -681,7 +693,7 @@ var myPieChart = new Chart(ctx, {
             ],
             backgroundColor: [
                 '#2b2e4a',
-                '#e84545',
+                '#119ee7',
 
 
             ]
@@ -705,7 +717,7 @@ var myPieChart = new Chart(ctx, {
             ],
             backgroundColor: [
                 '#2b2e4a',
-                '#e84545',
+                '#119ee7',
 
             ]
 

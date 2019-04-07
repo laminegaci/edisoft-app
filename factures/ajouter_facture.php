@@ -49,10 +49,12 @@ select.ui.dropdown {
                     <form class="ui large form" method="POST" action="facture.php" >
                         <div class="fields">
 
+<?php 
 
+ ?>
                             <div class="ten wide field">
                                 <label for="">Client:</label>
-                                <select class="ui search dropdown" name="id_cl">
+                                <select class="ui search dropdown" name="id_cl" value=''>
                                 <option value="">Client..</option>
                                <?php foreach ($clients as $client) {
                                    ?>
