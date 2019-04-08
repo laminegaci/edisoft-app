@@ -259,10 +259,10 @@ $('.ui.form')
         fields: {
 
             nom_cl: {
-                identifier: 'nom_cl',
+                identifier: 'id_cl',
                 rules: [{
                         type: 'empty',
-                        prompt: '<b>Selectionner un client'
+                        prompt: '<b>Selectionner un client!'
                     }
 
 
@@ -310,25 +310,9 @@ $('.ui.form')
 
                 ]
             },
-            versement: {
-                identifier: 'versement_con',
-                rules: [{
-                        type: 'empty',
-                        prompt: "tapez 0 dans le cas d'aucun versement"
-                    },
-                    {
-                        type: 'number',
-                        prompt: 'veuillez entrer versement valide'
-                    },
-
-
-
-
-
-                ]
-            },
+           
             date_debut: {
-                identifier: 'date_db_con',
+                identifier: 'date_deb_con',
                 rules: [{
                         type: 'empty',
                         prompt: "<b>la date</b> ne doit pas être vide!"

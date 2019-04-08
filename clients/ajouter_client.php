@@ -58,7 +58,7 @@ if(is_post_request() && isset($_POST['ajouter'])){
       if($result == true){
         session_start();
         $_SESSION['toast'] = true;
-        $_SESSION['toastType'] = "ajoute";
+        $_SESSION['toastType'] = "un ajout d'un client ";
 
         redirect_to('index.php');
       }else{

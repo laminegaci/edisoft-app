@@ -1,6 +1,9 @@
 <?php
 require_once("initialize.php");
 
+require_login();
+
+
 
 ?>
 <style>
@@ -30,7 +33,7 @@ padding-left: 80px;
                 <div class="right menu">
                 <div class="item">
                     <i class="user icon"></i>
-<?php $username = Admin::find_by_id($_SESSION['admin_id'])?>
+                        <?php $username = Admin::find_by_id($_SESSION['admin_id'])?>
                         <?php echo $username/*.''.$_SESSION['admin_id']*/; ?>
                     </div>
                     <div class="item">

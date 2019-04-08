@@ -1,6 +1,6 @@
 <?php 
 require_once('../includes/initialize.php');
-
+require_login();
 
  $id_heb = $_GET['id_heb'] ?? NULL;
  $id_pack = $_GET['id_pack'] ?? NULL;

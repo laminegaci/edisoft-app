@@ -53,7 +53,7 @@ select.ui.dropdown {
 
 
                 <div class="thirteen wide column">
-                    <form class="ui large form" method="POST" action="add_hebergement.php">
+                    <form class="ui form" method="POST" action="add_hebergement.php">
                         <div class="fields">
 
 
@@ -74,7 +74,7 @@ select.ui.dropdown {
 
                             <div class="eight wide field">
                                 <label for="">Hébérgement:</label>
-                                <select class="ui   " id="menu_type" name="nom_pack" required>
+                                <select class="ui   " id="menu_type" name="nom_pack">
                                     <div class="menu">
                                         <option value="">Pack..</option>
 
@@ -125,7 +125,6 @@ select.ui.dropdown {
 
                         </div>
                         <div class="ui error message"></div>
-
                     </form>
 
                 </div>
@@ -166,6 +165,46 @@ $('.ui.search')
         url: 'getclient.php/?q={query}'
     }
 });
+
+$('.ui.form')
+        .form({
+            on: 'blur',
+            fields: {
+                nom_cl: {
+                    identifier: 'id_cl',
+                    rules: [{
+                            type: 'empty',
+                            prompt: '<b>Selectionner un client!'
+                        }
+                    ]
+                },
+                nom_pack: {
+                    identifier: 'nom_pack',
+                    rules: [{
+                            type: 'empty',
+                            prompt: '<b>nom</b> de pack ne doit pas être vide!'
+                        }
+                    ]
+                },
+                url_heb: {
+                    identifier: 'url_heb',
+                    rules: [{
+                            type: 'empty',
+                            prompt: '<b>URL</b> de l\'hebergement ne doit pas être vide!'
+                        }
+                    ]
+                },
+                
+                date_debut: {
+                    identifier: 'date_deb_heb',
+                    rules: [{
+                            type: 'empty',
+                            prompt: '<b>la date de début</b> ne doit pas être vide!'
+                        }
+                    ]
+                }
+            }
+        });
 $(document).ready(function() {
     
 
@@ -205,43 +244,7 @@ $(document).ready(function() {
             }
         });
 
-
-
-
-    $('.ui.form')
-        .form({
-            on: 'blur',
-            fields: {
-
-                url_dns: {
-                    identifier: 'url_dns',
-                    rules: [{
-                            type: 'empty',
-                            prompt: '<b>URL de site</b> ne doit pas être vide!'
-                        }
-
-
-
-                    ]
-                },
-                date_debut: {
-                    identifier: 'date_debut',
-                    rules: [{
-                            type: 'empty',
-                            prompt: '<b>la date de début</b> ne doit pas être vide!'
-                        }
-
-
-
-                    ]
-                }
-
-
-
-
-
-            }
-        });
+    
 });
 </script>
 

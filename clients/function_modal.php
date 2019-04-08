@@ -1,4 +1,6 @@
 <?php 
+require_once('../includes/initialize.php');
+require_login();
 
 
 function supprimer_modal($id_tab, $type_client){

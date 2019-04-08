@@ -1,6 +1,6 @@
 <?php 
 require_once('../includes/initialize.php');
-
+require_login();
 
 $id = $_GET['id'];
 $cons = Conception::find_by_id($id);

@@ -1,4 +1,8 @@
+<?php
+require_once('../includes/initialize.php');
 
+require_login();
+?>
 <style>
 
 

@@ -1,6 +1,6 @@
 <?php 
 require_once('../includes/initialize.php');
-
+require_login();
 
 $id = $_GET['id'];
 $client = Client::find_by_id($id);
@@ -43,7 +43,7 @@ if(is_post_request() && isset($_POST['modifier'])){
     //echo 'jazat la requete';
     session_start();
     $_SESSION['toast'] = true;
-    $_SESSION['toastType'] = "modification";
+    $_SESSION['toastType'] = "une modification";
     redirect_to('index.php');
   }else{
      //echo 'mamchatch';

@@ -1,6 +1,7 @@
 <?php 
 require_once('../includes/initialize.php');
 
+require_login();
 $pack = new Pack;
 $packs= $pack->find_all();
 

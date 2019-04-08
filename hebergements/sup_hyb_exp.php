@@ -1,6 +1,6 @@
 <?php 
 require_once('../includes/initialize.php');
-
+require_login();
 
  $id = $_GET['id'] ?? NULL;
 // session_start();

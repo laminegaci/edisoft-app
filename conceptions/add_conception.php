@@ -1,6 +1,6 @@
 <?php 
 require_once("../includes/initialize.php");
-
+require_login();
    /////////////////////////////////////////////////////////////////////////////
 
    if(is_post_request() && isset($_POST['ajouter'])){
