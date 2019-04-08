@@ -467,7 +467,13 @@ $heb_non_payer = Hebergement::find_non_payer();
 
                     <div class="ui fluid card">
                         <div class="content">
-                            <h2><i class="code icon"></i>&nbsp;Hebergement non payer</h2>
+                            <h2>
+                            <i class=" icons">
+  <i class="big red dont icon"></i>
+  <i class="database icon"></i>
+</i>
+                            
+</i>&nbsp;Hébergements non payés</h2>
                             <div id="middle">
                                 <table class="ui celled table">
                                     <thead>
@@ -507,7 +513,7 @@ $heb_non_payer = Hebergement::find_non_payer();
                                             <td><?php  echo $heb->url_heb; ?></td>
                                             <td><?php echo $heb->date_deb_heb; ?></td>
                                             <form action="factures/ajouter_facture.php?id=<?php echo u($id.'-'.$name);?>" method="POST">
-                                                <td> <button class="ui tiny green button" name="payer"><i class="circle icon"></i><span>Payer</span></button></td>
+                                                <td> <button class="ui tiny green button" name="payer"><i class="big hand holding usd icon"></i><span>Procéder</span></button></td>
                                             </form>
                                            
                                             
@@ -519,7 +525,7 @@ $heb_non_payer = Hebergement::find_non_payer();
 
                                         <?php
                                         }
-                                    }else echo '<h3 class="ui green header"><i class="check circle icon"></i>pas de conception en cours</h3>'; 
+                                    }else echo '<h3 class="ui green header"><i class="check circle icon"></i>pas d\'hebergements non payés</h3>'; 
                                         ?>
                                     </tbody>
                                 </table>
