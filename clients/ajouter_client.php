@@ -245,10 +245,6 @@ unset($_SESSION["error_valid"]);
                             type: 'empty',
                             prompt: 'manque un nom'
                         },
-                        {
-                             type   : 'regExp[/^[a-z_-]{4,16}$/]',
-                            prompt : 'entrer 4-16 lettre'
-                        }
                        
 
                     ]
