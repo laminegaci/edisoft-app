@@ -119,18 +119,18 @@ include("../includes/app_head.php");
                         <div class="two fields">
                             <div class="field">
                                 <label>Nom</label>
-                                <input type="text" name="nom_cl" placeholder="Nom de client">
+                                <input type="text" value="<?php if(isset($_POST['nom_cl'])) echo $_POST['nom_cl']; ?>" name="nom_cl" placeholder="Nom de client">
                             </div>
                             <div class="field">
                                 <label>Prénom</label>
-                                <input type="text" name="prenom_cl" placeholder="Prenom de client">
+                                <input type="text" value="<?php if(isset($_POST['prenom_cl'])) echo $_POST['prenom_cl']; ?>" name="prenom_cl" placeholder="Prenom de client">
                             </div>
 
                         </div>
                         <div class="three fields">
                             <div class="field">
                                 <label style="">Adresse</label>
-                                <input type="text" name="adresse" placeholder="Adresse">
+                                <input type="text" value="<?php if(isset($_POST['adresse'])) echo $_POST['adresse']; ?>" name="adresse" placeholder="Adresse">
                             </div>
                             <div class="field">
                                 <label>E-mail</label>
@@ -146,7 +146,7 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="particulier" name="check" value="particulier" class="hidden"
+                                    <input type="radio"  id="particulier" name="check" value="particulier" class="hidden"
                                         checked>
                                     <label>Particulier</label>
                                 </div>
@@ -156,7 +156,7 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" id="professionnel" name="check" value="professionnel"
+                                    <input type="radio"  id="professionnel" name="check" value="professionnel"
                                         class="hidden">
                                     <label>Professionnel</label>
                                 </div>
@@ -165,7 +165,7 @@ include("../includes/app_head.php");
                         <div class="one  fields">
                             <div class="field" id="myfield" hidden>
                                 <label>Nom de l'entreprise</label>
-                                <input type="text" name="entreprise" placeholder="Entreprise" id="myCheck" disabled>
+                                <input type="text"  name="entreprise" placeholder="Entreprise" id="myCheck" disabled>
                             </div>
                         </div>
                         <div class="one  fields">
