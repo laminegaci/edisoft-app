@@ -17,6 +17,17 @@ label {
         border-right:3px solid #119ee7;
         
         }
+.error_email{
+    background-color:#FFF6F6;
+    color: #9F3A38;
+    border:1px solid;
+    border-radius:4px;
+}
+.error_email li{
+    color: #9F3A38;
+    margin:2px;
+    text-align: left;
+}
 </style>
 
     <?php 
@@ -25,8 +36,21 @@ require_once("../includes/initialize.php");
 /////////////////////////////////////////////////////////////////////////////
 
 if(is_post_request() && isset($_POST['ajouter'])){
-      
-    /*
+
+$check_exist = Client::check_email($_POST['email']); 
+if($check_exist){
+       
+    $_SESSION['email'] = true;
+    $_SESSION['error'] = 'email exist deja';
+   
+}
+else
+{
+
+
+
+
+/*
     foreach ($_POST as $key => $value) {            
       $_POST[$key] = test_input($value);
       }
@@ -56,7 +80,7 @@ if(is_post_request() && isset($_POST['ajouter'])){
       $result = $client->create();
 
       if($result == true){
-        session_start();
+        
         $_SESSION['toast'] = true;
         $_SESSION['toastType'] = "un ajout d'un client ";
 
@@ -67,7 +91,7 @@ if(is_post_request() && isset($_POST['ajouter'])){
     
 }
 
-
+}
 ///////////////////////////////////////////////////////////////////////////////////
 include("../includes/app_head.php");
 ?>
@@ -152,6 +176,12 @@ include("../includes/app_head.php");
                         </div>
 
                         <div class="ui error message"><?php echo $php_errormsg ?? ''; ?></div>
+                        <?php
+                        if($_SESSION['email']){
+                            echo '<div class="error_email"><ul><li>'.$_SESSION['error'].'</li></ul></div>';
+                        }
+                       
+                        ?>
                     </form><!-- end form -->
 
                 </div><!-- end segment-->
@@ -170,7 +200,10 @@ include("../includes/app_head.php");
     </div>
     <!--fin page-->
 
+<?php
+$_SESSION['email'] = false;
 
+?>
     <script>
     $('.menu .item')
         .tab();

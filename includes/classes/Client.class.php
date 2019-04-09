@@ -210,7 +210,18 @@ class Client{
         $result->free();
 
         return $row;
+    }
+    static public function check_email($email)
+    {
+        $sql = "select*from client where email_cl='".$email."'";
+        $object_array = self::find_by_sql($sql);
+        if(!empty($object_array)){
+            return $object_array;
+        }else{
+            return false;
+        }
     }    
+
 
     /////// end record code////////////////////////////
 
