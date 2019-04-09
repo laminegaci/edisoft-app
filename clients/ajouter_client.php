@@ -44,17 +44,10 @@ if($check_exist){
     $_SESSION['error'] = 'email exist deja';
    
 }
-else
-{
-
-
-
-
-/*
-    foreach ($_POST as $key => $value) {            
-      $_POST[$key] = test_input($value);
-      }
-    */
+else{
+    
+if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+          
 
    
     //création et préparation de données pour les convertirs en objets 
@@ -62,7 +55,7 @@ else
       $args['nom_cl'] = $_POST['nom_cl'] ?? NULL;
       $args['prenom_cl'] = $_POST['prenom_cl'] ?? NULL;
       $args['num_tel_cl'] = $_POST['telephone'] ?? NULL;
-      $args['email_cl'] = $_POST['email'] ?? NULL;
+      $args['email_cl'] = $_POST['email'] ?? NULL;  
       $args['adresse_cl'] = $_POST['adresse'] ?? NULL;
 
       if($_POST['check'] == 'particulier'){
@@ -90,7 +83,14 @@ else
       }
     
 }
+else{
+    $_SESSION['valid_email'] = true;
+    $_SESSION['error_valid'] = 'email non valide';
 
+ 
+
+}
+} 
 }
 ///////////////////////////////////////////////////////////////////////////////////
 include("../includes/app_head.php");
@@ -180,7 +180,10 @@ include("../includes/app_head.php");
                         if($_SESSION['email']){
                             echo '<div class="error_email"><ul><li>'.$_SESSION['error'].'</li></ul></div>';
                         }
-                       
+                        if( $_SESSION['valid_email']){
+                            echo '<div class="error_email"><ul><li>'.$_SESSION['error_valid'].'</li></ul></div>';
+                        }
+                       echo '';
                         ?>
                     </form><!-- end form -->
 
@@ -202,6 +205,9 @@ include("../includes/app_head.php");
 
 <?php
 $_SESSION['email'] = false;
+$_SESSION['valid_email'] = false;
+unset($_SESSION["error"]);
+unset($_SESSION["error_valid"]);
 
 ?>
     <script>
