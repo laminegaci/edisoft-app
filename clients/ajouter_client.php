@@ -183,7 +183,7 @@ include("../includes/app_head.php");
                         if( $_SESSION['valid_email']){
                             echo '<div class="error_email"><ul><li>'.$_SESSION['error_valid'].'</li></ul></div>';
                         }
-                       echo '';
+                       
                         ?>
                     </form><!-- end form -->
 
@@ -241,20 +241,30 @@ unset($_SESSION["error_valid"]);
                 nom_cl: {
                     identifier: 'nom_cl',
                     rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'manque un nom'
-                        },
                        
+                        {
+                            type: 'minLength[4]',
+                            prompt: 'nom d\'utilisateur doit avoir au moins 4 caractéres !'
+                        },
+                        
+                        {
+                            type: 'notExactly[a-z]',
+                            prompt: 'nom d\'utilisateur ne doit pas avoir un caractére spécial ou bien un numéro !'
+                        }
+                    
 
                     ]
                 },
                 prenom_cl: {
                     identifier: 'prenom_cl',
                     rules: [{
-                            type: 'empty',
-                            prompt: 'manque un prenom'
+                            type: 'minLength[4]',
+                            prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
                         },
+                        // {
+                        //     type: 'minLength[5]',
+                        //     prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
+                        // },
 
                     ]
                 },

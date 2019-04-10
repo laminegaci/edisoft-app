@@ -82,6 +82,7 @@ class Client{
             return false;
         }
     }
+    
     public function create(){
         
         $attributes = $this->sanitized_attributes();//mna9yiin
@@ -104,6 +105,20 @@ class Client{
         }
         return $result;
     }
+
+
+    // public function check_validation(){
+       
+    //     $validation = $this->validate();
+    //    if(empty($validation)){
+               
+    //     return $this->create();
+    //    }else{
+    //      return $validation;
+    //    }
+     
+    // }
+    
     
 
     
@@ -234,6 +249,7 @@ class Client{
     public $type_cl; 
     public $nom_societe_cl; 
     public $id_ad;
+    public $errors = [];
 
     public const CATEGORIES = ['Pro', 'Particulier'];
     
@@ -252,6 +268,34 @@ class Client{
 
 
     }
+    // protected function validate(){
+    //     $this->errors = [];
+    //     if(is_blank($this->nom_cl)) {
+    //         $this->errors[] = "nom du client ne doit pas être vide.";
+    //     }elseif(!has_length($this->nom_cl, array('min' => 4, 'max' => 255))) {
+    //         $this->errors[] = "nom d'utilisateur doit avoir au moins 4 caractéres! ";
+    //     } 
+    //     if(is_blank($this->prenom_cl)) {
+    //         $this->errors[] = "nom du client ne doit pas être vide.";
+    //     }elseif(!has_length($this->prenom_cl, array('min' => 4, 'max' => 255))) {
+    //         $this->errors[] = "prenom du client doit avoir au moins 4 caractéres! ";
+    //     }
+        
+    //     if(is_blank($this->adresse)) {
+    //         $this->errors[] = "adresse du client ne doit pas être vide.";
+    //     }
+    //     if(is_blank($this->email_cl)) {
+    //         $this->errors[] = "email du client ne doit pas être vide.";
+    //     }
+    //     if(is_blank($this->num_tel_cl)) {
+    //         $this->errors[] = "numero telephone du client ne doit pas être vide.";
+    //     }
+        
+         
+    //       return $this->errors;
+    // }
+    
+    
 
     
 
