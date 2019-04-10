@@ -242,10 +242,17 @@ unset($_SESSION["error_valid"]);
                     identifier: 'nom_cl',
                     rules: [
                        
+                       
                         {
-                            type: 'minLength[4]',
-                            prompt: 'nom d\'utilisateur doit avoir au moins 4 caractéres !'
+                            type: 'empty', 
+                            prompt: 'nom faragh'
+                            
                         },
+                        {
+                            type: 'containsExactly[number]', 
+                            prompt: 'contient nombre'
+                            
+                        }
                         
                         // {
                         //     type: 'regExp[/^[a-z0-9_-]{3,16}$/gi]]',
