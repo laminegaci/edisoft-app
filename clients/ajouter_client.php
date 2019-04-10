@@ -46,7 +46,7 @@ if($check_exist){
 }
 else{
     
-if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+//if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) { hadi tchecker l'email
           
 
    
@@ -70,26 +70,42 @@ if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
      // var_dump($args) . "<br>";
       
       $client = new Client($args);
-      $result = $client->create();
+      var_dump($client);
+      ///////////////////////////////////////////////
+      $result = $client->check_validation();
+      
+      if($result === true){
 
-      if($result == true){
-        
         $_SESSION['toast'] = true;
         $_SESSION['toastType'] = "un ajout d'un client ";
-
         redirect_to('index.php');
+
       }else{
-         // echo "error";
+        session_start();
+        $_SESSION['errors'] = $result;//ykhabi les erreurs ta3 validate()
+        redirect_to('ajouter_client.php');//bah yweli hna
       }
+      //////////////////////////////////////////////
+    //   $result = $client->create();
+
+    //   if($result == true){
+        
+    //     $_SESSION['toast'] = true;
+    //     $_SESSION['toastType'] = "un ajout d'un client ";
+
+    //     redirect_to('index.php');
+    //   }else{
+    //      // echo "error";
+    //   }
     
-}
-else{
-    $_SESSION['valid_email'] = true;
-    $_SESSION['error_valid'] = 'email non valide';
+///}hna taghla9 tcheck email
+// else{
+//     $_SESSION['valid_email'] = true;
+//     $_SESSION['error_valid'] = 'email non valide';
 
  
 
-}
+// }
 } 
 }
 ///////////////////////////////////////////////////////////////////////////////////
@@ -175,7 +191,7 @@ include("../includes/app_head.php");
                             </div>
                         </div>
 
-                        <div class="ui error message"><?php echo $php_errormsg ?? ''; ?></div>
+                        <!-- <div class="ui error message"><?php echo $php_errormsg ?? ''; ?></div> -->
                         <?php
                         if($_SESSION['email']){
                             echo '<div class="error_email"><ul><li>'.$_SESSION['error'].'</li></ul></div>';
@@ -186,6 +202,22 @@ include("../includes/app_head.php");
                        
                         ?>
                     </form><!-- end form -->
+                    <div class="<?php if(isset($_SESSION['errors']) and !empty($_SESSION['errors'])){ echo 'ui error message';} ?>">
+                        <ul class="list">
+                                        
+                        <?php
+                            
+                            foreach ($_SESSION['errors'] as $error) {
+                            
+                                echo '<li>'. $error . '</li>';
+                            }
+                        
+                        
+                        ?>
+
+                        </ul>
+
+                    </div>
 
                 </div><!-- end segment-->
 
@@ -204,6 +236,7 @@ include("../includes/app_head.php");
     <!--fin page-->
 
 <?php
+$_SESSION['errors'] = [];
 $_SESSION['email'] = false;
 $_SESSION['valid_email'] = false;
 unset($_SESSION["error"]);
@@ -233,94 +266,96 @@ unset($_SESSION["error_valid"]);
     });
 
 
-    $('.ui.form')
-        .form({
-            on: 'blur',
-            fields: {
+    // $('.ui.form')
+    //     .form({
+    //         on: 'blur',
+    //         fields: {
 
-                nom_cl: {
-                    identifier: 'nom_cl',
-                    rules: [
+    //             nom: {
+    //                 identifier: 'nom_cl',
+    //                 rules: 
+    //                 [
                        
                        
-                        {
-                            type: 'empty', 
-                            prompt: 'nom faragh'
+    //                     // {
+    //                     //     type: 'empty', 
+    //                     //     prompt: 'nom faragh'
                             
-                        },
-                        {
-                            type: 'containsExactly[number]', 
-                            prompt: 'contient nombre'
+    //                     // },
+    //                     {
+    //                         type: 'empty', 
+    //                         prompt: 'faragh'
                             
-                        }
+    //                     },
                         
-                        // {
-                        //     type: 'regExp[/^[a-z0-9_-]{3,16}$/gi]]',
-                        //     prompt: 'nom d\'utilisateur ne doit pas avoir un caractére spécial ou bien un numéro !'
-                        // }
+    //                     {
+    //                         type: 'minLength[4]',
+    //                         prompt: 'na9asss !'
+    //                     },
                     
 
-                    ]
-                },
-                prenom_cl: {
-                    identifier: 'prenom_cl',
-                    rules: [{
-                            type: 'minLength[4]',
-                            prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
-                        },
-                        // {
-                        //     type: 'minLength[5]',
-                        //     prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
-                        // },
+    //                 ]
+    //             },
+    //             prenom_cl: {
+    //                 identifier: 'prenom_cl',
+    //                 rules: [{
+    //                         type: 'minLength[4]',
+    //                         prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
+    //                     },
+    //                     // {
+    //                     //     type: 'minLength[5]',
+    //                     //     prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
+    //                     // },
 
-                    ]
-                },
-                adresse_cl: {
-                    identifier: 'adresse',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'manque une adresse'
-                        },
+    //                 ]
+    //             },
+    //             adresse_cl: {
+    //                 identifier: 'adresse',
+    //                 rules: [
+    //                     {
+    //                         type: 'empty',
+    //                         prompt: 'manque une adresse'
+    //                     },
 
-                    ]
-                },
-                email_cl: {
-                    identifier: 'email',
-                    rules: [
+    //                 ]
+    //             },
+    //             email_cl: {
+    //                 identifier: 'email',
+    //                 rules: [
                        
-                        {
-                            type: 'email',
-                            prompt: 'email non valid'
-                        },
+    //                     {
+    //                         type: 'email',
+    //                         prompt: 'email non valid'
+    //                     },
 
-                    ]
-                },
-                telephon_cl: {
-                    identifier: 'telephone',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'manque un numero telephon'
-                        },
-                        {
-                            type: 'number',
-                            prompt: 'numero telephon non valid'
-                        },
-                    ]
-                },
-                entreprise: {
-                    identifier: 'entreprise',
-                    rules: [{
-                            type: 'empty',
-                            prompt: 'manque un nom d\'entreprise'
-                        },
+    //                 ]
+    //             },
+    //             telephon_cl: {
+    //                 identifier: 'telephone',
+    //                 rules: 
+    //                 [
+    //                     {
+    //                         type: 'minLength[10]',
+    //                         prompt: 'manque un numero telephon'
+    //                     },
+    //                     {
+    //                         type: 'number',
+    //                         prompt: 'numero telephon non valid'
+    //                     },
+    //                 ]
+    //             },
+    //             entreprise: {
+    //                 identifier: 'entreprise',
+    //                 rules: [{
+    //                         type: 'empty',
+    //                         prompt: 'manque un nom d\'entreprise'
+    //                     },
 
-                    ]
-                },
+    //                 ]
+    //             },
 
-            }
-        });
+    //         }
+    //     });
        
     </script>
 

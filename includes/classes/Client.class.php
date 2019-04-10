@@ -107,17 +107,17 @@ class Client{
     }
 
 
-    // public function check_validation(){
+    public function check_validation(){
        
-    //     $validation = $this->validate();
-    //    if(empty($validation)){
+        $validation = $this->validate();
+       if(empty($validation)){
                
-    //     return $this->create();
-    //    }else{
-    //      return $validation;
-    //    }
+        return $this->create();
+       }else{
+         return $validation;
+       }
      
-    // }
+    }
     
     
 
@@ -268,32 +268,46 @@ class Client{
 
 
     }
-    // protected function validate(){
-    //     $this->errors = [];
-    //     if(is_blank($this->nom_cl)) {
-    //         $this->errors[] = "nom du client ne doit pas être vide.";
-    //     }elseif(!has_length($this->nom_cl, array('min' => 4, 'max' => 255))) {
-    //         $this->errors[] = "nom d'utilisateur doit avoir au moins 4 caractéres! ";
-    //     } 
-    //     if(is_blank($this->prenom_cl)) {
-    //         $this->errors[] = "nom du client ne doit pas être vide.";
-    //     }elseif(!has_length($this->prenom_cl, array('min' => 4, 'max' => 255))) {
-    //         $this->errors[] = "prenom du client doit avoir au moins 4 caractéres! ";
-    //     }
-        
-    //     if(is_blank($this->adresse)) {
-    //         $this->errors[] = "adresse du client ne doit pas être vide.";
-    //     }
-    //     if(is_blank($this->email_cl)) {
-    //         $this->errors[] = "email du client ne doit pas être vide.";
-    //     }
-    //     if(is_blank($this->num_tel_cl)) {
-    //         $this->errors[] = "numero telephone du client ne doit pas être vide.";
-    //     }
+    protected function validate(){
+        $this->errors = [];
+        //nom client
+        if(is_blank($this->nom_cl)) {
+            $this->errors[] = "nom du client ne doit pas être vide.";
+        }elseif(!has_length($this->nom_cl, array('min' => 4, 'max' => 255))) {
+            $this->errors[] = "nom du client doit avoir au moins 4 caractéres! ";
+        }elseif(ctype_alpha($this->nom_cl) === false){
+            $this->errors[] = "nom du client doit avoir seulement des caractère alphabetique! ";
+        }
+        //prenom client
+        if(is_blank($this->prenom_cl)) {
+            $this->errors[] = "prenom du client ne doit pas être vide.";
+        }elseif(!has_length($this->prenom_cl, array('min' => 4, 'max' => 255))) {
+            $this->errors[] = "prenom du client doit avoir au moins 4 caractéres! ";
+        }elseif(ctype_alpha($this->prenom_cl) === false){
+            $this->errors[] = "nom du client doit avoir seulement des caractère alphabetique! ";
+        }
+        //adresse client
+        if(is_blank($this->adresse_cl)) {
+            $this->errors[] = "adresse du client ne doit pas être vide.";
+        }
+        //email client
+        if(is_blank($this->email_cl)) {
+            $this->errors[] = "email du client ne doit pas être vide.";
+        }elseif(!filter_var($this->email_cl, FILTER_VALIDATE_EMAIL)){
+            $this->errors[] = "email du client non valide.";
+        }
+        //numero
+        if(is_blank($this->num_tel_cl)) {
+            $this->errors[] = "numero telephone du client ne doit pas être vide.";
+        }elseif(!has_length($this->num_tel_cl, array('min' => 10, 'max' => 13))){
+            $this->errors[] = "numero telephone du client  doit avoir au moin 10 nombre! .";   
+        }elseif (preg_match('/[a-z]/', $this->num_tel_cl)) {
+            $this->errors[] = "numero telephone du client doit avoir seulement des caractère numerique ";
+          }
         
          
-    //       return $this->errors;
-    // }
+          return $this->errors;
+    }
     
     
 
