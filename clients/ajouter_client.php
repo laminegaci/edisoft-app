@@ -247,10 +247,10 @@ unset($_SESSION["error_valid"]);
                             prompt: 'nom d\'utilisateur doit avoir au moins 4 caractéres !'
                         },
                         
-                        {
-                            type: 'notExactly[a-z]',
-                            prompt: 'nom d\'utilisateur ne doit pas avoir un caractére spécial ou bien un numéro !'
-                        }
+                        // {
+                        //     type: 'regExp[/^[a-z0-9_-]{3,16}$/gi]]',
+                        //     prompt: 'nom d\'utilisateur ne doit pas avoir un caractére spécial ou bien un numéro !'
+                        // }
                     
 
                     ]
