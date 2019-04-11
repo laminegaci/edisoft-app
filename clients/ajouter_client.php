@@ -196,9 +196,6 @@ include("../includes/app_head.php");
                         if($_SESSION['email']){
                             echo '<div class="error_email"><ul><li>'.$_SESSION['error'].'</li></ul></div>';
                         }
-                        if( $_SESSION['valid_email']){
-                            echo '<div class="error_email"><ul><li>'.$_SESSION['error_valid'].'</li></ul></div>';
-                        }
                        
                         ?>
                     </form><!-- end form -->

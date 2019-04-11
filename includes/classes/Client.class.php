@@ -284,7 +284,7 @@ class Client{
         }elseif(!has_length($this->prenom_cl, array('min' => 4, 'max' => 255))) {
             $this->errors[] = "prenom du client doit avoir au moins 4 caractéres! ";
         }elseif(ctype_alpha($this->prenom_cl) === false){
-            $this->errors[] = "nom du client doit avoir seulement des caractère alphabetique! ";
+            $this->errors[] = "prenom du client doit avoir seulement des caractère alphabetique! ";
         }
         //adresse client
         if(is_blank($this->adresse_cl)) {
@@ -305,7 +305,9 @@ class Client{
             $this->errors[] = "numero telephone du client doit avoir seulement des caractère numerique ";
           }
         
-         
+        if(is_blank($this->nom_societe_cl)) {
+            $this->errors[] = "societé du client ne doit pas être vide.";
+        }
           return $this->errors;
     }
     
