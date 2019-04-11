@@ -100,3 +100,4 @@ INSERT INTO `pack` (`id_pack`, `nom_pack`, `espace_pack`, `prix_pack`, `id_ad`) 
 (8, 'moon', 20, 19500, 1),
 (9, 'earth', 40, 39500, 1),
 (10, 'sun', 90, 79500, 1);
+SET FOREIGN_KEY_CHECKS=0;
