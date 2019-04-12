@@ -256,13 +256,18 @@ $('.ui.radio.checkbox')
 $('.ui.form')
     .form({
         on: 'blur',
+        rules: {
+      custom: function(value) {
+      	return value && value.length > 5;
+      }
+    },
         fields: {
 
             nom_cl: {
                 identifier: 'id_cl',
                 rules: [{
                         type: 'empty',
-                        prompt: '<b>Selectionner un client!'
+                        prompt: 'Selectionner un client!'
                     }
 
 
@@ -272,9 +277,17 @@ $('.ui.form')
             nom_site: {
                 identifier: 'nom_con',
                 rules: [{
-                        type: 'empty',
-                        prompt: '<b>le nom de site</b> ne doit pas être vide!'
+                        type: 'custom',
+                        prompt: function(value) {
+            	if(!value || value.length == 0) {
+              	return "nom de site ne doit pas être vide";
+              } 
+            }
+
+
+
                     }
+                   
 
 
 
@@ -284,7 +297,7 @@ $('.ui.form')
                 identifier: 'delai_con',
                 rules: [{
                         type: 'empty',
-                        prompt: '<b>le delai</b> ne doit pas être vide!'
+                        prompt: 'le delai ne doit pas être vide!'
                     },
                     {
                         type: 'number',
@@ -299,7 +312,7 @@ $('.ui.form')
                 identifier: 'prix_con',
                 rules: [{
                         type: 'empty',
-                        prompt: '<b>le prix</b> ne doit pas être vide!'
+                        prompt: 'le prix ne doit pas être vide!'
                     },
                     {
                         type: 'number',
@@ -315,7 +328,7 @@ $('.ui.form')
                 identifier: 'date_deb_con',
                 rules: [{
                         type: 'empty',
-                        prompt: "<b>la date</b> ne doit pas être vide!"
+                        prompt: "la date ne doit pas être vide!"
                     }
 
 

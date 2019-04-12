@@ -70,10 +70,8 @@ include("../includes/app_head.php");
 
                 <div class="ui fifteen wide column row centered grid segment " id="modifier_grid">
                 <h2 class="ui left aligned header">
-                        <i class=" icons">
-                          <i class="boxes icon"></i>
-                           
-                        </i>
+                <i class="boxes icon"></i>
+                        
                 Ajouter Pack </h2>
                     
                     <form method="POST" class="ui form centered grid" id="modifier_form">
@@ -149,7 +147,7 @@ $(function() {
                     identifier: 'nom_pack',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un nom'
+                            prompt: 'le nom est vide!'
                         },
 
                     ]
@@ -158,7 +156,7 @@ $(function() {
                     identifier: 'espace_pack',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un espace!'
+                            prompt: 'l\'éspace est vide!'
                         },
 
                     ]
@@ -167,7 +165,7 @@ $(function() {
                     identifier: 'prix_pack',
                     rules: [{
                             type: 'empty',
-                            prompt: 'manque un prix!'
+                            prompt: 'le prix est vide!'
                         },
 
                     ]

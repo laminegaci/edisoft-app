@@ -150,7 +150,7 @@ include("../includes/app_head.php");
                             </div>
                             <div class="field">
                                 <label>E-mail</label>
-                                <input type="Email" name="email" placeholder="exemple@gmail.com">
+                                <input type="Email" name="email" placeholder="exemple@gmail.com" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>">
                             </div>
                             <div class="field">
                                 <label>Téléphone</label>
@@ -263,96 +263,7 @@ unset($_SESSION["error_valid"]);
     });
 
 
-    // $('.ui.form')
-    //     .form({
-    //         on: 'blur',
-    //         fields: {
-
-    //             nom: {
-    //                 identifier: 'nom_cl',
-    //                 rules: 
-    //                 [
-                       
-                       
-    //                     // {
-    //                     //     type: 'empty', 
-    //                     //     prompt: 'nom faragh'
-                            
-    //                     // },
-    //                     {
-    //                         type: 'empty', 
-    //                         prompt: 'faragh'
-                            
-    //                     },
-                        
-    //                     {
-    //                         type: 'minLength[4]',
-    //                         prompt: 'na9asss !'
-    //                     },
-                    
-
-    //                 ]
-    //             },
-    //             prenom_cl: {
-    //                 identifier: 'prenom_cl',
-    //                 rules: [{
-    //                         type: 'minLength[4]',
-    //                         prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
-    //                     },
-    //                     // {
-    //                     //     type: 'minLength[5]',
-    //                     //     prompt: 'prenom d\'utilisateur doit avoir au moins 4 caractéres!'
-    //                     // },
-
-    //                 ]
-    //             },
-    //             adresse_cl: {
-    //                 identifier: 'adresse',
-    //                 rules: [
-    //                     {
-    //                         type: 'empty',
-    //                         prompt: 'manque une adresse'
-    //                     },
-
-    //                 ]
-    //             },
-    //             email_cl: {
-    //                 identifier: 'email',
-    //                 rules: [
-                       
-    //                     {
-    //                         type: 'email',
-    //                         prompt: 'email non valid'
-    //                     },
-
-    //                 ]
-    //             },
-    //             telephon_cl: {
-    //                 identifier: 'telephone',
-    //                 rules: 
-    //                 [
-    //                     {
-    //                         type: 'minLength[10]',
-    //                         prompt: 'manque un numero telephon'
-    //                     },
-    //                     {
-    //                         type: 'number',
-    //                         prompt: 'numero telephon non valid'
-    //                     },
-    //                 ]
-    //             },
-    //             entreprise: {
-    //                 identifier: 'entreprise',
-    //                 rules: [{
-    //                         type: 'empty',
-    //                         prompt: 'manque un nom d\'entreprise'
-    //                     },
-
-    //                 ]
-    //             },
-
-    //         }
-    //     });
+    
        
     </script>
 

@@ -193,28 +193,28 @@ class Admin{
           } elseif (!has_length($this->username_ad, array('min' => 8, 'max' => 255))) {
             $this->errors[] = "nom d'utilisateur doit avoir au moins 8 caractéres! ";
           }elseif(!has_unique_username($this->username_ad, $this->id_ad ?? 0)){
-            $this->errors[] = "nom d'utilisateur existe déja, veuillez choisir un autre";
+            $this->errors[] = "nom d'utilisateur existe déja!, veuillez choisir un autre";
 
           }
 
           if(is_blank($this->password_ad)) {
-            $this->errors[] = "le mot de passe ne doit pas être vide.";
+            $this->errors[] = "le mot de passe ne doit pas être vide!";
           } elseif (!has_length($this->password_ad, array('min' => 8))) {
-            $this->errors[] = "le mot de passe doit contenir au moins 8 caractéres ou plus";
+            $this->errors[] = "le mot de passe doit contenir au moins 8 caractéres ou plus!";
           } elseif (!preg_match('/[A-Z]/', $this->password_ad)) {
-            $this->errors[] = "le mot de passe doit contenir au moins un caractére majiscule";
+            $this->errors[] = "le mot de passe doit contenir au moins un caractére majiscule!";
           } elseif (!preg_match('/[a-z]/', $this->password_ad)) {
-            $this->errors[] = "le mot de passe doit contenir au moins un caractére miniscule";
+            $this->errors[] = "le mot de passe doit contenir au moins un caractére miniscule!";
           } elseif (!preg_match('/[0-9]/', $this->password_ad)) {
-            $this->errors[] = "le mot de passe doit contenir au moins un numéro";
+            $this->errors[] = "le mot de passe doit contenir au moins un numéro!";
           } elseif (!preg_match('/[^A-Za-z0-9\s]/', $this->password_ad)) {
-            $this->errors[] = "le mot de passe doit contenir au moins un symbol";
+            $this->errors[] = "le mot de passe doit contenir au moins un symbol!";
           }
         
           if(is_blank($this->confirm_password)) {
-            $this->errors[] = "la confirmation du mot de passe ne doit pas être";
+            $this->errors[] = "la confirmation du mot de passe ne doit pas être vide!";
           } elseif ($this->password_ad !== $this->confirm_password) {
-            $this->errors[] = "le mot de passe et la confirmation sont pas les mêmes !";
+            $this->errors[] = "le mot de passe et ne correspond pas avec le champ de confirmation !";
           }
           return $this->errors;
     }
