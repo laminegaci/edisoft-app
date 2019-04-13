@@ -195,12 +195,12 @@ include("../includes/app_head.php");
                         <ul class="list">
                                         
                         <?php
-                            
+                             if(isset($_SESSION['errors']) and !empty($_SESSION['errors'])){ 
                             foreach ($_SESSION['errors'] as $error) {
                             
                                 echo '<li>'. $error . '</li>';
                             }
-                        
+                            }
                         
                         ?>
 
