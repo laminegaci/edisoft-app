@@ -27,7 +27,7 @@ if(!isset($page_title)){
      html, body{
        height: 100%;
      /* background-image: url('<?php echo  url_for("images/prism.png"); ?>')*/
-     background-color: #e9ebee;
+     background-color: #e9ebee; */
      }
       /* menu */
 

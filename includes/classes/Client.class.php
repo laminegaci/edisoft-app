@@ -295,6 +295,8 @@ class Client{
             $this->errors[] = "email du client ne doit pas être vide.";
         }elseif(!filter_var($this->email_cl, FILTER_VALIDATE_EMAIL)){
             $this->errors[] = "email du client non valide.";
+        }elseif($this->check_email($this->email_cl)){
+            $this->errors[] = "email exist deja.";
         }
         //numero
         if(is_blank($this->num_tel_cl)) {

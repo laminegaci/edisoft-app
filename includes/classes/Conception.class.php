@@ -174,18 +174,18 @@ class Conception{
     }
  
     //---------------------------------------------------------------------------------------
-    // static public function delete($id){
-    //     $sql = "DELETE FROM client WHERE id_cl =";
-    //     $sql .= "'" . $id ."';";
+    static public function delete($id){
+        $sql = "DELETE FROM conception WHERE id_con =";
+        $sql .= "'" . $id ."';";
         
-    //     $result = self::$database->query($sql);
-    //     if($result){
-    //        return $result;
-    //     }else{
-    //      echo var_dump(self::$database->error_list);
-    //     }
+        $result = self::$database->query($sql);
+        if($result){
+           return $result;
+        }else{
+         echo var_dump(self::$database->error_list);
+        }
 
-    // }
+    }
 //---------------------------------------------------------------------------------------
 
     // static public function find_by_name($string){

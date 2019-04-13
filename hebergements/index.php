@@ -71,7 +71,7 @@ $rows = Hebergement::rows_tot();
 ?>
 
                 <div class="ui tab  active" data-tab="first">
-                <?php if($rows==0) echo '<h3 style="color:red">pas d\'hybergement ajouter</h3>';?>
+               
                 <div class="row">
                      <div class=" column">
                          <div class="ui big form">
@@ -141,7 +141,7 @@ $rows = Hebergement::rows_tot();
 
                                     ?>">
                                         <td><?php echo h($hebergement->id_heb); ?></td>
-                                        <td><?php echo h($hebergement->prenom_cl ." ". $hebergement->nom_cl); ?></td>
+                                        <td><?php echo h($hebergement->nom_cl ." ". $hebergement->prenom_cl ); ?></td>
                                         
                                         <td><?php echo h($hebergement->url_heb) ;?></td>
                                         <td><b><?php echo h($hebergement->nom_pack);?></b><small>(<?php echo h($hebergement->espace_heb); ?>Go)</small></td>
@@ -158,8 +158,10 @@ $rows = Hebergement::rows_tot();
                                    }
                                 }
                                 ?>
+                                
                                 </tbody>
                             </table>
+                            <?php if($rows==0) echo '<h3 style="color:red">pas d\'hybergement ajouter</h3>';?>
 
 
 

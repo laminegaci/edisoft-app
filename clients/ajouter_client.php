@@ -37,18 +37,15 @@ require_once("../includes/initialize.php");
 
 if(is_post_request() && isset($_POST['ajouter'])){
 
-$check_exist = Client::check_email($_POST['email']); 
-if($check_exist){
+// $check_exist = Client::check_email($_POST['email']); 
+// if($check_exist){
        
-    $_SESSION['email'] = true;
-    $_SESSION['error'] = 'email exist deja';
+//     $_SESSION['email'] = true;
+//     $_SESSION['error'] = 'email exist deja';
    
-}
-else{
-    
-//if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) { hadi tchecker l'email
-          
-
+// }
+// else{
+ 
    
     //création et préparation de données pour les convertirs en objets 
       $args = [];
@@ -106,7 +103,7 @@ else{
  
 
 // }
-} 
+// } 
 }
 ///////////////////////////////////////////////////////////////////////////////////
 include("../includes/app_head.php");
@@ -192,12 +189,7 @@ include("../includes/app_head.php");
                         </div>
 
                         <!-- <div class="ui error message"><?php echo $php_errormsg ?? ''; ?></div> -->
-                        <?php
-                        if($_SESSION['email']){
-                            echo '<div class="error_email"><ul><li>'.$_SESSION['error'].'</li></ul></div>';
-                        }
-                       
-                        ?>
+                      
                     </form><!-- end form -->
                     <div class="<?php if(isset($_SESSION['errors']) and !empty($_SESSION['errors'])){ echo 'ui error message';} ?>">
                         <ul class="list">
@@ -233,11 +225,8 @@ include("../includes/app_head.php");
     <!--fin page-->
 
 <?php
+
 $_SESSION['errors'] = [];
-$_SESSION['email'] = false;
-$_SESSION['valid_email'] = false;
-unset($_SESSION["error"]);
-unset($_SESSION["error_valid"]);
 
 ?>
     <script>

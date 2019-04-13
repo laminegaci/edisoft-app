@@ -108,7 +108,8 @@ $client = Client::find_by_id($id);
                                 <th>date début</th>
                                 <th>date d'expiration</th>
 
-                              <th colspan="4">Prix</th>
+                                <th colspan="4">Prix</th>
+                                <th>facture</th>
                             </tr>
                           </thead>
 <?php
@@ -133,7 +134,8 @@ $hybergement = Hebergement::find_hyber_by_id($client->id_cl);
                               <td><?php if($hyber->espace_heb ==0) echo 'Domaine';else {echo $nom_pack.'(<small>' . $hyber->espace_heb . '</small>)';}?></td>
                               <td><?php echo h($hyber->date_deb_heb);?></td>
                               <td><?php echo h($hyber->date_fin_heb);?></td>
-                              <td><?php echo h($hyber->prix);?></td>
+                              <td colspan="4"><?php echo h($hyber->prix);?></td>
+                              <td><?php  if($hyber->id_fact == NULL){echo 'non payé';}else{echo 'payé';} ?></td>
                               </tr>
                               <?php
                                 }

@@ -162,9 +162,10 @@ $conception = Conception::find_all();
                                         <?php
                                         }
                                        }
-                                       else echo '<h3 style="color:red;">pas de conception en cours</h3>'; ?>
+                                       //else echo '<h3 style="color:red;">pas de conception en cours</h3>'; ?>
                                     </tbody>
                                 </table>
+                                <?php if($rows==0) echo '<h3 style="color:red">pas de conception en cours</h3>';?>
                               
                               </div>
                               <div class="ui bottom attached tab segment " data-tab="first/b">
@@ -176,6 +177,7 @@ $conception = Conception::find_all_terminer();
                               <table class="ui celled green table" id="tabAll">
                                     <thead>
                                         <tr>
+                                        <th>#</th>
                                             <th>Client</th>
                                             <th>Nom du site</th>
                                             <th>Prix</th>
@@ -190,10 +192,14 @@ $conception = Conception::find_all_terminer();
                                       
                                 ?>
                                         <tr>
+                                        <td><?php echo h($cons->id_con); ?></td>
                                             <td><?php echo $name; ?></td>
                                             <td><?php echo h($cons->nom_con); ?></td>
                                             <td><?php echo h($cons->prix_con); ?></td>
                                             <td><?php echo h($cons->date_deb_con); ?></td>
+                                            <form action="sup_conception.php?id=<?php echo $cons->id_con;?>"  method='POST'>
+                                            <td><button  class="ui tiny red button" name="supprimer"><i class="minus circle icon"></i><span>Supprimer</span></button></td>
+                                            </form>
                                         </tr>
 
                                        
