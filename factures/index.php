@@ -33,30 +33,32 @@ include("../includes/app_head.php");
 
                 <div class="ui pointing secondary big menu">
 
-
-                    <h1 class="ui  header item"><i class="server icon"></i>Factures</h1>
+<?php
+$rows = Facture::rows_tot();
+?>
+                        <h1 class="ui  header item"><i class="server icon"></i>Factures(<?php echo $rows;?>)</h1>
 
 
                    
 
-                    <div class="right item">
-                        <a href="ajouter_facture.php" class="">
-                            <i class="big plus circle icon"></i>
+                        <div class="right item">
+                                <a href="ajouter_facture.php" class="">
+                                    <i class="big plus circle icon"></i>
 
-                        </a>
-                        <div class="ui search  " id="load_search">
-                                            <div class="ui icon input">
-                                                <input class="prompt" type="text" placeholder="Rechercher..."
-                                                    id="search">  
-                                                <i class="search icon"></i>
-                                            </div>
-                                            <div class="results">
-                                            </div>
+                                </a>
+                                <div class="ui search  " id="load_search">
+                                                    <div class="ui icon input">
+                                                        <input class="prompt" type="text" placeholder="Rechercher..."
+                                                            id="search">  
+                                                        <i class="search icon"></i>
+                                                    </div>
+                                                    <div class="results">
+                                                    </div>
+                                </div>
+                            
                         </div>
-                        
-                    </div>
                 </div>
-
+                
                 <div class="ui tab  active" data-tab="first">
                        
                         <div class="ui bottom attached active tab " data-tab="first/a">

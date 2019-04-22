@@ -102,7 +102,7 @@ $rows2 = Conception::rows_dynamique();
 $conception = Conception::find_all();
 
 ?>
-                              <table class="ui celled yellow table" id="tabAll">
+                              <table class="ui celled table" id="tabAll">
                                     <thead>
                                         <tr>
                                             <th>#</th>

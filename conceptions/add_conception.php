@@ -38,7 +38,7 @@ require_login();
       $args['id_ad'] = 1;//$_POST['id_ad'] ?? NULL ;
       $args['id_cl'] = $_POST['id_cl'] ?? NULL;
 
-  $args['nom_con'] = $_POST['nom_con'] ?? NULL;
+      $args['nom_con'] = $_POST['nom_con'] ?? NULL;
 
 
      // var_dump($args) . "<br>";

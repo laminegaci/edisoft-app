@@ -89,7 +89,7 @@ html {
                          <th>nom de domaine</th>
                             <th>Date début</th>
                             <th>date d'expiration</th>
-                            <th>Espace</th>
+                            
                             <th>Prix</th>
                            
                         </tr>
@@ -101,11 +101,11 @@ html {
                         <tr>
                         <td><?php echo h($achat->id_heb)?></td>
                            
-                            <td><?php echo h($achat->nom_pack)?></td>
+                            <td><?php echo h($achat->nom_pack).'<sub>('.$achat->espace_heb.' Go)</sub>'?></td>
                             <td><?php echo h($achat->url_heb)?></td>
                             <td><?php echo h($achat->date_deb_heb)?></td>
                             <td><?php echo h($achat->date_fin_heb)?></td>
-                            <td><?php echo h($achat->espace_heb)?></td>
+                            
                             <td><?php echo h($achat->prix);
             $totale += $achat->prix;
             $heb_array[] = $achat->id_heb; ?></td>
@@ -135,7 +135,7 @@ html {
                     </tbody>
                 </table>
                 <h2 class="ui yellow header"><?php if (empty($heb_array)) {
-        echo '<i class="exclamation triangle icon"></i>ce client a payé tout les hébérgements commandés';
+        echo '<i class="exclamation triangle icon"></i>ce client a payé tout les hébérgements demandés';
     } ?></h2>
 
 
@@ -175,7 +175,7 @@ html {
 
 
 
-</div>
+</div>abcdefg1
 <!--fin page-->
 
 
@@ -217,7 +217,7 @@ function generate() {
 
 
     var head = [
-        ["#", "pack", "nom de domaine", "date début", "date d'expiration", "espace", "prix"]
+        ["#", "pack", "nom de domaine", "date début", "date d'expiration", "prix"]
     ];
     var body = [
         
@@ -226,11 +226,11 @@ function generate() {
             $nbr= count($achats);
             foreach ($achats as $achat) {
                 echo '["",';
-                echo '"' . h($achat->nom_pack).'",';
+                echo '"' . h($achat->nom_pack).'('. h($achat->espace_heb).' Go)",'; 
                 echo '"'. h($achat->url_heb).'",';
                 echo '"'. h($achat->date_deb_heb).'",';
                 echo '"'. h($achat->date_fin_heb).'",';
-                echo '"'. h($achat->espace_heb).' GO",';
+                //echo '"'. h($achat->espace_heb).' GO",';
                 echo '"'. h($achat->prix).' DA"';
                 
                 echo '],';

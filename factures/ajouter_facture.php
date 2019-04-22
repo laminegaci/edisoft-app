@@ -108,7 +108,7 @@ select.ui.dropdown {
                             
                         </div>
                         <div class="field">
-                            <input type="submit" class="ui big green right floated button" value="Imprimer" name="imprimer">
+                            <input type="submit" class="ui big green right floated button" value="valider" name="imprimer">
                             
                         </div>
                         <div class="ui error message"></div>
@@ -206,7 +206,7 @@ $('.ui.large.form')
                     identifier: 'id_cl',
                     rules: [{
                             type: 'empty',
-                            prompt: '<b>Client</b> ne doit pas être vide!'
+                            prompt: '<b>selectionner</b> un client!'
                         }
 
 
