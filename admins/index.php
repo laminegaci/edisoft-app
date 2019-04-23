@@ -41,7 +41,7 @@ include("../includes/app_head.php");
                  <div class="ui pointing secondary big menu">
 
 
-                     <h1 class="ui header item"><i class="key icon"></i><i class="lock open icon"></i>Admin</h1>
+                     <h1 class="ui header item"><i class="lock open icon"></i>Admin</h1>
 
 
                      <!-- <a class="item active" data-tab="first"><i class="large list icon"></i></a> -->
