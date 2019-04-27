@@ -152,13 +152,13 @@ html {
     } ?> >
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
                     <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
-                    <input type="file" name="image"  <?php if ($type_pai_fact !== 'ccp') {
+                    <input type="file" required name="image" id="image_ccp"  <?php if ($type_pai_fact !== 'ccp') {
         echo 'hidden';
     }?> >
                     <input type="text" name="id_cl" value="<?php echo $_POST['id_cl']  ?? ''; ?>" hidden>
                     <input type="text" name="heb_array" value="<?php echo h(serialize($heb_array))  ?? ''; ?>" hidden>
 
-              <input type="submit" onclick="generate()" class="ui yellow button" name="valider" value="Valider et imprimer"> 
+              <input type="submit" class="ui yellow button" name="valider" id="valider" value="Valider et imprimer"> 
               </form>
             </div>
         </div>
@@ -269,6 +269,21 @@ function generate() {
 
    doc.output("dataurlnewwindow");
 }
+//
+   
+
+$('#valider').click(function(){
+  
+    
+    if (!document.querySelector('#image_ccp').hasAttribute('hidden')) {
+        if (!$('#image_ccp').get(0).files.length === 0) {
+            generate();
+        }
+   }
+
+        
+   
+})
 </script>
 
 

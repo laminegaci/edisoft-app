@@ -109,16 +109,17 @@ select.ui.dropdown {
                         </div>
                         <div class="field">
                             <input type="submit" class="ui big green right floated button" value="valider" name="imprimer">
-                            
-                        </div>
-                        <div class="ui error message"></div>
 
+                        </div> 
+
+                         
                     </form>
                    
-                    
+                <div class="ui error message" ></div>
+                   
 
                 </div>
-
+            
 
 
 
