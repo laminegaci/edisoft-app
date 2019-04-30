@@ -232,7 +232,7 @@ $('.menu .item')
     $("#search").keyup(function() {
                  var searchText = $(this).val().toLowerCase();
                  // Show only matching TR, hide rest of them
-                 $.each($("#tabAll tbody tr, #tabPro tbody tr, #tabParti tbody tr"), function() {
+                 $.each($("#tabAll tbody tr"), function() {
                      if ($(this).text().toLowerCase().indexOf(searchText) === -1)
                          $(this).hide();
                      else

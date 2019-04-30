@@ -370,7 +370,7 @@ $hyb_expiré = Hebergement::find_expired();
 
                                                 <td><i class="skull crossbones icon"></i><?php echo $id.'-'.$name;?>
                                                 </td>
-                                                <td><?php echo h($expiré->id_pack).'-'.$nom_pack ;?></td>
+                                                <td><?php echo /*h($expiré->id_pack).'-'.*/$nom_pack ;?><small>(<?php echo h($expiré->espace_heb); ?>Go)</small></td>
                                                 <td><?php echo h($expiré->url_heb) ;?></td>
                                                 <td><?php echo h($expiré->date_fin_heb) ;?></td>
                                                 <td><b></b><?php echo Hebergement::find_delai($expiré->date_fin_heb)?>
@@ -508,7 +508,7 @@ $heb_non_payer = Hebergement::find_non_payer();
                                         <tr>
                                             <td><?php echo $heb->id_heb; ?></td>
                                             <td><?php echo $id.'-'.$name; ?> </td>
-                                            <td><?php echo $id_p.'-'.$nom_pack;?></td>
+                                            <td><?php echo /*$id_p.'-'.*/$nom_pack;?><small>(<?php echo h($heb->espace_heb); ?>Go)</small></td>
 
                                             <td><?php  echo $heb->url_heb; ?></td>
                                             <td><?php echo $heb->date_deb_heb; ?></td>
