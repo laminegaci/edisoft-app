@@ -77,7 +77,7 @@ if (isset($_POST['valider'])) {
        $update = Facture::update_heb_id($heb_array, $facture->id_fact);
       
       if($update){
-        //redirect_to('index.php');
+        redirect_to('index.php');
 
       }else{
           echo "madarch update";
