@@ -152,7 +152,7 @@ html {
     } ?> >
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
                     <input type="text" name="type_pai_fact" value="<?php echo $type_pai_fact ?? ''; ?>" hidden>
-                    <input type="file" required name="image" id="image_ccp"  <?php if ($type_pai_fact !== 'ccp') {
+                    <input type="file"  name="image" id="image_ccp"  <?php if ($type_pai_fact !== 'ccp') {
         echo 'hidden';
     }?> >
                     <input type="text" name="id_cl" value="<?php echo $_POST['id_cl']  ?? ''; ?>" hidden>
