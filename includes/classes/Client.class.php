@@ -283,7 +283,7 @@ class Client{
             $this->errors[] = "prenom du client ne doit pas être vide.";
         }elseif(!has_length($this->prenom_cl, array('min' => 4, 'max' => 255))) {
             $this->errors[] = "prenom du client doit avoir au moins 4 caractéres! ";
-        }elseif(ctype_alpha($this->prenom_cl) === false){
+        }elseif(ctype_alpha(str_replace([' ', '', '-'],'', $this->prenom_cl)) === false){
             $this->errors[] = "prenom du client doit avoir seulement des caractère alphabetique! ";
         }
         //adresse client

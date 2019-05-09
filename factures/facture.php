@@ -273,11 +273,11 @@ function generate() {
    
 
 $('#valider').click(function(){
+    generate();
   
     
     if (!document.querySelector('#image_ccp').hasAttribute('hidden')) {
         if (!$('#image_ccp').get(0).files.length === 0) {
-            generate();
         }
    }
 
