@@ -13,6 +13,8 @@ if(isset($id) && !empty($id)){
         $hybergement = Hebergement::delete($id);
         
        if($hybergement){
+        $_SESSION['toast'] = true;
+        $_SESSION['toastType'] = "Une suppression d'hébergement";
         redirect_to('../dashboard.php');
          
        }else{

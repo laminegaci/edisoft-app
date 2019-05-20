@@ -49,7 +49,7 @@ if ($uploadOk == 0) {
     }
 }
 
-//
+
 
 ///////////// Insertion de la facture :)///////////////////
 //echo $_FILES['image']['name'];

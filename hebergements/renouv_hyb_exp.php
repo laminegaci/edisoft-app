@@ -37,7 +37,7 @@ if($result){
     //echo 'jazat la requete';
     session_start();
     $_SESSION['toast'] = true;
-    $_SESSION['toastType'] = "modification (renouvelement)";
+    $_SESSION['toastType'] = "Un renouvelement";
     redirect_to(url_for('dashboard.php'));
   }else{
      echo 'mamchatch' . var_dump($result);

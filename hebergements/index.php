@@ -24,6 +24,7 @@ height: 100%;
     <div class="ui fluid container">
 
         <?php include('../includes/menu_head.php');
+        $bool = $_SESSION['toast'] ?? false; 
    $hebergement = new Hebergement;
    $client = new Client;
         
@@ -221,6 +222,24 @@ $rows = Hebergement::rows_tot();
 
 
 <script>
+$(document).ready(() => {
+    <?php
+if($bool){
+    echo "
+    $('body')
+ .toast({
+   class: 'success',
+  
+    message: ` ".  $_SESSION['toastType'] ." a été effectuée avec succés!`
+ })
+;
+    ";
+}    
+$_SESSION['toast'] = false;
+?>
+
+})
+
      $('#selectFilter').change(function () {
                                         $(".all").hide();
                                         $("." + $(this).find(":selected").attr("id")).show();

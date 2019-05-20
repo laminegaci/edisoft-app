@@ -49,6 +49,8 @@ require_login();
         //var_dump($conception->sani_echo());
 
       if($result == true){
+        $_SESSION['toast'] = true;
+    $_SESSION['toastType'] = "Un ajoute";
         redirect_to('index.php');
       }else{
          // echo "error";
