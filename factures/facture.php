@@ -240,11 +240,12 @@ function generate() {
 
 
 
+["", "", "", "", "", "", ""],
 
 
-        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "Totale: ", "<?php echo $totale;?> DA", ""]
 
-        ["", "<?php echo $nbr . " ";?> packs", "", "", "", "", "<?php echo $totale . " " ;?> DA"],
+        
 
 
 

@@ -21,16 +21,7 @@ if(isset($_POST["valider"])) {
         $uploadOk = 0;
     }
 }
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-// Check file size
-if ($_FILES["image"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
+
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
@@ -77,7 +68,7 @@ if (isset($_POST['valider'])) {
        $update = Facture::update_heb_id($heb_array, $facture->id_fact);
       
       if($update){
-        redirect_to('index.php');
+       // redirect_to('index.php');
 
       }else{
           echo "madarch update";
