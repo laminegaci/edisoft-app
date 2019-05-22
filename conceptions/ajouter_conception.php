@@ -95,7 +95,7 @@ require_once("../includes/initialize.php");
                     <div class="fields">
                         <div class="field">
                             <label>Nom du site</label>
-                            <input type="text" placeholder="Username" name="nom_con" autocomplete="off">
+                            <input type="text" placeholder="URL" name="nom_con" autocomplete="off">
                         </div>
 
 

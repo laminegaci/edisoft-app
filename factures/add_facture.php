@@ -5,6 +5,9 @@ require_once('../includes/initialize.php');
 require_login();
 //upload image
 
+echo $_GET['type'];
+if($_GET['type']=='ccp')
+{
 
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -40,6 +43,8 @@ if ($uploadOk == 0) {
     }
 }
 
+    
+}
 
 
 ///////////// Insertion de la facture :)///////////////////
@@ -68,7 +73,7 @@ if (isset($_POST['valider'])) {
        $update = Facture::update_heb_id($heb_array, $facture->id_fact);
       
       if($update){
-       // redirect_to('index.php');
+        redirect_to('index.php');
 
       }else{
           echo "madarch update";

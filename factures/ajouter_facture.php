@@ -88,7 +88,7 @@ select.ui.dropdown {
                                             <div class="field">
 
                                             <label for="">Paiement en :</label>
-                                <select class="ui  icon dropdown" id="menu_type" name="type_pai_fact" >
+                                <select class="ui icon dropdown" id="menu_type" name="type_pai_fact" >
                                     <div class="menu">
                                         <option value="">type...</option>
 

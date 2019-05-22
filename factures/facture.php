@@ -147,7 +147,7 @@ html {
 
 
 
-                <form action="add_facture.php" method="post" enctype="multipart/form-data" <?php if (empty($heb_array)) {
+                <form action="add_facture.php?type=<?php echo $type_pai_fact;?>" method="post" enctype="multipart/form-data" <?php if (empty($heb_array)) {
         echo 'hidden';
     } ?> >
                     <input type="text" name="totale_fact" value="<?php echo $totale; ?>" hidden>
