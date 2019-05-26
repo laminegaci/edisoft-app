@@ -1,6 +1,8 @@
 <?php 
 require_once("../includes/initialize.php");
 include("../includes/app_head.php");
+$bool = $_SESSION['toast'] ;
+
 ?>
 
 <style>
@@ -140,6 +142,22 @@ $rows = Facture::rows_tot();
 
 
 <script>
+
+<?php
+if($bool){
+    echo "
+    $('body')
+ .toast({
+   class: 'success',
+  
+    message: ` ".  $_SESSION['toastType'] ." `
+ })
+;
+    ";
+}    
+$_SESSION['toast'] = false;
+?> 
+
 $('.menu .item')
     .tab();
 

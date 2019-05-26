@@ -73,6 +73,8 @@ if (isset($_POST['valider'])) {
        $update = Facture::update_heb_id($heb_array, $facture->id_fact);
       
       if($update){
+        $_SESSION['toast'] = true;
+        $_SESSION['toastType'] = "facture validée avec succés";
         redirect_to('index.php');
 
       }else{

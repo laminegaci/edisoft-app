@@ -230,7 +230,7 @@ if($bool){
  .toast({
    class: 'success',
   
-    message: ` ".  $_SESSION['toastType'] ." a été effectuée avec succés!`
+    message: ` ".  $_SESSION['toastType'] ."`
  })
 ;
     ";

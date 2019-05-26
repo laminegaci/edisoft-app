@@ -63,7 +63,7 @@ $result = $hebergement->create();
 
 if($result == true){
     $_SESSION['toast'] = true;
-    $_SESSION['toastType'] = "Un ajoute d'un hébergement ";
+    $_SESSION['toastType'] = "Un ajout d'hébergement a été effectué avec succés";
 redirect_to('index.php');
 }else{
  // echo "error";

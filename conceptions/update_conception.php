@@ -32,7 +32,7 @@ if(is_post_request() && isset($_POST['modifier'])){
     // 'jazat la requete';
     session_start();
     $_SESSION['toast'] = true;
-    $_SESSION['toastType'] = "Une modification";
+    $_SESSION['toastType'] = "Une modification de conception a  été effectuée avec succés ";
     redirect_to('index.php');
   }else{
       echo '<script> alert("mamchatch");</script>';

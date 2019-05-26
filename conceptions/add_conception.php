@@ -50,7 +50,7 @@ require_login();
 
       if($result == true){
         $_SESSION['toast'] = true;
-    $_SESSION['toastType'] = "Un ajoute";
+    $_SESSION['toastType'] = "une conception a été ajoutée avec succés!";
         redirect_to('index.php');
       }else{
          // echo "error";

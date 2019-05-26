@@ -1,6 +1,6 @@
 
-CREATE DATABASE edisoft CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE edisoft;
+#CREATE DATABASE edisoft CHARACTER SET utf8 COLLATE utf8_general_ci;
+#USE edisoft;
 CREATE TABLE admin(
 
     id_ad TINYINT(1) NOT NULL AUTO_INCREMENT PRIMARY KEY, 

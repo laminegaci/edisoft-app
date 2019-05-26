@@ -14,7 +14,7 @@ if(isset($id) && !empty($id)){
         
        if($hybergement){
         $_SESSION['toast'] = true;
-        $_SESSION['toastType'] = "Une suppression d'hébergement";
+        $_SESSION['toastType'] = "Une suppression d'hébergement est éffectuée avec succés";
         redirect_to('../dashboard.php');
          
        }else{
